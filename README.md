@@ -10,7 +10,7 @@ For more details see the [Python documentation](https://developer.amadeus.com/do
 
 ## Installation
 
-This gem requires Python 2.7 or 3.6. You can install install it directly with pip.
+This gem requires Python 2.6+ or 3.4+. You can install install it directly with pip.
 
 ```sh
 pip install amadeus
@@ -24,9 +24,9 @@ __Next__: [Get Started with the Python SDK.](https://developer.amadeus.com/docs/
 To send make your first API call you will need to [register for an Amadeus Developer Account](https://developer.amadeus.com/register) and [set up your first application](https://dashboard.developer.amadeus.com/applications).
 
 ```py
-import Amadeus
+from amadeus import Client, ResponseError
 
-amadeus = amadeus.Client(
+amadeus = Client(
     client_id='[YOUR_CLIENT_ID]',
     client_secret='[YOUR_CLIENT_SECRET]'
 )
@@ -36,7 +36,6 @@ try:
     # => {"meta"=>{"count"=>2, "links"=>{"self"=>"https://test.api.amadeus.com...
 except ResponseError as error:
     print(error)
-end
 ```
 
 __Next__: [Learn more about checkin links](https://developer.amadeus.com/docs/python/get_started/checkin_links) with our Python SDK.
@@ -47,13 +46,13 @@ The client can be initialized directly.
 
 ```py
 # Initialize using parameters
-amadeus = amadeus.Client(client_id='...', client_secret='...')
+client = Client(client_id='...', client_secret='...')
 ```
 
 Alternatively it can be initialized without any paramters if the environment variables `AMADEUS_CLIENT_ID` and `AMADEUS_CLIENT_SECRET` are present.
 
 ```py
-amadeus = amadeus.Client()
+client = Client()
 ```
 
 Your credentials can be found on the [Amadeus dashboard](https://dashboard.developer.amadeus.com/client_ids). [Sign up](https://developer.amadeus.com/register) for an account today.
@@ -61,7 +60,7 @@ Your credentials can be found on the [Amadeus dashboard](https://dashboard.devel
 By default the environment for the SDK is the `test` environment. To switch to a production (paid-for) environment please switch the hostname as follows:
 
 ```py
-amadeus = amadeus.Client(hostname='production')
+client = Client(hostname='production')
 ```
 
 __Next__: [Learn more about our initializing the Python SDK](https://developer.amadeus.com/docs/python/get_started_initialize) in our documentation.
@@ -87,7 +86,7 @@ This library conveniently maps every API path to a similar path.
 For example, `GET /v2/reference-data/urls/checkin-links?airline=1X` would be:
 
 ```py
-amadeus.reference_data.urls.checkin_links.get(airline='1X')
+client.reference_data.urls.checkin_links.get(airline='1X')
 ```
 
 Similarly, to select a resource by ID, you can pass in the ID to the path.
@@ -95,13 +94,13 @@ Similarly, to select a resource by ID, you can pass in the ID to the path.
 For example,  `GET /v1/shopping/hotel/123/hotel-offers` would be:
 
 ```py
-amadeus.hotels(123).hotel_offers.get(...)
+client.hotels(123).hotel_offers.get(...)
 ```
 
 You can make any arbitrary API call as well directly with the `.get` method:
 
 ```py
-amadeus.get('/v2/reference-data/urls/checkin-links', airline='1X')
+client.get('/v2/reference-data/urls/checkin-links', airline='1X')
 ```
 
 ## Response
@@ -112,9 +111,11 @@ also contains a `data` key, it will make that available as the `.data`
 attribute. The raw body of the response is always avaulable as the `.body` attribute.
 
 ```py
-response = amadeus.reference_data.locations.get(
+from amadeus import Location
+
+response = client.reference_data.locations.get(
     keyword='LON',
-    subType=Amadeus.Location.ANY
+    subType=Location.ANY
 )
 
 print(reponse.body) #=> The raw response, as a string
@@ -128,12 +129,14 @@ If an API endpoint supports pagination, the other pages are available under the
 `.next`, `.previous`, `.last` and `.first` methods.
 
 ```py
-response = amadeus.reference_data.locations.get(
+from amadeus import Location
+
+response = client.reference_data.locations.get(
     keyword='LON',
-    subType=Amadeus.Location.ANY
+    subType=Location.ANY
 )
 
-amadeus.next(response) #=> returns a new response for the next page
+client.next(response) #=> returns a new response for the next page
 ```
 
 If a page is not available, the method will return `None`.
@@ -148,7 +151,7 @@ import logging
 logger = logging.getLogger('your_logger')
 logger.setLevel(logging.DEBUG)
 
-amadeus = amadeus.Client(
+client = Client(
     client_id='...',
     client_secret='...',
     logger=logger
@@ -158,7 +161,7 @@ amadeus = amadeus.Client(
 Additionally, to enable more verbose logging, you can set the appropriate level on your own logger, though the easiest way would be to enable debugging via a parameter on initialization, or using the `AMADEUS_LOG_LEVEL` environment variable.
 
 ```py
-amadeus = amadeus.Client(
+client = Client(
     client_id='...',
     client_secret='...',
     log_level='debug'
