@@ -32,7 +32,8 @@ amadeus = Client(
 )
 
 try:
-    print(amadeus.reference_data.urls.checkin_links.get(airline='1X'))
+    response = amadeus.reference_data.urls.checkin_links.get(airline='1X')
+    print(response)
     # => {"meta"=>{"count"=>2, "links"=>{"self"=>"https://test.api.amadeus.com...
 except ResponseError as error:
     print(error)
