@@ -1,7 +1,7 @@
 # Amadeus Python SDK
 
 [![Module Version](https://badge.fury.io/py/amadeus.svg)](https://badge.fury.io/py/amadeus)
-[![Build Status](http://img.shields.io/travis/amdeus/amdeus-python.svg)][travis]
+[![Build Status](http://img.shields.io/travis/twilio/twilio-python.svg)][travis]
 [![Contact Support](https://img.shields.io/badge/contact-support-blue.svg)][support]
 
 Amadeus provides a set of APIs for the travel industry. Flights, Hotels, Locations and more.
