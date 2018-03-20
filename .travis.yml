@@ -1,0 +1,13 @@
+language: python
+cache: pip
+rvm:
+  - '2.7'
+  - '3.6'
+deploy:
+  provider: pypi
+  user: [insert username]
+  api_key:
+    secure: [insert pip key]
+  on:
+    tags: true
+  distributions: sdist bdist_wheel
