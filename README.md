@@ -46,13 +46,13 @@ The client can be initialized directly.
 
 ```py
 # Initialize using parameters
-client = Client(client_id='...', client_secret='...')
+amadeus = Client(client_id='...', client_secret='...')
 ```
 
 Alternatively it can be initialized without any paramters if the environment variables `AMADEUS_CLIENT_ID` and `AMADEUS_CLIENT_SECRET` are present.
 
 ```py
-client = Client()
+amadeus = Client()
 ```
 
 Your credentials can be found on the [Amadeus dashboard](https://dashboard.developer.amadeus.com/client_ids). [Sign up](https://developer.amadeus.com/register) for an account today.
@@ -60,7 +60,7 @@ Your credentials can be found on the [Amadeus dashboard](https://dashboard.devel
 By default the environment for the SDK is the `test` environment. To switch to a production (paid-for) environment please switch the hostname as follows:
 
 ```py
-client = Client(hostname='production')
+amadeus = Client(hostname='production')
 ```
 
 __Next__: [Learn more about our initializing the Python SDK](https://developer.amadeus.com/docs/python/get_started_initialize) in our documentation.
@@ -86,7 +86,7 @@ This library conveniently maps every API path to a similar path.
 For example, `GET /v2/reference-data/urls/checkin-links?airline=1X` would be:
 
 ```py
-client.reference_data.urls.checkin_links.get(airline='1X')
+amadeus.reference_data.urls.checkin_links.get(airline='1X')
 ```
 
 Similarly, to select a resource by ID, you can pass in the ID to the path.
@@ -94,13 +94,13 @@ Similarly, to select a resource by ID, you can pass in the ID to the path.
 For example,  `GET /v1/shopping/hotel/123/hotel-offers` would be:
 
 ```py
-client.hotels(123).hotel_offers.get(...)
+amadeus.hotels(123).hotel_offers.get(...)
 ```
 
 You can make any arbitrary API call as well directly with the `.get` method:
 
 ```py
-client.get('/v2/reference-data/urls/checkin-links', airline='1X')
+amadeus.get('/v2/reference-data/urls/checkin-links', airline='1X')
 ```
 
 ## Response
@@ -113,7 +113,7 @@ attribute. The raw body of the response is always avaulable as the `.body` attri
 ```py
 from amadeus import Location
 
-response = client.reference_data.locations.get(
+response = amadeus.reference_data.locations.get(
     keyword='LON',
     subType=Location.ANY
 )
@@ -131,12 +131,12 @@ If an API endpoint supports pagination, the other pages are available under the
 ```py
 from amadeus import Location
 
-response = client.reference_data.locations.get(
+response = amadeus.reference_data.locations.get(
     keyword='LON',
     subType=Location.ANY
 )
 
-client.next(response) #=> returns a new response for the next page
+amadeus.next(response) #=> returns a new response for the next page
 ```
 
 If a page is not available, the method will return `None`.
@@ -151,7 +151,7 @@ import logging
 logger = logging.getLogger('your_logger')
 logger.setLevel(logging.DEBUG)
 
-client = Client(
+amadeus = Client(
     client_id='...',
     client_secret='...',
     logger=logger
@@ -161,7 +161,7 @@ client = Client(
 Additionally, to enable more verbose logging, you can set the appropriate level on your own logger, though the easiest way would be to enable debugging via a parameter on initialization, or using the `AMADEUS_LOG_LEVEL` environment variable.
 
 ```py
-client = Client(
+amadeus = Client(
     client_id='...',
     client_secret='...',
     log_level='debug'
