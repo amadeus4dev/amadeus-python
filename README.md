@@ -27,15 +27,15 @@ To send make your first API call you will need to [register for an Amadeus Devel
 import Amadeus
 
 amadeus = amadeus.Client(
-  client_id='[YOUR_CLIENT_ID]',
-  client_secret='[YOUR_CLIENT_SECRET]'
+    client_id='[YOUR_CLIENT_ID]',
+    client_secret='[YOUR_CLIENT_SECRET]'
 )
 
 try:
-  print(amadeus.reference_data.urls.checkin_links.get(airline='1X'))
-  # => {"meta"=>{"count"=>2, "links"=>{"self"=>"https://test.api.amadeus.com...
+    print(amadeus.reference_data.urls.checkin_links.get(airline='1X'))
+    # => {"meta"=>{"count"=>2, "links"=>{"self"=>"https://test.api.amadeus.com...
 except ResponseError as error:
-  print(error)
+    print(error)
 end
 ```
 
@@ -113,8 +113,8 @@ attribute. The raw body of the response is always avaulable as the `.body` attri
 
 ```py
 response = amadeus.reference_data.locations.get(
-  keyword='LON',
-  subType=Amadeus.Location.ANY
+    keyword='LON',
+    subType=Amadeus.Location.ANY
 )
 
 print(reponse.body) #=> The raw response, as a string
@@ -129,8 +129,8 @@ If an API endpoint supports pagination, the other pages are available under the
 
 ```py
 response = amadeus.reference_data.locations.get(
-  keyword='LON',
-  subType=Amadeus.Location.ANY
+    keyword='LON',
+    subType=Amadeus.Location.ANY
 )
 
 amadeus.next(response) #=> returns a new response for the next page
@@ -143,10 +143,15 @@ If a page is not available, the method will return `None`.
 The SDK makes it easy to add your own logger.
 
 ```py
+import logging
+
+logger = logging.getLogger('your_logger')
+logger.setLevel(logging.DEBUG)
+
 amadeus = amadeus.Client(
-  client_id='...',
-  client_secret='...',
-  logger=your_logger
+    client_id='...',
+    client_secret='...',
+    logger=logger
 )
 ```
 
@@ -154,9 +159,9 @@ Additionally, to enable more verbose logging, you can set the appropriate level 
 
 ```py
 amadeus = amadeus.Client(
-  client_id='...',
-  client_secret='...',
-  log_level='debug'
+    client_id='...',
+    client_secret='...',
+    log_level='debug'
 )
 ```
 

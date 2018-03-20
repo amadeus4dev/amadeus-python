@@ -1,2 +1,5 @@
 amadeus.egg-info
 venv
+__pycache__
+test.py
+*.pyc

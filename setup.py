@@ -1,15 +1,11 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 import io
 import os
-from setuptools import setup
 
+from setuptools import setup
 
 # Load the version number
 about = {}
 here = os.path.abspath(os.path.dirname(__file__))
-
 with open(os.path.join(here, 'amadeus', '__version__.py')) as f:
     exec(f.read(), about)
 
@@ -17,7 +13,6 @@ with open(os.path.join(here, 'amadeus', '__version__.py')) as f:
 with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = '\n' + f.read()
 
-# The actual setup
 setup(
     name='amadeus',
     version=about['__version__'],
