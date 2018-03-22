@@ -6,7 +6,7 @@ from setuptools import setup
 # Load the version number
 about = {}
 here = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(here, 'amadeus', '__version__.py')) as f:
+with open(os.path.join(here, 'amadeus', 'version.py')) as f:
     exec(f.read(), about)
 
 # Import the README and use it as the long-description.
@@ -15,7 +15,7 @@ with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='amadeus',
-    version=about['__version__'],
+    version=about['version'],
     description='Python module for the Amadeus travel APIs',
     long_description=long_description,
     long_description_content_type='text/markdown',

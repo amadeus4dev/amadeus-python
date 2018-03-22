@@ -1,14 +1,15 @@
 # Support Ruby 2 and 3 without importing a 3rd party library
 try:
-    from urllib.request import urlopen, Request
+    from urllib.request import Request
     from urllib.parse import urlencode
     from urllib.error import HTTPError
 except ImportError:
-    from urllib2 import urlopen, Request, HTTPError
+    from urllib2 import Request, HTTPError
     from urllib import urlencode
 
+
 class HTTP(object):
-    
+
     def get(self, url, data={}):
         return self._call('GET', url, data)
 
@@ -16,13 +17,13 @@ class HTTP(object):
         return self._call('POST', url, data)
 
     def _call(self, verb, url, data=None):
-        if (data is not None) :
+        if (data is not None):
             data = urlencode(data).encode()
-            if (verb == 'GET') :
+            if (verb == 'GET'):
                 url = "{0}?{1}".format(url, data)
                 data = None
             request = Request(url, data)
-        else :
+        else:
             request = Request(url)
 
         try:

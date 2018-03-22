@@ -32,7 +32,7 @@ Alternatively, to run tests just against a specific Python version, create cover
 ```sh
 brew install fswatch
 pyenv shell 2.7.14
-./guard.sh
+make watch
 ```
 
 ### Using a library locally
