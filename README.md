@@ -10,7 +10,7 @@ For more details see the [Python documentation](https://developer.amadeus.com/do
 
 ## Installation
 
-This gem requires Python 2.6+ or 3.4+. You can install install it directly with pip.
+This gem requires Python 2.7+ or 3.3+. You can install install it directly with pip.
 
 ```sh
 pip install amadeus

@@ -2,7 +2,18 @@
 
 To run the project locally, clone the repository, and then create a virtual environment and install the dependencies.
 
+First, ensure you have a version of every Python we support installed. Your versions may differ.
+
+```sh
+pyenv install 2.7.14
+pyenv install 3.3.7
+pyenv install ...
+pyenv global 3.6.3 3.5.4 3.4.7 3.3.7 2.7.14   
 ```
+
+Next ensure you create a virtual environment.
+
+```sh
 virtualenv venv
 source venv/bin/activate
 pip install -r requirements.txt
@@ -10,11 +21,32 @@ pip install -r requirements.txt
 
 ### Running tests
 
-[TBD]
+To run the tests against every supported Python version, use `tox`.
+
+```sh
+tox
+```
+
+Alternatively, to run tests just against a specific Python version, while watching for changes.
+
+```sh
+pyenv shell 2.7.14
+ptw
+```
 
 ### Using a library locally
 
-[TBD]
+To install a library locally, use `pip` to install the library in editable mode.
+
+```sh
+pip install -e .
+```
+
+This will make the current code available for editing and using in live scripts, for example.
+
+```py
+from amadeus import Client
+```
 
 ### Releasing
 

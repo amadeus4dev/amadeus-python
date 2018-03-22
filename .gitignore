@@ -3,3 +3,6 @@ venv
 __pycache__
 test.py
 *.pyc
+.python-version
+.tox
+.pytest_cache

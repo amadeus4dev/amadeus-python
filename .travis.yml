@@ -1,8 +1,13 @@
 language: python
 cache: pip
-rvm:
+python:
   - '2.7'
+  - '3.3'
+  - '3.4'
+  - '3.5'
   - '3.6'
+install: pip install tox-travis
+script: tox
 deploy:
   provider: pypi
   user: [insert username]
