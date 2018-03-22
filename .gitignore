@@ -6,3 +6,5 @@ test.py
 .python-version
 .tox
 .pytest_cache
+htmlcov
+.coverage

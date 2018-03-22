@@ -6,7 +6,7 @@ from ._client_.http import HTTP, urlopen
 class Client(Validator, HTTP, object):
     """
     The Amadeus client library for accessing
-    the travel APIs
+    the travel APIs.
     """
 
     # The available hosts for this API

@@ -27,11 +27,12 @@ To run the tests against every supported Python version, use `tox`.
 tox
 ```
 
-Alternatively, to run tests just against a specific Python version, while watching for changes.
+Alternatively, to run tests just against a specific Python version, create coverage files, and watch for changes:
 
 ```sh
+brew install fswatch
 pyenv shell 2.7.14
-ptw
+./guard.sh
 ```
 
 ### Using a library locally
