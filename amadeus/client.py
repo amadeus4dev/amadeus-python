@@ -14,6 +14,7 @@ class Client(Validator, HTTP, object):
       'production': 'production.api.amadeus.com'
     }
 
+    # The initialization method for the entire module
     def __init__(self, **options):
         """
         Initialize using your credentials:
@@ -29,17 +30,49 @@ class Client(Validator, HTTP, object):
 
           amadeus = amadeus.Client()
 
+        Parameters
+        ----------
+        clientId : str
+            the API key used to authenticate the API
+        clientSecret : str
+            the API secret used to authenticate the API
+        logger : Logger (defaults to a new Logger)
+            a Logger-compatible logger that accepts a "warning" call
+        log_level : str (defaults to 'warn')
+            if this client is running in debug, warn, or silent mode
+        hostname : str (defaults to 'test')
+            the name of the server API calls are made to, "production"
+            or "test"
+        custom_app_id : str (defaults to None)
+            a custom App ID to be passed in the User Agent to the server
+        custom_app_version : (defaults to None)
+            a custom App Version number to be passed in the User Agent
+            to the server
+        http : urlopen (defaults to urlopen)
+            an optional urlopen compatible client that accepts a Request object
+        ssl : bool (defaults to True)
+            if this client is will use HTTPS
+
+        Returns
+        -------
+        Client
+            An amadeus
+
+        Raises
+        ------
+        ValueError
+            If a require parameter is missing
         """
 
-        self.initialize_client_credentials(options)
-        self.initialize_logger(options)
-        self.initialize_host(options)
-        self.initialize_custom_app(options)
-        self.initialize_http(options)
+        self._initialize_client_credentials(options)
+        self._initialize_logger(options)
+        self._initialize_host(options)
+        self._initialize_custom_app(options)
+        self._initialize_http(options)
 
         recognized_options = ['client_id', 'client_secret', 'logger', 'host',
                               'hostname', 'custom_app_id',
                               'custom_app_version', 'http',
                               'log_level', 'ssl', 'port']
-        self.warn_on_unrecognized_options(options, self.logger,
-                                          recognized_options)
+        self._warn_on_unrecognized_options(options, self.logger,
+                                           recognized_options)
