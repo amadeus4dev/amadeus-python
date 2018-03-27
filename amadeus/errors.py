@@ -26,7 +26,7 @@ class ResponseError(RuntimeError):
             if 'errors' in result:
                 return result['errors']
             if 'error_description' in result:
-                return result['error_description']
+                return result
 
     # sets the error code to the name of this class
     def _determine_code(self):

@@ -1,12 +1,14 @@
 import json
 
 from amadeus.errors import ParserError, ServerError, AuthenticationError
-from amadeus.errors import NotFoundError, ClientError
+from amadeus.errors import NotFoundError, ClientError, NetworkError
 
 
 class ResponseParser(object):
     # Tries to detect for appropriate errors
     def detect_error(self, client):
+        if self.status_code is None:
+            self._raise_error(NetworkError, client)
         if self.status_code >= 500:
             self._raise_error(ServerError, client)
         if self.status_code == 401:
@@ -22,7 +24,11 @@ class ResponseParser(object):
 
     # Parses the HTTP status code
     def _parse_status_code(self):
-        self.status_code = self.http_response.status
+        self.status_code = None
+        if hasattr(self.http_response, 'status'):
+            self.status_code = self.http_response.status
+        if hasattr(self.http_response, 'code'):
+            self.status_code = self.http_response.code
 
     # Tries to parse the received data from raw string to parsed data and into
     # a data object
@@ -31,6 +37,7 @@ class ResponseParser(object):
         self.data = None
         self.body = None
         self.result = None
+        self.headers = {}
 
         self._parse_body_and_headers(self.http_response, client)
         self.result = self._parse_json(client)
@@ -45,8 +52,12 @@ class ResponseParser(object):
 
     # Extract the body and headers
     def _parse_body_and_headers(self, http_response, client):
-        self.headers = dict(http_response.getheaders())
-        self.body = http_response.read()
+        if hasattr(http_response, 'getheaders'):
+            self.headers = dict(http_response.getheaders())
+        if hasattr(http_response, 'info'):
+            self.headers = http_response.info()
+        if hasattr(http_response, 'read'):
+            self.body = http_response.read()
 
     # Tries to parse the JSON, if there is any
     def _parse_json(self, client):

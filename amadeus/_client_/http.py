@@ -1,9 +1,9 @@
 from platform import python_version
 from pprint import pformat
 try:
-    from urllib.error import HTTPError
+    from urllib.error import HTTPError, URLError
 except ImportError:
-    from urllib2 import Request as HTTPError
+    from urllib2 import Request as HTTPError, URLError
 
 from amadeus.version import version
 from amadeus._client_.request import Request
@@ -110,4 +110,6 @@ class HTTP(object):
         try:
             return self.http(request.http_request)
         except HTTPError as exception:
+            return exception
+        except URLError as exception:
             return exception
