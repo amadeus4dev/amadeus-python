@@ -27,7 +27,6 @@ class Pagination(object):
         if 'page' not in params:
             params['page'] = {}
         params['page']['offset'] = page_number
-        print(params)
         return self.request(
             response.request.verb,
             response.request.path,
@@ -36,8 +35,6 @@ class Pagination(object):
 
     def __page_number_for(self, name, response):
         try:
-            print("!")
-            print(response.result)
             return response.result['meta']['links'][name].split('=')[-1]
-        except Exception as error:
+        except Exception:
             return None

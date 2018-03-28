@@ -1,7 +1,7 @@
 from mamba import description, context, it, before
 from doublex import Stub, Spy, ANY_ARG
 from doublex_expects import have_been_called_with
-from expects import expect, be_a, equal, be_none
+from expects import expect, equal, be_none
 
 from amadeus import Client, Response, Request
 from amadeus.mixins.pagination import Pagination
@@ -36,7 +36,7 @@ with description('Pagination') as self:
             expect(next_response).to(equal(self.next_response))
 
         with it('should return nil if the page was not found'):
-            self.response.result = { 'meta': {'links': {} }}
+            self.response.result = {'meta': {'links': {}}}
             next_response = self.pagination.previous(self.response)
             expect(next_response).to(be_none)
 
@@ -53,7 +53,7 @@ with description('Pagination') as self:
             expect(next_response).to(equal(self.next_response))
 
         with it('should return nil if the page was not found'):
-            self.response.result = { 'meta': {'links': {} }}
+            self.response.result = {'meta': {'links': {}}}
             next_response = self.pagination.next(self.response)
             expect(next_response).to(be_none)
 
@@ -70,7 +70,7 @@ with description('Pagination') as self:
             expect(next_response).to(equal(self.next_response))
 
         with it('should return nil if the page was not found'):
-            self.response.result = { 'meta': {'links': {} }}
+            self.response.result = {'meta': {'links': {}}}
             next_response = self.pagination.first(self.response)
             expect(next_response).to(be_none)
 
@@ -87,6 +87,6 @@ with description('Pagination') as self:
             expect(next_response).to(equal(self.next_response))
 
         with it('should return nil if the page was not found'):
-            self.response.result = { 'meta': {'links': {} }}
+            self.response.result = {'meta': {'links': {}}}
             next_response = self.pagination.last(self.response)
             expect(next_response).to(be_none)
