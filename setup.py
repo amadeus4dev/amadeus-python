@@ -22,7 +22,7 @@ setup(
     author='Amadeus',
     author_email='developer@amadeus.com',
     python_requires='>=2.7.0',
-    url='https://github.com/amadeusdev/amadeus-python',
+    url='https://github.com/amadeus4dev/amadeus-python',
     py_modules=['amadeus'],
     install_requires=[],
     package=['amadeus'],

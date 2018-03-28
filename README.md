@@ -33,8 +33,8 @@ amadeus = Client(
 
 try:
     response = amadeus.reference_data.urls.checkin_links.get(airline='1X')
-    print(response)
-    # => {"meta"=>{"count"=>2, "links"=>{"self"=>"https://test.api.amadeus.com...
+    print(response.data)
+    # => [{'type': 'checkin-link', 'id': '1XEN-GBWeb', 'href': 'https://www....
 except ResponseError as error:
     print(error)
 ```
@@ -78,7 +78,7 @@ Amadeus has a large set of APIs, and our documentation is here to get you starte
 
 Alternatively, head over to our [Reference](https://developer.amadeus.com/docs/python/reference) documentation for in-depth information about every SDK method, it's arguments and return types.
 
-Additionally, this SDK has extensive documentation of itself available on [PythonDoc.info](https://workbetta.github.io/amadeus-python/).
+Additionally, this SDK has extensive documentation of itself available on [PythonDoc.info](https://amadeus4dev.github.io/amadeus-python/).
 
 ## Making API calls
 
@@ -90,12 +90,12 @@ For example, `GET /v2/reference-data/urls/checkin-links?airline=1X` would be:
 amadeus.reference_data.urls.checkin_links.get(airline='1X')
 ```
 
-Similarly, to select a resource by ID, you can pass in the ID to the path.
+Similarly, to select a resource by ID, you can pass in the ID to the singular path.
 
-For example,  `GET /v1/shopping/hotel/123/hotel-offers` would be:
+For example,  `GET /v1/shopping/hotels/123/hotel-offers` would be:
 
 ```py
-amadeus.hotels(123).hotel_offers.get(...)
+amadeus.hotel(123).hotel_offers.get(...)
 ```
 
 You can make any arbitrary API call as well directly with the `.get` method:
