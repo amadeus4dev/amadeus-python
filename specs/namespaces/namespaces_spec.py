@@ -30,11 +30,11 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_dates).not_to(be_none)
         expect(client.shopping.flight_destinations).not_to(be_none)
         expect(client.shopping.flight_offers).not_to(be_none)
-        #
-        # expect(self.client.shopping.hotel_offers).not_to(be_none)
-        # expect(self.client.shopping.hotel).not_to(be_none)
-        # expect(self.client.shopping.hotel(123).offer).not_to(be_none)
-        # expect(self.client.shopping.hotel(123).hotel_offers).not_to(be_none)
+
+        expect(client.shopping.hotel_offers).not_to(be_none)
+        expect(client.shopping.hotel).not_to(be_none)
+        expect(client.shopping.hotel(123).offer).not_to(be_none)
+        expect(client.shopping.hotel(123).hotel_offers).not_to(be_none)
 
     with it('should define all expected .get methods'):
         client = self.client
@@ -49,10 +49,10 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_dates.get).not_to(be_none)
         expect(client.shopping.flight_destinations.get).not_to(be_none)
         expect(client.shopping.flight_offers.get).not_to(be_none)
-        #
-        # expect(self.client.shopping.hotelOffers.get).not_to(be_none)
-        # expect(self.client.shopping.hotel(123).hotelOffers.get).not_to(be_none)
-        # expect(self.client.shopping.hotel(123).offer(234).get).not_to(be_none)
+
+        expect(client.shopping.hotel_offers.get).not_to(be_none)
+        expect(client.shopping.hotel(123).hotel_offers.get).not_to(be_none)
+        expect(client.shopping.hotel(123).offer(234).get).not_to(be_none)
 
     with context('testing all calls to the client'):
         with before.each:
@@ -110,4 +110,22 @@ with description('Namespaces') as self:
             self.client.shopping.flight_offers.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/shopping/flight-offers', a='b'
+            ))
+
+        with it('.shopping.hotel_offers.get'):
+            self.client.shopping.hotel_offers.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/shopping/hotel-offers', a='b'
+            ))
+
+        with it('.shopping.hotel(123).hotel_offers.get'):
+            self.client.shopping.hotel(123).hotel_offers.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/shopping/hotels/123/hotel-offers', a='b'
+            ))
+
+        with it('.shopping.hotel(123).offer(234).get'):
+            self.client.shopping.hotel(123).offer(234).get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/shopping/hotels/123/offers/234', a='b'
             ))
