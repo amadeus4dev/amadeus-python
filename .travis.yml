@@ -5,14 +5,28 @@ python:
   - '3.3'
   - '3.4'
   - '3.5'
-  - '3.6'
+  - '3.6.3' # explicit branch used for deploying
+branches:
+  only:
+    - master
+    - /^v[0-9]/
 install: pip install tox-travis
 script: tox
+before_deploy: bundle exec yard
 deploy:
-  provider: pypi
-  user: [insert username]
-  api_key:
-    secure: [insert pip key]
-  on:
-    tags: true
-  distributions: sdist bdist_wheel
+  - provider: pypi
+    user: $PYPI_USERNAME
+    api_key: $PYPI_PASSWORD
+    skip-cleanup: true
+    on:
+      tags: true
+      python: '3.6.3'
+    distributions: sdist bdist_wheel
+  # - provider: pages
+  #   local-dir: doc
+  #   github-token: $GITHUB_TOKEN
+  #   skip-cleanup: true
+  #   keep-history: true
+  #   on:
+  #     branch: master
+  #     python: '3.6.3'
