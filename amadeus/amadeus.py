@@ -1,9 +1,10 @@
 from .mixins.validator import Validator
 from .mixins.http import HTTP
 from .mixins.pagination import Pagination
+from .namespaces import Core as Namespaces
 
 
-class Client(Pagination, Validator, HTTP, object):
+class Client(Namespaces, Pagination, Validator, HTTP, object):
     """
     The Amadeus client library for accessing
     the travel APIs.
@@ -76,3 +77,4 @@ class Client(Pagination, Validator, HTTP, object):
                               'log_level', 'ssl', 'port']
         self._warn_on_unrecognized_options(options, self.logger,
                                            recognized_options)
+        Namespaces.__init__(self)

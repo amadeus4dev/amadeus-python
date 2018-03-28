@@ -8,9 +8,9 @@ from .client.errors import ResponseError
 from .client.errors import ParserError, ServerError, AuthenticationError
 from .client.errors import NotFoundError, ClientError, NetworkError
 
-__all__ = (
+__all__ = [
     'Client', 'Location', 'version', 'ResponseError',
     'ParserError', 'ServerError', 'AuthenticationError',
     'NotFoundError', 'ClientError', 'Request', 'Response',
     'NetworkError'
-)
+]
