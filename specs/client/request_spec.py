@@ -4,8 +4,8 @@ from amadeus import Request
 
 try:
     from urllib.request import Request as HTTPRequest
-except ImportError:
-    from urllib2 import Request as HTTPRequest
+except ImportError:  # pragma: no cover
+    from urllib2 import Request as HTTPRequest  # pragma: no cover
 
 
 with description('Request') as self:

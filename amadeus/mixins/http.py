@@ -1,9 +1,9 @@
 from platform import python_version
 from pprint import pformat
 try:
-    from urllib.error import HTTPError, URLError
-except ImportError:
-    from urllib2 import Request as HTTPError, URLError
+    from urllib.error import URLError
+except ImportError:  # pragma: no cover
+    from urllib2 import Request as URLError  # pragma: no cover
 
 from amadeus.version import version
 from amadeus.client.request import Request
@@ -120,7 +120,5 @@ class HTTP(object):
     def __fetch(self, request):
         try:
             return self.http(request.http_request)
-        except HTTPError as exception:
-            return exception
         except URLError as exception:
             return exception
