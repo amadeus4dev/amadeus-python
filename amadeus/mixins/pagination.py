@@ -36,6 +36,8 @@ class Pagination(object):
 
     def __page_number_for(self, name, response):
         try:
+            print("!")
+            print(response.result)
             return response.result['meta']['links'][name].split('=')[-1]
-        except Exception:
+        except Exception as error:
             return None

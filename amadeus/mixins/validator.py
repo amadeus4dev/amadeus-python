@@ -4,8 +4,8 @@ import logging
 
 try:
     from urllib.request import urlopen
-except ImportError: # pragma: no cover
-    from urllib2 import urlopen # pragma: no cover
+except ImportError:  # pragma: no cover
+    from urllib2 import urlopen  # pragma: no cover
 
 
 # A set of helper methods to allow the validating of

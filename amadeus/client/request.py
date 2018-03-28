@@ -3,9 +3,9 @@
 try:
     from urllib.request import Request as HTTPRequest
     from urllib.parse import urlencode
-except ImportError:
-    from urllib2 import Request as HTTPRequest
-    from urllib import urlencode
+except ImportError:  # pragma: no cover
+    from urllib2 import Request as HTTPRequest  # pragma: no cover
+    from urllib import urlencode  # pragma: no cover
 
 
 class Request(object):
@@ -37,7 +37,7 @@ class Request(object):
     def __initialize_headers(self):
         self.headers = {
             'User-Agent': self.__build_user_agent(),
-            'Accept': 'application/json'
+            'Accept': 'application/json, application/vnd.amadeus+json'
         }
 
     # Determines the User Agent
@@ -89,5 +89,4 @@ class Request(object):
 
     # Applies all the headers to the HTTP Request object
     def __apply_headers(self, http_request):
-        for key in self.headers:
-            http_request.add_header(key, self.headers[key])
+        http_request.headers = self.headers

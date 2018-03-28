@@ -1,12 +1,12 @@
-from amadeus.amadeus import Client
-from amadeus.version import version
+from .amadeus import Client
+from .version import version
 
-from amadeus.client.location import Location
-from amadeus.client.request import Request
-from amadeus.client.response import Response
-from amadeus.client.errors import ResponseError
-from amadeus.client.errors import ParserError, ServerError, AuthenticationError
-from amadeus.client.errors import NotFoundError, ClientError, NetworkError
+from .client.location import Location
+from .client.request import Request
+from .client.response import Response
+from .client.errors import ResponseError
+from .client.errors import ParserError, ServerError, AuthenticationError
+from .client.errors import NotFoundError, ClientError, NetworkError
 
 __all__ = (
     'Client', 'Location', 'version', 'ResponseError',

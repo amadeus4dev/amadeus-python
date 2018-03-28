@@ -71,7 +71,7 @@ class Parser(object):
                 return result
             else:
                 return None
-        except json.decoder.JSONDecodeError:
+        except Exception:
             self.__raise_error(ParserError, client)
 
     # checks if the HTTPResponse included JSON

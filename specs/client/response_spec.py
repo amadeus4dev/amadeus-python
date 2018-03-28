@@ -3,7 +3,7 @@ from expects import expect, equal
 from doublex import Stub
 from amadeus import Response, Request
 
-with description('Client/Response') as self:
+with description('Response') as self:
     with context('.__init__'):
         with it('should take a http response object and request'):
             http_response = Stub('http_response')

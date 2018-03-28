@@ -1,6 +1,6 @@
-from amadeus.mixins.validator import Validator
-from amadeus.mixins.http import HTTP
-from amadeus.mixins.pagination import Pagination
+from .mixins.validator import Validator
+from .mixins.http import HTTP
+from .mixins.pagination import Pagination
 
 
 class Client(Pagination, Validator, HTTP, object):
@@ -64,7 +64,6 @@ class Client(Pagination, Validator, HTTP, object):
         ValueError
             If a require parameter is missing
         """
-
         self._initialize_client_credentials(options)
         self._initialize_logger(options)
         self._initialize_host(options)
