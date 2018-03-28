@@ -7,7 +7,7 @@ from amadeus import Client
 from os import environ
 from logging import Logger, getLogger
 
-with description('Client/Validator') as self:
+with description('Mixins/Validator') as self:
     with before.all:
         self.valid_params = {
             'client_id': '1234',

@@ -15,6 +15,7 @@ watch:
 run:
 			make lint
 			make test
+			coverage html
 
 lint:
 			flake8 $(SOURCES) --exit-zero

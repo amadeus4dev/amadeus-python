@@ -2,16 +2,21 @@ from pprint import pformat
 
 
 class ResponseError(RuntimeError):
+    """
+    The response object containing the raw HTTP response and the request
+    used to make the API call.
+    """
+
     def __init__(self, response):
         self.response = response
-        self.description = self._determine_description()
-        self.code = self._determine_code()
+        self.description = self.__determine_description()
+        self.code = self.__determine_code()
         RuntimeError.__init__(self, self.description)
 
     # PROTECTED
 
-    # Log any object
-    def log(self, client):
+    # Log the error
+    def _log(self, client):
         if (client.log_level == 'warn'):
             client.logger.warning(
                 'Amadeus %s: %s', self.code, pformat(self.description)
@@ -20,7 +25,7 @@ class ResponseError(RuntimeError):
     # PRIVATE
 
     # extracts the error description from the response, if it exists
-    def _determine_description(self):
+    def __determine_description(self):
         if (self.response and self.response.parsed):
             result = self.response.result
             if 'errors' in result:
@@ -29,35 +34,47 @@ class ResponseError(RuntimeError):
                 return result
 
     # sets the error code to the name of this class
-    def _determine_code(self):
+    def __determine_code(self):
         return self.__class__.__name__
 
 
-# This error occurs when there is some kind of error in the network
 class NetworkError(ResponseError):
+    """
+    This error occurs when there is some kind of error in the network
+    """
     pass
 
 
-# This error occurs when the response type was JSOn but could not be parsed
 class ParserError(ResponseError):
+    """
+    This error occurs when the response type was JSOn but could not be parsed
+    """
     pass
 
 
-# This error occurs when there is an error on the server
 class ServerError(ResponseError):
+    """
+    This error occurs when there is an error on the server
+    """
     pass
 
 
-# This error occurs when the client did not provide the right parameters
 class ClientError(ResponseError):
+    """
+    This error occurs when the client did not provide the right parameters
+    """
     pass
 
 
-# This error occurs when the client did not provide the right credentials
 class AuthenticationError(ResponseError):
+    """
+    This error occurs when the client did not provide the right credentials
+    """
     pass
 
 
-# This error occurs when the path could not be found
 class NotFoundError(ResponseError):
+    """
+    This error occurs when the path could not be found
+    """
     pass

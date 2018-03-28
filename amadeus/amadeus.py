@@ -1,8 +1,9 @@
-from ._client_.validator import Validator
-from ._client_.http import HTTP
+from amadeus.mixins.validator import Validator
+from amadeus.mixins.http import HTTP
+from amadeus.mixins.pagination import Pagination
 
 
-class Client(Validator, HTTP, object):
+class Client(Pagination, Validator, HTTP, object):
     """
     The Amadeus client library for accessing
     the travel APIs.
