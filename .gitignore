@@ -8,3 +8,4 @@ test.py
 .pytest_cache
 htmlcov
 .coverage
+_docs

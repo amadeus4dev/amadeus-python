@@ -20,4 +20,7 @@ run:
 lint:
 			flake8 $(SOURCES) --exit-zero
 
-.PHONY: test coverage watch run lint
+docs:
+			sphinx-build -b html docs _docs
+
+.PHONY: test coverage watch run lint docs
