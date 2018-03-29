@@ -8,6 +8,18 @@ class Offer(Decorator, object):
         self.offer_id = offer_id
 
     def get(self, **params):
+        """
+        Get room and rate details for a specific hotel offer
+
+        .. code-block:: python
+
+            amadeus.shopping.hotels(
+                'SMPARCOL'
+            ).offers('AC7D4DA2C322A73AF0824318A4965DA2805A3FC2').get()
+
+        :rtype: amadeus.Response
+        :raises amadeus.ResponseError: if the request could not be completed
+        """
         return self.client.get(
             '/v1/shopping/hotels/{0}/offers/{1}'.format(
                 self.hotel_id, self.offer_id
