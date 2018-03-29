@@ -184,5 +184,5 @@ This library is released under the [MIT License](LICENSE).
 
 Our [developer support team](https://developer.amadeus.com/developers) is here to help you. You can find us on [Twitter](#), [StackOverflow](#), and [email](#).
 
-[travis]: http://travis-ci.org/amdeus4dev/amadeus-python
+[travis]: http://travis-ci.org/amadeus4dev/amadeus-python
 [support]: http://developer.amadeus.com/support
