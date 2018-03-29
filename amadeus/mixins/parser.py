@@ -10,26 +10,29 @@ class Parser(object):
 
     # Tries to detect for appropriate errors
     def _detect_error(self, client):
-        if self.status_code is None:
-            self.__raise_error(NetworkError, client)
-        if self.status_code >= 500:
-            self.__raise_error(ServerError, client)
-        if self.status_code == 401:
-            self.__raise_error(AuthenticationError, client)
-        if self.status_code == 404:
-            self.__raise_error(NotFoundError, client)
-        if self.status_code >= 400:
-            self.__raise_error(ClientError, client)
-        if not self.parsed:
-            self.__raise_error(ParserError, client)
+        error = self.error_for(self.status_code, self.parsed)
+        if error is not None:
+            self.__raise_error(error, client)
+
+    def error_for(self, status_code, parsed):  # noqa: C901
+        if status_code is None:
+            return NetworkError
+        if status_code >= 500:
+            return ServerError
+        if status_code == 401:
+            return AuthenticationError
+        if status_code == 404:
+            return NotFoundError
+        if status_code >= 400:
+            return ClientError
+        if not parsed:
+            return ParserError
 
     # Parses the HTTP status code
     def _parse_status_code(self):
-        self.status_code = None
-        if hasattr(self.http_response, 'status'):
-            self.status_code = self.http_response.status
-        if hasattr(self.http_response, 'code'):
-            self.status_code = self.http_response.code
+        http_response = self.http_response
+        self.status_code = getattr(http_response, 'status', None)
+        self.status_code = getattr(http_response, 'code', self.status_code)
 
     # Tries to parse the received data from raw string to parsed data and into
     # a data object

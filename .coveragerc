@@ -1,0 +1,3 @@
+[run]
+source = ./amadeus
+branch = True

@@ -38,11 +38,10 @@ class ResponseError(RuntimeError):
     # extracts the error description from the response, if it exists
     def __determine_description(self):
         if (self.response and self.response.parsed):
-            result = self.response.result
-            if 'errors' in result:
-                return result['errors']
-            if 'error_description' in result:
-                return result
+            if 'errors' in self.response.result:
+                return self.response.result['errors']
+            if 'error_description' in self.response.result:
+                return self.response.result
 
     # sets the error code to the name of this class
     def __determine_code(self):
