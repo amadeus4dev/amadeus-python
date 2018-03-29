@@ -7,7 +7,7 @@
 
 Amadeus provides a set of APIs for the travel industry. Flights, Hotels, Locations and more.
 
-For more details see the [Python documentation](https://developer.amadeus.com/docs/python) on [Amadeus.com](https://developer.amadeus.com).
+For more details see the [Python documentation](https://developer.amadeus.com/docs/python) on [Amadeus.com](https://developer.amadeus.com) and the [class reference](https://amadeus4dev.github.io/amadeus-python) here on GitHub.
 
 ## Installation
 
@@ -79,7 +79,7 @@ Amadeus has a large set of APIs, and our documentation is here to get you starte
 
 Alternatively, head over to our [Reference](https://developer.amadeus.com/docs/python/reference) documentation for in-depth information about every SDK method, it's arguments and return types.
 
-Additionally, this SDK has extensive documentation of itself available on [PythonDoc.info](https://amadeus4dev.github.io/amadeus-python/).
+Additionally, this SDK has extensive documentation of itself available on [GitHub](https://amadeus4dev.github.io/amadeus-python/).
 
 ## Making API calls
 
