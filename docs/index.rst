@@ -1,21 +1,60 @@
-.. Amadeus documentation master file, created by
-   sphinx-quickstart on Wed Mar 28 23:59:33 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Reference
+*********
 
-Welcome to Amadeus's documentation!
-===================================
+Client
+======
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. autoclass:: amadeus.Client
+  :members: __init__, get, post, request, previous, next, first, last
 
-.. automodule:: amadeus
-  :members:
+Response
+========
 
-Indices and tables
+.. autoclass:: amadeus.Response
+
+ResponseError
+=============
+
+.. autoclass:: amadeus.ResponseError
+.. autoclass:: amadeus.AuthenticationError
+  :show-inheritance:
+.. autoclass:: amadeus.ClientError
+  :show-inheritance:
+.. autoclass:: amadeus.NetworkError
+  :show-inheritance:
+.. autoclass:: amadeus.ServerError
+  :show-inheritance:
+.. autoclass:: amadeus.NotFoundError
+  :show-inheritance:
+.. autoclass:: amadeus.ParserError
+  :show-inheritance:
+
+Request
+=======
+
+.. autoclass:: amadeus.Request
+
+
+Shopping/Flights
+================
+
+.. autoclass:: amadeus.namespaces._shopping.flight_destinations.FlightDestinations
+  :members: get
+
+.. autoclass:: amadeus.namespaces._shopping.flight_dates.FlightDates
+  :members: get
+
+.. autoclass:: amadeus.namespaces._shopping.flight_offers.FlightOffers
+  :members: get
+
+Shopping/Hotels
+===============
+
+Travel/Analytics
+================
+
+ReferenceData/Locations
+=======================
+
+ReferenceData/Urls
 ==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

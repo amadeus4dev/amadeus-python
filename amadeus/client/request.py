@@ -9,6 +9,50 @@ except ImportError:  # pragma: no cover
 
 
 class Request(object):
+    """
+    An object containing all the compiled information about the request made.
+
+    :var host: The host used for this API call
+    :vartype host: str
+
+    :var port: The port for this API call. Standard set to 443.
+    :vartype port: int
+
+    :var ssl: Wether to use SSL for a call, defaults to true
+    :vartype ssl: bool
+
+    :var scheme: The scheme used to make the API call
+    :vartype scheme: str
+
+    :var params: The GET/POST params for the API call
+    :vartype params: dict
+
+    :var path: The path of the API to be called
+    :vartype path: str
+
+    :var verb: The verb used to make an API call ('GET' or 'POST')
+    :vartype verb: str
+
+    :var bearer_token: The bearer token (if any) that was used for
+        authentication
+    :vartype bearer_token: str
+
+    :var headers: The headers used for the API call
+    :vartype headers: dict
+
+    :var client_version: The library version used for this request
+    :vartype client_version: str
+
+    :var language_version: The Python language version used for this request
+    :vartype language_version: str
+
+    :var app_id: The custom app ID passed in for this request
+    :vartype app_id: str
+
+    :var app_version: The custom app version used for this request
+    :vartype app_version: str
+    """
+
     def __init__(self, options):
         self.http_request = None
         self.__initialize_options(options)

@@ -21,49 +21,59 @@ class Client(Namespaces, Pagination, Validator, HTTP, object):
         """
         Initialize using your credentials:
 
-          amadeus = amadeus.Client(
-            client_id='YOUR_CLIENT_ID',
-            client_secret='YOUR_CLIENT_SECRET'
-          )
+        .. code-block:: python
 
-        Alternatively, initialize the library using
-        the environment variables +AMADEUS_CLIENT_ID+
-        and +AMADEUS_CLIENT_SECRET+
 
-          amadeus = amadeus.Client()
+            from amadeus import Client
 
-        Parameters
-        ----------
-        clientId : str
-            the API key used to authenticate the API
-        clientSecret : str
-            the API secret used to authenticate the API
-        logger : Logger (defaults to a new Logger)
-            a Logger-compatible logger that accepts a "warning" call
-        log_level : str (defaults to 'warn')
-            if this client is running in debug, warn, or silent mode
-        hostname : str (defaults to 'test')
-            the name of the server API calls are made to, "production"
-            or "test"
-        custom_app_id : str (defaults to None)
-            a custom App ID to be passed in the User Agent to the server
-        custom_app_version : (defaults to None)
-            a custom App Version number to be passed in the User Agent
-            to the server
-        http : urlopen (defaults to urlopen)
-            an optional urlopen compatible client that accepts a Request object
-        ssl : bool (defaults to True)
-            if this client is will use HTTPS
+            amadeus = Client(
+                client_id='YOUR_CLIENT_ID',
+                client_secret='YOUR_CLIENT_SECRET'
+            )
 
-        Returns
-        -------
-        Client
-            An amadeus
+        Alternatively, initialize the library using the environment variables
+        ``AMADEUS_CLIENT_ID`` and ``AMADEUS_CLIENT_SECRET``.
 
-        Raises
-        ------
-        ValueError
-            If a require parameter is missing
+        .. code-block:: python
+
+
+              amadeus = amadeus.Client()
+
+        :param client_id: the API key used to authenticate the API
+        :paramtype client_id: str
+
+        :param client_secret: the API secret used to authenticate the API
+        :paramtype client_secret: str
+
+        :param logger: (optional) a Python compatible logger
+            (Default: ``logging.Logger``)
+        :paramtype logger: logging.Logger
+
+        :param log_level: (optional) the log level of the client, either
+            ``"debug"``, ``"warn"``, or ``"silent"`` mode (Default: ``"warn"``)
+        :paramtype log_level: str
+
+        :param hostname: (optional) the name of the server API calls are made
+            to, ``"production"``  or ``"test"``. (Default: ``"test"``)
+        :paramtype hostname: str
+
+        :param custom_app_id: (optional) a custom App ID to be passed in
+            the User Agent to the server (Default: ``None``)
+        :paramtype custom_app_id: str
+
+        :param custom_app_version: (optional) a custom App Version number to
+            be passed in the User Agent to the server (Default: ``None``)
+        :paramtype custom_app_version: str
+
+        :param http: (optional) a :func:`urllib.request.urlopen` compatible
+            client that accepts a :class:`urllib.request.Request` compatible
+            object (Default: ``urlopen``)
+        :paramtype http: urllib.request.urlopen
+
+        :param ssl: if this client is will use HTTPS (Default: ``True``)
+        :paramtype ssl: bool
+
+        :raises ValueError: when a required param is missing
         """
         self._initialize_client_credentials(options)
         self._initialize_logger(options)

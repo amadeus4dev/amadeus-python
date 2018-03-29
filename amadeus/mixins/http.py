@@ -24,13 +24,21 @@ class HTTP(object):
         A helper function for making generic GET requests calls. It is used by
         every namespaced API GET method.
 
-          amadeus.reference_data.urls.checkin_links.get(airline='1X')
-
         It can be used to make any generic API call that is automatically
         authenticated using your API credentials:
 
-          amadeus.get('/v2/reference-data/urls/checkin-links', airline='1X')
+        .. code-block:: python
 
+            amadeus.get('/foo/bar', airline='1X')
+
+        :param path: path the full path for the API call
+        :paramtype path: str
+
+        :param params: (optional) params to pass to the API
+        :paramtype params: dict
+
+        :rtype: amadeus.Response
+        :raises amadeus.ResponseError: when the request fails
         """
         return self.request('GET', path, **params)
 
@@ -39,13 +47,21 @@ class HTTP(object):
         A helper function for making generic POST requests calls. It is used by
         every namespaced API POST method.
 
-          amadeus.foo.bar.post(some='data')
-
         It can be used to make any generic API call that is automatically
         authenticated using your API credentials:
 
-          amadeus.post('/v2/foo/bar', some='data')
+        .. code-block:: python
 
+            amadeus.post('/foo/bar', airline='1X')
+
+        :param path: path the full path for the API call
+        :paramtype path: str
+
+        :param params: (optional) params to pass to the API
+        :paramtype params: dict
+
+        :rtype: amadeus.Response
+        :raises amadeus.ResponseError: when the request fails
         """
         return self.request('POST', path, **params)
 
@@ -55,8 +71,21 @@ class HTTP(object):
         every namespaced API method. It can be used to make any generic API
         call that is automatically authenticated using your API credentials:
 
-          amadeus.request('/v2/foo/bar', some='data')
+        .. code-block:: python
 
+          amadeus.request('GET', '/foo/bar', airline='1X')
+
+        :param verb: the HTTP verb to use
+        :paramtype verb: str
+
+        :param path: path the full path for the API call
+        :paramtype path: str
+
+        :param params: (optional) params to pass to the API
+        :paramtype params: dict
+
+        :rtype: amadeus.Response
+        :raises amadeus.ResponseError: when the request fails
         """
         return self._unauthenticated_request(
             verb, path, params,

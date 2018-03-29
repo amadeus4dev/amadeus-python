@@ -3,8 +3,19 @@ from pprint import pformat
 
 class ResponseError(RuntimeError):
     """
-    The response object containing the raw HTTP response and the request
-    used to make the API call.
+    An Amadeus error
+
+    :var response: The response object containing the raw HTTP response and
+        the request used to make the API call.
+    :vartype response: amadeus.Response
+
+    :var code: A unique code for this type of error. Options include
+        ``NetworkError``, ``ParserError``, ``ServerError``,
+        ``AuthenticationError``, ``NotFoundError`` and ``UnknownError``.
+    :vartype code: str
+
+    :var description: The content of the response that describes the error
+    :vartype description: str
     """
 
     def __init__(self, response):

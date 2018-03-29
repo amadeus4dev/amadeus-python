@@ -12,21 +12,21 @@ branches:
     - /^v[0-9]/
 install: pip install tox-travis
 script: tox
-before_deploy: make docs
-deploy:
-  - provider: pypi
-    user: $PYPI_USERNAME
-    api_key: $PYPI_PASSWORD
-    skip-cleanup: true
-    on:
-      tags: true
-      python: '3.6.3'
-    distributions: sdist bdist_wheel
-  - provider: pages
-    local-dir: _docs
-    github-token: $GITHUB_TOKEN
-    skip-cleanup: true
-    keep-history: true
-    on:
-      branch: master
-      python: '3.6.3'
+# before_deploy: make docs
+# deploy:
+#   - provider: pypi
+#     user: $PYPI_USERNAME
+#     api_key: $PYPI_PASSWORD
+#     skip-cleanup: true
+#     on:
+#       tags: true
+#       python: '3.6.3'
+#     distributions: sdist bdist_wheel
+#   - provider: pages
+#     local-dir: _docs
+#     github-token: $GITHUB_TOKEN
+#     skip-cleanup: true
+#     keep-history: true
+#     on:
+#       branch: master
+#       python: '3.6.3'
