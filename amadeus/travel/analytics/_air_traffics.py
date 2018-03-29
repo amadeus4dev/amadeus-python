@@ -3,7 +3,7 @@ from amadeus.client.decorator import Decorator
 
 class AirTraffics(Decorator, object):
     def get(self, **params):
-        """
+        '''
         Returns a list of air traffic reports.
 
         .. code-block:: python
@@ -20,6 +20,6 @@ class AirTraffics(Decorator, object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
-        """
+        '''
         return self.client.get(
             '/v1/travel/analytics/air-traffics', **params)

@@ -8,7 +8,7 @@ class Locations(Decorator, object):
         self.airports = Airports(client)
 
     def get(self, **params):
-        """
+        '''
         Returns details for a specific airport.
 
         .. code-block:: python
@@ -29,5 +29,5 @@ class Locations(Decorator, object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
-        """
+        '''
         return self.client.get('/v1/reference-data/locations', **params)

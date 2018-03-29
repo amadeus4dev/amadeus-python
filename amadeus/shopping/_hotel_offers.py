@@ -3,7 +3,7 @@ from amadeus.client.decorator import Decorator
 
 class HotelOffers(Decorator, object):
     def get(self, **params):
-        """
+        '''
         Search for hotels and retrieve availability and rates information.
 
         Use either `cityCode`, `longitude` and `latitude` or `hotels` to
@@ -26,5 +26,5 @@ class HotelOffers(Decorator, object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
-        """
+        '''
         return self.client.get('/v1/shopping/hotel-offers', **params)

@@ -1,6 +1,6 @@
 #
 class Location(object):
-    """
+    '''
     A list of location types, as used in searching for locations
 
     .. code-block:: python
@@ -16,7 +16,7 @@ class Location(object):
     :cvar AIRPORT: ``"AIRPORT"``
     :cvar CITY: ``"CITY"``
     :cvar ANY: ``"AIRPORT,CITY"``
-    """
+    '''
     # Airport
     AIRPORT = 'AIRPORT'
     # City

@@ -7,7 +7,7 @@ class Location(Decorator, object):
         self.location_id = location_id
 
     def get(self, **params):
-        """
+        '''
         Returns details for a specific airport.
 
         .. code-block:: python
@@ -16,7 +16,7 @@ class Location(Decorator, object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
-        """
+        '''
         return self.client.get(
             '/v1/reference-data/locations/{0}'.format(self.location_id),
             **params

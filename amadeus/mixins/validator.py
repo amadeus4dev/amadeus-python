@@ -21,7 +21,7 @@ class Validator(object):
         for key in options:
             if (key in valid_options):
                 continue
-            logger.warning("Unrecognized option: {0}".format(key))
+            logger.warning('Unrecognized option: {0}'.format(key))
 
     # Initializes the credentials, requiring an ID and Secret
     def _initialize_client_credentials(self, options):
@@ -59,13 +59,13 @@ class Validator(object):
 
     # PRIVATE
 
-    # Uses "init_optional" to find an entry, and it that returns
+    # Uses 'init_optional' to find an entry, and it that returns
     # nil it raises an ArgumentError
     #
     def __init_required(self, key, options):
         value = self.__init_optional(key, options)
         if (value is None):
-            raise ValueError("Missing required argument: {0}".format(key))
+            raise ValueError('Missing required argument: {0}'.format(key))
         return value
 
     # Tries to find an option by string or symbol in the options hash and
@@ -74,7 +74,7 @@ class Validator(object):
     def __init_optional(self, key, options, defa_ult=None):
         value = options.get(key, None)
         if (value is None):
-            env_key = "AMADEUS_{0}".format(key.upper())
+            env_key = 'AMADEUS_{0}'.format(key.upper())
             value = os.environ.get(env_key, None)
         if (value is None):
             value = defa_ult

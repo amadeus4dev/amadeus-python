@@ -14,13 +14,13 @@ from amadeus.client.access_token import AccessToken
 # A helper module for making generic API calls. It is used by
 # every namespaced API method.
 class HTTP(object):
-    """
+    '''
     A helper module for making generic API calls. It is used by
     every namespaced API method.
-    """
+    '''
 
     def get(self, path, **params):
-        """
+        '''
         A helper function for making generic GET requests calls. It is used by
         every namespaced API GET method.
 
@@ -39,11 +39,11 @@ class HTTP(object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: when the request fails
-        """
+        '''
         return self.request('GET', path, **params)
 
     def post(self, path, **params):
-        """
+        '''
         A helper function for making generic POST requests calls. It is used by
         every namespaced API POST method.
 
@@ -62,11 +62,11 @@ class HTTP(object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: when the request fails
-        """
+        '''
         return self.request('POST', path, **params)
 
     def request(self, verb, path, **params):
-        """
+        '''
         A helper function for making generic POST requests calls. It is used by
         every namespaced API method. It can be used to make any generic API
         call that is automatically authenticated using your API credentials:
@@ -86,7 +86,7 @@ class HTTP(object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: when the request fails
-        """
+        '''
         return self._unauthenticated_request(
             verb, path, params,
             self.__access_token()._bearer_token()

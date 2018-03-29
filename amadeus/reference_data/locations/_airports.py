@@ -3,7 +3,7 @@ from amadeus.client.decorator import Decorator
 
 class Airports(Decorator, object):
     def get(self, **params):
-        """
+        '''
         Returns a list of relevant airports near to a given point.
 
         .. code-block:: python
@@ -21,6 +21,6 @@ class Airports(Decorator, object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
-        """
+        '''
         return self.client.get(
             '/v1/reference-data/locations/airports', **params)

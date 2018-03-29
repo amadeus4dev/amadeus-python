@@ -29,13 +29,13 @@ with description('Mixins/Validator') as self:
             del environ['AMADEUS_CLIENT_SECRET']
 
         with context('with missing parameters'):
-            with it("should refuse to create a new client without client_id"):
+            with it('should refuse to create a new client without client_id'):
                 del self.valid_params['client_id']
                 expect(lambda: Client(**self.valid_params)).to(
                     raise_error(ValueError)
                 )
 
-            with it("should refuse to create a new client w/o client_secret"):
+            with it('should refuse to create a new client w/o client_secret'):
                 del self.valid_params['client_secret']
                 expect(lambda: Client(**self.valid_params)).to(
                     raise_error(ValueError)
@@ -46,14 +46,14 @@ with description('Mixins/Validator') as self:
             expect(amadeus.logger).to(be_a(Logger))
             expect(amadeus.log_level).to(equal('warn'))
 
-        with it("should allow for setting a custom logger"):
+        with it('should allow for setting a custom logger'):
             logger = getLogger('amadeus')
             self.valid_params['logger'] = logger
             amadeus = Client(**self.valid_params)
             expect(amadeus.logger).to(be(logger))
             expect(amadeus.log_level).to(equal('warn'))
 
-        with it("should persist a custom log level"):
+        with it('should persist a custom log level'):
             logger = getLogger('amadeus')
             logger.setLevel(10)
             self.valid_params['logger'] = logger

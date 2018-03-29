@@ -1,4 +1,4 @@
-# Support Ruby 2 and 3 API calls without importing
+# Support Python 2 and 3 API calls without importing
 # a 3rd party library
 try:
     from urllib.request import Request as HTTPRequest
@@ -9,7 +9,7 @@ except ImportError:  # pragma: no cover
 
 
 class Request(object):
-    """
+    '''
     An object containing all the compiled information about the request made.
 
     :var host: The host used for this API call
@@ -51,7 +51,7 @@ class Request(object):
 
     :var app_version: The custom app version used for this request
     :vartype app_version: str
-    """
+    '''
 
     def __init__(self, options):
         self.http_request = None
@@ -86,10 +86,10 @@ class Request(object):
 
     # Determines the User Agent
     def __build_user_agent(self):
-        user_agent = "amadeus-python/{0}".format(self.client_version)
-        user_agent += " python/{0}".format(self.language_version)
+        user_agent = 'amadeus-python/{0}'.format(self.client_version)
+        user_agent += ' python/{0}'.format(self.language_version)
         if self.app_id:
-            user_agent += " {0}/{1}".format(self.app_id, self.app_version)
+            user_agent += ' {0}/{1}'.format(self.app_id, self.app_version)
         return user_agent
 
     # Builds up a HTTP Request objectm if not akready set
@@ -116,9 +116,9 @@ class Request(object):
 
     # Builds up the full URL based on the scheme, host, path, and params
     def __full_url(self):
-        full_url = "{0}://{1}{2}".format(self.scheme, self.host, self.path)
+        full_url = '{0}://{1}{2}'.format(self.scheme, self.host, self.path)
         if (self.verb == 'GET'):
-            full_url += "?{0}".format(self._encoded_params())
+            full_url += '?{0}'.format(self._encoded_params())
         return full_url
 
     # Adds an extra header if the verb is POST

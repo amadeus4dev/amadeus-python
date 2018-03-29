@@ -53,7 +53,7 @@ from amadeus import Client
 
 [TBD]
 
-## How to contribute to the Amadeus Ruby Gem
+## How to contribute to the Amadeus Python SDK
 
 #### **Did you find a bug?**
 

@@ -3,7 +3,7 @@ from amadeus.client.decorator import Decorator
 
 class FareSearches(Decorator, object):
     def get(self, **params):
-        """
+        '''
         The Fare Search History API allows to find the number of
         estimated searches from an origin, optionally a destination,
         within a time period when travelers are performing the searches.
@@ -29,6 +29,6 @@ class FareSearches(Decorator, object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
-        """
+        '''
         return self.client.get(
             '/v1/travel/analytics/fare-searches', **params)

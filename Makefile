@@ -19,7 +19,7 @@ run:
 			coverage html
 
 lint:
-			flake8 $(SOURCES) --exit-zero --max-complexity 5
+			flake8 $(SOURCES) --exit-zero
 
 docs:
 			rm -rf _docs

@@ -15,7 +15,7 @@ class AccessToken(object):
 
     # The bearer token that can be used directly in API request headers
     def _bearer_token(self):
-        return "Bearer {0}".format(self.__token())
+        return 'Bearer {0}'.format(self.__token())
 
     # PRIVATE
 

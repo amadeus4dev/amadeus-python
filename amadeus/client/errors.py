@@ -2,7 +2,7 @@ from pprint import pformat
 
 
 class ResponseError(RuntimeError):
-    """
+    '''
     An Amadeus error
 
     :var response: The response object containing the raw HTTP response and
@@ -16,7 +16,7 @@ class ResponseError(RuntimeError):
 
     :var description: The content of the response that describes the error
     :vartype description: str
-    """
+    '''
 
     def __init__(self, response):
         self.response = response
@@ -49,42 +49,42 @@ class ResponseError(RuntimeError):
 
 
 class NetworkError(ResponseError):
-    """
+    '''
     This error occurs when there is some kind of error in the network
-    """
+    '''
     pass
 
 
 class ParserError(ResponseError):
-    """
+    '''
     This error occurs when the response type was JSOn but could not be parsed
-    """
+    '''
     pass
 
 
 class ServerError(ResponseError):
-    """
+    '''
     This error occurs when there is an error on the server
-    """
+    '''
     pass
 
 
 class ClientError(ResponseError):
-    """
+    '''
     This error occurs when the client did not provide the right parameters
-    """
+    '''
     pass
 
 
 class AuthenticationError(ResponseError):
-    """
+    '''
     This error occurs when the client did not provide the right credentials
-    """
+    '''
     pass
 
 
 class NotFoundError(ResponseError):
-    """
+    '''
     This error occurs when the path could not be found
-    """
+    '''
     pass

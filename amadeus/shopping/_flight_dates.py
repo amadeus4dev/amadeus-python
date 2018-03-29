@@ -3,7 +3,7 @@ from amadeus.client.decorator import Decorator
 
 class FlightDates(Decorator, object):
     def get(self, **params):
-        """
+        '''
         Find the cheapest flight dates from an origin to a destination.
 
         .. code-block:: python
@@ -18,5 +18,5 @@ class FlightDates(Decorator, object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
-        """
+        '''
         return self.client.get('/v1/shopping/flight-dates', **params)

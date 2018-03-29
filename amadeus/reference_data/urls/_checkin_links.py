@@ -3,7 +3,7 @@ from amadeus.client.decorator import Decorator
 
 class CheckinLinks(Decorator, object):
     def get(self, **params):
-        """
+        '''
         Returns the checkin links for an airline, for the
         language of your choice
 
@@ -16,6 +16,6 @@ class CheckinLinks(Decorator, object):
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
-        """
+        '''
         return self.client.get(
             '/v2/reference-data/urls/checkin-links', **params)

@@ -5,20 +5,20 @@ from .namespaces import Core as Namespaces
 
 
 class Client(Namespaces, Pagination, Validator, HTTP, object):
-    """
+    '''
     The Amadeus client library for accessing
     the travel APIs.
-    """
+    '''
 
     # The available hosts for this API
     HOSTS = {
-      'test': 'test.api.amadeus.com',
-      'production': 'production.api.amadeus.com'
+        'test': 'test.api.amadeus.com',
+        'production': 'production.api.amadeus.com'
     }
 
     # The initialization method for the entire module
     def __init__(self, **options):
-        """
+        '''
         Initialize using your credentials:
 
         .. code-block:: python
@@ -74,7 +74,7 @@ class Client(Namespaces, Pagination, Validator, HTTP, object):
         :paramtype ssl: bool
 
         :raises ValueError: when a required param is missing
-        """
+        '''
         self._initialize_client_credentials(options)
         self._initialize_logger(options)
         self._initialize_host(options)
