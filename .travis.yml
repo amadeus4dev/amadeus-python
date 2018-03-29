@@ -23,7 +23,7 @@ deploy:
 #     on:
 #       tags: true
 #       python: '3.6.3'
-#     distributions: sdist bdist_wheel
+#     distributions: "sdist bdist_wheel"
   - provider: pages
     local-dir: _docs
     github-token: $GITHUB_TOKEN

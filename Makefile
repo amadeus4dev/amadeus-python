@@ -25,9 +25,15 @@ docs:
 			rm -rf _docs
 			sphinx-build -b html docs _docs
 
+clean:
+			rm -rf _docs build dist
+
+build:
+		 	python setup.py sdist bdist_wheel
+
 watchdocs:
 			make docs
 			open _docs/index.html
 			fswatch -o ${DOC_SOURCES} | xargs -n1 -I{} make docs
 
-.PHONY: test coverage watch run lint docs
+.PHONY: test coverage watch run lint docs clean build

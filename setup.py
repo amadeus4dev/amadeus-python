@@ -1,7 +1,7 @@
 import io
 import os
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 # Load the version number
 about = {}
@@ -10,7 +10,7 @@ with open(os.path.join(here, 'amadeus', 'version.py')) as f:
     exec(f.read(), about)
 
 # Import the README and use it as the long-description.
-with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
+with io.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = '\n' + f.read()
 
 setup(
@@ -18,14 +18,12 @@ setup(
     version=about['version'],
     description='Python module for the Amadeus travel APIs',
     long_description=long_description,
-    long_description_content_type='text/markdown',
     author='Amadeus',
     author_email='developer@amadeus.com',
     python_requires='>=2.7.0',
     url='https://github.com/amadeus4dev/amadeus-python',
-    py_modules=['amadeus'],
     install_requires=[],
-    package=['amadeus'],
+    packages=find_packages(),
     include_package_data=True,
     license='MIT',
     classifiers=[

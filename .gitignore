@@ -9,3 +9,5 @@ test.py
 htmlcov
 .coverage
 _docs
+dist
+build
