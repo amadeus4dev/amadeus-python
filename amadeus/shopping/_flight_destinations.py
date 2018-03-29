@@ -12,7 +12,6 @@ class FlightDestinations(Decorator, object):
 
         :param origin: the City/Airport IATA code from which the flight will
             depart. ``"BOS"``, for example for Boston.
-        :paramtype origin: str
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed

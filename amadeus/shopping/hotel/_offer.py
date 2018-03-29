@@ -13,7 +13,7 @@ class Offer(Decorator, object):
 
         .. code-block:: python
 
-            amadeus.shopping.hotels(
+            amadeus.shopping.hotel(
                 'SMPARCOL'
             ).offers('AC7D4DA2C322A73AF0824318A4965DA2805A3FC2').get()
 

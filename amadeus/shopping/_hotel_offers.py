@@ -18,11 +18,11 @@ class HotelOffers(Decorator, object):
         :param cityCode: the City IATA code for which to find a hotel, for
             example ``"BOS"`` for Boston.
         :param latitude: latitude of geographic location to search around.
-            For example: `52.5238`
+            For example: ``52.5238``
         :param longitude: longitude of geographic location to search around.
-            For example: `13.3835`
+            For example: ``13.3835``
         :param hotels: Comma separated list of Amadeus hotel codes to request.
-            Example: RTPAR001
+            Example: ``RTPAR001``
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
