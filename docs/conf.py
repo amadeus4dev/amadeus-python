@@ -16,6 +16,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+from amadeus import version
 
 # -- Project information -----------------------------------------------------
 
@@ -24,9 +25,9 @@ copyright = '2018, Amadeus4Dev'
 author = 'Amadeus4Dev'
 
 # The short X.Y version
-version = ''
+version = version
 # The full version, including alpha/beta/rc tags
-release = '1.0.0b1'
+release = version
 
 
 # -- General configuration ---------------------------------------------------
@@ -166,3 +167,15 @@ texinfo_documents = [
 
 
 # -- Extension configuration -------------------------------------------------
+
+html_theme_options = {
+    'display_version': True,
+}
+
+html_context = {
+    'display_github': True,
+    'github_user': 'amadeus4dev',
+    'github_repo': 'amadeus-python',
+    'github_version': 'master',
+    'conf_py_path': '/docs/'
+}
