@@ -10,7 +10,7 @@ branches:
   only:
     - master
     - /^v[0-9]/
-install: pip install tox-travis Sphinx
+before_install: pip install tox-travis
 script: tox
 before_deploy: make docs
 deploy:
