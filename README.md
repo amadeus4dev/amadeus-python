@@ -1,8 +1,9 @@
 # Amadeus Python SDK
 
 [![Module Version](https://badge.fury.io/py/amadeus.svg)](https://badge.fury.io/py/amadeus)
-[![Build Status](http://img.shields.io/travis/twilio/twilio-python.svg)][travis]
-[![Contact Support](https://img.shields.io/badge/contact-support-blue.svg)][support]
+[![Build Status](http://img.shields.io/travis/amadeus4dev/amadeus-python.svg)][travis]
+[![Dependencies](.github/images/dependencies.svg)](gem)
+[![Contact Support](.github/images/support.svg)][support]
 
 Amadeus provides a set of APIs for the travel industry. Flights, Hotels, Locations and more.
 
@@ -182,5 +183,5 @@ This library is released under the [MIT License](LICENSE).
 
 Our [developer support team](https://developer.amadeus.com/developers) is here to help you. You can find us on [Twitter](#), [StackOverflow](#), and [email](#).
 
-[travis]: http://travis-ci.org/amdeus/amdeus-python
+[travis]: http://travis-ci.org/amdeus4dev/amdeus-python
 [support]: http://developer.amadeus.com/support
