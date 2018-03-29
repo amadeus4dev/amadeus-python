@@ -22,10 +22,10 @@ class FareSearches(Decorator, object):
             searches were made - e.g. ``"US"`` for United States
         :param period: period of search; can be a year
             or a month or a week. ISO format must be used - e.g. ``"2015"``
-            for year; ``"2015-05"`` for month and ``"2015-W04"`` for week. Period
-            ranges are not supported. Only periods from year ``"2011-01"`` up
-            to current year and previous month or week are valid. Future
-            dates are not supported.
+            for year; ``"2015-05"`` for month and ``"2015-W04"`` for week.
+            Period ranges are not supported. Only periods from year
+            ``"2011-01"`` up to current year and previous month or week
+            are valid. Future dates are not supported.
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed

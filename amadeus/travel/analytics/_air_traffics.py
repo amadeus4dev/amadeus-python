@@ -15,7 +15,8 @@ class AirTraffics(Decorator, object):
 
         :param cityCode: IATA code of the origin city, for
             example ``"BOS"`` for Boston.
-        :param query: period when consumers are travelling in ``YYYY-MM`` format
+        :param query: period when consumers are travelling
+            in ``YYYY-MM`` format
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
