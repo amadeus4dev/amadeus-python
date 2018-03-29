@@ -10,7 +10,7 @@ with open(os.path.join(here, 'amadeus', 'version.py')) as f:
     exec(f.read(), about)
 
 # Import the README and use it as the long-description.
-with io.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
+with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = '\n' + f.read()
 
 setup(
@@ -24,6 +24,7 @@ setup(
     url='https://github.com/amadeus4dev/amadeus-python',
     install_requires=[],
     packages=find_packages(),
+    data_files=[('docs', ['README.md', 'CHANGELOG.md'])],
     include_package_data=True,
     license='MIT',
     classifiers=[
