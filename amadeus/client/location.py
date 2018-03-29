@@ -1,5 +1,22 @@
-# A list of location types, as used in searching for locations
+#
 class Location(object):
+    """
+    A list of location types, as used in searching for locations
+
+    .. code-block:: python
+
+
+        from amadeus import Location
+
+        client.reference_data.locations.get(
+            keyword='lon',
+            subType=Location.ANY
+        )
+
+    :cvar AIRPORT: ``"AIRPORT"``
+    :cvar CITY: ``"CITY"``
+    :cvar ANY: ``"AIRPORT,CITY"``
+    """
     # Airport
     AIRPORT = 'AIRPORT'
     # City

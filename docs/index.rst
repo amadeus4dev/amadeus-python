@@ -85,3 +85,8 @@ ReferenceData/Urls
 
 .. autoclass:: amadeus.reference_data.urls.CheckinLinks
   :members: get
+
+Helper/Location
+==================
+
+.. autoclass:: amadeus.Location
