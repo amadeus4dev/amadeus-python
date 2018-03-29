@@ -1,7 +1,7 @@
 from amadeus.client.decorator import Decorator
 
-from ._hotel.hotel_offers import HotelOffers
-from ._hotel.offer import Offer
+from .hotel._hotel_offers import HotelOffers
+from .hotel._offer import Offer
 
 
 class Hotel(Decorator, object):

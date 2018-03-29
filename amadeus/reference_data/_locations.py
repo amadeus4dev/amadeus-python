@@ -1,5 +1,5 @@
 from amadeus.client.decorator import Decorator
-from ._locations.airports import Airports
+from amadeus.reference_data.locations._airports import Airports
 
 
 class Locations(Decorator, object):

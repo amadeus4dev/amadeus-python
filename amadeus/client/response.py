@@ -13,7 +13,8 @@ class Response(Parser, object):
     :var result: the parsed JSON received from the API, if the result was JSON
     :vartype result: dict
 
-    :var data: the data extracted from the JSON data, if the body contained JSON
+    :var data: the data extracted from the JSON data, if the body contained
+        JSON
     :vartype data: dict
 
     :var body: the raw body received from the API

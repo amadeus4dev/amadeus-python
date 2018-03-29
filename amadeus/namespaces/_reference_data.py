@@ -1,7 +1,7 @@
 from amadeus.client.decorator import Decorator
-from ._reference_data.urls import Urls
-from ._reference_data.location import Location
-from ._reference_data.locations import Locations
+from amadeus.reference_data._urls import Urls
+from amadeus.reference_data._location import Location
+from amadeus.reference_data._locations import Locations
 
 
 class ReferenceData(Decorator, object):

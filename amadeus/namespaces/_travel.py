@@ -1,5 +1,5 @@
 from amadeus.client.decorator import Decorator
-from ._travel.analytics import Analytics
+from amadeus.travel._analytics import Analytics
 
 
 class Travel(Decorator, object):

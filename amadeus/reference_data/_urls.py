@@ -1,5 +1,5 @@
 from amadeus.client.decorator import Decorator
-from ._urls.checkin_links import CheckinLinks
+from amadeus.reference_data.urls._checkin_links import CheckinLinks
 
 
 class Urls(Decorator, object):

@@ -38,23 +38,50 @@ Request
 Shopping/Flights
 ================
 
-.. autoclass:: amadeus.namespaces._shopping.flight_destinations.FlightDestinations
+.. autoclass:: amadeus.shopping.FlightDestinations
   :members: get
 
-.. autoclass:: amadeus.namespaces._shopping.flight_dates.FlightDates
+.. autoclass:: amadeus.shopping.FlightDates
   :members: get
 
-.. autoclass:: amadeus.namespaces._shopping.flight_offers.FlightOffers
+.. autoclass:: amadeus.shopping.FlightOffers
   :members: get
 
 Shopping/Hotels
 ===============
 
+.. autoclass:: amadeus.shopping.HotelOffers
+  :members: get
+
+.. autoclass:: amadeus.shopping.hotel.HotelOffers
+  :members: get
+
+.. autoclass:: amadeus.shopping.hotel.Offer
+  :members: get
+
 Travel/Analytics
 ================
+
+.. autoclass:: amadeus.travel.analytics.AirTraffics
+  :members: get
+
+.. autoclass:: amadeus.travel.analytics.FareSearches
+  :members: get
 
 ReferenceData/Locations
 =======================
 
+.. autoclass:: amadeus.reference_data.Location
+  :members: get
+
+.. autoclass:: amadeus.reference_data.Locations
+  :members: get
+
+.. autoclass:: amadeus.reference_data.locations.Airports
+  :members: get
+
 ReferenceData/Urls
 ==================
+
+.. autoclass:: amadeus.reference_data.urls.CheckinLinks
+  :members: get

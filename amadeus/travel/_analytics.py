@@ -1,6 +1,6 @@
 from amadeus.client.decorator import Decorator
-from ._analytics.air_traffics import AirTraffics
-from ._analytics.fare_searches import FareSearches
+from .analytics._air_traffics import AirTraffics
+from .analytics._fare_searches import FareSearches
 
 
 class Analytics(Decorator, object):

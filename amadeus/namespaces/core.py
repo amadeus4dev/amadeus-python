@@ -1,6 +1,6 @@
-from amadeus.namespaces.reference_data import ReferenceData
-from amadeus.namespaces.travel import Travel
-from amadeus.namespaces.shopping import Shopping
+from amadeus.namespaces._reference_data import ReferenceData
+from amadeus.namespaces._travel import Travel
+from amadeus.namespaces._shopping import Shopping
 
 
 class Core(object):

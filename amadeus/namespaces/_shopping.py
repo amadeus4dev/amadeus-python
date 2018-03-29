@@ -1,9 +1,9 @@
 from amadeus.client.decorator import Decorator
-from ._shopping.flight_dates import FlightDates
-from ._shopping.flight_destinations import FlightDestinations
-from ._shopping.flight_offers import FlightOffers
-from ._shopping.hotel_offers import HotelOffers
-from ._shopping.hotel import Hotel
+from amadeus.shopping._flight_dates import FlightDates
+from amadeus.shopping._flight_destinations import FlightDestinations
+from amadeus.shopping._flight_offers import FlightOffers
+from amadeus.shopping._hotel_offers import HotelOffers
+from amadeus.shopping._hotel import Hotel
 
 
 class Shopping(Decorator, object):
@@ -16,3 +16,6 @@ class Shopping(Decorator, object):
 
     def hotel(self, hotel_id):
         return Hotel(self.client, hotel_id)
+
+
+__all__ = ['FlightDates', 'FlightDestinations', 'FlightOffers']
