@@ -2,6 +2,7 @@
 
 [![Module Version](https://badge.fury.io/py/amadeus.svg)](https://badge.fury.io/py/amadeus)
 [![Build Status](http://img.shields.io/travis/amadeus4dev/amadeus-python.svg)][travis]
+[![Maintainability](https://api.codeclimate.com/v1/badges/c2e19cf9628d6f4aece2/maintainability)](https://codeclimate.com/github/amadeus4dev/amadeus-python/maintainability)
 [![Dependencies](.github/images/dependencies.svg)](gem)
 [![Contact Support](.github/images/support.svg)][support]
 
