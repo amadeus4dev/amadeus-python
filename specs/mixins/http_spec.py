@@ -50,6 +50,21 @@ with description('HTTP') as self:
                 )
             )
 
+        with it('should use the same access token when cashed'):
+            self.response.result = {'access_token': '123', 'expires_in': 2000}
+            self.client._unauthenticated_request = self.request_method
+            self.client.request('POST', '/foo', foo='bar')
+
+            self.response.result = {'access_token': '234', 'expires_in': 2000}
+            self.client._unauthenticated_request = self.request_method
+            self.client.request('POST', '/foo', foo='bar')
+
+            expect(self.client._unauthenticated_request).not_to(
+                have_been_called_with(
+                    'POST', '/foo', {'foo': 'bar'}, 'Bearer 234'
+                )
+            )
+
     with context('Client._unauthenticated_request'):
         with it('should execute a full request'):
             with Stub() as http_response:

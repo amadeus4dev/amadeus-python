@@ -84,7 +84,26 @@ with description('Request') as self:
             })
 
             expect(self.request.http_request).to(be_a(HTTPRequest))
+            expect(self.request.http_request.get_full_url()).to(equal(
+                'https://example.com/foo/bar'))
             expect(self.request.http_request.data).to(equal(b'foo=bar'))
             expect(self.request.http_request.get_header('Content-Type')).to(
-                equal('application/x-www-form-urlencoded')
-            )
+                equal('application/x-www-form-urlencoded'))
+
+        with it('should handle a custom scheme and port'):
+            self.request = Request({
+                'host': self.host,
+                'verb': 'POST',
+                'path': self.path,
+                'params': self.params,
+                'bearer_token': self.bearer_token,
+                'client_version': self.client_version,
+                'language_version': self.lang_version,
+                'app_id': self.app_id,
+                'app_version': self.app_version,
+                'port': 8080,
+                'ssl': False
+            })
+
+            expect(self.request.http_request.get_full_url()).to(equal(
+                'http://example.com:8080/foo/bar'))

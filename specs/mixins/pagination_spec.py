@@ -76,6 +76,7 @@ with description('Pagination') as self:
 
     with context('Client.last'):
         with it('should create a new request with the page and call it'):
+            self.response.request.params = {'page': {'offset': '0'}}
             self.response.result = {
                 'meta': {'links': {'last': 'http://f.co?page=1'}}
             }

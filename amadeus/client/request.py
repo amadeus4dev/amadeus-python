@@ -116,10 +116,17 @@ class Request(object):
 
     # Builds up the full URL based on the scheme, host, path, and params
     def __full_url(self):
-        full_url = '{0}://{1}{2}'.format(self.scheme, self.host, self.path)
+        full_url = '{0}://{1}'.format(self.scheme, self.host)
+        if not self.__port_matches_scheme():
+            full_url = '{0}:{1}'.format(full_url, self.port)
+        full_url = '{0}{1}'.format(full_url, self.path)
         if (self.verb == 'GET'):
             full_url += '?{0}'.format(self._encoded_params())
         return full_url
+
+    def __port_matches_scheme(self):
+        return ((self.ssl and self.port == 443) or
+                (not self.ssl and self.port == 80))
 
     # Adds an extra header if the verb is POST
     def __add_post_data_header(self):
