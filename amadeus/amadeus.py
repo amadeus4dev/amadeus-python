@@ -13,7 +13,7 @@ class Client(Namespaces, Pagination, Validator, HTTP, object):
     # The available hosts for this API
     HOSTS = {
         'test': 'test.api.amadeus.com',
-        'production': 'production.api.amadeus.com'
+        'production': 'api.amadeus.com'
     }
 
     # The initialization method for the entire module
