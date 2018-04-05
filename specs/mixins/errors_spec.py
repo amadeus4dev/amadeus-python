@@ -3,7 +3,7 @@ from expects import expect, equal, be_none
 from doublex import Stub, Spy
 from doublex_expects import have_been_called_with, have_been_called
 
-from amadeus_sdk import NetworkError, Response, Client
+from amadeus import NetworkError, Response, Client
 
 with description('ResponseError') as self:
     with context('.description'):

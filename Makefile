@@ -1,5 +1,5 @@
-SOURCES=amadeus_sdk specs setup.py
-DOC_SOURCES=amadeus_sdk docs README.rst
+SOURCES=amadeus specs setup.py
+DOC_SOURCES=amadeus docs README.rst
 
 test:
 		  mamba --format=documentation --enable-coverage

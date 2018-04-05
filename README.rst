@@ -21,7 +21,7 @@ directly with pip.
 
 .. code:: sh
 
-    pip install amadeus-sdk
+    pip install amadeus
 
 **Next**: `Get Started with the Python
 SDK. <https://developer.amadeus.com/docs/python/get_started/initialize>`__
@@ -36,7 +36,7 @@ application <https://dashboard.developer.amadeus.com/applications>`__.
 
 .. code:: py
 
-    from amadeus_sdk import Client, ResponseError
+    from amadeus import Client, ResponseError
 
     amadeus = Client(
         client_id='[YOUR_CLIENT_ID]',
@@ -154,7 +154,7 @@ avaulable as the ``.body`` attribute.
 
 .. code:: py
 
-    from amadeus_sdk import Location
+    from amadeus import Location
 
     response = amadeus.reference_data.locations.get(
         keyword='LON',
@@ -173,7 +173,7 @@ under the ``.next``, ``.previous``, ``.last`` and ``.first`` methods.
 
 .. code:: py
 
-    from amadeus_sdk import Location
+    from amadeus import Location
 
     response = amadeus.reference_data.locations.get(
         keyword='LON',
@@ -235,8 +235,8 @@ team <https://developer.amadeus.com/developers>`__ is here to help you.
 You can find us on `Twitter <#>`__, `StackOverflow <#>`__, and
 `email <#>`__.
 
-.. |Module Version| image:: https://badge.fury.io/py/amadeus-sdk.svg?v=1
-   :target: https://badge.fury.io/py/amadeus-sdk
+.. |Module Version| image:: https://badge.fury.io/py/amadeus.svg?v=1
+   :target: https://badge.fury.io/py/amadeus
 .. |Build Status| image:: http://img.shields.io/travis/amadeus4dev/amadeus-python.svg
    :target: http://travis-ci.org/amadeus4dev/amadeus-python
 .. |Maintainability| image:: https://api.codeclimate.com/v1/badges/c2e19cf9628d6f4aece2/maintainability

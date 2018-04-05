@@ -3,8 +3,8 @@ from expects import expect, equal
 from doublex import Stub, Spy, ANY_ARG
 from doublex_expects import have_been_called_with, have_been_called
 
-from amadeus_sdk import Client, Request
-from amadeus_sdk.client.access_token import AccessToken
+from amadeus import Client, Request
+from amadeus.client.access_token import AccessToken
 
 with description('AccessToken') as self:
     with context('.bearer_token'):

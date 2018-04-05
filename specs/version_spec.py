@@ -1,7 +1,7 @@
 from mamba import description, it
 from expects import expect, be_none
 
-from amadeus_sdk import version
+from amadeus import version
 
 with description('Amadeus') as self:
     with it('should have a version'):

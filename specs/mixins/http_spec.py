@@ -8,7 +8,7 @@ try:
 except ImportError:  # pragma: no cover
     from urllib2 import Request as URLError  # pragma: no cover
 
-from amadeus_sdk import Client, Response, ResponseError
+from amadeus import Client, Response, ResponseError
 
 with description('HTTP') as self:
     with before.each:

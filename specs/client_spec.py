@@ -1,7 +1,7 @@
 from mamba import description, it
 from expects import expect, be_none, equal
 
-from amadeus_sdk import Client, Location
+from amadeus import Client, Location
 
 with description('Client') as self:
     with it('should exist'):

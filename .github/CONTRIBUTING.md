@@ -46,7 +46,7 @@ pip install -e .
 This will make the current code available for editing and using in live scripts, for example.
 
 ```py
-from amadeus_sdk import Client
+from amadeus import Client
 ```
 
 ### Releasing

@@ -16,7 +16,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-from amadeus_sdk import version
+from amadeus import version
 
 # -- Project information -----------------------------------------------------
 

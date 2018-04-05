@@ -4,89 +4,89 @@ Reference
 Client
 ======
 
-.. autoclass:: amadeus_sdk.Client
+.. autoclass:: amadeus.Client
   :members: __init__, get, post, request, previous, next, first, last
 
 Response
 ========
 
-.. autoclass:: amadeus_sdk.Response
+.. autoclass:: amadeus.Response
 
 ResponseError
 =============
 
-.. autoclass:: amadeus_sdk.ResponseError
-.. autoclass:: amadeus_sdk.AuthenticationError
+.. autoclass:: amadeus.ResponseError
+.. autoclass:: amadeus.AuthenticationError
   :show-inheritance:
-.. autoclass:: amadeus_sdk.ClientError
+.. autoclass:: amadeus.ClientError
   :show-inheritance:
-.. autoclass:: amadeus_sdk.NetworkError
+.. autoclass:: amadeus.NetworkError
   :show-inheritance:
-.. autoclass:: amadeus_sdk.ServerError
+.. autoclass:: amadeus.ServerError
   :show-inheritance:
-.. autoclass:: amadeus_sdk.NotFoundError
+.. autoclass:: amadeus.NotFoundError
   :show-inheritance:
-.. autoclass:: amadeus_sdk.ParserError
+.. autoclass:: amadeus.ParserError
   :show-inheritance:
 
 Request
 =======
 
-.. autoclass:: amadeus_sdk.Request
+.. autoclass:: amadeus.Request
 
 
 Shopping/Flights
 ================
 
-.. autoclass:: amadeus_sdk.shopping.FlightDestinations
+.. autoclass:: amadeus.shopping.FlightDestinations
   :members: get
 
-.. autoclass:: amadeus_sdk.shopping.FlightDates
+.. autoclass:: amadeus.shopping.FlightDates
   :members: get
 
-.. autoclass:: amadeus_sdk.shopping.FlightOffers
+.. autoclass:: amadeus.shopping.FlightOffers
   :members: get
 
 Shopping/Hotels
 ===============
 
-.. autoclass:: amadeus_sdk.shopping.HotelOffers
+.. autoclass:: amadeus.shopping.HotelOffers
   :members: get
 
-.. autoclass:: amadeus_sdk.shopping.hotel.HotelOffers
+.. autoclass:: amadeus.shopping.hotel.HotelOffers
   :members: get
 
-.. autoclass:: amadeus_sdk.shopping.hotel.Offer
+.. autoclass:: amadeus.shopping.hotel.Offer
   :members: get
 
 Travel/Analytics
 ================
 
-.. autoclass:: amadeus_sdk.travel.analytics.AirTraffics
+.. autoclass:: amadeus.travel.analytics.AirTraffics
   :members: get
 
-.. autoclass:: amadeus_sdk.travel.analytics.FareSearches
+.. autoclass:: amadeus.travel.analytics.FareSearches
   :members: get
 
 ReferenceData/Locations
 =======================
 
-.. autoclass:: amadeus_sdk.reference_data.Location
+.. autoclass:: amadeus.reference_data.Location
   :members: get
 
-.. autoclass:: amadeus_sdk.reference_data.Locations
+.. autoclass:: amadeus.reference_data.Locations
   :members: get
 
-.. autoclass:: amadeus_sdk.reference_data.locations.Airports
+.. autoclass:: amadeus.reference_data.locations.Airports
   :members: get
 
 ReferenceData/Urls
 ==================
 
-.. autoclass:: amadeus_sdk.reference_data.urls.CheckinLinks
+.. autoclass:: amadeus.reference_data.urls.CheckinLinks
   :members: get
 
 Helper/Location
 ==================
 
-.. autoclass:: amadeus_sdk.Location
+.. autoclass:: amadeus.Location

@@ -3,7 +3,7 @@ from expects import expect, be_a, raise_error, equal, be
 from doublex_expects import have_been_called_with
 from doublex import Spy
 
-from amadeus_sdk import Client
+from amadeus import Client
 from os import environ
 from logging import Logger, getLogger
 

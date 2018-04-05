@@ -1,7 +1,7 @@
 from mamba import description, context, it
 from expects import expect, equal
 from doublex import Stub
-from amadeus_sdk import Response, Request
+from amadeus import Response, Request
 
 with description('Response') as self:
     with context('.__init__'):
