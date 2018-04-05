@@ -10,7 +10,7 @@ with open(os.path.join(here, 'amadeus_sdk', 'version.py')) as f:
     exec(f.read(), about)
 
 # Import the README and use it as the long-description.
-with io.open(os.path.join(here, 'README.md'), encoding='utf-8') as f:
+with io.open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = '\n' + f.read()
 
 setup(
