@@ -1,6 +1,6 @@
 from mamba import description, context, it, before
 from expects import expect, equal, be_true, be_none, be_a
-from amadeus import Request
+from amadeus_sdk import Request
 
 try:
     from urllib.request import Request as HTTPRequest

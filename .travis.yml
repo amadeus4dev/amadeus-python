@@ -16,14 +16,14 @@ before_deploy:
   - pip install -e .
   - make docs
 deploy:
-#   - provider: pypi
-#     user: $PYPI_USERNAME
-#     api_key: $PYPI_PASSWORD
-#     skip-cleanup: true
-#     on:
-#       tags: true
-#       python: '3.6.3'
-#     distributions: "sdist bdist_wheel"
+  - provider: pypi
+    user: $PYPI_USERNAME
+    api_key: $PYPI_PASSWORD
+    skip-cleanup: true
+    on:
+      tags: true
+      python: '3.6.3'
+    distributions: "sdist bdist_wheel"
   - provider: pages
     local-dir: _docs
     github-token: $GITHUB_TOKEN

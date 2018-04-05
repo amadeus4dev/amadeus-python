@@ -1,3 +1,3 @@
 [run]
-source = ./amadeus
+source = ./amadeus_sdk
 branch = True

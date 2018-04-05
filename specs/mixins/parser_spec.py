@@ -1,9 +1,9 @@
 from mamba import description, context, it, before
 from expects import expect, equal, raise_error, be_a, be
 from doublex import Stub
-from amadeus import Response, Request, Client
-from amadeus import NetworkError, ServerError, AuthenticationError
-from amadeus import NotFoundError, ClientError, ParserError
+from amadeus_sdk import Response, Request, Client
+from amadeus_sdk import NetworkError, ServerError, AuthenticationError
+from amadeus_sdk import NotFoundError, ClientError, ParserError
 
 
 with description('Mixins/Parser') as self:

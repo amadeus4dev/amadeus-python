@@ -1,6 +1,6 @@
 # Amadeus Python SDK
 
-[![Module Version](https://badge.fury.io/py/amadeus.svg)](https://badge.fury.io/py/amadeus)
+[![Module Version](https://badge.fury.io/py/amadeus-sdk.svg)](https://badge.fury.io/py/amadeus-sdk)
 [![Build Status](http://img.shields.io/travis/amadeus4dev/amadeus-python.svg)][travis]
 [![Maintainability](https://api.codeclimate.com/v1/badges/c2e19cf9628d6f4aece2/maintainability)](https://codeclimate.com/github/amadeus4dev/amadeus-python/maintainability)
 [![Dependencies](.github/images/dependencies.svg)](ttps://badge.fury.io/py/amadeus)
@@ -15,7 +15,7 @@ For more details see the [Python documentation](https://developer.amadeus.com/do
 This SDK requires Python 2.7+ or 3.3+. You can install install it directly with pip.
 
 ```sh
-pip install amadeus
+pip install amadeus-sdk
 ```
 
 
@@ -26,7 +26,7 @@ __Next__: [Get Started with the Python SDK.](https://developer.amadeus.com/docs/
 To send make your first API call you will need to [register for an Amadeus Developer Account](https://developer.amadeus.com/register) and [set up your first application](https://dashboard.developer.amadeus.com/applications).
 
 ```py
-from amadeus import Client, ResponseError
+from amadeus_sdk import Client, ResponseError
 
 amadeus = Client(
     client_id='[YOUR_CLIENT_ID]',
@@ -114,7 +114,7 @@ also contains a `data` key, it will make that available as the `.data`
 attribute. The raw body of the response is always avaulable as the `.body` attribute.
 
 ```py
-from amadeus import Location
+from amadeus_sdk import Location
 
 response = amadeus.reference_data.locations.get(
     keyword='LON',
@@ -132,7 +132,7 @@ If an API endpoint supports pagination, the other pages are available under the
 `.next`, `.previous`, `.last` and `.first` methods.
 
 ```py
-from amadeus import Location
+from amadeus_sdk import Location
 
 response = amadeus.reference_data.locations.get(
     keyword='LON',

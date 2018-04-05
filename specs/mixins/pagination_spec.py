@@ -3,8 +3,8 @@ from doublex import Stub, Spy, ANY_ARG
 from doublex_expects import have_been_called_with
 from expects import expect, equal, be_none
 
-from amadeus import Client, Response, Request
-from amadeus.mixins.pagination import Pagination
+from amadeus_sdk import Client, Response, Request
+from amadeus_sdk.mixins.pagination import Pagination
 
 with description('Pagination') as self:
     with before.all:

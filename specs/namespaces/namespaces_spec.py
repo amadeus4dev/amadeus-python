@@ -3,7 +3,7 @@ from expects import expect, be_none
 from doublex import method_returning
 from doublex_expects import have_been_called_with
 
-from amadeus import Client
+from amadeus_sdk import Client
 
 with description('Namespaces') as self:
     with before.all:
