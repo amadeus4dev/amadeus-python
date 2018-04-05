@@ -24,7 +24,7 @@ setup(
     url='https://github.com/amadeus4dev/amadeus-python',
     install_requires=[],
     packages=find_packages(),
-    data_files=[('docs', ['README.md', 'CHANGELOG.md'])],
+    data_files=[('docs', ['README.rst', 'CHANGELOG.rst'])],
     include_package_data=True,
     license='MIT',
     classifiers=[
