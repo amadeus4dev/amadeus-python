@@ -241,7 +241,7 @@ You can find us on `Twitter <#>`__, `StackOverflow <#>`__, and
    :target: http://travis-ci.org/amadeus4dev/amadeus-python
 .. |Maintainability| image:: https://api.codeclimate.com/v1/badges/c2e19cf9628d6f4aece2/maintainability
    :target: https://codeclimate.com/github/amadeus4dev/amadeus-python/maintainability
-.. |Dependencies| image:: .github/images/dependencies.svg
+.. |Dependencies| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/dependencies.svg
    :target: ttps://badge.fury.io/py/amadeus
-.. |Contact Support| image:: .github/images/support.svg
+.. |Contact Support| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/support.svg
    :target: http://developer.amadeus.com/support
