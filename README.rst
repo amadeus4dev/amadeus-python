@@ -236,7 +236,7 @@ You can find us on `Twitter <#>`__, `StackOverflow <#>`__, and
 `email <#>`__.
 
 .. |Module Version| image:: https://badge.fury.io/py/amadeus.svg?v=1
-   :target: https://badge.fury.io/py/amadeus
+   :target: https://pypi.org/project/amadeus/
 .. |Build Status| image:: http://img.shields.io/travis/amadeus4dev/amadeus-python.svg
    :target: http://travis-ci.org/amadeus4dev/amadeus-python
 .. |Maintainability| image:: https://api.codeclimate.com/v1/badges/c2e19cf9628d6f4aece2/maintainability
