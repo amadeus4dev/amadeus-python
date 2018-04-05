@@ -235,7 +235,7 @@ team <https://developer.amadeus.com/developers>`__ is here to help you.
 You can find us on `Twitter <#>`__, `StackOverflow <#>`__, and
 `email <#>`__.
 
-.. |Module Version| image:: https://badge.fury.io/py/amadeus-sdk.svg
+.. |Module Version| image:: https://badge.fury.io/py/amadeus-sdk.svg?v=1
    :target: https://badge.fury.io/py/amadeus-sdk
 .. |Build Status| image:: http://img.shields.io/travis/amadeus4dev/amadeus-python.svg
    :target: http://travis-ci.org/amadeus4dev/amadeus-python
