@@ -13,16 +13,12 @@ class ResponseError(RuntimeError):
         ``NetworkError``, ``ParserError``, ``ServerError``,
         ``AuthenticationError``, ``NotFoundError`` and ``UnknownError``.
     :vartype code: str
-
-    :var description: The content of the response that describes the error
-    :vartype description: str
     '''
 
     def __init__(self, response):
         self.response = response
-        self.description = self.__determine_description()
         self.code = self.__determine_code()
-        RuntimeError.__init__(self, self.description)
+        RuntimeError.__init__(self, self.description())
 
     # PROTECTED
 
@@ -35,13 +31,51 @@ class ResponseError(RuntimeError):
 
     # PRIVATE
 
-    # extracts the error description from the response, if it exists
-    def __determine_description(self):
-        if (self.response and self.response.parsed):
-            if 'errors' in self.response.result:
-                return self.response.result['errors']
-            if 'error_description' in self.response.result:
-                return self.response.result
+    # Determines the description for this error, as used in in the error output
+    def description(self):
+        description = self.short_description(self.response)
+        return description + self.long_description(self.response)
+
+    # Determines the short description, printed after on the same line as the
+    # error class name
+    def short_description(self, response):
+        if hasattr(response, 'status_code') and response.status_code:
+            return '[{0}]'.format(response.status_code)
+        else:
+            return '[---]'
+
+    # Determines the longer description, printed after the initial error
+    def long_description(self, response):
+        message = ''
+        if not(response and response.parsed):
+            return message
+        if 'error_description' in response.result:
+            message += self.error_description(self.response)
+        if 'errors' in response.result:
+            message += self.errors_descriptions(self.response)
+        return message
+
+    # Returns the description of a single error
+    def error_description(self, response):
+        message = ''
+        if 'error' in response.result:
+            message += '\n{0}'.format(response.result['error'])
+        message += '\n{0}'.format(response.result['error_description'])
+        return message
+
+    # Returns the description of multiple errors
+    def errors_descriptions(self, response):
+        messages = map(self.errors_description, response.result['errors'])
+        return ''.join(messages)
+
+    # Returns the description of a single error in a multi error response
+    def errors_description(self, error):
+        message = '\n'
+        if ('source' in error) and ('parameter' in error['source']):
+            message += '[{0}] '.format(error['source']['parameter'])
+            if 'detail' in error:
+                message += error['detail']
+        return message
 
     # sets the error code to the name of this class
     def __determine_code(self):
