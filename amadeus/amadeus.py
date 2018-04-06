@@ -50,7 +50,8 @@ class Client(Namespaces, Pagination, Validator, HTTP, object):
         :paramtype logger: logging.Logger
 
         :param log_level: (optional) the log level of the client, either
-            ``"debug"``, ``"warn"``, or ``"silent"`` mode (Default: ``"warn"``)
+            ``"debug"``, ``"warn"``, or ``"silent"`` mode
+            (Default: ``"silent"``)
         :paramtype log_level: str
 
         :param hostname: (optional) the name of the server API calls are made

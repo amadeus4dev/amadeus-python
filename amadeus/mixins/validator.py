@@ -36,7 +36,7 @@ class Validator(object):
         default_logger.addHandler(handler)
 
         self.logger = self.__init_optional('logger', options, default_logger)
-        self.log_level = self.__init_optional('log_level', options, 'warn')
+        self.log_level = self.__init_optional('log_level', options, 'silent')
 
     # Initializes an optional host, hostname, port, and SSL requirements
     def _initialize_host(self, options):
