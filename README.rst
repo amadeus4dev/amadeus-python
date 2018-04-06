@@ -29,7 +29,7 @@ SDK. <https://developer.amadeus.com/docs/python/get_started/initialize>`__
 Getting Started
 ---------------
 
-To send make your first API call you will need to `register for an
+To make your first API call you will need to `register for an
 Amadeus Developer Account <https://developer.amadeus.com/register>`__
 and `set up your first
 application <https://dashboard.developer.amadeus.com/applications>`__.
