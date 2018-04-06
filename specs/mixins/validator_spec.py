@@ -44,14 +44,14 @@ with description('Mixins/Validator') as self:
         with it('should by default have a logger'):
             amadeus = Client(**self.valid_params)
             expect(amadeus.logger).to(be_a(Logger))
-            expect(amadeus.log_level).to(equal('warn'))
+            expect(amadeus.log_level).to(equal('silent'))
 
         with it('should allow for setting a custom logger'):
             logger = getLogger('amadeus')
             self.valid_params['logger'] = logger
             amadeus = Client(**self.valid_params)
             expect(amadeus.logger).to(be(logger))
-            expect(amadeus.log_level).to(equal('warn'))
+            expect(amadeus.log_level).to(equal('silent'))
 
         with it('should persist a custom log level'):
             logger = getLogger('amadeus')
