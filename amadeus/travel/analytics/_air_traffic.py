@@ -1,14 +1,14 @@
 from amadeus.client.decorator import Decorator
 
 
-class AirTraffics(Decorator, object):
+class AirTraffic(Decorator, object):
     def get(self, **params):
         '''
         Returns a list of air traffic reports.
 
         .. code-block:: python
 
-            amadeus.travel.analytics.air_traffics.get(
+            amadeus.travel.analytics.air_traffic.get(
                 origin='LHR',
                 period='2011-01'
             )
@@ -22,4 +22,4 @@ class AirTraffics(Decorator, object):
         :raises amadeus.ResponseError: if the request could not be completed
         '''
         return self.client.get(
-            '/v1/travel/analytics/air-traffics', **params)
+            '/v1/travel/analytics/air-traffic', **params)
