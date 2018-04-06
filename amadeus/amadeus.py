@@ -57,6 +57,17 @@ class Client(Namespaces, Pagination, Validator, HTTP, object):
             to, ``"production"``  or ``"test"``. (Default: ``"test"``)
         :paramtype hostname: str
 
+        :param host: (optional) alternatively, you can specify a full host
+            domain name instead, e.g. ``"api.example.com"``
+        :paramtype host: str
+
+        :param ssl: if this client is should use HTTPS (Default: ``True``)
+        :paramtype ssl: bool
+
+        :param port: the port this client should use (Default: ``80`` for HTTP
+            and ``443`` for HTTPS)
+        :paramtype port: int
+
         :param custom_app_id: (optional) a custom App ID to be passed in
             the User Agent to the server (Default: ``None``)
         :paramtype custom_app_id: str
@@ -69,9 +80,6 @@ class Client(Namespaces, Pagination, Validator, HTTP, object):
             client that accepts a :class:`urllib.request.Request` compatible
             object (Default: ``urlopen``)
         :paramtype http: urllib.request.urlopen
-
-        :param ssl: if this client is will use HTTPS (Default: ``True``)
-        :paramtype ssl: bool
 
         :raises ValueError: when a required param is missing
         '''
