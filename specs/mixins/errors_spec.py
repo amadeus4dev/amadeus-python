@@ -1,37 +1,62 @@
 from mamba import description, context, it, before
-from expects import expect, equal, be_none
+from expects import expect, equal
 from doublex import Stub, Spy
 from doublex_expects import have_been_called_with, have_been_called
 
 from amadeus import NetworkError, Response, Client
 
 with description('ResponseError') as self:
-    with context('.description'):
-        with it('should determine no description if no response is present'):
+    with context('str(error)'):
+        with it('should be undefine if no response is present'):
             error = NetworkError(None)
-            expect(error.description).to(be_none)
+            expect(str(error)).to(equal('[---]'))
 
-        with it('should determine no description if no data is present'):
+        with it('should just return the code if no data is present'):
             response = Stub(Response)
             response.parsed = True
             response.result = {}
+            response.status_code = 400
 
             error = NetworkError(response)
-            expect(error.description).to(be_none)
+            expect(str(error)).to(equal('[400]'))
 
-        with it('should be set if errors are present'):
+        with it('should be rich if errors are present'):
             response = Stub(Response)
             response.parsed = True
-            response.result = {'errors': [{'detail': 'error'}]}
-            error = NetworkError(response)
-            expect(error.description).to(equal([{'detail': 'error'}]))
+            response.result = {
+                'errors': [
+                    {
+                        'detail': 'This field must be filled.',
+                        'source': {'parameter': 'departureDate'}
+                    },
+                    {
+                         'detail': 'This field must be filled.',
+                         'source': {'parameter': 'origin'}
+                    },
+                    {
+                         'detail': 'This field must be filled.',
+                         'source': {'parameter': 'destination'}
+                    }
+                ]
+            }
+            response.status_code = 401
 
-        with it('should be set if an error_description is present'):
+            error = NetworkError(response)
+            expect(str(error)).to(equal(
+                ('''[401]
+[departureDate] This field must be filled.
+[origin] This field must be filled.
+[destination] This field must be filled.''')
+            ))
+
+        with it('should be rich if an error_description is present'):
             response = Stub(Response)
             response.parsed = True
             response.result = {'error_description': 'error'}
+            response.status_code = 401
+
             error = NetworkError(response)
-            expect(error.description).to(equal({'error_description': 'error'}))
+            expect(str(error)).to(equal('[401]\nerror'))
 
     with context('.code'):
         with it('should determine the code off the class name'):
