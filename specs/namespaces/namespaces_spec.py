@@ -85,7 +85,7 @@ with description('Namespaces') as self:
         with it('.travel.analytics.air_traffic.get'):
             self.client.travel.analytics.air_traffic.get(a='b')
             expect(self.client.get).to(have_been_called_with(
-                '/v1/travel/analytics/air-traffics', a='b'
+                '/v1/travel/analytics/air-traffic', a='b'
             ))
 
         with it('.travel.analytics.fare_searches.get'):
