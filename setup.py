@@ -19,7 +19,7 @@ setup(
     description='Python module for the Amadeus travel APIs',
     long_description=long_description,
     author='Amadeus',
-    author_email='developer@amadeus.com',
+    author_email='developers@amadeus.com',
     python_requires='>=2.7.0',
     url='https://github.com/amadeus4dev/amadeus-python',
     install_requires=[],
