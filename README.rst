@@ -21,7 +21,7 @@ directly with pip.
 
 .. code:: sh
 
-    pip install amadeus==1.0.0b6
+    pip install amadeus==1.0.0b7
 
 **Next**: `Get Started with the Python
 SDK. <https://developers.amadeus.com/docs/python/get_started/initialize>`__
