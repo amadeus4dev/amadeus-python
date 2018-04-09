@@ -65,6 +65,8 @@ class Parser(object):
             self.headers = http_response.info() or self.headers
         if hasattr(http_response, 'read'):
             self.body = http_response.read()
+        if hasattr(self.body, 'decode'):
+            self.body = self.body.decode('utf8')
 
     # Tries to parse the JSON, if there is any
     def __parse_json(self, client):
