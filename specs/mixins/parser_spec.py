@@ -46,11 +46,11 @@ with description('Mixins/Parser') as self:
                     http_response.getheaders().returns(
                         [('Content-Type', 'plain/text')]
                     )
-                    http_response.read().returns('Hello World')
+                    http_response.read().returns(u'Hello World')
 
                 response = Response(http_response, self.request)
                 response._parse(self.client)
-                expect(response.body).to(be('Hello World'))
+                expect(response.body).to(equal('Hello World'))
                 expect(response.result).to(be(None))
                 expect(response.data).to(be(None))
 
@@ -62,7 +62,7 @@ with description('Mixins/Parser') as self:
 
                 response = Response(http_response, self.request)
                 response._parse(self.client)
-                expect(response.body).to(be('Hello World'))
+                expect(response.body).to(equal('Hello World'))
                 expect(response.result).to(be(None))
                 expect(response.data).to(be(None))
 

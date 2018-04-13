@@ -62,7 +62,7 @@ Shopping/Hotels
 Travel/Analytics
 ================
 
-.. autoclass:: amadeus.travel.analytics.AirTraffics
+.. autoclass:: amadeus.travel.analytics.AirTraffic
   :members: get
 
 .. autoclass:: amadeus.travel.analytics.FareSearches

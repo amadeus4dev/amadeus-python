@@ -22,6 +22,7 @@ directly with pip.
 
     pip install amadeus==1.0.0b7
 
+
 Getting Started
 ---------------
 
@@ -64,6 +65,7 @@ environment variables ``AMADEUS_CLIENT_ID`` and
 
     amadeus = Client()
 
+
 Your credentials can be found on the `Amadeus dashboard
 <https://developers.amadeus.com>`__. Sign up for an account today.
 
@@ -75,6 +77,7 @@ as follows:
 
     amadeus = Client(hostname='production')
 
+
 Documentation
 -------------
 
@@ -83,6 +86,7 @@ started today. Head over to our `Reference
 <https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
 documentation for in-depth information about every SDK method, it’s arguments
 and return types.
+
 
   -  `Initialize the SDK <https://amadeus4dev.github.io/amadeus-python/#/client>`__
   -  `Find an Airport <https://amadeus4dev.github.io/amadeus-python/#referencedata-locations>`__
@@ -205,6 +209,7 @@ Help
 ----
 
 Our `developer support
+
 team <https://developers.amadeus.com/support>`__ is here to help you.
 You can find us on `Twitter <#>`__, `StackOverflow <#>`__, and
 `email <mailto:developers@amadeus.com>`__.
