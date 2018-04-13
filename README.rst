@@ -84,14 +84,10 @@ started today. Head over to our `Reference
 documentation for in-depth information about every SDK method, it’s arguments
 and return types.
 
-  -  `Initialize the
-      SDK <https://amadeus4dev.github.io/amadeus-python/#/client>`__
-   -  `Find an
-      Airport <https://amadeus4dev.github.io/amadeus-python/#referencedata-locations>`__
-   -  `Find a
-      Flight <https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
-   -  `Get Flight
-      Inspiration <https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
+  -  `Initialize the SDK <https://amadeus4dev.github.io/amadeus-python/#/client>`__
+  -  `Find an Airport <https://amadeus4dev.github.io/amadeus-python/#referencedata-locations>`__
+  -  `Find a Flight <https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
+  -  `Get Flight Inspiration <https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
 
 Making API calls
 ----------------
