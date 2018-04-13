@@ -8,7 +8,7 @@ Amadeus provides a set of APIs for the travel industry. Flights, Hotels,
 Locations and more.
 
 For more details see the
-`Amadeus.com <https://developers.amadeus.com>`__ and the `class
+`Amadeus for Developers Portal <https://developers.amadeus.com>`__ and the `class
 reference <https://amadeus4dev.github.io/amadeus-python>`__ here on
 GitHub.
 
@@ -26,7 +26,7 @@ Getting Started
 ---------------
 
 To make your first API call you will need to `register for an Amadeus Developer
-Account <https://developers.amadeus.com/register>`__ and set up your first
+Account <https://developers.amadeus.com/create-account>`__ and set up your first
 application.
 
 .. code:: py
@@ -209,7 +209,7 @@ Help
 ----
 
 Our `developer support
-team <https://developer.amadeus.com/developers>`__ is here to help you.
+team <https://developers.amadeus.com/support>`__ is here to help you.
 You can find us on `Twitter <#>`__, `StackOverflow <#>`__, and
 `email <mailto:developers@amadeus.com>`__.
 
@@ -222,4 +222,4 @@ You can find us on `Twitter <#>`__, `StackOverflow <#>`__, and
 .. |Dependencies| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/dependencies.svg?sanitize=true
    :target: ttps://badge.fury.io/py/amadeus
 .. |Contact Support| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/support.svg?sanitize=true
-   :target: http://developer.amadeus.com/support
+   :target: http://developers.amadeus.com/support
