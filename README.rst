@@ -7,9 +7,8 @@ Amadeus Python SDK
 Amadeus provides a set of APIs for the travel industry. Flights, Hotels,
 Locations and more.
 
-For more details see the `Python
-documentation <https://developers.amadeus.com/docs/python>`__ on
-`Amadeus.com <https://developers.amadeus.com>`__ and the `class
+For more details see the
+`Amadeus for Developers Portal <https://developers.amadeus.com>`__ and the `class
 reference <https://amadeus4dev.github.io/amadeus-python>`__ here on
 GitHub.
 
@@ -23,16 +22,13 @@ directly with pip.
 
     pip install amadeus==1.0.0b7
 
-**Next**: `Get Started with the Python
-SDK. <https://developers.amadeus.com/docs/python/get_started/initialize>`__
 
 Getting Started
 ---------------
 
-To make your first API call you will need to `register for an
-Amadeus Developer Account <https://developers.amadeus.com/register>`__
-and `set up your first
-application <https://dashboard.developers.amadeus.com/applications>`__.
+To make your first API call you will need to `register for an Amadeus Developer
+Account <https://developers.amadeus.com/create-account>`__ and set up your first
+application.
 
 .. code:: py
 
@@ -50,9 +46,6 @@ application <https://dashboard.developers.amadeus.com/applications>`__.
     except ResponseError as error:
         print(error)
 
-**Next**: `Learn more about checkin
-links <https://developers.amadeus.com/docs/python/get_started/checkin_links>`__
-with our Python SDK.
 
 Initialization
 --------------
@@ -72,9 +65,9 @@ environment variables ``AMADEUS_CLIENT_ID`` and
 
     amadeus = Client()
 
-Your credentials can be found on the `Amadeus
-dashboard <https://dashboard.developers.amadeus.com/client_ids>`__. `Sign
-up <https://developers.amadeus.com/register>`__ for an account today.
+
+Your credentials can be found on the `Amadeus dashboard
+<https://developers.amadeus.com>`__. Sign up for an account today.
 
 By default the environment for the SDK is the ``test`` environment. To
 switch to a production (paid-for) environment please switch the hostname
@@ -84,36 +77,21 @@ as follows:
 
     amadeus = Client(hostname='production')
 
-**Next**: `Learn more about our initializing the Python
-SDK <https://developers.amadeus.com/docs/python/get_started_initialize>`__
-in our documentation.
 
 Documentation
 -------------
 
-Amadeus has a large set of APIs, and our documentation is here to get
-you started today.
+Amadeus has a large set of APIs, and our documentation is here to get you
+started today. Head over to our `Reference
+<https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
+documentation for in-depth information about every SDK method, it’s arguments
+and return types.
 
--  `Get
-   Started <https://developers.amadeus.com/docs/python/get_started>`__
-   documentation
 
-   -  `Initialize the
-      SDK <https://developers.amadeus.com/docs/python/get_started/initialize>`__
-   -  `Find an
-      Airport <https://developers.amadeus.com/docs/python/get_started/find_an_airport>`__
-   -  `Book a
-      Flight <https://developers.amadeus.com/docs/python/get_started/book_a_flight>`__
-   -  `Get Flight
-      Inspiration <https://developers.amadeus.com/docs/python/get_started/get_flight_inspiration>`__
-
-Alternatively, head over to our
-`Reference <https://developers.amadeus.com/docs/python/reference>`__
-documentation for in-depth information about every SDK method, it’s
-arguments and return types.
-
-Additionally, this SDK has extensive documentation of itself available
-on `GitHub <https://amadeus4dev.github.io/amadeus-python/>`__.
+  -  `Initialize the SDK <https://amadeus4dev.github.io/amadeus-python/#/client>`__
+  -  `Find an Airport <https://amadeus4dev.github.io/amadeus-python/#referencedata-locations>`__
+  -  `Find a Flight <https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
+  -  `Get Flight Inspiration <https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
 
 Making API calls
 ----------------
@@ -231,9 +209,10 @@ Help
 ----
 
 Our `developer support
-team <https://developers.amadeus.com/developers>`__ is here to help you.
+
+team <https://developers.amadeus.com/support>`__ is here to help you.
 You can find us on `Twitter <#>`__, `StackOverflow <#>`__, and
-`email <#>`__.
+`email <mailto:developers@amadeus.com>`__.
 
 .. |Module Version| image:: https://badge.fury.io/py/amadeus.svg?v=1
    :target: https://pypi.org/project/amadeus/
