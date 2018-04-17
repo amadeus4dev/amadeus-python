@@ -64,7 +64,8 @@ environment variables ``AMADEUS_CLIENT_ID`` and
     amadeus = Client()
 
 Your credentials can be found on the `Amadeus dashboard
-<https://developers.amadeus.com>`__. Sign up for an account today.
+<https://developers.amadeus.com/my-apps/>`__. `Sign
+up <https://developers.amadeus.com>`__ for an account today.
 
 By default the environment for the SDK is the ``test`` environment. To
 switch to a production (paid-for) environment please switch the hostname
@@ -80,7 +81,7 @@ Documentation
 Amadeus has a large set of APIs, and our documentation is here to get you
 started today. Head over to our `Reference
 <https://amadeus4dev.github.io/amadeus-python/>`__
-documentation for in-depth information about every SDK method, it’s arguments
+documentation for in-depth information about every SDK method, its arguments
 and return types.
 
   -  `Initialize the SDK <https://amadeus4dev.github.io/amadeus-python/#/client>`__
@@ -203,10 +204,10 @@ This library is released under the `MIT License <LICENSE>`__.
 Help
 ----
 
-Our `developer support
-team <https://developers.amadeus.com/support>`__ is here to help you.
-You can find us on `Twitter <#>`__, `StackOverflow <#>`__, and
-`email <mailto:developers@amadeus.com>`__.
+Our `developer support team <https://developers.amadeus.com/support>`__ is here
+to help you.  You can find us on `StackOverflow
+<https://stackoverflow.com/questions/tagged/amadeus>`__, and `email
+<mailto:developers@amadeus.com>`__.
 
 .. |Module Version| image:: https://badge.fury.io/py/amadeus.svg?v=1
    :target: https://pypi.org/project/amadeus/
