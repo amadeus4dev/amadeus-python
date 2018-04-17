@@ -7,10 +7,7 @@ from amadeus import Client
 
 with description('Namespaces') as self:
     with before.all:
-        self.client = Client(
-            client_id='123',
-            client_secret='234'
-        )
+        self.client = Client(client_id='123', client_secret='234')
 
     with it('should define all expected paths'):
         client = self.client
@@ -60,72 +57,68 @@ with description('Namespaces') as self:
 
         with it('.reference_data.urls.checkin_links.get'):
             self.client.reference_data.urls.checkin_links.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/reference-data/urls/checkin-links', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with(
+                    '/v2/reference-data/urls/checkin-links', a='b'))
 
         with it('.reference_data.location().get'):
             self.client.reference_data.location('ALHR').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/ALHR', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with(
+                    '/v1/reference-data/locations/ALHR', a='b'))
 
         with it('.reference_data.locations.get'):
             self.client.reference_data.locations.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with('/v1/reference-data/locations', a='b'))
 
         with it('.reference_data.locations.airports.get'):
             self.client.reference_data.locations.airports.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/airports', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with(
+                    '/v1/reference-data/locations/airports', a='b'))
 
         with it('.travel.analytics.air_traffic.get'):
             self.client.travel.analytics.air_traffic.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/travel/analytics/air-traffic', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with(
+                    '/v1/travel/analytics/air-traffic/traveled', a='b'))
 
         with it('.travel.analytics.fare_searches.get'):
             self.client.travel.analytics.fare_searches.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/travel/analytics/fare-searches', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with(
+                    '/v1/travel/analytics/fare-searches', a='b'))
 
         with it('.shopping.flight_dates.get'):
             self.client.shopping.flight_dates.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/flight-dates', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with('/v1/shopping/flight-dates', a='b'))
 
         with it('.shopping.flight_destinations.get'):
             self.client.shopping.flight_destinations.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/flight-destinations', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with(
+                    '/v1/shopping/flight-destinations', a='b'))
 
         with it('.shopping.flight_offers.get'):
             self.client.shopping.flight_offers.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/flight-offers', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with('/v1/shopping/flight-offers', a='b'))
 
         with it('.shopping.hotel_offers.get'):
             self.client.shopping.hotel_offers.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/hotel-offers', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with('/v1/shopping/hotel-offers', a='b'))
 
         with it('.shopping.hotel(123).hotel_offers.get'):
             self.client.shopping.hotel(123).hotel_offers.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/hotels/123/hotel-offers', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with(
+                    '/v1/shopping/hotels/123/hotel-offers', a='b'))
 
         with it('.shopping.hotel(123).offer(234).get'):
             self.client.shopping.hotel(123).offer(234).get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/hotels/123/offers/234', a='b'
-            ))
+            expect(self.client.get).to(
+                have_been_called_with(
+                    '/v1/shopping/hotels/123/offers/234', a='b'))
