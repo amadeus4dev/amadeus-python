@@ -1,4 +1,5 @@
-from .air_traffic._traveled import Traveled
 from ._fare_searches import FareSearches
+from ._air_traffic import AirTraffic
 
-__all__ = ['Traveled', 'FareSearches']
+
+__all__ = ['FareSearches', 'AirTraffic']
