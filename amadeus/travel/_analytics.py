@@ -7,6 +7,4 @@ class Analytics(Decorator, object):
     def __init__(self, client):
         Decorator.__init__(self, client)
         self.fare_searches = FareSearches(client)
-
-    def air_traffic(self, client):
-        return AirTraffic(self.client)
+        self.air_traffic = AirTraffic(client)
