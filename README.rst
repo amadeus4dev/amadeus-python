@@ -189,6 +189,47 @@ enable debugging via a parameter on initialization, or using the
         log_level='debug'
     )
 
+List of supported endpoints
+---------------------------
+
+.. code:: py
+
+    # Airpot and City Search
+    # Find all the cities and airportes starting by 'LON'
+    amadeus.reference_data.locations.get(keyword='LON', subType=Location.ANY)
+    # Get a specific city or airport based on its id
+    amadeus.reference_data.location('ALHR').get()
+
+    # Aiport Nearest Relevant Airport
+    amadeus.reference_data.locations.airports.get(longitude=49.000, latitude=2.55)
+
+    # Flight Cheapest Date Search
+    amadeus.shopping.flight_dates.get(origin='NCE', destination='PAR', duration=1)
+
+    # Flight Checkin Links
+    amadeus.reference_data.urls.checkin_links.get(airline='LH')
+
+    # Flight Inspiration Search
+    amadeus.shopping.flight_destinations.get(origin='MAD', maxPrice=200)
+
+    # Flight Low-fare Search
+    amadeus.shopping.flight_offers.get(origin='MAD', destination='OPO', "2017-04-20')
+
+    # Flight Most Searched Destinations
+    amadeus.travel.analytics.fare_searches.get(origin='NCE', sourceCountry='FR', period='2017-08')
+
+    # Flight Most Traveled Destinations
+    amadeus.travel.analytics.air_traffic.traveled.get(origin='NCE', period='2017-08')
+
+    # Hotel Search API
+    # List of Hotels by City Code
+    amadeus.shopping.hotel_offers.get(cityCode = 'PAR')
+    # Get list of offers for a specific Hotel
+    amadeus.shopping.hotel('SMPARCOL').hotel_offers.get()
+    # Confirm the availability of a specific offer for a specific Hotel
+    amadeus.shopping.hotel('SMPARCOL').offer('4BA070BA10485322FA2C7E78C7852E').get()
+
+ 
 Development & Contributing
 --------------------------
 
