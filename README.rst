@@ -14,12 +14,18 @@ For more details see the `Amadeus for Developers Portal
 Installation
 ------------
 
-This SDK requires Python 2.7+ or 3.3+. You can install install it
-directly with pip.
+This SDK requires Python 2.7+ or 3.3+. You can install it directly with pip.
 
 .. code:: sh
 
-    pip install amadeus==1.0.0b8
+    pip install amadeus
+
+You can also add it to your `requirements.txt` file and install using: 
+
+.. code:: sh
+
+    pip install -r requirements.txt
+
 
 Getting Started
 ---------------
