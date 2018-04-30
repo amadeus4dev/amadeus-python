@@ -1,6 +1,21 @@
 Changelog
 =========
 
+1.0.0 - 2018-04-20
+--------------------
+
+Release 1.0.0
+
+1.0.0b8 - 2018-04-19
+--------------------
+
+Update namespace for `air_traffic/traveled` path.
+
+1.0.0b7 - 2018-04-09
+--------------------
+
+Fix an issue where UTF8 was not properly decoded.
+
 1.0.0b6 - 2018-04-05
 --------------------
 
