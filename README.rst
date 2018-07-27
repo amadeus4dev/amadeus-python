@@ -215,6 +215,9 @@ List of supported endpoints
     # Flight Checkin Links
     amadeus.reference_data.urls.checkin_links.get(airline='LH')
 
+    # Airline Code Lookup
+    amadeus.reference_data.airlines.get(IATACode='BA')
+
     # Flight Inspiration Search
     amadeus.shopping.flight_destinations.get(origin='MAD', maxPrice=200)
 
@@ -224,8 +227,14 @@ List of supported endpoints
     # Flight Most Searched Destinations
     amadeus.travel.analytics.fare_searches.get(origin='NCE', sourceCountry='FR', period='2017-08')
 
+    # Flight Most Booked Destinations
+    amadeus.travel.analytics.air_traffic.booked.get(origin='MAD', period='2017-08')
+
     # Flight Most Traveled Destinations
     amadeus.travel.analytics.air_traffic.traveled.get(origin='NCE', period='2017-08')
+
+    # Flight Busiest Travel Period
+    amadeus.travel.analytics.air_traffic.busiest_period.get(origin='NCE', period='2017-08')
 
     # Hotel Search API
     # List of Hotels by City Code
