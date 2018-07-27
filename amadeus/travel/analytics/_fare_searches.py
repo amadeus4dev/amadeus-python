@@ -30,5 +30,4 @@ class FareSearches(Decorator, object):
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
-        return self.client.get(
-            '/v1/travel/analytics/fare-searches', **params)
+        return self.client.get('/v1/travel/analytics/fare-searches', **params)

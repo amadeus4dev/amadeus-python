@@ -1,7 +1,7 @@
 from amadeus.client.decorator import Decorator
 
 
-class Traveled(Decorator, object):
+class BusiestPeriod(Decorator, object):
     def get(self, **params):
         '''
         Returns a list of air traffic reports, based on number of travelers.
@@ -21,5 +21,5 @@ class Traveled(Decorator, object):
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
-        return self.client.get('/v1/travel/analytics/air-traffic/traveled',
+        return self.client.get('/v1/travel/analytics/air-traffic/busiest-period',
                                **params)
