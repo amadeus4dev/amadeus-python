@@ -19,4 +19,3 @@ class Location(Decorator, object):
         '''
         return self.client.get('/v1/reference-data/locations/{0}'
                                .format(self.location_id), **params)
-

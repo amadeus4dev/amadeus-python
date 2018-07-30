@@ -26,7 +26,7 @@ with description('HTTP') as self:
             response = self.client.get('/foo', foo='bar')
             expect(response).to(equal(self.response))
             expect(self.client.request).to(
-                have_been_called_with('GET', '/foo',  foo='bar')
+                have_been_called_with('GET', '/foo', foo='bar')
             )
 
     with context('Client.post'):
@@ -35,7 +35,7 @@ with description('HTTP') as self:
             response = self.client.post('/foo', foo='bar')
             expect(response).to(equal(self.response))
             expect(self.client.request).to(
-                have_been_called_with('POST', '/foo',  foo='bar')
+                have_been_called_with('POST', '/foo', foo='bar')
             )
 
     with context('Client.request'):
