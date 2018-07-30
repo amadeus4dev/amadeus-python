@@ -17,7 +17,5 @@ class Location(Decorator, object):
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
-        return self.client.get(
-            '/v1/reference-data/locations/{0}'.format(self.location_id),
-            **params
-        )
+        return self.client.get('/v1/reference-data/locations/{0}'
+                               .format(self.location_id), **params)

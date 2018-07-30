@@ -80,6 +80,9 @@ ReferenceData/Locations
 .. autoclass:: amadeus.reference_data.locations.Airports
   :members: get
 
+.. autoclass:: amadeus.reference_data.Airlines
+  :members: get
+
 ReferenceData/Urls
 ==================
 

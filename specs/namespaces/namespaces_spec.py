@@ -64,6 +64,12 @@ with description('Namespaces') as self:
                 '/v2/reference-data/urls/checkin-links', a='b'
             ))
 
+        with it('.reference_data.airlines.get'):
+            self.client.reference_data.airlines.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/reference-data/airlines', a='b'
+            ))
+
         with it('.reference_data.location().get'):
             self.client.reference_data.location('ALHR').get(a='b')
             expect(self.client.get).to(have_been_called_with(
@@ -86,6 +92,18 @@ with description('Namespaces') as self:
             self.client.travel.analytics.air_traffic.traveled.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/travel/analytics/air-traffic/traveled', a='b'
+            ))
+
+        with it('.travel.analytics.air_traffic.booked.get'):
+            self.client.travel.analytics.air_traffic.booked.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/travel/analytics/air-traffic/booked', a='b'
+            ))
+
+        with it('.travel.analytics.air_traffic.busiest_period.get'):
+            self.client.travel.analytics.air_traffic.busiest_period.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/travel/analytics/air-traffic/busiest-period', a='b'
             ))
 
         with it('.travel.analytics.fare_searches.get'):
