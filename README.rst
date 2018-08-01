@@ -262,10 +262,10 @@ Help
 
 Our `developer support team <https://developers.amadeus.com/support>`__ is here
 to help you.  You can find us on `StackOverflow
-<https://stackoverflow.com/questions/tagged/amadeus>`__, and `email
+<htps://stackoverflow.com/questions/tagged/amadeus>`__, and `email
 <mailto:developers@amadeus.com>`__.
 
-.. |Module Version| image:: https://badge.fury.io/py/amadeus.svg?v=1
+.. |Module Version| image:: https://badge.fury.io/py/amadeus.svg?id=py&type=6&v=1.1.0
    :target: https://pypi.org/project/amadeus/
 .. |Build Status| image:: http://img.shields.io/travis/amadeus4dev/amadeus-python.svg
    :target: http://travis-ci.org/amadeus4dev/amadeus-python
