@@ -8,15 +8,16 @@ class BusiestPeriod(Decorator, object):
 
         .. code-block:: python
 
-            amadeus.travel.analytics.air_traffic.traveled.get(
-                origin='LHR',
-                period='2017-01'
+            amadeus.travel.analytics.air_traffic.busiest_period.get(
+                origin='MAD',
+                period='2017',
+                direction=Direction.ARRIVING
             )
 
         :param cityCode: IATA code of the origin city, for
             example ``"BOS"`` for Boston.
         :param query: period when consumers are traveling
-            in ``YYYY-MM`` format
+            in ``YYYY`` format
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
