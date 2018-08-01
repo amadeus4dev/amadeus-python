@@ -8,7 +8,7 @@ class Direction (object):
 
         from amadeus import Direction
 
-        amadeus.travel.analytics.air_traffic.busiest_period.get(
+        client.travel.analytics.air_traffic.busiest_period.get(
             cityCode = 'MAD',
             period = '2017',
             direction = Direction.ARRIVING
