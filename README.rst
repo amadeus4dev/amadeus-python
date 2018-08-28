@@ -14,7 +14,7 @@ For more details see the `Amadeus for Developers Portal
 Installation
 ------------
 
-This SDK requires Python 2.7+ or 3.3+. You can install it directly with pip.
+This SDK requires Python 2.7+ or 3.4+. You can install it directly with pip.
 
 .. code:: sh
 
