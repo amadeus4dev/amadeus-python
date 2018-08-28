@@ -222,7 +222,7 @@ List of supported endpoints
     amadeus.shopping.flight_destinations.get(origin='MAD', maxPrice=200)
 
     # Flight Low-fare Search
-    amadeus.shopping.flight_offers.get(origin='MAD', destination='OPO', "2017-04-20')
+    amadeus.shopping.flight_offers.get(origin='MAD', destination='OPO', departureDate='2017-04-20')
 
     # Flight Most Searched Destinations
     amadeus.travel.analytics.fare_searches.get(origin='NCE', sourceCountry='FR', period='2017-08')
