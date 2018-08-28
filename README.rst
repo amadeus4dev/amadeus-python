@@ -210,7 +210,7 @@ List of supported endpoints
     amadeus.reference_data.locations.airports.get(longitude=49.000, latitude=2.55)
 
     # Flight Cheapest Date Search
-    amadeus.shopping.flight_dates.get(origin='NCE', destination='PAR', duration=1)
+    amadeus.shopping.flight_dates.get(origin='NYC', destination='MAD')
 
     # Flight Checkin Links
     amadeus.reference_data.urls.checkin_links.get(airline='LH')
@@ -219,10 +219,10 @@ List of supported endpoints
     amadeus.reference_data.airlines.get(IATACode='BA')
 
     # Flight Inspiration Search
-    amadeus.shopping.flight_destinations.get(origin='MAD', maxPrice=200)
+    amadeus.shopping.flight_destinations.get(origin='MAD')
 
     # Flight Low-fare Search
-    amadeus.shopping.flight_offers.get(origin='MAD', destination='OPO', departureDate='2017-04-20')
+    amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01')
 
     # Flight Most Searched Destinations
     amadeus.travel.analytics.fare_searches.get(origin='NCE', sourceCountry='FR', period='2017-08')
