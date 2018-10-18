@@ -234,7 +234,7 @@ List of supported endpoints
     amadeus.travel.analytics.air_traffic.traveled.get(origin='NCE', period='2017-08')
 
     # Flight Busiest Travel Period
-    amadeus.travel.analytics.air_traffic.busiest_period.get(origin='NCE', period='2017-08')
+    amadeus.travel.analytics.air_traffic.busiest_period.get(origin='MAD', period='2017', direction='ARRIVING')
 
     # Hotel Search API
     # List of Hotels by City Code
