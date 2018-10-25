@@ -39,14 +39,13 @@ application.
     from amadeus import Client, ResponseError
 
     amadeus = Client(
-        client_id='[YOUR_CLIENT_ID]',
-        client_secret='[YOUR_CLIENT_SECRET]'
+        client_id='REPLACE_BY_YOUR_API_KEY',
+        client_secret='REPLACE_BY_YOUR_API_SECRET'
     )
 
     try:
-        response = amadeus.reference_data.urls.checkin_links.get(airline='1X')
+        response = amadeus.reference_data.urls.checkin_links.get(airline='BA')
         print(response.data)
-        # => [{'type': 'checkin-link', 'id': '1XEN-GBWeb', 'href': 'https://www....
     except ResponseError as error:
         print(error)
 
@@ -59,9 +58,9 @@ The client can be initialized directly.
 .. code:: py
 
     # Initialize using parameters
-    amadeus = Client(client_id='...', client_secret='...')
+    amadeus = Client(client_id='REPLACE_BY_YOUR_API_KEY', client_secret='REPLACE_BY_YOUR_API_SECRET')
 
-Alternatively it can be initialized without any paramters if the
+Alternatively it can be initialized without any parameters if the
 environment variables ``AMADEUS_CLIENT_ID`` and
 ``AMADEUS_CLIENT_SECRET`` are present.
 
@@ -100,12 +99,12 @@ Making API calls
 
 This library conveniently maps every API path to a similar path.
 
-For example, ``GET /v2/reference-data/urls/checkin-links?airline=1X``
+For example, ``GET /v2/reference-data/urls/checkin-links?airline=BA``
 would be:
 
 .. code:: py
 
-    amadeus.reference_data.urls.checkin_links.get(airline='1X')
+    amadeus.reference_data.urls.checkin_links.get(airline='BA')
 
 Similarly, to select a resource by ID, you can pass in the ID to the
 singular path.
@@ -121,7 +120,7 @@ method:
 
 .. code:: py
 
-    amadeus.get('/v2/reference-data/urls/checkin-links', airline='1X')
+    amadeus.get('/v2/reference-data/urls/checkin-links', airline='BA')
 
 Response
 --------
@@ -130,7 +129,7 @@ Every API call returns a ``Response`` object. If the API call contained
 a JSON response it will parse the JSON into the ``.result`` attribute.
 If this data also contains a ``data`` key, it will make that available
 as the ``.data`` attribute. The raw body of the response is always
-avaulable as the ``.body`` attribute.
+available as the ``.body`` attribute.
 
 .. code:: py
 
@@ -141,8 +140,8 @@ avaulable as the ``.body`` attribute.
         subType=Location.ANY
     )
 
-    print(reponse.body) #=> The raw response, as a string
-    print(reponse.result) #=> The body parsed as JSON, if the result was parsable
+    print(response.body) #=> The raw response, as a string
+    print(response.result) #=> The body parsed as JSON, if the result was parsable
     print(response.data) #=> The list of locations, extracted from the JSON
 
 Pagination
@@ -177,8 +176,8 @@ The SDK makes it easy to add your own logger.
     logger.setLevel(logging.DEBUG)
 
     amadeus = Client(
-        client_id='...',
-        client_secret='...',
+        client_id='REPLACE_BY_YOUR_API_KEY',
+        client_secret='REPLACE_BY_YOUR_API_SECRET',
         logger=logger
     )
 
@@ -190,8 +189,8 @@ enable debugging via a parameter on initialization, or using the
 .. code:: py
 
     amadeus = Client(
-        client_id='...',
-        client_secret='...',
+        client_id='REPLACE_BY_YOUR_API_KEY',
+        client_secret='REPLACE_BY_YOUR_API_SECRET',
         log_level='debug'
     )
 
@@ -199,46 +198,45 @@ List of supported endpoints
 ---------------------------
 
 .. code:: py
-
-    # Airpot and City Search
-    # Find all the cities and airportes starting by 'LON'
-    amadeus.reference_data.locations.get(keyword='LON', subType=Location.ANY)
-    # Get a specific city or airport based on its id
-    amadeus.reference_data.location('ALHR').get()
-
-    # Aiport Nearest Relevant Airport
-    amadeus.reference_data.locations.airports.get(longitude=49.000, latitude=2.55)
+    # Flight Inspiration Search
+    amadeus.shopping.flight_destinations.get(origin='MAD')
 
     # Flight Cheapest Date Search
     amadeus.shopping.flight_dates.get(origin='NYC', destination='MAD')
 
-    # Flight Checkin Links
-    amadeus.reference_data.urls.checkin_links.get(airline='LH')
-
-    # Airline Code Lookup
-    amadeus.reference_data.airlines.get(IATACode='BA')
-
-    # Flight Inspiration Search
-    amadeus.shopping.flight_destinations.get(origin='MAD')
-
     # Flight Low-fare Search
     amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01')
+    
+    # Flight Checkin Links
+    amadeus.reference_data.urls.checkin_links.get(airline='BA')
+
+    # Airline Code Lookup
+    amadeus.reference_data.airlines.get(IATACode='U2')
+
+    # Airport and City Search (autocomplete)
+    # Find all the cities and airports starting by 'LON'
+    amadeus.reference_data.locations.get(keyword='LON', subType=Location.ANY)
+    # Get a specific city or airport based on its id
+    amadeus.reference_data.location('ALHR').get()
+
+    # Airport Nearest Relevant Airport
+    amadeus.reference_data.locations.airports.get(longitude=49.000, latitude=2.55)
 
     # Flight Most Searched Destinations
-    amadeus.travel.analytics.fare_searches.get(origin='NCE', sourceCountry='FR', period='2017-08')
+    amadeus.travel.analytics.fare_searches.get(origin='MAD', sourceCountry='SP', period='2017-08')
 
     # Flight Most Booked Destinations
     amadeus.travel.analytics.air_traffic.booked.get(origin='MAD', period='2017-08')
 
     # Flight Most Traveled Destinations
-    amadeus.travel.analytics.air_traffic.traveled.get(origin='NCE', period='2017-08')
+    amadeus.travel.analytics.air_traffic.traveled.get(origin='MAD', period='2017-01')
 
     # Flight Busiest Travel Period
     amadeus.travel.analytics.air_traffic.busiest_period.get(origin='MAD', period='2017', direction='ARRIVING')
 
     # Hotel Search API
-    # List of Hotels by City Code
-    amadeus.shopping.hotel_offers.get(cityCode = 'PAR')
+    # Get list of Hotels by city code
+    amadeus.shopping.hotel_offers.get(cityCode = 'MAD')
     # Get list of offers for a specific Hotel
     amadeus.shopping.hotel('SMPARCOL').hotel_offers.get()
     # Confirm the availability of a specific offer for a specific Hotel
