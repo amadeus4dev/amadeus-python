@@ -198,6 +198,7 @@ List of supported endpoints
 ---------------------------
 
 .. code:: py
+
     # Flight Inspiration Search
     amadeus.shopping.flight_destinations.get(origin='MAD')
 
