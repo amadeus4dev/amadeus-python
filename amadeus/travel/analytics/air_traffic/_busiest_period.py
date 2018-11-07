@@ -9,7 +9,7 @@ class BusiestPeriod(Decorator, object):
         .. code-block:: python
 
             amadeus.travel.analytics.air_traffic.busiest_period.get(
-                origin='MAD',
+                cityCode='MAD',
                 period='2017',
                 direction=Direction.ARRIVING
             )
