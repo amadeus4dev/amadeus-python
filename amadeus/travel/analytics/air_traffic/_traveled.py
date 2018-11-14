@@ -15,7 +15,7 @@ class Traveled(Decorator, object):
 
         :param originCityCode: IATA code of the origin city, for
             example ``"BOS"`` for Boston.
-        :param query: period when consumers are traveling
+        :param period: period when consumers are traveling
             in ``YYYY-MM`` format
 
         :rtype: amadeus.Response
