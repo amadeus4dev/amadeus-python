@@ -24,7 +24,12 @@ with description('Namespaces') as self:
         expect(client.travel).not_to(be_none)
         expect(client.travel.analytics).not_to(be_none)
         expect(client.travel.analytics.air_traffic.traveled).not_to(be_none)
-        expect(client.travel.analytics.fare_searches).not_to(be_none)
+        expect(client.travel.analytics.air_traffic.searched).not_to(be_none)
+        expect(client.travel.analytics.air_traffic.booked).not_to(be_none)
+        expect(
+            client.travel.analytics.air_traffic.searched_by_destination).not_to(
+            be_none)
+        expect(client.travel.analytics.air_traffic.busiest_period).not_to(be_none)
 
         expect(client.shopping).not_to(be_none)
         expect(client.shopping.flight_dates).not_to(be_none)
@@ -44,7 +49,15 @@ with description('Namespaces') as self:
         expect(client.reference_data.locations.airports.get).not_to(be_none)
 
         expect(client.travel.analytics.air_traffic.traveled.get).not_to(be_none)
-        expect(client.travel.analytics.fare_searches.get).not_to(be_none)
+        expect(client.travel.analytics.air_traffic.booked.get).not_to(be_none)
+        expect(client.travel.analytics.air_traffic.searched.get).not_to(be_none)
+        expect(
+            client.travel.analytics.air_traffic.
+            searched_by_destination.get).not_to(
+            be_none)
+        expect(
+            client.travel.analytics.air_traffic.busiest_period.get).not_to(
+            be_none)
 
         expect(client.shopping.flight_dates.get).not_to(be_none)
         expect(client.shopping.flight_destinations.get).not_to(be_none)
@@ -106,11 +119,20 @@ with description('Namespaces') as self:
                 '/v1/travel/analytics/air-traffic/busiest-period', a='b'
             ))
 
-        with it('.travel.analytics.fare_searches.get'):
-            self.client.travel.analytics.fare_searches.get(a='b')
+        with it('.travel.analytics.air_traffic.searched.get'):
+            self.client.travel.analytics.air_traffic.searched.get(a='b')
             expect(self.client.get).to(have_been_called_with(
-                '/v1/travel/analytics/fare-searches', a='b'
+                '/v1/travel/analytics/air-traffic/searched', a='b'
             ))
+
+        with it('.travel.analytics.air_traffic.searched_by_destination.get'):
+            self.client.travel.analytics.air_traffic.searched_by_destination.get(
+                a='b')
+            expect(
+                self.client.get).to(
+                have_been_called_with(
+                    '/v1/travel/analytics/air-traffic/searched/by-destination',
+                    a='b'))
 
         with it('.shopping.flight_dates.get'):
             self.client.shopping.flight_dates.get(a='b')

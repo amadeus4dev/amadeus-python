@@ -9,13 +9,13 @@ class Traveled(Decorator, object):
         .. code-block:: python
 
             amadeus.travel.analytics.air_traffic.traveled.get(
-                origin='LHR',
+                originCityCode='LHR',
                 period='2017-01'
             )
 
-        :param cityCode: IATA code of the origin city, for
+        :param originCityCode: IATA code of the origin city, for
             example ``"BOS"`` for Boston.
-        :param query: period when consumers are traveling
+        :param period: period when consumers are traveling
             in ``YYYY-MM`` format
 
         :rtype: amadeus.Response

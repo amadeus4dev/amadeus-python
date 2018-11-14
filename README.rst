@@ -209,10 +209,10 @@ List of supported endpoints
     amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01')
     
     # Flight Checkin Links
-    amadeus.reference_data.urls.checkin_links.get(airline='BA')
+    amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')
 
     # Airline Code Lookup
-    amadeus.reference_data.airlines.get(IATACode='U2')
+    amadeus.reference_data.airlines.get(airlineCodes='U2')
 
     # Airport and City Search (autocomplete)
     # Find all the cities and airports starting by 'LON'
@@ -224,16 +224,16 @@ List of supported endpoints
     amadeus.reference_data.locations.airports.get(longitude=49.000, latitude=2.55)
 
     # Flight Most Searched Destinations
-    amadeus.travel.analytics.fare_searches.get(origin='MAD', sourceCountry='SP', period='2017-08')
+    amadeus.travel.analytics.fare_searches.get(originCityCode='MAD', sourceCountry='SP', period='2017-08')
 
     # Flight Most Booked Destinations
-    amadeus.travel.analytics.air_traffic.booked.get(origin='MAD', period='2017-08')
+    amadeus.travel.analytics.air_traffic.booked.get(originCityCode='MAD', period='2017-08')
 
     # Flight Most Traveled Destinations
-    amadeus.travel.analytics.air_traffic.traveled.get(origin='MAD', period='2017-01')
+    amadeus.travel.analytics.air_traffic.traveled.get(originCityCode='MAD', period='2017-01')
 
     # Flight Busiest Travel Period
-    amadeus.travel.analytics.air_traffic.busiest_period.get(origin='MAD', period='2017', direction='ARRIVING')
+    amadeus.travel.analytics.air_traffic.busiest_period.get(cityCode='MAD', period='2017', direction='ARRIVING')
 
     # Hotel Search API
     # Get list of Hotels by city code

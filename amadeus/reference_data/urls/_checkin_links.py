@@ -9,9 +9,9 @@ class CheckinLinks(Decorator, object):
 
         .. code-block:: python
 
-            amadeus.reference_data.urls.checkin_links.get(airline='1X')
+            amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')
 
-        :param airline: the IATA code for the airline, e.g. ``"1X"``
+        :param airlineCode: the IATA code for the airline, e.g. ``"BA"``
         :param language: the locale for the links, for example ``"en-GB"``
 
         :rtype: amadeus.Response

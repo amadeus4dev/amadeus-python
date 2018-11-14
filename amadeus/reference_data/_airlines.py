@@ -8,9 +8,11 @@ class Airlines(Decorator, object):
 
         .. code-block:: python
 
-            amadeus.reference_data.airlines.get(IATACode='U2')
+            amadeus.reference_data.airlines.get(airlineCodes='U2')
 
-        :param IATACode: the IATA code for the airline, e.g. ``"1X"``
+        :param airlineCodes: the IATA or ICAO code for the airline, e.g.
+        :``"AF"`` (Air France IATA code)
+        :or ``"AFR"`` (Air France ICAO code)
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
