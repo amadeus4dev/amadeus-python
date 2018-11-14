@@ -5,4 +5,5 @@ from ._booked import Booked
 from ._busiest_period import BusiestPeriod
 
 
-__all__ = ['Searched', 'SearchedByDestination', 'Traveled', 'Booked', 'BusiestPeriod']
+__all__ = ['Searched', 'SearchedByDestination',
+           'Traveled', 'Booked', 'BusiestPeriod']
