@@ -3,7 +3,7 @@
 To run the project locally, clone the repository, and then create a virtual environment and install the dependencies.
 ```sh
 git clone https://github.com/amadeus4dev/amadeus-python.git
-cd amadeus-ruby
+cd amadeus-python
 ```
 
 First, ensure you have a version of every Python we support installed. Your versions may differ.
