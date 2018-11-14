@@ -20,7 +20,7 @@ class BusiestPeriod(Decorator, object):
             in ``YYYY`` format
         :param direction: to select between
             arrivals and departures (default: arrivals)
-            
+
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
