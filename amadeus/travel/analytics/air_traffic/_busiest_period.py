@@ -16,9 +16,11 @@ class BusiestPeriod(Decorator, object):
 
         :param cityCode: IATA code of the origin city, for
             example ``"BOS"`` for Boston.
-        :param query: period when consumers are traveling
+        :param period: period when consumers are traveling
             in ``YYYY`` format
-
+        :param direction: to select between
+            arrivals and departures (default: arrivals)
+            
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
