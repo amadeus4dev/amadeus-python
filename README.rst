@@ -44,7 +44,7 @@ application.
     )
 
     try:
-        response = amadeus.reference_data.urls.checkin_links.get(airline='BA')
+        response = amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')
         print(response.data)
     except ResponseError as error:
         print(error)
@@ -99,12 +99,12 @@ Making API calls
 
 This library conveniently maps every API path to a similar path.
 
-For example, ``GET /v2/reference-data/urls/checkin-links?airline=BA``
+For example, ``GET /v2/reference-data/urls/checkin-links?airlineCode=BA``
 would be:
 
 .. code:: py
 
-    amadeus.reference_data.urls.checkin_links.get(airline='BA')
+    amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')
 
 Similarly, to select a resource by ID, you can pass in the ID to the
 singular path.
@@ -120,7 +120,7 @@ method:
 
 .. code:: py
 
-    amadeus.get('/v2/reference-data/urls/checkin-links', airline='BA')
+    amadeus.get('/v2/reference-data/urls/checkin-links', airlineCode='BA')
 
 Response
 --------
