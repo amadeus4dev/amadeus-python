@@ -224,8 +224,11 @@ List of supported endpoints
     amadeus.reference_data.locations.airports.get(longitude=49.000, latitude=2.55)
 
     # Flight Most Searched Destinations
-    amadeus.travel.analytics.fare_searches.get(originCityCode='MAD', sourceCountry='SP', period='2017-08')
-
+    # Which were the most searched flight destinations from Madrid in August 2017?
+    amadeus.travel.analytics.air_traffic.searched.get(originCityCode='MAD', marketCountryCode='ES', searchPeriod='2017-08')
+    # How many people in Spain searched for a trip from Madrid to New-York in September 2017?
+   amadeus.travel.analytics.air_traffic.searched_by_destination.get(originCityCode='MAD', destinationCityCode='NYC', marketCountryCode='ES', searchPeriod='2017-08')
+    
     # Flight Most Booked Destinations
     amadeus.travel.analytics.air_traffic.booked.get(originCityCode='MAD', period='2017-08')
 
@@ -235,7 +238,7 @@ List of supported endpoints
     # Flight Busiest Travel Period
     amadeus.travel.analytics.air_traffic.busiest_period.get(cityCode='MAD', period='2017', direction='ARRIVING')
 
-    # Hotel Search API
+    # Hotel Search
     # Get list of Hotels by city code
     amadeus.shopping.hotel_offers.get(cityCode = 'MAD')
     # Get list of offers for a specific Hotel
