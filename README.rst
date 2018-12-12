@@ -227,7 +227,7 @@ List of supported endpoints
     # Which were the most searched flight destinations from Madrid in August 2017?
     amadeus.travel.analytics.air_traffic.searched.get(originCityCode='MAD', marketCountryCode='ES', searchPeriod='2017-08')
     # How many people in Spain searched for a trip from Madrid to New-York in September 2017?
-   amadeus.travel.analytics.air_traffic.searched_by_destination.get(originCityCode='MAD', destinationCityCode='NYC', marketCountryCode='ES', searchPeriod='2017-08')
+    amadeus.travel.analytics.air_traffic.searched_by_destination.get(originCityCode='MAD', destinationCityCode='NYC', marketCountryCode='ES', searchPeriod='2017-08')
     
     # Flight Most Booked Destinations
     amadeus.travel.analytics.air_traffic.booked.get(originCityCode='MAD', period='2017-08')
