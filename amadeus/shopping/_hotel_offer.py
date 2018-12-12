@@ -12,7 +12,7 @@ class HotelOffer(Decorator, object):
 
         .. code-block:: python
 
-            amadeus.shopping.hotel_offers('XXX').get
+            amadeus.shopping.hotel_offer('XXX').get
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
