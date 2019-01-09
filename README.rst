@@ -220,8 +220,8 @@ List of supported endpoints
     # Get a specific city or airport based on its id
     amadeus.reference_data.location('ALHR').get()
 
-    # Airport Nearest Relevant Airport
-    amadeus.reference_data.locations.airports.get(longitude=49.000, latitude=2.55)
+    # Airport Nearest Relevant Airport (for London)
+    amadeus.reference_data.locations.airports.get(longitude=0.1278, latitude=51.5074)
 
     # Flight Most Searched Destinations
     # Which were the most searched flight destinations from Madrid in August 2017?
