@@ -6,13 +6,23 @@ git clone https://github.com/amadeus4dev/amadeus-python.git
 cd amadeus-python
 ```
 
-First, ensure you have a version of every Python we support installed. Your versions may differ.
+First, make sure your pyenv is initialized for each environment (`pyenv init `).
+If you want to have it loaded automatically, add the following to ~/.zshrc:
+
+```sh
+eval "$(pyenv init -)"
+```
+
+Second, ensure you have a version of every Python we support installed. Your versions may differ.
 
 ```sh
 pyenv install 2.7.14
 pyenv install 3.3.7
-pyenv install ...
-pyenv global 3.6.3 3.5.4 3.4.7 3.3.7 2.7.14   
+pyenv install 3.4.9
+pyenv install 3.5.6
+pyenv install 3.6.3
+pyenv install 3.6.8
+pyenv global 3.6.8 3.6.3 3.5.6 3.4.9 3.3.7 2.7.14   
 ```
 
 Next ensure you create a virtual environment.
