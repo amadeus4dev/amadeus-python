@@ -1,6 +1,11 @@
 Changelog
 =========
 
+2.0.1 - 2019-01-17
+-------------------- 
+
+Fix pagination URL encoding parameters
+
 2.0.0 - 2018-10-14
 -------------------- 
 
