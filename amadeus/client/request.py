@@ -112,7 +112,7 @@ class Request(object):
 
     # Encodes the params before sending them
     def _encoded_params(self):
-        return urlencode(self.params)
+        return self._urlencode(self.params)
 
     # Builds up the full URL based on the scheme, host, path, and params
     def __full_url(self):
@@ -141,3 +141,20 @@ class Request(object):
     # Applies all the headers to the HTTP Request object
     def __apply_headers(self, http_request):
         http_request.headers = self.headers
+
+    # Helper method to prepare the parameter encoding
+    def _urlencode(self, d):
+        return urlencode(self._flatten_keys(d, '', {}))
+
+    # Flattens the hash keys, so page: { offset: 1 } becomes page[offet] = 1
+    def _flatten_keys(self, d, key, out):
+        if type(d) is not dict:
+            raise TypeError('Only dicts can be encoded')
+
+        for k in d:
+            keystr = k if not key else '[{}]'.format(k)
+            if type(d[k]) is dict:
+                self._flatten_keys(d[k], str(key) + str(keystr), out)
+            else:
+                out['{}{}'.format(key, keystr)] = d[k]
+        return out
