@@ -11,3 +11,5 @@ htmlcov
 _docs
 dist
 build
+.vscode
+env
