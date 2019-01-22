@@ -6,6 +6,7 @@ Changelog
 **  Hotel Search v2 has been deployed (Hotel Search v1 is now deprecated) ** 
 
 ** General **
+- Remove support of Hotel Search v1
 - URLs for all three endpoints have been simplified for ease-of-use and consistency
 ** Find Hotels - 1st endpoint ** 
 - The parameter `hotels` has been renamed to `hotelIds`
