@@ -109,11 +109,11 @@ would be:
 Similarly, to select a resource by ID, you can pass in the ID to the
 singular path.
 
-For example, ``GET /v1/shopping/hotels/123/hotel-offers`` would be:
+For example, ``GET /v2/shopping/hotel-offers/XZY`` would be:
 
 .. code:: py
 
-    amadeus.hotel(123).hotel_offers.get(...)
+    amadeus.shopping.hotel_offer('4BA070CE929E135B3268A9F2D0C51E9D4A6CF318BA10485322FA2C7E78C7852E').get()
 
 You can make any arbitrary API call as well directly with the ``.get``
 method:
@@ -227,7 +227,7 @@ List of supported endpoints
     # Which were the most searched flight destinations from Madrid in August 2017?
     amadeus.travel.analytics.air_traffic.searched.get(originCityCode='MAD', marketCountryCode='ES', searchPeriod='2017-08')
     # How many people in Spain searched for a trip from Madrid to New-York in September 2017?
-   amadeus.travel.analytics.air_traffic.searched_by_destination.get(originCityCode='MAD', destinationCityCode='NYC', marketCountryCode='ES', searchPeriod='2017-08')
+    amadeus.travel.analytics.air_traffic.searched_by_destination.get(originCityCode='MAD', destinationCityCode='NYC', marketCountryCode='ES', searchPeriod='2017-08')
     
     # Flight Most Booked Destinations
     amadeus.travel.analytics.air_traffic.booked.get(originCityCode='MAD', period='2017-08')
@@ -240,13 +240,13 @@ List of supported endpoints
 
     # Hotel Search
     # Get list of Hotels by city code
-    amadeus.shopping.hotel_offers.get(cityCode = 'MAD')
-    # Get list of offers for a specific Hotel
-    amadeus.shopping.hotel('SMPARCOL').hotel_offers.get()
-    # Confirm the availability of a specific offer for a specific Hotel
-    amadeus.shopping.hotel('SMPARCOL').offer('4BA070BA10485322FA2C7E78C7852E').get()
+    amadeus.shopping.hotel_offers.get(cityCode = 'LON')
+    # Get list of offers for a specific hotel
+    amadeus.shopping.hotel_offers_by_hotel.get(hotelId = 'IALONCHO')
+    # Confirm the availability of a specific offer
+    amadeus.shopping.hotel_offer('D5BEE9D0D08B6678C2F5FAD910DC110BCDA187D21D4FCE68ED423426D0A246BB').get()
 
- 
+
 Development & Contributing
 --------------------------
 
