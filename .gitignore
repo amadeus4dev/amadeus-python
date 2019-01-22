@@ -12,3 +12,4 @@ _docs
 dist
 build
 .vscode
+env
