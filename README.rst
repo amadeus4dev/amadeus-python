@@ -245,6 +245,11 @@ List of supported endpoints
     amadeus.shopping.hotel_offers_by_hotel.get(hotelId = 'IALONCHO')
     # Confirm the availability of a specific offer
     amadeus.shopping.hotel_offer('D5BEE9D0D08B6678C2F5FAD910DC110BCDA187D21D4FCE68ED423426D0A246BB').get()
+    # Point of Interest
+    # What are the popular places in Barcelona (based a geo location and a radius)
+    amadeus.reference_data.locations.point_of_interests.get(latitude=41.397158, longitude=2.160873)
+    # What are the popular places in Barcelona? (based on a square)
+    amadeus.reference_data.locations.point_of_interests.by_square.get(north=41.397158, west=2.160873, south=41.394582, east=2.177181)
 
 
 Development & Contributing
