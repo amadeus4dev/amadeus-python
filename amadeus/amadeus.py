@@ -37,7 +37,7 @@ class Client(Namespaces, Pagination, Validator, HTTP, object):
         .. code-block:: python
 
 
-              amadeus = amadeus.Client()
+        amadeus = amadeus.Client()
 
         :param client_id: the API key used to authenticate the API
         :paramtype client_id: str

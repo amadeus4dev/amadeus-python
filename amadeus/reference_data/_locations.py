@@ -1,11 +1,13 @@
 from amadeus.client.decorator import Decorator
 from amadeus.reference_data.locations._airports import Airports
+from amadeus.reference_data.locations._point_of_interests import PointOfInterests
 
 
 class Locations(Decorator, object):
     def __init__(self, client):
         Decorator.__init__(self, client)
         self.airports = Airports(client)
+        self.point_of_interests = PointOfInterests(client)
 
     def get(self, **params):
         '''
