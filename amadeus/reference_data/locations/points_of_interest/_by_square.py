@@ -10,7 +10,7 @@ class BySquare(Decorator, object):
         .. code-block:: python
 
 
-            client.reference_data.locations.point_of_interests.by_square.get(
+            client.reference_data.locations.points_of_interest.by_square.get(
                 north=41.397158,
                 west=2.160873,
                 south=41.394582,

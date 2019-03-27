@@ -1,3 +1,3 @@
 from ._airports import Airports
-from ._point_of_interests import PointOfInterests
+from ._points_of_interest import PointOfInterests
 __all__ = ['Airports', 'PointOfInterests']
