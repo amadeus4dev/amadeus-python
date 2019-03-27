@@ -3,7 +3,7 @@ from amadeus.reference_data.locations.points_of_interest._by_square \
     import BySquare
 
 
-class PointOfInterests(Decorator, object):
+class PointsOfInterest(Decorator, object):
     def __init__(self, client):
         Decorator.__init__(self, client)
         self.by_square = BySquare(client)
