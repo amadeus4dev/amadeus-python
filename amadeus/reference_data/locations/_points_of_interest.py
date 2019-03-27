@@ -1,5 +1,5 @@
 from amadeus.client.decorator import Decorator
-from amadeus.reference_data.locations.point_of_interests._by_square \
+from amadeus.reference_data.locations.points_of_interest._by_square \
     import BySquare
 
 
@@ -15,7 +15,7 @@ class PointOfInterests(Decorator, object):
         .. code-block:: python
 
 
-            client.reference_data.locations.point_of_interests.get(
+            client.reference_data.locations.points_of_interest.get(
                 longitude=2.160873,
                 latitude=41.397158
             )
