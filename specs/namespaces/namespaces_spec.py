@@ -20,6 +20,10 @@ with description('Namespaces') as self:
         expect(client.reference_data.location).not_to(be_none)
         expect(client.reference_data.locations).not_to(be_none)
         expect(client.reference_data.locations.airports).not_to(be_none)
+        expect(client.reference_data.locations.points_of_interest).not_to(be_none)
+        expect(
+            client.reference_data.locations.points_of_interest.by_square).not_to(
+            be_none)
 
         expect(client.travel).not_to(be_none)
         expect(client.travel.analytics).not_to(be_none)
@@ -46,6 +50,12 @@ with description('Namespaces') as self:
         expect(client.reference_data.location('ALHR').get).not_to(be_none)
         expect(client.reference_data.locations.get).not_to(be_none)
         expect(client.reference_data.locations.airports.get).not_to(be_none)
+        expect(
+            client.reference_data.locations.points_of_interest.get).not_to(
+            be_none)
+        expect(
+            client.reference_data.locations.points_of_interest.by_square.get
+            ).not_to(be_none)
 
         expect(client.travel.analytics.air_traffic.traveled.get).not_to(be_none)
         expect(client.travel.analytics.air_traffic.booked.get).not_to(be_none)
@@ -98,6 +108,19 @@ with description('Namespaces') as self:
             self.client.reference_data.locations.airports.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/reference-data/locations/airports', a='b'
+            ))
+
+        with it('.reference_data.locations.points_of_interest.get'):
+            self.client.reference_data.locations.points_of_interest.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/reference-data/locations/pois', a='b'
+            ))
+
+        with it('.reference_data.locations.points_of_interest.by_square.get'):
+            self.client.reference_data.locations.points_of_interest.by_square.get(
+                a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/reference-data/locations/pois/by-square', a='b'
             ))
 
         with it('.travel.analytics.air_traffic.traveled.get'):
