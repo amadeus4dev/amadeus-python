@@ -1,5 +1,11 @@
 Changelog
 =========
+3.1.0 - 2019-03-25
+-------------------- 
+Release of the `Point of Interest API <https://developers.amadeus.com/self-service/category/210/api-doc/55>`_
+
+The Points Of Interest API, powered by AVUXI TopPlace, is a search API that returns a list of popular places for a particular location. The location can be defined as area bound by four coordinates or as a geographical coordinate with a radius. The popularity of a place or 'point of interest' is determined by AVUXI's proprietary algorithm that considers factors such as ratings, check-ins, category scores among other factors from a host of online media sources.
+
 
 3.0.0 - 2019-01-22
 -------------------- 
