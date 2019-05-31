@@ -1,5 +1,8 @@
 # Support Python 2 and 3 API calls without importing
 # a 3rd party library
+
+import json
+
 try:
     from urllib.request import Request as HTTPRequest
     from urllib.parse import urlencode
@@ -54,16 +57,6 @@ class Request(object):
     '''
 
     def __init__(self, options):
-        self.http_request = None
-        self.__initialize_options(options)
-        self.__initialize_headers()
-        self.__build_http_request()
-
-    # PRIVATE
-
-    # Initializes the Request object with all the passed in params. These
-    # do not change once set
-    def __initialize_options(self, options):
         self.host = options['host']
         self.port = options['port']
         self.ssl = options['ssl']
@@ -77,12 +70,15 @@ class Request(object):
         self.app_id = options['app_id']
         self.app_version = options['app_version']
 
-    # Initializes the basic headers
-    def __initialize_headers(self):
         self.headers = {
             'User-Agent': self.__build_user_agent(),
             'Accept': 'application/json, application/vnd.amadeus+json'
         }
+
+        self.url = self.__build_url()
+        self.http_request = self.__build_http_request()
+
+    # PRIVATE
 
     # Determines the User Agent
     def __build_user_agent(self):
@@ -92,30 +88,31 @@ class Request(object):
             user_agent += ' {0}/{1}'.format(self.app_id, self.app_version)
         return user_agent
 
-    # Builds up a HTTP Request objectm if not akready set
-    def __build_http_request(self):
-        request = self.__request_for_verb()
-        self.__add_post_data_header()
-        self.__add_bearer_token_header()
-        self.__apply_headers(request)
-        self.http_request = request
-
     # Builds a HTTP Request object based on the path, params, and verb
-    def __request_for_verb(self):
-        params = self._encoded_params().encode()
-        path = self.__full_url()
+    def __build_http_request(self):
+        # Requests token in case has not been set
+        if (self.bearer_token is None):
+            self.headers['Content-Type'] = 'application/x-www-form-urlencoded'
+            return HTTPRequest(self.url,
+                               data=urlencode(self.params).encode(),
+                               headers=self.headers)
+
+        # Adds the authentication header since the bearer token has been set
+        self.headers['Authorization'] = self.bearer_token
 
         if (self.verb == 'GET'):
-            return HTTPRequest(path)
+            return HTTPRequest(self.url, headers=self.headers)
         else:
-            return HTTPRequest(path, params)
+            return HTTPRequest(self.url,
+                               data=json.dumps(self.params).encode(),
+                               headers=self.headers)
 
     # Encodes the params before sending them
     def _encoded_params(self):
         return self._urlencode(self.params)
 
     # Builds up the full URL based on the scheme, host, path, and params
-    def __full_url(self):
+    def __build_url(self):
         full_url = '{0}://{1}'.format(self.scheme, self.host)
         if not self.__port_matches_scheme():
             full_url = '{0}:{1}'.format(full_url, self.port)
@@ -127,20 +124,6 @@ class Request(object):
     def __port_matches_scheme(self):
         return ((self.ssl and self.port == 443) or
                 (not self.ssl and self.port == 80))
-
-    # Adds an extra header if the verb is POST
-    def __add_post_data_header(self):
-        if (self.verb == 'POST'):
-            self.headers['Content-Type'] = 'application/x-www-form-urlencoded'
-
-    # Adds the authentication header if the bearer token has been set
-    def __add_bearer_token_header(self):
-        if (self.bearer_token is not None):
-            self.headers['Authorization'] = self.bearer_token
-
-    # Applies all the headers to the HTTP Request object
-    def __apply_headers(self, http_request):
-        http_request.headers = self.headers
 
     # Helper method to prepare the parameter encoding
     def _urlencode(self, d):

@@ -30,7 +30,7 @@ class Pagination(object):
         return self.request(
             response.request.verb,
             response.request.path,
-            **params
+            params
         )
 
     def __page_number_for(self, name, response):
