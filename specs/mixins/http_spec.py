@@ -26,23 +26,23 @@ with description('HTTP') as self:
             response = self.client.get('/foo', foo='bar')
             expect(response).to(equal(self.response))
             expect(self.client.request).to(
-                have_been_called_with('GET', '/foo', foo='bar')
+                have_been_called_with('GET', '/foo', {'foo': 'bar'})
             )
 
     with context('Client.post'):
         with it('should pass all details to the request method'):
             self.client.request = self.request_method
-            response = self.client.post('/foo', foo='bar')
+            response = self.client.post('/foo', {'foo': 'bar'})
             expect(response).to(equal(self.response))
             expect(self.client.request).to(
-                have_been_called_with('POST', '/foo', foo='bar')
+                have_been_called_with('POST', '/foo', {'foo': 'bar'})
             )
 
     with context('Client.request'):
         with it('should pass on to the _unauthenticated_request method'):
             self.response.result = {'access_token': '123'}
             self.client._unauthenticated_request = self.request_method
-            response = self.client.request('POST', '/foo', foo='bar')
+            response = self.client.request('POST', '/foo', {'foo': 'bar'})
             expect(response).to(equal(self.response))
             expect(self.client._unauthenticated_request).to(
                 have_been_called_with(
@@ -53,11 +53,11 @@ with description('HTTP') as self:
         with it('should use the same access token when cashed'):
             self.response.result = {'access_token': '123', 'expires_in': 2000}
             self.client._unauthenticated_request = self.request_method
-            self.client.request('POST', '/foo', foo='bar')
+            self.client.request('POST', '/foo', {'foo': 'bar'})
 
             self.response.result = {'access_token': '234', 'expires_in': 2000}
             self.client._unauthenticated_request = self.request_method
-            self.client.request('POST', '/foo', foo='bar')
+            self.client.request('POST', '/foo', {'foo': 'bar'})
 
             expect(self.client._unauthenticated_request).not_to(
                 have_been_called_with(
