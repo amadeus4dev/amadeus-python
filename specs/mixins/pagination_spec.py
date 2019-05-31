@@ -31,7 +31,7 @@ with description('Pagination') as self:
 
             next_response = self.pagination.previous(self.response)
             expect(self.client.request).to(
-                have_been_called_with('GET', '/a', a='b', page={'offset': '1'})
+                have_been_called_with('GET', '/a', {'a': 'b', 'page': {'offset': '1'}})
             )
             expect(next_response).to(equal(self.next_response))
 
@@ -48,7 +48,7 @@ with description('Pagination') as self:
 
             next_response = self.pagination.next(self.response)
             expect(self.client.request).to(
-                have_been_called_with('GET', '/a', a='b', page={'offset': '1'})
+                have_been_called_with('GET', '/a', {'a': 'b', 'page': {'offset': '1'}})
             )
             expect(next_response).to(equal(self.next_response))
 
@@ -65,7 +65,7 @@ with description('Pagination') as self:
 
             next_response = self.pagination.first(self.response)
             expect(self.client.request).to(
-                have_been_called_with('GET', '/a', a='b', page={'offset': '1'})
+                have_been_called_with('GET', '/a', {'a': 'b', 'page': {'offset': '1'}})
             )
             expect(next_response).to(equal(self.next_response))
 
@@ -83,7 +83,7 @@ with description('Pagination') as self:
 
             next_response = self.pagination.last(self.response)
             expect(self.client.request).to(
-                have_been_called_with('GET', '/a', a='b', page={'offset': '1'})
+                have_been_called_with('GET', '/a', {'a': 'b', 'page': {'offset': '1'}})
             )
             expect(next_response).to(equal(self.next_response))
 

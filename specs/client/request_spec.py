@@ -64,7 +64,7 @@ with description('Request') as self:
             expect(self.request.http_request.get_header('Accept')).to(
                 equal('application/json, application/vnd.amadeus+json')
             )
-            expect(self.request.http_request.get_header('User-Agent')).to(
+            expect(self.request.http_request.get_header('User-agent')).to(
                 equal('amadeus-python/1.2.3 python/2.3.4 amadeus-cli/3.4.5')
             )
 
@@ -86,9 +86,7 @@ with description('Request') as self:
             expect(self.request.http_request).to(be_a(HTTPRequest))
             expect(self.request.http_request.get_full_url()).to(equal(
                 'https://example.com/foo/bar'))
-            expect(self.request.http_request.data).to(equal(b'foo=bar'))
-            expect(self.request.http_request.get_header('Content-Type')).to(
-                equal('application/x-www-form-urlencoded'))
+            expect(self.request.http_request.data).to(equal(b'{\"foo\": \"bar\"}'))
 
         with it('should handle a custom scheme and port'):
             self.request = Request({
