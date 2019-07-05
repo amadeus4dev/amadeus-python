@@ -207,7 +207,11 @@ List of supported endpoints
 
     # Flight Low-fare Search
     amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01')
-    
+
+    # Flight Choice Prediction 
+    result = amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01').result
+    amadeus.shopping.flight_offers.prediction.post(result)
+
     # Flight Checkin Links
     amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')
 
@@ -245,6 +249,7 @@ List of supported endpoints
     amadeus.shopping.hotel_offers_by_hotel.get(hotelId = 'IALONCHO')
     # Confirm the availability of a specific offer
     amadeus.shopping.hotel_offer('D5BEE9D0D08B6678C2F5FAD910DC110BCDA187D21D4FCE68ED423426D0A246BB').get()
+    
     # Point of Interest
     # What are the popular places in Barcelona (based a geo location and a radius)
     amadeus.reference_data.locations.points_of_interest.get(latitude=41.397158, longitude=2.160873)
