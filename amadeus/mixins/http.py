@@ -40,9 +40,9 @@ class HTTP(object):
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: when the request fails
         '''
-        return self.request('GET', path, **params)
+        return self.request('GET', path, params)
 
-    def post(self, path, **params):
+    def post(self, path, params={}):
         '''
         A helper function for making generic POST requests calls. It is used by
         every namespaced API POST method.
@@ -63,9 +63,9 @@ class HTTP(object):
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: when the request fails
         '''
-        return self.request('POST', path, **params)
+        return self.request('POST', path, params)
 
-    def request(self, verb, path, **params):
+    def request(self, verb, path, params):
         '''
         A helper function for making generic POST requests calls. It is used by
         every namespaced API method. It can be used to make any generic API
