@@ -1,5 +1,5 @@
 from amadeus.client.decorator import Decorator
-from amadeus.travel.predictions._trip_purpose import TripPurpose
+from .predictions import TripPurpose
 
 
 class Predictions(Decorator, object):

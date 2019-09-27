@@ -1,5 +1,4 @@
 from ._analytics import Analytics
-from .predictions._trip_purpose import TripPurpose
-
+from ._predictions import TripPurpose
 
 __all__ = ['Analytics', 'TripPurpose']
