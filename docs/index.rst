@@ -68,6 +68,12 @@ Travel/Analytics
 .. autoclass:: amadeus.travel.analytics.FareSearches
   :members: get
 
+Travel/Predictions
+================
+
+.. autoclass:: amadeus.travel.predictions.TripPurpose
+  :members: get
+
 ReferenceData/Locations
 =======================
 
