@@ -256,6 +256,9 @@ List of supported endpoints
     # What are the popular places in Barcelona? (based on a square)
     amadeus.reference_data.locations.points_of_interest.by_square.get(north=41.397158, west=2.160873, south=41.394582, east=2.177181)
 
+    # Trip Purpose Prediction
+    amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2020-08-01', returnDate='2020-08-12', searchDate='2020-06-11')
+
 
 Development & Contributing
 --------------------------

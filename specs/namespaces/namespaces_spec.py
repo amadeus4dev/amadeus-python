@@ -35,6 +35,9 @@ with description('Namespaces') as self:
             be_none)
         expect(client.travel.analytics.air_traffic.busiest_period).not_to(be_none)
 
+        expect(client.travel.predictions).not_to(be_none)
+        expect(client.travel.predictions.trip_purpose).not_to(be_none)
+
         expect(client.shopping).not_to(be_none)
         expect(client.shopping.flight_dates).not_to(be_none)
         expect(client.shopping.flight_destinations).not_to(be_none)
@@ -67,6 +70,8 @@ with description('Namespaces') as self:
         expect(
             client.travel.analytics.air_traffic.busiest_period.get).not_to(
             be_none)
+
+        expect(client.travel.predictions.trip_purpose.get).not_to(be_none)
 
         expect(client.shopping.flight_dates.get).not_to(be_none)
         expect(client.shopping.flight_destinations.get).not_to(be_none)
@@ -155,6 +160,12 @@ with description('Namespaces') as self:
                 have_been_called_with(
                     '/v1/travel/analytics/air-traffic/searched/by-destination',
                     a='b'))
+
+        with it('.travel.predictions.trip_purpose.get'):
+            self.client.travel.predictions.trip_purpose.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/travel/predictions/trip-purpose', a='b'
+            ))
 
         with it('.shopping.flight_dates.get'):
             self.client.shopping.flight_dates.get(a='b')
