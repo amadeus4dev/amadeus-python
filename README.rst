@@ -122,6 +122,13 @@ method:
 
     amadeus.get('/v2/reference-data/urls/checkin-links', airlineCode='BA')
 
+Or with ``POST`` using ``.client.post`` method:
+
+.. code:: py
+
+    amadeus.post('/v1/shopping/flight-offers/pricing', data)
+
+
 Response
 --------
 
@@ -232,7 +239,7 @@ List of supported endpoints
     amadeus.travel.analytics.air_traffic.searched.get(originCityCode='MAD', marketCountryCode='ES', searchPeriod='2017-08')
     # How many people in Spain searched for a trip from Madrid to New-York in September 2017?
     amadeus.travel.analytics.air_traffic.searched_by_destination.get(originCityCode='MAD', destinationCityCode='NYC', marketCountryCode='ES', searchPeriod='2017-08')
-    
+
     # Flight Most Booked Destinations
     amadeus.travel.analytics.air_traffic.booked.get(originCityCode='MAD', period='2017-08')
 
@@ -249,7 +256,11 @@ List of supported endpoints
     amadeus.shopping.hotel_offers_by_hotel.get(hotelId = 'IALONCHO')
     # Confirm the availability of a specific offer
     amadeus.shopping.hotel_offer('D5BEE9D0D08B6678C2F5FAD910DC110BCDA187D21D4FCE68ED423426D0A246BB').get()
-    
+
+    # Hotel Ratings
+    # What travelers think about this hotel?
+    amadeus.e_reputation.hotel_sentiments.get(hotelIds = 'ADNYCCTB')
+
     # Point of Interest
     # What are the popular places in Barcelona (based a geo location and a radius)
     amadeus.reference_data.locations.points_of_interest.get(latitude=41.397158, longitude=2.160873)
