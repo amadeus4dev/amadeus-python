@@ -72,7 +72,8 @@ class Request(object):
 
         self.headers = {
             'User-Agent': self.__build_user_agent(),
-            'Accept': 'application/json, application/vnd.amadeus+json'
+            'Accept': 'application/json, application/vnd.amadeus+json',
+            'Content-Type': 'application/vnd.amadeus+json'
         }
 
         self.url = self.__build_url()
