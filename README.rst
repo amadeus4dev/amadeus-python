@@ -20,7 +20,7 @@ This SDK requires Python 2.7+ or 3.4+. You can install it directly with pip.
 
     pip install amadeus
 
-You can also add it to your `requirements.txt` file and install using: 
+You can also add it to your `requirements.txt` file and install using:
 
 .. code:: sh
 
@@ -126,8 +126,7 @@ Or with ``POST`` using ``.client.post`` method:
 
 .. code:: py
 
-    amadeus.post('/v1/shopping/flight-offers/pricing', data)
-
+    amadeus.post('/v1/shopping/flight-offers/pricing', body)
 
 Response
 --------
@@ -215,7 +214,7 @@ List of supported endpoints
     # Flight Low-fare Search
     amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01')
 
-    # Flight Choice Prediction 
+    # Flight Choice Prediction
     result = amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01').result
     amadeus.shopping.flight_offers.prediction.post(result)
 
