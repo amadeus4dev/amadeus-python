@@ -74,6 +74,9 @@ Travel/Predictions
 .. autoclass:: amadeus.travel.predictions.TripPurpose
   :members: get
 
+.. autoclass:: amadeus.travel.predictions.FlightDelay
+  :members: get
+
 ReferenceData/Locations
 =======================
 
