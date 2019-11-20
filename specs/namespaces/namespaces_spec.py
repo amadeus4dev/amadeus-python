@@ -37,6 +37,7 @@ with description('Namespaces') as self:
 
         expect(client.travel.predictions).not_to(be_none)
         expect(client.travel.predictions.trip_purpose).not_to(be_none)
+        expect(client.travel.predictions.flight_delay).not_to(be_none)
 
         expect(client.shopping).not_to(be_none)
         expect(client.shopping.flight_dates).not_to(be_none)
@@ -74,6 +75,7 @@ with description('Namespaces') as self:
             be_none)
 
         expect(client.travel.predictions.trip_purpose.get).not_to(be_none)
+        expect(client.travel.predictions.flight_delay.get).not_to(be_none)
 
         expect(client.shopping.flight_dates.get).not_to(be_none)
         expect(client.shopping.flight_destinations.get).not_to(be_none)
@@ -169,6 +171,12 @@ with description('Namespaces') as self:
             self.client.travel.predictions.trip_purpose.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/travel/predictions/trip-purpose', a='b'
+            ))
+
+        with it('.travel.predictions.flight_delay.get'):
+            self.client.travel.predictions.flight_delay.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/travel/predictions/flight-delay', a='b'
             ))
 
         with it('.shopping.flight_dates.get'):
