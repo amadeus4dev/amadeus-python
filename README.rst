@@ -269,6 +269,8 @@ List of supported endpoints
     # Trip Purpose Prediction
     amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2020-08-01', returnDate='2020-08-12', searchDate='2020-06-11')
 
+    # Flight Delay Prediction
+    amadeus.travel.predictions.flight_delay.get(originLocationCode='BRU', destinationLocationCode='FRA', departureDate='2020-01-14', departureTime='11:05:00', arrivalDate='2020-01-14', arrivalTime='12:10:00', aircraftCode='32A', carrierCode='LH', flightNumber='1009', duration='PT1H05M')
 
 Development & Contributing
 --------------------------
