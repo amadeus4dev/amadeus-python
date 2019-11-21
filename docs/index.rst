@@ -102,3 +102,9 @@ Helper/Location
 ==================
 
 .. autoclass:: amadeus.Location
+
+Media/Files
+================
+
+.. autoclass:: amadeus.media.files.GeneratedPhotos
+  :members: get
