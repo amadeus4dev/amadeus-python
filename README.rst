@@ -272,6 +272,9 @@ List of supported endpoints
     # Flight Delay Prediction
     amadeus.travel.predictions.flight_delay.get(originLocationCode='BRU', destinationLocationCode='FRA', departureDate='2020-01-14', departureTime='11:05:00', arrivalDate='2020-01-14', arrivalTime='12:10:00', aircraftCode='32A', carrierCode='LH', flightNumber='1009', duration='PT1H05M')
 
+    # Airport On-Time Performance
+    amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-03-01')
+
 Development & Contributing
 --------------------------
 
