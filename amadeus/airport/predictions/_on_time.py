@@ -4,8 +4,7 @@ from amadeus.client.decorator import Decorator
 class AirportOnTime(Decorator, object):
     def get(self, **params):
         '''
-        Predicts traveler purpose, Business or Leisure,
-        with the probability in the context of search & shopping
+        Returns a percentage of on-time flight departures
 
         .. code-block:: python
 
