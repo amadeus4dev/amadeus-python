@@ -50,6 +50,10 @@ with description('Namespaces') as self:
 
         expect(client.e_reputation.hotel_sentiments).not_to(be_none)
 
+        expect(client.media).not_to(be_none)
+        expect(client.media.files).not_to(be_none)
+        expect(client.media.files.generated_photos).not_to(be_none)
+
     with it('should define all expected .get methods'):
         client = self.client
         expect(client.reference_data.urls.checkin_links.get).not_to(be_none)
@@ -86,6 +90,8 @@ with description('Namespaces') as self:
         expect(client.shopping.hotel_offer('123').get).not_to(be_none)
 
         expect(client.e_reputation.hotel_sentiments.get).not_to(be_none)
+
+        expect(client.media.files.generated_photos.get).not_to(be_none)
 
     with context('testing all calls to the client'):
         with before.each:
@@ -219,4 +225,10 @@ with description('Namespaces') as self:
             self.client.e_reputation.hotel_sentiments.get(hotelIds='XKPARC12')
             expect(self.client.get).to(have_been_called_with(
                 '/v2/e-reputation/hotel-sentiments', hotelIds='XKPARC12'
+            ))
+
+        with it('.media.files.generated_photos.get'):
+            self.client.media.files.generated_photos.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v2/media/files/generated-photos', a='b'
             ))
