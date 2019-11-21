@@ -50,6 +50,7 @@ with description('Namespaces') as self:
 
         expect(client.e_reputation.hotel_sentiments).not_to(be_none)
 
+        expect(client.airport).not_to(be_none)
         expect(client.airport.predictions).not_to(be_none)
         expect(client.airport.predictions.on_time).not_to(be_none)
 
