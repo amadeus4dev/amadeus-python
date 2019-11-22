@@ -103,6 +103,12 @@ Helper/Location
 
 .. autoclass:: amadeus.Location
 
+Airport/Predictions
+================
+
+.. autoclass:: amadeus.airport.predictions.AirportOnTime
+  :members: get
+
 Media/Files
 ================
 
