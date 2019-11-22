@@ -108,3 +108,9 @@ Airport/Predictions
 
 .. autoclass:: amadeus.airport.predictions.AirportOnTime
   :members: get
+
+Media/Files
+================
+
+.. autoclass:: amadeus.media.files.GeneratedPhotos
+  :members: get

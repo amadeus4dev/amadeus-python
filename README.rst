@@ -276,6 +276,9 @@ List of supported endpoints
     # Airport On-Time Performance
     amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-03-01')
 
+    # AI Generated Photos
+    amadeus.media.files.generated_photos.get(category='MOUNTAIN')
+
 Development & Contributing
 --------------------------
 
