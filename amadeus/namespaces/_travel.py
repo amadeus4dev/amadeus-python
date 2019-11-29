@@ -1,6 +1,7 @@
 from amadeus.client.decorator import Decorator
 from amadeus.travel._analytics import Analytics
 from amadeus.travel._predictions import Predictions
+from amadeus.travel._trip_parser_jobs import TripParser
 
 
 class Travel(Decorator, object):
@@ -8,3 +9,4 @@ class Travel(Decorator, object):
         Decorator.__init__(self, client)
         self.analytics = Analytics(client)
         self.predictions = Predictions(client)
+        self.trip_parser_jobs = TripParser(client)
