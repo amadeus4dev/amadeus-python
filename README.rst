@@ -279,6 +279,13 @@ List of supported endpoints
     # AI Generated Photos
     amadeus.media.files.generated_photos.get(category='MOUNTAIN')
 
+    # Trip Parser
+    amadeus.travel.trip_parser_jobs.post(body)
+    # Get the parsing status of the process by jobId
+    amadeus.travel.trip_parser_jobs.status('aQ4xgn7uVnkXC3BDNDr7lwOd').get()
+    # Get the result of the process by jobId
+    amadeus.travel.trip_parser_jobs.result('aQ4xgn7uVnkXC3BDNDr7lwOd').get()
+
 Development & Contributing
 --------------------------
 

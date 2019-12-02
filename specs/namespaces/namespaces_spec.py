@@ -58,9 +58,9 @@ with description('Namespaces') as self:
         expect(client.media.files).not_to(be_none)
         expect(client.media.files.generated_photos).not_to(be_none)
 
-        expect(client.travel.trip_parser).not_to(be_none)
-        expect(client.travel.trip_parser.status).not_to(be_none)
-        expect(client.travel.trip_parser.result).not_to(be_none)
+        expect(client.travel.trip_parser_jobs).not_to(be_none)
+        expect(client.travel.trip_parser_jobs.status).not_to(be_none)
+        expect(client.travel.trip_parser_jobs.result).not_to(be_none)
 
     with it('should define all expected .get methods'):
         client = self.client
@@ -103,8 +103,8 @@ with description('Namespaces') as self:
 
         expect(client.media.files.generated_photos.get).not_to(be_none)
 
-        expect(client.travel.trip_parser.status('123').get).not_to(be_none)
-        expect(client.travel.trip_parser.result('123').get).not_to(be_none)
+        expect(client.travel.trip_parser_jobs.status('123').get).not_to(be_none)
+        expect(client.travel.trip_parser_jobs.result('123').get).not_to(be_none)
 
     with context('testing all calls to the client'):
         with before.each:
@@ -252,14 +252,14 @@ with description('Namespaces') as self:
                 '/v2/media/files/generated-photos', a='b'
             ))
 
-        with it('.travel.trip_parser.status().get'):
-            self.client.travel.trip_parser.status('XXX').get(a='b')
+        with it('.travel.trip_parser_jobs.status().get'):
+            self.client.travel.trip_parser_jobs.status('XXX').get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v2/travel/trip-parser-jobs/XXX', a='b'
             ))
 
-        with it('.travel.trip_parser.result().get'):
-            self.client.travel.trip_parser.result('XXX').get(a='b')
+        with it('.travel.trip_parser_jobs.result().get'):
+            self.client.travel.trip_parser_jobs.result('XXX').get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v2/travel/trip-parser-jobs/XXX/result', a='b'
             ))

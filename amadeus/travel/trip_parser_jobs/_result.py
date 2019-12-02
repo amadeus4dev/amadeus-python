@@ -7,6 +7,17 @@ class TripParserResult(Decorator, object):
         self.job_id = job_id
 
     def get(self, **params):
+        '''
+        Returns parsing status and the link to the result
+        in case of successful parsing.
+
+        .. code-block:: python
+
+            amadeus.travel.trip_parser_jobs.result('XXX').get
+
+        :rtype: amadeus.Response
+        :raises amadeus.ResponseError: if the request could not be completed
+        '''
         return self.client.get(
             '/v2/travel/trip-parser-jobs/{0}/result'.format(self.job_id),
             **params)

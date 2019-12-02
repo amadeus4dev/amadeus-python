@@ -1,6 +1,6 @@
 from amadeus.client.decorator import Decorator
-from amadeus.travel.trip_parser._status import TripParserStatus
-from amadeus.travel.trip_parser._result import TripParserResult
+from amadeus.travel.trip_parser_jobs._status import TripParserStatus
+from amadeus.travel.trip_parser_jobs._result import TripParserResult
 
 
 class TripParser(Decorator, object):
@@ -15,16 +15,12 @@ class TripParser(Decorator, object):
 
     def post(self, body):
         '''
-        Forecast traveler choices in the context of search & shopping.
+        Sends the request for the parsing with the
+        booking details and input parameters.
 
         .. code-block:: python
 
-            amadeus.shopping.flight_offers.prediction.post(
-                amadeus.shopping.flight_offers.get(origin='MAD',
-                destination='NYC',
-                departureDate='2019-08-01'
-            ).body
-        )
+            amadeus.travel.trip_parser_jobs.post(body)
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
