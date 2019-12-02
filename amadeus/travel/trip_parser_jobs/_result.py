@@ -8,8 +8,7 @@ class TripParserResult(Decorator, object):
 
     def get(self, **params):
         '''
-        Returns parsing status and the link to the result
-        in case of successful parsing.
+        Returns the complete result of parsing as a aggregated view of Trip
 
         .. code-block:: python
 
