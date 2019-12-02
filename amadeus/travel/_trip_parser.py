@@ -1,6 +1,6 @@
 from amadeus.client.decorator import Decorator
-from amadeus.travel.trip_parser_jobs._status import TripParserStatus
-from amadeus.travel.trip_parser_jobs._result import TripParserResult
+from amadeus.travel.trip_parser._status import TripParserStatus
+from amadeus.travel.trip_parser._result import TripParserResult
 
 
 class TripParser(Decorator, object):

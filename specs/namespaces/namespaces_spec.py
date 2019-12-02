@@ -58,6 +58,10 @@ with description('Namespaces') as self:
         expect(client.media.files).not_to(be_none)
         expect(client.media.files.generated_photos).not_to(be_none)
 
+        expect(client.travel.trip_parser).not_to(be_none)
+        expect(client.travel.trip_parser.status).not_to(be_none)
+        expect(client.travel.trip_parser.result).not_to(be_none)
+
     with it('should define all expected .get methods'):
         client = self.client
         expect(client.reference_data.urls.checkin_links.get).not_to(be_none)
@@ -98,6 +102,9 @@ with description('Namespaces') as self:
         expect(client.airport.predictions.on_time.get).not_to(be_none)
 
         expect(client.media.files.generated_photos.get).not_to(be_none)
+
+        expect(client.travel.trip_parser.status('123').get).not_to(be_none)
+        expect(client.travel.trip_parser.result('123').get).not_to(be_none)
 
     with context('testing all calls to the client'):
         with before.each:
@@ -243,4 +250,16 @@ with description('Namespaces') as self:
             self.client.media.files.generated_photos.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v2/media/files/generated-photos', a='b'
+            ))
+
+        with it('.travel.trip_parser.status().get'):
+            self.client.travel.trip_parser.status('XXX').get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v2/travel/trip-parser-jobs/XXX', a='b'
+            ))
+
+        with it('.travel.trip_parser.result().get'):
+            self.client.travel.trip_parser.result('XXX').get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v2/travel/trip-parser-jobs/XXX/result', a='b'
             ))
