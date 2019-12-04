@@ -280,11 +280,18 @@ List of supported endpoints
     amadeus.media.files.generated_photos.get(category='MOUNTAIN')
 
     # Trip Parser
-    amadeus.travel.trip_parser_jobs.post(body)
+    # Encode to Base64 your booking confirmation
+    # For .html
+    body = amadeus.travel.trip_parser_jobs.encode_html('booking.html')
+    # For .eml
+    body = amadeus.travel.trip_parser_jobs.encode_email('booking.eml')
+    # For .pdf
+    body = amadeus.travel.trip_parser_jobs.encode_pdf('booking.pdf')
+    response = amadeus.travel.trip_parser_jobs.post(body)
     # Get the parsing status of the process by jobId
-    amadeus.travel.trip_parser_jobs.status('aQ4xgn7uVnkXC3BDNDr7lwOd').get()
+    amadeus.travel.trip_parser_jobs.status(response.data['id']).get()
     # Get the result of the process by jobId
-    amadeus.travel.trip_parser_jobs.result('aQ4xgn7uVnkXC3BDNDr7lwOd').get()
+    amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
 
 Development & Contributing
 --------------------------
