@@ -1,5 +1,19 @@
 Changelog
 =========
+3.3.0 - 2019-12-04
+--------------------
+Add support for the `AI-Generated Photos <https://developers.amadeus.com/self-service/category/trip/api-doc/ai-generated-photos>`_
+
+The AI-Generated Photos API returns a link to download a rendered image of a landscape. The image size is 512x512 pixels and the currently available image categories are BEACH and MOUNTAIN. The link to download the AI-generated picture is valid for 24 hours. This API is an experimental project created by the Amadeus AI Lab using the Nvidia StyleGAN framework. This API is free to use and we welcome any feedback you may have about improvements.
+
+Add support for the `Flight Delay Prediction <https://developers.amadeus.com/self-service/category/air/api-doc/flight-delay-prediction>`_
+
+The Flight Delay Prediction API returns the probability that a given flight will be delayed by four possible delay lengths: less than 30 minutes, 30-60 minutes, 60-120 minutes and over 120 minutes/cancellation. The API receives flight information and applies a machine-learning model trained with Amadeus historical data to determine the probability of flight delay.
+
+Release of the `Airport On-Time Performance <https://developers.amadeus.com/self-service/category/air/api-doc/airport-on-time-performance>`_
+
+The Airport On-Time Performance API returns the estimated percentage of on-time flight departures for a given airport and date. The API receives the 3-letter IATA airport code and departure date and applies a machine-learning model trained with Amadeus historical data to estimate the overall airport on-time performance. This API is in currently in beta and only returns accurate data for airports located in the U.S.
+
 3.2.0 - 2019-11-07
 --------------------
 Add support for the `Trip Purpose Prediction API <https://developers.amadeus.com/self-service/category/trip/api-doc/trip-purpose-prediction>`_
