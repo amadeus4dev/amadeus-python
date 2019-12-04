@@ -1,4 +1,5 @@
 import base64
+import json
 from amadeus.client.decorator import Decorator
 from amadeus.travel.trip_parser_jobs._status import TripParserStatus
 from amadeus.travel.trip_parser_jobs._result import TripParserResult
@@ -16,34 +17,24 @@ class TripParser(Decorator, object):
 
     def encode_email(self, email):
         with open(email, 'rb') as email_file:
-            encoded_email = base64.b64encode(email_file.read())
-        return ({
-            "data": {
-                "type": "trip-parser-job",
-                "content": encoded_email
-            }
-        })
+            encoded_email = base64.b64encode(email_file.read()).decode()
+        return json.loads(
+            '{"data": {"type": "trip-parser-job", "content": "'
+            + encoded_email + '"}}')
 
     def encode_pdf(self, pdf):
         with open(pdf, 'rb') as pdf_file:
-            encoded_pdf = base64.b64encode(pdf_file.read())
-
-        return ({
-            "data": {
-                "type": "trip-parser-job",
-                "content": encoded_pdf
-            }
-        })
+            encoded_pdf = base64.b64encode(pdf_file.read()).decode()
+        return json.loads(
+            '{"data": {"type": "trip-parser-job", "content": "'
+            + encoded_pdf + '"}}')
 
     def encode_html(self, webpage):
         with open(webpage, 'rb') as html_webpage:
-            encoded_webpage = base64.b64encode(html_webpage.read())
-        return ({
-            "data": {
-                "type": "trip-parser-job",
-                "content": encoded_webpage
-            }
-        })
+            encoded_webpage = base64.b64encode(html_webpage.read()).decode()
+        return json.loads(
+            '{"data": {"type": "trip-parser-job", "content": "'
+            + encoded_webpage + '"}}')
 
     def post(self, body):
         '''
