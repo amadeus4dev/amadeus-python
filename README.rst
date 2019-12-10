@@ -280,14 +280,10 @@ List of supported endpoints
     amadeus.media.files.generated_photos.get(category='MOUNTAIN')
 
     # Trip Parser
-    # Encode to Base64 your booking confirmation
-    # For .html
-    body = amadeus.travel.trip_parser_jobs.encode_html('booking.html')
-    # For .eml
-    body = amadeus.travel.trip_parser_jobs.encode_email('booking.eml')
-    # For .pdf
-    body = amadeus.travel.trip_parser_jobs.encode_pdf('booking.pdf')
-    response = amadeus.travel.trip_parser_jobs.post(body)
+    # Encode to Base64 your booking confirmation file
+    response = amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_file(file))
+    # Alternatively you can use a Base64 format directly
+    response = amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_base64(base64))
     # Get the parsing status of the process by jobId
     amadeus.travel.trip_parser_jobs.status(response.data['id']).get()
     # Get the result of the process by jobId
