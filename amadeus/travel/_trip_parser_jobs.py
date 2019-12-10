@@ -1,5 +1,3 @@
-import base64
-import json
 from amadeus.client.decorator import Decorator
 from amadeus.travel.trip_parser_jobs._status import TripParserStatus
 from amadeus.travel.trip_parser_jobs._result import TripParserResult
@@ -15,51 +13,6 @@ class TripParser(Decorator, object):
     def result(self, job_id):
         return TripParserResult(self.client, job_id)
 
-    def encode_email(self, email):
-        '''
-        Sends the .eml booking confirmation and
-        returns the body to be sent in the POST request.
-
-        .. code-block:: python
-
-            amadeus.travel.trip_parser_jobs.encode_email(file)
-        '''
-        with open(email, 'rb') as email_file:
-            encoded_email = base64.b64encode(email_file.read()).decode()
-        return json.loads(
-            '{"data": {"type": "trip-parser-job", "content": "'
-            + encoded_email + '"}}')
-
-    def encode_pdf(self, pdf):
-        '''
-        Sends the .pdf booking confirmation and
-        returns the body to be sent in the POST request.
-
-        .. code-block:: python
-
-            amadeus.travel.trip_parser_jobs.encode_pdf(file)
-        '''
-        with open(pdf, 'rb') as pdf_file:
-            encoded_pdf = base64.b64encode(pdf_file.read()).decode()
-        return json.loads(
-            '{"data": {"type": "trip-parser-job", "content": "'
-            + encoded_pdf + '"}}')
-
-    def encode_html(self, webpage):
-        '''
-        Sends the .html booking confirmation and
-        returns the body to be sent in the POST request.
-
-        .. code-block:: python
-
-            amadeus.travel.trip_parser_jobs.encode_html(file)
-        '''
-        with open(webpage, 'rb') as html_webpage:
-            encoded_webpage = base64.b64encode(html_webpage.read()).decode()
-        return json.loads(
-            '{"data": {"type": "trip-parser-job", "content": "'
-            + encoded_webpage + '"}}')
-
     def post(self, body):
         '''
         Sends the request for the parsing with the
@@ -67,7 +20,17 @@ class TripParser(Decorator, object):
 
         .. code-block:: python
 
-            amadeus.travel.trip_parser_jobs.post(body)
+            amadeus.travel.trip_parser_jobs.post(
+            '{ "data": {
+             "type": "trip-parser-job",
+             "content": : "base64string" }}'
+
+        You can call our helper functions with your booking details
+        in a file or a Base64 string
+
+        .. code-block:: python
+            amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_file(file))
+            amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_base64(file))
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
