@@ -62,6 +62,9 @@ with description('Namespaces') as self:
         expect(client.travel.trip_parser_jobs.status).not_to(be_none)
         expect(client.travel.trip_parser_jobs.result).not_to(be_none)
 
+        expect(client.travel.from_file).not_to(be_none)
+        expect(client.travel.from_base64).not_to(be_none)
+
     with it('should define all expected .get methods'):
         client = self.client
         expect(client.reference_data.urls.checkin_links.get).not_to(be_none)
