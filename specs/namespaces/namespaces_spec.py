@@ -43,6 +43,7 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_dates).not_to(be_none)
         expect(client.shopping.flight_destinations).not_to(be_none)
         expect(client.shopping.flight_offers).not_to(be_none)
+        expect(client.shopping.flight_offers.pricing).not_to(be_none)
 
         expect(client.shopping.hotel_offers).not_to(be_none)
         expect(client.shopping.hotel_offer).not_to(be_none)

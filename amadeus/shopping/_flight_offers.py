@@ -9,7 +9,6 @@ class FlightOffers(Decorator, object):
         self.prediction = FlightChoicePrediction(client)
         self.pricing = FlightOffersPrice(client)
 
-
     def get(self, **params):
         '''
         Find the cheapest bookable flights.
