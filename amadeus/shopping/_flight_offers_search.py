@@ -1,12 +1,7 @@
 from amadeus.client.decorator import Decorator
-from amadeus.shopping.flight_offers._prediction import FlightChoicePrediction
 
 
 class FlightOffersSearch(Decorator, object):
-    def __init__(self, client):
-        Decorator.__init__(self, client)
-        self.prediction = FlightChoicePrediction(client)
-
     def get(self, **params):
         '''
         Get the cheapest flights on a given journey
