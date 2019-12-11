@@ -9,7 +9,7 @@ class FlightOffersSearch(Decorator, object):
 
     def get(self, **params):
         '''
-        Get the cheapest flights on given journey
+        Get the cheapest flights on a given journey
 
         .. code-block:: python
 
@@ -38,11 +38,13 @@ class FlightOffersSearch(Decorator, object):
 
     def post(self, body):
         '''
-        Forecast traveler choices in the context of search & shopping.
+        Get the cheapest flights on a given journey.
 
         .. code-block:: python
 
             amadeus.shopping.flight_offers_search.post(body)
+
+        :param body: the parameters to send to the API
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed

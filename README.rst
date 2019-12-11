@@ -279,6 +279,11 @@ List of supported endpoints
     # AI Generated Photos
     amadeus.media.files.generated_photos.get(category='MOUNTAIN')
 
+    # Flight Offers Search GET
+    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-05-01', adults=1)
+    # Flight Offers Search POST
+    amadeus.shopping.flight_offers_search.post(body)
+
 Development & Contributing
 --------------------------
 
