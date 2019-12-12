@@ -26,11 +26,11 @@ class TripParser(Decorator, object):
              "content": : "base64string" }}'
 
         You can call our helper functions with your booking details
-        in a file or a Base64 format
+        in a file or the content encoded in Base64
 
         .. code-block:: python
-            amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_file(file))
-            amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_base64(file))
+            amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_file(path_to_file))
+            amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_base64(base64))
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
