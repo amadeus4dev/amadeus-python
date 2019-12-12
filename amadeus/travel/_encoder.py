@@ -1,4 +1,3 @@
-import json
 from amadeus.mixins.encoder import encode_file_to_base64
 
 
@@ -13,7 +12,11 @@ def from_base64(base64):
     return construct_post_body(base64)
 
 
-# Takes a Base64 and returns a JSON dict
+# Takes a Base64 and returns a dict
 def construct_post_body(base64):
-    return json.loads(
-        '{"data": {"type": "trip-parser-job", "content": "' + base64 + '"}}')
+    return {
+        'data': {
+            'type': 'trip-parser-job',
+            'content': base64,
+        },
+    }
