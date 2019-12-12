@@ -109,9 +109,14 @@ with description('Namespaces') as self:
         expect(client.travel.trip_parser_jobs.status('123').get).not_to(be_none)
         expect(client.travel.trip_parser_jobs.result('123').get).not_to(be_none)
 
+    with it('should define all expected .post methods'):
+        client = self.client
+        expect(client.travel.trip_parser_jobs.post).not_to(be_none)
+
     with context('testing all calls to the client'):
         with before.each:
             self.client.get = method_returning(None)
+            self.client.post = method_returning(None)
 
         with it('.reference_data.urls.checkin_links.get'):
             self.client.reference_data.urls.checkin_links.get(a='b')
@@ -265,4 +270,16 @@ with description('Namespaces') as self:
             self.client.travel.trip_parser_jobs.result('XXX').get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v2/travel/trip-parser-jobs/XXX/result', a='b'
+            ))
+
+        with it('.shopping.flight_offers.prediction.post'):
+            self.client.shopping.flight_offers.prediction.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/shopping/flight-offers/prediction', {'foo': 'bar'}
+            ))
+
+        with it('.travel.trip_parser_jobs.post'):
+            self.client.travel.trip_parser_jobs.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v2/travel/trip-parser-jobs', {'foo': 'bar'}
             ))
