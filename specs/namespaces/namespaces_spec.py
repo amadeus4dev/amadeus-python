@@ -291,3 +291,9 @@ with description('Namespaces') as self:
             expect(self.client.post).to(have_been_called_with(
                 '/v2/travel/trip-parser-jobs', {'foo': 'bar'}
             ))
+
+        with it('.shopping.flight_offers_search.post'):
+            self.client.shopping.flight_offers_search.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v2/shopping/flight-offers', {'foo': 'bar'}
+            ))
