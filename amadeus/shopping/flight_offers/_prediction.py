@@ -12,7 +12,7 @@ class FlightChoicePrediction(Decorator, object):
                 amadeus.shopping.flight_offers.get(origin='MAD',
                 destination='NYC',
                 departureDate='2019-08-01'
-            ).body
+            ).result
         )
 
         :rtype: amadeus.Response
