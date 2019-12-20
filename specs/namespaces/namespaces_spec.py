@@ -43,6 +43,7 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_dates).not_to(be_none)
         expect(client.shopping.flight_destinations).not_to(be_none)
         expect(client.shopping.flight_offers).not_to(be_none)
+        expect(client.shopping.flight_offers_search).not_to(be_none)
         expect(client.shopping.flight_offers.pricing).not_to(be_none)
 
         expect(client.shopping.hotel_offers).not_to(be_none)
@@ -58,6 +59,13 @@ with description('Namespaces') as self:
         expect(client.media).not_to(be_none)
         expect(client.media.files).not_to(be_none)
         expect(client.media.files.generated_photos).not_to(be_none)
+
+        expect(client.travel.trip_parser_jobs).not_to(be_none)
+        expect(client.travel.trip_parser_jobs.status).not_to(be_none)
+        expect(client.travel.trip_parser_jobs.result).not_to(be_none)
+
+        expect(client.travel.from_file).not_to(be_none)
+        expect(client.travel.from_base64).not_to(be_none)
 
     with it('should define all expected .get methods'):
         client = self.client
@@ -89,6 +97,7 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_dates.get).not_to(be_none)
         expect(client.shopping.flight_destinations.get).not_to(be_none)
         expect(client.shopping.flight_offers.get).not_to(be_none)
+        expect(client.shopping.flight_offers_search.get).not_to(be_none)
 
         expect(client.shopping.hotel_offers.get).not_to(be_none)
         expect(client.shopping.hotel_offers_by_hotel.get).not_to(be_none)
@@ -100,9 +109,17 @@ with description('Namespaces') as self:
 
         expect(client.media.files.generated_photos.get).not_to(be_none)
 
+        expect(client.travel.trip_parser_jobs.status('123').get).not_to(be_none)
+        expect(client.travel.trip_parser_jobs.result('123').get).not_to(be_none)
+
+    with it('should define all expected .post methods'):
+        client = self.client
+        expect(client.travel.trip_parser_jobs.post).not_to(be_none)
+
     with context('testing all calls to the client'):
         with before.each:
             self.client.get = method_returning(None)
+            self.client.post = method_returning(None)
 
         with it('.reference_data.urls.checkin_links.get'):
             self.client.reference_data.urls.checkin_links.get(a='b')
@@ -210,6 +227,12 @@ with description('Namespaces') as self:
                 '/v1/shopping/flight-offers', a='b'
             ))
 
+        with it('.shopping.flight_offers_search.get'):
+            self.client.shopping.flight_offers_search.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v2/shopping/flight-offers', a='b'
+            ))
+
         with it('.shopping.hotel_offers.get'):
             self.client.shopping.hotel_offers.get(cityCode='MAD')
             expect(self.client.get).to(have_been_called_with(
@@ -244,4 +267,34 @@ with description('Namespaces') as self:
             self.client.media.files.generated_photos.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v2/media/files/generated-photos', a='b'
+            ))
+
+        with it('.travel.trip_parser_jobs.status().get'):
+            self.client.travel.trip_parser_jobs.status('XXX').get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v2/travel/trip-parser-jobs/XXX', a='b'
+            ))
+
+        with it('.travel.trip_parser_jobs.result().get'):
+            self.client.travel.trip_parser_jobs.result('XXX').get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v2/travel/trip-parser-jobs/XXX/result', a='b'
+            ))
+
+        with it('.shopping.flight_offers.prediction.post'):
+            self.client.shopping.flight_offers.prediction.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/shopping/flight-offers/prediction', {'foo': 'bar'}
+            ))
+
+        with it('.travel.trip_parser_jobs.post'):
+            self.client.travel.trip_parser_jobs.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v2/travel/trip-parser-jobs', {'foo': 'bar'}
+            ))
+
+        with it('.shopping.flight_offers_search.post'):
+            self.client.shopping.flight_offers_search.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v2/shopping/flight-offers', {'foo': 'bar'}
             ))

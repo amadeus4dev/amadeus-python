@@ -47,6 +47,12 @@ Shopping/Flights
 .. autoclass:: amadeus.shopping.FlightOffers
   :members: get
 
+.. autoclass:: amadeus.shopping.FlightOffersSearch
+  :members: get
+
+.. autoclass:: amadeus.shopping.FlightOffersSearch
+  :members: post
+
 Shopping/Hotels
 ===============
 
@@ -81,6 +87,18 @@ Travel/Predictions
   :members: get
 
 .. autoclass:: amadeus.travel.predictions.FlightDelay
+  :members: get
+
+Travel/Trip Parser
+================
+
+.. autoclass:: amadeus.travel.TripParser
+  :members: post
+
+.. autoclass:: amadeus.travel.trip_parser_jobs.status.TripParserStatus
+  :members: get
+
+.. autoclass:: amadeus.travel.trip_parser_jobs.result.TripParserResult
   :members: get
 
 ReferenceData/Locations

@@ -279,6 +279,23 @@ List of supported endpoints
     # AI Generated Photos
     amadeus.media.files.generated_photos.get(category='MOUNTAIN')
 
+    # Trip Parser
+    # Encode to Base64 your booking confirmation file (.html, .eml, .pdf supported)
+    response = amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_file(path_to_file))
+    # Alternatively you can use a Base64 encoded content directly
+    response = amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_base64(base64))
+    # Or you can call the API with the JSON directly
+    response = amadeus.travel.trip_parser_jobs.post(body)
+    # Get the parsing status of the process by jobId
+    amadeus.travel.trip_parser_jobs.status(response.data['id']).get()
+    # Get the result of the process by jobId
+    amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
+
+    # Flight Offers Search GET
+    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-05-01', adults=1)
+    # Flight Offers Search POST
+    amadeus.shopping.flight_offers_search.post(body)
+
     # Flight Offers Price
     flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-05-01', adults=1).data
     amadeus.shopping.flight_offers.pricing.post(flights[0])
