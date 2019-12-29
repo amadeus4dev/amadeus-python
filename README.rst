@@ -228,7 +228,7 @@ List of supported endpoints
     # The flight ID comes from the Flight Create Orders (in test environment it's temporary)
     flight_booking = amadeus.booking.flight_orders.post(body).data
     amadeus.booking.flight_order(flight_booking['id']).get()
-    
+
     # Flight Low-fare Search
     amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-06-01')
 
@@ -311,6 +311,16 @@ List of supported endpoints
     amadeus.travel.trip_parser_jobs.status(response.data['id']).get()
     # Get the result of the process by jobId
     amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
+
+    # Flight Offers Search GET
+    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-05-01', adults=1)
+    # Flight Offers Search POST
+    amadeus.shopping.flight_offers_search.post(body)
+
+    # SeatMap Display GET
+    amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})
+    # SeatMap Display POST
+    amadeus.shopping.seatmaps.post(body)
 
 Development & Contributing
 --------------------------
