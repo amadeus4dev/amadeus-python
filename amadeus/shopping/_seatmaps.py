@@ -33,4 +33,4 @@ class Seatmaps(Decorator, object):
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
-        return self.client.post('/v2/shopping/flight-offers', body)
+        return self.client.post('/v1/shopping/seatmaps', body)

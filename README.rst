@@ -296,6 +296,11 @@ List of supported endpoints
     # Flight Offers Search POST
     amadeus.shopping.flight_offers_search.post(body)
 
+    # SeatMap Display GET
+    amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})
+    # SeatMap Display POST
+    amadeus.shopping.seatmaps.post(body)
+
 Development & Contributing
 --------------------------
 
