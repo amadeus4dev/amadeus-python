@@ -6,6 +6,7 @@ from amadeus.shopping._flight_offers_search import FlightOffersSearch
 from amadeus.shopping._hotel_offers import HotelOffers
 from amadeus.shopping._hotel_offers_by_hotel import HotelOffersByHotel
 from amadeus.shopping._hotel_offer import HotelOffer
+from amadeus.shopping._seatmaps import Seatmaps
 
 
 class Shopping(Decorator, object):
@@ -17,6 +18,7 @@ class Shopping(Decorator, object):
         self.hotel_offers = HotelOffers(client)
         self.hotel_offers_by_hotel = HotelOffersByHotel(client)
         self.flight_offers_search = FlightOffersSearch(client)
+        self.seatmaps = Seatmaps(client)
 
     def hotel_offer(self, offer_id):
         return HotelOffer(self.client, offer_id)
