@@ -296,6 +296,12 @@ List of supported endpoints
     # Flight Offers Search POST
     amadeus.shopping.flight_offers_search.post(body)
 
+    # Flight Offers Price
+    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-05-01', adults=1).data
+    amadeus.shopping.flight_offers.pricing.post(flights[0])
+    amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
+
+
 Development & Contributing
 --------------------------
 
