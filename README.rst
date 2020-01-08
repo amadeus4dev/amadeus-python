@@ -212,10 +212,10 @@ List of supported endpoints
     amadeus.shopping.flight_dates.get(origin='MAD', destination='MUC')
 
     # Flight Low-fare Search
-    amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01')
+    amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-06-01')
 
     # Flight Choice Prediction
-    result = amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01').result
+    result = amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-10-01').result
     amadeus.shopping.flight_offers.prediction.post(result)
 
     # Flight Checkin Links
@@ -270,11 +270,11 @@ List of supported endpoints
     amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2020-08-01', returnDate='2020-08-12', searchDate='2020-06-11')
 
     # Flight Delay Prediction
-    amadeus.travel.predictions.flight_delay.get(originLocationCode='BRU', destinationLocationCode='FRA', departureDate='2020-01-14', \
-    departureTime='11:05:00', arrivalDate='2020-01-14', arrivalTime='12:10:00', aircraftCode='32A', carrierCode='LH', flightNumber='1009', duration='PT1H05M')
+    amadeus.travel.predictions.flight_delay.get(originLocationCode='BRU', destinationLocationCode='FRA', departureDate='2020-11-14', \
+    departureTime='11:05:00', arrivalDate='2020-11-14', arrivalTime='12:10:00', aircraftCode='32A', carrierCode='LH', flightNumber='1009', duration='PT1H05M')
 
     # Airport On-Time Performance
-    amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-03-01')
+    amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-09-01')
 
     # AI Generated Photos
     amadeus.media.files.generated_photos.get(category='MOUNTAIN')
@@ -292,12 +292,12 @@ List of supported endpoints
     amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
 
     # Flight Offers Search GET
-    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-05-01', adults=1)
+    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1)
     # Flight Offers Search POST
     amadeus.shopping.flight_offers_search.post(body)
 
     # Flight Offers Price
-    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-05-01', adults=1).data
+    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1).data
     amadeus.shopping.flight_offers.pricing.post(flights[0])
     amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
 
