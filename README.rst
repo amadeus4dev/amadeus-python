@@ -327,6 +327,6 @@ to help you. You can find us on `StackOverflow <htps://stackoverflow.com/questio
 .. |Maintainability| image:: https://api.codeclimate.com/v1/badges/c2e19cf9628d6f4aece2/maintainability
    :target: https://codeclimate.com/github/amadeus4dev/amadeus-python/maintainability
 .. |Dependencies| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/dependencies.svg?sanitize=true
-   :target: ttps://badge.fury.io/py/amadeus
+   :target: https://badge.fury.io/py/amadeus
 .. |Contact Support| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/support.svg?sanitize=true
    :target: http://developers.amadeus.com/support

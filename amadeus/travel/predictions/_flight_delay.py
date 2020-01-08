@@ -10,9 +10,9 @@ class FlightDelay(Decorator, object):
 
         amadeus.travel.predictions.flight_delay.get(originLocationCode='BRU',
                                                            destinationLocationCode='FRA',
-                                                           departureDate='2020-01-14',
+                                                           departureDate='2020-11-14',
                                                            departureTime='11:05:00',
-                                                           arrivalDate='2020-01-14',
+                                                           arrivalDate='2020-11-14',
                                                            arrivalTime='12:10:00',
                                                            aircraftCode='32A',
                                                            carrierCode='LH',
