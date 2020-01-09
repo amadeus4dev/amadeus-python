@@ -306,3 +306,9 @@ with description('Namespaces') as self:
                 {'data': {'type': 'flight-offers-pricing',
                           'flightOffers': [{'foo': 'bar'}]}}
             ))
+
+        with it('.booking.flight_orders.post'):
+            self.client.booking.flight_orders.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/booking/flight-orders', {'foo': 'bar'}
+            ))
