@@ -301,6 +301,9 @@ List of supported endpoints
     amadeus.shopping.flight_offers.pricing.post(flights[0])
     amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
 
+    # Flight Create Orders
+    amadeus.booking.flight_orders.post(body)
+
 
 Development & Contributing
 --------------------------
