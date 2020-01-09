@@ -138,3 +138,9 @@ Media/Files
 
 .. autoclass:: amadeus.media.files.GeneratedPhotos
   :members: get
+
+Booking/Flights
+================
+
+.. autoclass:: amadeus.booking.FlightOrders
+  :members: post
