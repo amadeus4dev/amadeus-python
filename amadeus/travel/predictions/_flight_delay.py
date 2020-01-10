@@ -8,16 +8,16 @@ class FlightDelay(Decorator, object):
 
         .. code-block:: python
 
-        amadeus.travel.predictions.flight_delay.get(originLocationCode='BRU',
-                                                           destinationLocationCode='FRA',
-                                                           departureDate='2020-01-14',
-                                                           departureTime='11:05:00',
-                                                           arrivalDate='2020-01-14',
-                                                           arrivalTime='12:10:00',
-                                                           aircraftCode='32A',
-                                                           carrierCode='LH',
-                                                           flightNumber='1009',
-                                                           duration='PT1H05M')
+        amadeus.travel.predictions.flight_delay.get(originLocationCode='NCE',
+                                                       destinationLocationCode='IST',
+                                                       departureDate='2020-08-01',
+                                                       departureTime='18:20:00',
+                                                       arrivalDate='2020-08-01',
+                                                       arrivalTime='22:15:00',
+                                                       aircraftCode='321',
+                                                       carrierCode='TK',
+                                                       flightNumber='1816',
+                                                       duration='PT31H10M')
 
         :param originLocationCode: the City/Airport IATA code from which
             the flight will depart. ``"NYC"``, for example for New York
