@@ -10,7 +10,7 @@ class AirportOnTime(Decorator, object):
 
             amadeus.airport.predictions.on_time.get(
                             airportCode='JFK',
-                            date='2020-03-01')
+                            date='2020-09-01')
 
         :param airportCode: the City/Airport IATA code from which
             the flight will depart. ``"NYC"``, for example for New York
