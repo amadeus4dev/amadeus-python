@@ -8,4 +8,4 @@ if [[ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH == "master" ]] ; then
       fi
     done
   done
-; fi
+fi
