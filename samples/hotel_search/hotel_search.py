@@ -15,4 +15,4 @@ try:
     print(offer_availability.data)
 
 except ResponseError as error:
-    print(error)
+    raise error

@@ -10,4 +10,4 @@ try:
     response = amadeus.reference_data.airlines.get(airlineCodes='BA')
     print(response.data)
 except ResponseError as error:
-    print(error)
+    raise error

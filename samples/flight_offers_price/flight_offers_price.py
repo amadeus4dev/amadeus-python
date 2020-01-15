@@ -15,4 +15,4 @@ try:
     response_two_flights = amadeus.shopping.flight_offers.pricing.post(flights[0:2])
     print(response_two_flights.data)
 except ResponseError as error:
-    print(error)
+    raise error

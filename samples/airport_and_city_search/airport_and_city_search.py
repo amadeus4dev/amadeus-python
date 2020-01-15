@@ -12,4 +12,4 @@ try:
                                                     subType=Location.ANY)
     print(response.data)
 except ResponseError as error:
-    print(error)
+    raise error

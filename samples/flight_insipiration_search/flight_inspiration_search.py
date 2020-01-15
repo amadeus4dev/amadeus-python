@@ -10,4 +10,4 @@ try:
     response = amadeus.shopping.flight_destinations.get(origin='MAD')
     print(response.data)
 except ResponseError as error:
-    print(error)
+    raise error

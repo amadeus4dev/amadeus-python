@@ -10,4 +10,4 @@ try:
     response = amadeus.travel.analytics.air_traffic.booked.get(originCityCode='MAD', period='2017-08')
     print(response.data)
 except ResponseError as error:
-    print(error)
+    raise error

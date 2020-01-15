@@ -12,4 +12,4 @@ try:
                                                            searchDate='2020-06-11')
     print(response.data)
 except ResponseError as error:
-    print(error)
+    raise error

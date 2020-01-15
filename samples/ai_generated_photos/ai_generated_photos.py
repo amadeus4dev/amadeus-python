@@ -1,7 +1,6 @@
 from amadeus import Client, ResponseError
-import os
 
-amadeus = Client(log_level='debug')
+amadeus = Client()
 
 print('AI Generated Photos')
 try:

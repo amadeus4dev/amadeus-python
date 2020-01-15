@@ -10,4 +10,4 @@ try:
     response = amadeus.e_reputation.hotel_sentiments.get(hotelIds = 'ADNYCCTB')
     print(response.data)
 except ResponseError as error:
-    print(error)
+    raise error

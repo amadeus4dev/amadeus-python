@@ -10,7 +10,7 @@ try:
     id = response.data['id']
     print(response.data)
 except ResponseError as error:
-    print(error)
+    raise error
 
 
 def get_status(id):

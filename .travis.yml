@@ -15,7 +15,15 @@ before_install:
 script:
   - tox
   - pip install -e .
-  - python samples/ai_generated_photos/ai_generated_photos.py
+  - |
+    for folder in samples/*/ ; do
+    for file in "$folder"/* ; do
+    if [[ $file == *.py ]]
+    then
+    python "$file"
+    fi
+    done
+    done
 before_deploy:
   - pip install -e .
   - make docs

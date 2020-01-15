@@ -10,4 +10,4 @@ try:
     response = amadeus.travel.analytics.air_traffic.busiest_period.get(cityCode='MAD', period='2017', direction='ARRIVING')
     print(response.data)
 except ResponseError as error:
-    print(error)
+    raise error
