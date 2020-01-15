@@ -1,6 +1,7 @@
 from amadeus import Client, ResponseError
+import os
 
-amadeus = Client()
+amadeus = Client(log_level='debug')
 
 print('AI Generated Photos')
 try:
@@ -17,4 +18,4 @@ try:
 
     print(response.data)
 except ResponseError as error:
-    print(error)
+    raise error
