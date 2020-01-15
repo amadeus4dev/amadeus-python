@@ -11,7 +11,7 @@ class FlightChoicePrediction(Decorator, object):
             amadeus.shopping.flight_offers.prediction.post(
                 amadeus.shopping.flight_offers.get(origin='MAD',
                 destination='NYC',
-                departureDate='2019-08-01'
+                departureDate='2020-08-01'
             ).result
         )
 
