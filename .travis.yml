@@ -15,7 +15,7 @@ before_install:
 script:
   - tox
   - pip install -e .
-  - bash travis_script.sh
+  - bash .travis_script.sh
 
 before_deploy:
   - pip install -e .
