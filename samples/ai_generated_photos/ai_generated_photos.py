@@ -2,7 +2,6 @@ from amadeus import Client, ResponseError
 
 amadeus = Client()
 
-print('AI Generated Photos')
 try:
     '''
     Generates a photo with mountain
@@ -17,4 +16,5 @@ try:
 
     print(response.data)
 except ResponseError as error:
+    print(error)
     raise error

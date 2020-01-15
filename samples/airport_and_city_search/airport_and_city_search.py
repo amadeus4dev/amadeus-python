@@ -3,13 +3,13 @@ from amadeus import Location
 
 amadeus = Client()
 
-print('Airport and City Search')
 try:
     '''
     Which cities or airports start with 'r'?
     '''
     response = amadeus.reference_data.locations.get(keyword='r',
                                                     subType=Location.ANY)
-    print(response.data)
+    # print(response.data)
 except ResponseError as error:
+    print(error)
     raise error

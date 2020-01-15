@@ -15,15 +15,7 @@ before_install:
 script:
   - tox
   - pip install -e .
-  - |
-    for folder in samples/*/ ; do
-    for file in "$folder"/* ; do
-    if [[ $file == *.py ]]
-    then
-    python "$file"
-    fi
-    done
-    done
+  - bash .travis_script.sh
 before_deploy:
   - pip install -e .
   - make docs
