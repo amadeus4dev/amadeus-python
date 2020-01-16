@@ -3,7 +3,7 @@ from amadeus import Client, ResponseError
 
 amadeus = Client()
 
-booking = './boardingPass.pdf'
+booking = 'samples/trip_parser/booking.eml'
 try:
     response = amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_file(booking))
     id = response.data['id']
