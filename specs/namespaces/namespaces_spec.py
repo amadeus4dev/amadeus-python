@@ -114,6 +114,8 @@ with description('Namespaces') as self:
         expect(client.travel.trip_parser_jobs.status('123').get).not_to(be_none)
         expect(client.travel.trip_parser_jobs.result('123').get).not_to(be_none)
 
+        expect(client.booking.flight_order('123').get).not_to(be_none)
+
     with it('should define all expected .post methods'):
         client = self.client
         expect(client.travel.trip_parser_jobs.post).not_to(be_none)

@@ -304,6 +304,9 @@ List of supported endpoints
     # Flight Create Orders
     amadeus.booking.flight_orders.post(flights[0], traveler)
 
+    # Flight Order Management
+    amadeus.booking.flight_order('eJzTd9f3NjIJdzUGAAp%2fAiY=').get()
+
 
 Development & Contributing
 --------------------------
