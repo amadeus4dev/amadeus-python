@@ -12,4 +12,4 @@ class Booking(Decorator, object):
         return FlightOrder(self.client, flight_order_id)
 
 
-__all__ = ['FlightOrders']
+__all__ = ['FlightOrders', 'FlightOrder']
