@@ -301,6 +301,13 @@ List of supported endpoints
     amadeus.shopping.flight_offers.pricing.post(flights[0])
     amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
 
+    # Flight Create Orders
+    amadeus.booking.flight_orders.post(flights[0], traveler)
+
+    # Flight Order Management
+    # The flight ID comes from the Flight Create Orders (in test environment it's temporary)
+    flight_booking = amadeus.booking.flight_orders.post(body).data
+    amadeus.booking.flight_order(flight_booking['id']).get()
 
 Development & Contributing
 --------------------------
