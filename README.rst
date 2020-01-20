@@ -305,8 +305,9 @@ List of supported endpoints
     amadeus.booking.flight_orders.post(flights[0], traveler)
 
     # Flight Order Management
-    amadeus.booking.flight_order('eJzTd9f3NjIJdzUGAAp%2fAiY=').get()
-
+    # The flight ID comes from the Flight Create Orders (in test environment it's temporary)
+    flight_booking = amadeus.booking.flight_orders.post(body).data
+    amadeus.booking.flight_order(flight_booking['id']).get()
 
 Development & Contributing
 --------------------------
