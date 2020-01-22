@@ -1,3 +1,4 @@
+import os
 from amadeus import Client, ResponseError
 
 amadeus = Client()
@@ -11,3 +12,4 @@ try:
 except ResponseError as error:
     print(error)
     raise error
+    sys.exit(1)
