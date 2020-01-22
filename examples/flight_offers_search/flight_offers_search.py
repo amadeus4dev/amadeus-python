@@ -1,6 +1,5 @@
-import os
 from amadeus import Client, ResponseError
-
+import sys
 amadeus = Client()
 
 try:
@@ -10,6 +9,4 @@ try:
     response = amadeus.shopping.flight_offers_search.get(originLocationCode='SYAAD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1)
     # print(response.data)
 except ResponseError as error:
-    print(error)
-    raise error
     sys.exit(1)
