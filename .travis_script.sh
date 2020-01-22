@@ -4,7 +4,6 @@ if [[ $TRAVIS_EVENT_TYPE == "pull_request" && $TRAVIS_PULL_REQUEST_BRANCH != "ma
       if [[ $file == *.py ]]
       then
         python "$file"
-        PID=$! && wait $PID && sleep 1
       fi
     done
   done
