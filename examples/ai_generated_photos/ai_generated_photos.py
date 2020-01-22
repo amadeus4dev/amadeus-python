@@ -6,7 +6,7 @@ try:
     '''
     Generates a photo with mountain
     '''
-    response = amadeus.media.files.generated_photos.get(category='MOUSNTAIN')
+    response = amadeus.media.files.generated_photos.get(category='MOUNTAIN')
     try:
         import urllib.request
         urllib.request.urlretrieve(response.data['attachmentUri'], 'generated_image.png')
