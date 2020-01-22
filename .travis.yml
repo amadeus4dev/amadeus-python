@@ -5,8 +5,6 @@ python:
   - '3.4'
   - '3.5'
   - '3.6.3' # explicit branch used for deploying
-settings:
-  - maximum_number_of_builds --set 1
 branches:
   only:
     - master
