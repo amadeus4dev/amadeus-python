@@ -4,8 +4,7 @@ if [[ $(python --version 2>&1) == *3\.6\.3 ]]; then
       for file in "$folder"/* ; do
         if [[ $file == *.py ]]
         then
-          python "$file"
-          PID=$! && wait $PID && sleep 1
+          python "$file" && echo "done"
         fi
       done
     done
@@ -16,7 +15,6 @@ if [[ $(python --version 2>&1) == *3\.6\.3 ]]; then
         if [[ $file == *.py ]]
         then
           python "$file"
-          PID=$! && wait $PID && sleep 1
         fi
       done
     done
