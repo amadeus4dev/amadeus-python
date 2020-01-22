@@ -20,3 +20,11 @@ if [[ $TRAVIS_PYTHON_VERSION == '3.6.3' ]]; then
     done
   fi
 fi
+
+if [[ $TRAVIS_PYTHON_VERSION == '3.6.3' ]]; then
+echo "proto_sosto"
+fi
+
+if [[ $TRAVIS_PYTHON_VERSION == 'py36' ]]; then
+echo "deutero_sosto"
+fi
