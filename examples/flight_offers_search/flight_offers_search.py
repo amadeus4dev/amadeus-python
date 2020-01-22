@@ -1,5 +1,6 @@
-from amadeus import Client, ResponseError
 import sys
+from amadeus import Client, ResponseError
+
 amadeus = Client()
 
 try:
