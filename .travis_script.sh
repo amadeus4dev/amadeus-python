@@ -2,6 +2,9 @@ if [[ $TRAVIS_EVENT_TYPE == "pull_request" && $TRAVIS_PULL_REQUEST_BRANCH != "ma
 python examples/hotel_search/hotel_search.py
 python examples/flight_choice_prediction/flight_choice_prediction.py
 python examples/flight_offers_search/flight_offers_search.py
+if [[ $? == 1 ]]; then
+exit 1
+fi
 python examples/hotel_ratings/hotel_ratings.py
 python examples/points_of_interest/points_of_interest.py
 fi
