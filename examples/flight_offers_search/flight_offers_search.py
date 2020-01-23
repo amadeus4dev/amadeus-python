@@ -1,4 +1,3 @@
-import sys
 from amadeus import Client, ResponseError
 
 amadeus = Client()
