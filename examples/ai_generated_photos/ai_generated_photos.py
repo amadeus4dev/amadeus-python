@@ -14,5 +14,4 @@ try:
         import urllib
         urllib.urlretrieve(response.data['attachmentUri'], 'generated_image.jpg')
 except ResponseError as error:
-    print(error)
     raise error

@@ -9,5 +9,4 @@ try:
     response = amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-06-01')
     # print(response.data)
 except ResponseError as error:
-    print(error)
     raise error
