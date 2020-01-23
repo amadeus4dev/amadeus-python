@@ -9,5 +9,4 @@ try:
     response = amadeus.reference_data.locations.airports.get(longitude=49.000, latitude=2.55)
     # print(response.data)
 except ResponseError as error:
-    print(error)
     raise error

@@ -9,5 +9,4 @@ try:
     response = amadeus.shopping.flight_dates.get(origin='MAD', destination='LON')
     # print(response.data)
 except ResponseError as error:
-    print(error)
     raise error

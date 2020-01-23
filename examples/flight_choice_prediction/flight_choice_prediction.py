@@ -11,5 +11,4 @@ try:
     response = amadeus.shopping.flight_offers.prediction.post(result)
     # print(response.data)
 except ResponseError as error:
-    print(error)
     raise error

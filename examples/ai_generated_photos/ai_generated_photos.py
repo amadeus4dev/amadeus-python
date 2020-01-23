@@ -13,8 +13,5 @@ try:
     except ImportError:
         import urllib
         urllib.urlretrieve(response.data['attachmentUri'], 'generated_image.jpg')
-
-    print(response.data)
 except ResponseError as error:
-    print(error)
     raise error

@@ -9,5 +9,4 @@ try:
     response = amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-09-01')
     # print(response.data)
 except ResponseError as error:
-    print(error)
     raise error

@@ -9,7 +9,6 @@ try:
     response = amadeus.reference_data.locations.points_of_interest.get(latitude=41.397158, longitude=2.160873)
     # print(response.data)
 except ResponseError as error:
-    print(error)
     raise error
 
 
@@ -21,5 +20,4 @@ try:
                                                                                  south=41.394582, east=2.177181)
     # print(response.data)
 except ResponseError as error:
-    print(error)
     raise error
