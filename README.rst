@@ -312,7 +312,6 @@ List of supported endpoints
     # Hotel Booking
     amadeus.booking.hotel_bookings.post(offerId, guests, payments)
 
-
 Development & Contributing
 --------------------------
 
