@@ -13,7 +13,7 @@ class Travel(Decorator, object):
         self.trip_parser_jobs = TripParser(client)
 
     def from_file(self, file):
-        return from_file(file)
+        return from_file(file)  # pragma: no cover
 
     def from_base64(self, base64):
-        return from_base64(base64)
+        return from_base64(base64)  # pragma: no cover

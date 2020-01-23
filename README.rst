@@ -309,6 +309,10 @@ List of supported endpoints
     flight_booking = amadeus.booking.flight_orders.post(body).data
     amadeus.booking.flight_order(flight_booking['id']).get()
 
+    # Hotel Booking
+    amadeus.booking.hotel_bookings.post(offerId, guests, payments)
+
+
 Development & Contributing
 --------------------------
 

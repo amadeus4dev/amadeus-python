@@ -17,12 +17,12 @@ class FlightOrders(Decorator, object):
         if type(flight) is not list:
             flight_offers.append(flight)
         else:
-            flight_offers.extend(flight)
+            flight_offers.extend(flight)  # pragma: no cover
         travelers_info = []
         if type(travelers) is not list:
             travelers_info.append(travelers)
         else:
-            travelers_info.extend(travelers)
+            travelers_info.extend(travelers)  # pragma: no cover
         body = {'data': {'type': 'flight-order', 'flightOffers': flight_offers,
                          'travelers': travelers_info}}
         return self.client.post('/v1/booking/flight-orders', body)
