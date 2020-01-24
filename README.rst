@@ -211,6 +211,24 @@ List of supported endpoints
     # Flight Cheapest Date Search
     amadeus.shopping.flight_dates.get(origin='MAD', destination='MUC')
 
+    # Flight Offers Search GET
+    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1)
+    # Flight Offers Search POST
+    amadeus.shopping.flight_offers_search.post(body)
+
+    # Flight Offers Price
+    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1).data
+    amadeus.shopping.flight_offers.pricing.post(flights[0])
+    amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
+
+    # Flight Create Orders
+    amadeus.booking.flight_orders.post(flights[0], traveler)
+
+    # Flight Order Management
+    # The flight ID comes from the Flight Create Orders (in test environment it's temporary)
+    flight_booking = amadeus.booking.flight_orders.post(body).data
+    amadeus.booking.flight_order(flight_booking['id']).get()
+
     # Flight Low-fare Search
     amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-06-01')
 
@@ -233,12 +251,6 @@ List of supported endpoints
     # Airport Nearest Relevant Airport (for London)
     amadeus.reference_data.locations.airports.get(longitude=0.1278, latitude=51.5074)
 
-    # Flight Most Searched Destinations
-    # Which were the most searched flight destinations from Madrid in August 2017?
-    amadeus.travel.analytics.air_traffic.searched.get(originCityCode='MAD', marketCountryCode='ES', searchPeriod='2017-08')
-    # How many people in Spain searched for a trip from Madrid to New-York in September 2017?
-    amadeus.travel.analytics.air_traffic.searched_by_destination.get(originCityCode='MAD', destinationCityCode='NYC', marketCountryCode='ES', searchPeriod='2017-08')
-
     # Flight Most Booked Destinations
     amadeus.travel.analytics.air_traffic.booked.get(originCityCode='MAD', period='2017-08')
 
@@ -254,7 +266,11 @@ List of supported endpoints
     # Get list of offers for a specific hotel
     amadeus.shopping.hotel_offers_by_hotel.get(hotelId = 'BGLONBGB')
     # Confirm the availability of a specific offer
-    amadeus.shopping.hotel_offer('8123DD9DE5102DADF5DA3B55C8C575F54114336EE718578753888747FE0652FC').get()
+    offerId = amadeus.shopping.hotel_offer('8123DD9DE5102DADF5DA3B55C8C575F54114336EE718578753888747FE0652FC').get()
+
+    # Hotel Booking
+    # The offerId comes from the above hotel_offer
+    amadeus.booking.hotel_bookings.post(offerId, guests, payments)
 
     # Hotel Ratings
     # What travelers think about this hotel?
@@ -290,27 +306,6 @@ List of supported endpoints
     amadeus.travel.trip_parser_jobs.status(response.data['id']).get()
     # Get the result of the process by jobId
     amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
-
-    # Flight Offers Search GET
-    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1)
-    # Flight Offers Search POST
-    amadeus.shopping.flight_offers_search.post(body)
-
-    # Flight Offers Price
-    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1).data
-    amadeus.shopping.flight_offers.pricing.post(flights[0])
-    amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
-
-    # Flight Create Orders
-    amadeus.booking.flight_orders.post(flights[0], traveler)
-
-    # Flight Order Management
-    # The flight ID comes from the Flight Create Orders (in test environment it's temporary)
-    flight_booking = amadeus.booking.flight_orders.post(body).data
-    amadeus.booking.flight_order(flight_booking['id']).get()
-
-    # Hotel Booking
-    amadeus.booking.hotel_bookings.post(offerId, guests, payments)
 
 Development & Contributing
 --------------------------
