@@ -20,12 +20,12 @@ class FlightOffersPrice(Decorator, object):
         url = '/v1/shopping/flight-offers/pricing'
         flight_offers = []
 
-        if params is not None:  # pragma: no cover
+        if params is not None:
             url = '/v1/shopping/flight-offers/pricing?'
         if type(body) is not list:
             flight_offers.append(body)
         else:
-            flight_offers.extend(body)  # pragma: no cover
+            flight_offers.extend(body)
 
         return self.client.post(url + urlencode(params),
                                 {'data':

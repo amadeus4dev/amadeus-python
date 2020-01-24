@@ -22,11 +22,11 @@ class HotelBookings(Decorator, object):
         if type(guests) is not list:
             guests_info.append(guests)
         else:
-            guests_info.extend(guests)  # pragma: no cover
+            guests_info.extend(guests)
         if type(payments) is not list:
             payment_info.append(payments)
         else:
-            payment_info.extend(payments)  # pragma: no cover
+            payment_info.extend(payments)
         body = {'data': {'offerId': hotel_offer_id,
                          'guests': guests_info,
                          'payments': payment_info}}
