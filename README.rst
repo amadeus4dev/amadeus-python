@@ -228,7 +228,7 @@ List of supported endpoints
     # The flight ID comes from the Flight Create Orders (in test environment it's temporary)
     flight_booking = amadeus.booking.flight_orders.post(body).data
     amadeus.booking.flight_order(flight_booking['id']).get()
-
+    
     # Flight Low-fare Search
     amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-06-01')
 
