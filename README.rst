@@ -269,7 +269,7 @@ List of supported endpoints
     offerId = amadeus.shopping.hotel_offer('8123DD9DE5102DADF5DA3B55C8C575F54114336EE718578753888747FE0652FC').get()
 
     # Hotel Booking
-    # The offerId comes from the above hotel_offer
+    # The offerId comes from the hotel_offer above
     amadeus.booking.hotel_bookings.post(offerId, guests, payments)
 
     # Hotel Ratings
