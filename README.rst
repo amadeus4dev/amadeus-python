@@ -266,7 +266,11 @@ List of supported endpoints
     # Get list of offers for a specific hotel
     amadeus.shopping.hotel_offers_by_hotel.get(hotelId = 'BGLONBGB')
     # Confirm the availability of a specific offer
-    amadeus.shopping.hotel_offer('8123DD9DE5102DADF5DA3B55C8C575F54114336EE718578753888747FE0652FC').get()
+    offerId = amadeus.shopping.hotel_offer('8123DD9DE5102DADF5DA3B55C8C575F54114336EE718578753888747FE0652FC').get()
+
+    # Hotel Booking
+    # The offerId comes from the hotel_offer above
+    amadeus.booking.hotel_bookings.post(offerId, guests, payments)
 
     # Hotel Ratings
     # What travelers think about this hotel?

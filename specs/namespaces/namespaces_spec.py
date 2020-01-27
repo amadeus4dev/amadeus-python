@@ -327,3 +327,15 @@ with description('Namespaces') as self:
             expect(self.client.get).to(have_been_called_with(
                 '/v1/booking/flight-orders/123', a='b'
             ))
+
+        with it('.shopping.booking.hotel_bookings.post'):
+            self.client.booking.hotel_bookings.post('123',
+                                                    {'foo': 'bar'},
+                                                    {'bar': 'foo'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/booking/hotel-bookings',
+                {'data': {'offerId': '123',
+                          'guests': [{'foo': 'bar'}],
+                          'payments': [{'bar': 'foo'}]
+                          }}
+            ))
