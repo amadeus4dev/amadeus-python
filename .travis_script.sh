@@ -9,6 +9,8 @@ if [[ $TRAVIS_EVENT_TYPE == "pull_request" && $TRAVIS_PULL_REQUEST_BRANCH != "ma
   if [[ $? != 0 ]]; then exit 1 ; fi
   python examples/points_of_interest/points_of_interest.py
   if [[ $? != 0 ]]; then exit 1 ; fi
+    python examples/flight_create_orders/flight_create_orders.py
+  if [[ $? != 0 ]]; then exit 1 ; fi
 fi
 if [[ $TRAVIS_EVENT_TYPE == "push" && $TRAVIS_BRANCH == "master" ]] ; then
   for folder in examples/*/ ; do
