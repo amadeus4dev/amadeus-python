@@ -250,6 +250,12 @@ with description('Namespaces') as self:
                 '/v2/shopping/hotel-offers/XXX', a='b'
             ))
 
+        with it('.shopping.seatmaps.get'):
+            self.client.shopping.seatmaps.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/shopping/seatmaps', a='b'
+            ))
+
         with it('.e_reputation.hotel_sentiments.get'):
             self.client.e_reputation.hotel_sentiments.get(hotelIds='XKPARC12')
             expect(self.client.get).to(have_been_called_with(
@@ -296,4 +302,10 @@ with description('Namespaces') as self:
             self.client.shopping.flight_offers_search.post({'foo': 'bar'})
             expect(self.client.post).to(have_been_called_with(
                 '/v2/shopping/flight-offers', {'foo': 'bar'}
+            ))
+
+        with it('.shopping.seatmaps.post'):
+            self.client.shopping.seatmaps.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/shopping/seatmaps', {'foo': 'bar'}
             ))
