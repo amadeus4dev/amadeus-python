@@ -4,12 +4,13 @@ from amadeus.client.decorator import Decorator
 class Seatmaps(Decorator, object):
     def get(self, **params):
         '''
-        Allows you to retrieve the seat map of one or several flights.
+        Allows you to retrieve the seat map of one or several flights based
+        on the flight-orderId returned from Flight Create Orders API Call.
 
         .. code-block:: python
 
             amadeus.shopping.seatmaps.get(
-                flight-orderId='1577655015934--776131526'
+                flight-orderId='<order_id>'
             )
 
         :param flight-orderId: identifier of the order.
@@ -23,6 +24,8 @@ class Seatmaps(Decorator, object):
     def post(self, body):
         '''
         Allows you to retrieve the seat map of one or several flights.
+        Take the body of a flight offer search or flight offer search
+        and pass it in to this method to get a seatmap
 
         .. code-block:: python
 
