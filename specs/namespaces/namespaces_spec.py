@@ -354,3 +354,9 @@ with description('Namespaces') as self:
                           'payments': [{'bar': 'foo'}]
                           }}
             ))
+
+        with it('.shopping.seatmaps.post'):
+            self.client.shopping.seatmaps.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/shopping/seatmaps', {'foo': 'bar'}
+            ))
