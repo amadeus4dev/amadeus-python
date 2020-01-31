@@ -45,6 +45,8 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_offers).not_to(be_none)
         expect(client.shopping.flight_offers_search).not_to(be_none)
 
+        expect(client.shopping.seatmaps).not_to(be_none)
+
         expect(client.shopping.hotel_offers).not_to(be_none)
         expect(client.shopping.hotel_offer).not_to(be_none)
         expect(client.shopping.hotel_offers_by_hotel).not_to(be_none)
@@ -97,6 +99,8 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_destinations.get).not_to(be_none)
         expect(client.shopping.flight_offers.get).not_to(be_none)
         expect(client.shopping.flight_offers_search.get).not_to(be_none)
+
+        expect(client.shopping.seatmaps.get).not_to(be_none)
 
         expect(client.shopping.hotel_offers.get).not_to(be_none)
         expect(client.shopping.hotel_offers_by_hotel.get).not_to(be_none)
