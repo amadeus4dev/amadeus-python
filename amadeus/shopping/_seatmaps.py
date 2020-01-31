@@ -24,7 +24,7 @@ class Seatmaps(Decorator, object):
     def post(self, body):
         '''
         Allows you to retrieve the seat map of one or several flights.
-        Take the body of a flight offer search or flight offer search
+        Take the body of a flight offer search or flight offer price
         and pass it in to this method to get a seatmap
 
         .. code-block:: python
