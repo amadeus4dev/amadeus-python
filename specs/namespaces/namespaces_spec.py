@@ -318,7 +318,8 @@ with description('Namespaces') as self:
             self.client.shopping.seatmaps.post({'foo': 'bar'})
             expect(self.client.post).to(have_been_called_with(
                 '/v1/shopping/seatmaps', {'foo': 'bar'}
-              
+            ))
+
         with it('.shopping.flight_offers.pricing.post'):
             self.client.shopping.flight_offers.pricing.post({'foo': 'bar'})
             expect(self.client.post).to(have_been_called_with(
