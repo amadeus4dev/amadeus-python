@@ -65,6 +65,12 @@ Shopping/Hotels
 .. autoclass:: amadeus.shopping.hotel.Offer
   :members: get
 
+Shopping/Flight Offers
+===============
+
+.. autoclass:: amadeus.shopping.FlightOffersPrice
+  :members: post
+
 Travel/Analytics
 ================
 
@@ -132,3 +138,15 @@ Media/Files
 
 .. autoclass:: amadeus.media.files.GeneratedPhotos
   :members: get
+
+Booking
+================
+
+.. autoclass:: amadeus.booking.FlightOrders
+  :members: post
+
+.. autoclass:: amadeus.booking.FlightOrder
+  :members: get
+
+.. autoclass:: amadeus.booking.HotelBookings
+  :members: post

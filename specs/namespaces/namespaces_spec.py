@@ -44,6 +44,7 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_destinations).not_to(be_none)
         expect(client.shopping.flight_offers).not_to(be_none)
         expect(client.shopping.flight_offers_search).not_to(be_none)
+        expect(client.shopping.flight_offers.pricing).not_to(be_none)
 
         expect(client.shopping.seatmaps).not_to(be_none)
 
@@ -67,6 +68,9 @@ with description('Namespaces') as self:
 
         expect(client.travel.from_file).not_to(be_none)
         expect(client.travel.from_base64).not_to(be_none)
+
+        expect(client.booking.flight_orders).not_to(be_none)
+        expect(client.booking.flight_order).not_to(be_none)
 
     with it('should define all expected .get methods'):
         client = self.client
@@ -114,6 +118,8 @@ with description('Namespaces') as self:
 
         expect(client.travel.trip_parser_jobs.status('123').get).not_to(be_none)
         expect(client.travel.trip_parser_jobs.result('123').get).not_to(be_none)
+
+        expect(client.booking.flight_order('123').get).not_to(be_none)
 
     with it('should define all expected .post methods'):
         client = self.client
@@ -312,4 +318,39 @@ with description('Namespaces') as self:
             self.client.shopping.seatmaps.post({'foo': 'bar'})
             expect(self.client.post).to(have_been_called_with(
                 '/v1/shopping/seatmaps', {'foo': 'bar'}
+              
+        with it('.shopping.flight_offers.pricing.post'):
+            self.client.shopping.flight_offers.pricing.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/shopping/flight-offers/pricing?',
+                {'data': {'type': 'flight-offers-pricing',
+                          'flightOffers': [{'foo': 'bar'}]}}
+            ))
+
+        with it('.shopping.booking.flight_orders.post'):
+            self.client.booking.flight_orders.post({'foo': 'bar'}, {'bar': 'foo'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/booking/flight-orders',
+                {'data': {'type': 'flight-order',
+                          'flightOffers': [{'foo': 'bar'}],
+                          'travelers': [{'bar': 'foo'}]
+                          }}
+            ))
+
+        with it('.booking.flight_order().get'):
+            self.client.booking.flight_order('123').get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/booking/flight-orders/123', a='b'
+            ))
+
+        with it('.shopping.booking.hotel_bookings.post'):
+            self.client.booking.hotel_bookings.post('123',
+                                                    {'foo': 'bar'},
+                                                    {'bar': 'foo'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/booking/hotel-bookings',
+                {'data': {'offerId': '123',
+                          'guests': [{'foo': 'bar'}],
+                          'payments': [{'bar': 'foo'}]
+                          }}
             ))

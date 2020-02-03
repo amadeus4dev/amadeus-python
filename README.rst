@@ -211,12 +211,30 @@ List of supported endpoints
     # Flight Cheapest Date Search
     amadeus.shopping.flight_dates.get(origin='MAD', destination='MUC')
 
+    # Flight Offers Search GET
+    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1)
+    # Flight Offers Search POST
+    amadeus.shopping.flight_offers_search.post(body)
+
+    # Flight Offers Price
+    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1).data
+    amadeus.shopping.flight_offers.pricing.post(flights[0])
+    amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
+
+    # Flight Create Orders
+    amadeus.booking.flight_orders.post(flights[0], traveler)
+
+    # Flight Order Management
+    # The flight ID comes from the Flight Create Orders (in test environment it's temporary)
+    flight_booking = amadeus.booking.flight_orders.post(body).data
+    amadeus.booking.flight_order(flight_booking['id']).get()
+    
     # Flight Low-fare Search
-    amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01')
+    amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-06-01')
 
     # Flight Choice Prediction
-    result = amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2019-08-01').result
-    amadeus.shopping.flight_offers.prediction.post(result)
+    body = amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-10-01').result
+    amadeus.shopping.flight_offers.prediction.post(body)
 
     # Flight Checkin Links
     amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')
@@ -233,12 +251,6 @@ List of supported endpoints
     # Airport Nearest Relevant Airport (for London)
     amadeus.reference_data.locations.airports.get(longitude=0.1278, latitude=51.5074)
 
-    # Flight Most Searched Destinations
-    # Which were the most searched flight destinations from Madrid in August 2017?
-    amadeus.travel.analytics.air_traffic.searched.get(originCityCode='MAD', marketCountryCode='ES', searchPeriod='2017-08')
-    # How many people in Spain searched for a trip from Madrid to New-York in September 2017?
-    amadeus.travel.analytics.air_traffic.searched_by_destination.get(originCityCode='MAD', destinationCityCode='NYC', marketCountryCode='ES', searchPeriod='2017-08')
-
     # Flight Most Booked Destinations
     amadeus.travel.analytics.air_traffic.booked.get(originCityCode='MAD', period='2017-08')
 
@@ -248,13 +260,22 @@ List of supported endpoints
     # Flight Busiest Travel Period
     amadeus.travel.analytics.air_traffic.busiest_period.get(cityCode='MAD', period='2017', direction='ARRIVING')
 
+    # SeatMap Display GET
+    amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})
+    # SeatMap Display POST
+    amadeus.shopping.seatmaps.post(body)
+    
     # Hotel Search
     # Get list of Hotels by city code
     amadeus.shopping.hotel_offers.get(cityCode = 'LON')
     # Get list of offers for a specific hotel
-    amadeus.shopping.hotel_offers_by_hotel.get(hotelId = 'IALONCHO')
+    amadeus.shopping.hotel_offers_by_hotel.get(hotelId = 'BGLONBGB')
     # Confirm the availability of a specific offer
-    amadeus.shopping.hotel_offer('D5BEE9D0D08B6678C2F5FAD910DC110BCDA187D21D4FCE68ED423426D0A246BB').get()
+    offerId = amadeus.shopping.hotel_offer('8123DD9DE5102DADF5DA3B55C8C575F54114336EE718578753888747FE0652FC').get()
+
+    # Hotel Booking
+    # The offerId comes from the hotel_offer above
+    amadeus.booking.hotel_bookings.post(offerId, guests, payments)
 
     # Hotel Ratings
     # What travelers think about this hotel?
@@ -270,11 +291,11 @@ List of supported endpoints
     amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2020-08-01', returnDate='2020-08-12', searchDate='2020-06-11')
 
     # Flight Delay Prediction
-    amadeus.travel.predictions.flight_delay.get(originLocationCode='BRU', destinationLocationCode='FRA', departureDate='2020-01-14', \
-    departureTime='11:05:00', arrivalDate='2020-01-14', arrivalTime='12:10:00', aircraftCode='32A', carrierCode='LH', flightNumber='1009', duration='PT1H05M')
+    amadeus.travel.predictions.flight_delay.get(originLocationCode='NCE', destinationLocationCode='IST', departureDate='2020-08-01', \
+    departureTime='18:20:00', arrivalDate='2020-08-01', arrivalTime='22:15:00', aircraftCode='321', carrierCode='TK', flightNumber='1816', duration='PT31H10M')
 
     # Airport On-Time Performance
-    amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-03-01')
+    amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-09-01')
 
     # AI Generated Photos
     amadeus.media.files.generated_photos.get(category='MOUNTAIN')
@@ -290,16 +311,6 @@ List of supported endpoints
     amadeus.travel.trip_parser_jobs.status(response.data['id']).get()
     # Get the result of the process by jobId
     amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
-
-    # Flight Offers Search GET
-    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-05-01', adults=1)
-    # Flight Offers Search POST
-    amadeus.shopping.flight_offers_search.post(body)
-
-    # SeatMap Display GET
-    amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})
-    # SeatMap Display POST
-    amadeus.shopping.seatmaps.post(body)
 
 Development & Contributing
 --------------------------
@@ -326,6 +337,6 @@ to help you. You can find us on `StackOverflow <htps://stackoverflow.com/questio
 .. |Maintainability| image:: https://api.codeclimate.com/v1/badges/c2e19cf9628d6f4aece2/maintainability
    :target: https://codeclimate.com/github/amadeus4dev/amadeus-python/maintainability
 .. |Dependencies| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/dependencies.svg?sanitize=true
-   :target: ttps://badge.fury.io/py/amadeus
+   :target: https://badge.fury.io/py/amadeus
 .. |Contact Support| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/support.svg?sanitize=true
    :target: http://developers.amadeus.com/support

@@ -1,11 +1,13 @@
 from amadeus.client.decorator import Decorator
 from amadeus.shopping.flight_offers._prediction import FlightChoicePrediction
+from amadeus.shopping.flight_offers._pricing import FlightOffersPrice
 
 
 class FlightOffers(Decorator, object):
     def __init__(self, client):
         Decorator.__init__(self, client)
         self.prediction = FlightChoicePrediction(client)
+        self.pricing = FlightOffersPrice(client)
 
     def get(self, **params):
         '''
@@ -16,7 +18,7 @@ class FlightOffers(Decorator, object):
             amadeus.shopping.flight_offers.get(
                 origin='MAD',
                 destination='NYC',
-                departureDate='2019-08-01'
+                departureDate='2020-08-01'
             )
 
         :param origin: the City/Airport IATA code from which the flight will
