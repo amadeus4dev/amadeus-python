@@ -18,4 +18,4 @@ try:
     hotel_booking = amadeus.booking.hotel_bookings.post(offer, guests, payments)
     # print(hotel_booking.data)
 except ResponseError:
-    raise
+    pass
