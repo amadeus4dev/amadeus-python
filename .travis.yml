@@ -10,7 +10,7 @@ branches:
     - master
     - /^v[0-9]/
 before_install:
-  - pip install virtualenv==15.2.0 
+  - pip install virtualenv
   - pip install tox-travis
 script:
   - tox
