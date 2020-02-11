@@ -229,6 +229,11 @@ List of supported endpoints
     flight_booking = amadeus.booking.flight_orders.post(body).data
     amadeus.booking.flight_order(flight_booking['id']).get()
 
+    # Flight SeatMap Display GET
+    amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})
+    # Flight SeatMap Display POST
+    amadeus.shopping.seatmaps.post(body)
+
     # Flight Low-fare Search
     amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-06-01')
 
@@ -259,11 +264,6 @@ List of supported endpoints
 
     # Flight Busiest Travel Period
     amadeus.travel.analytics.air_traffic.busiest_period.get(cityCode='MAD', period='2017', direction='ARRIVING')
-
-    # SeatMap Display GET
-    amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})
-    # SeatMap Display POST
-    amadeus.shopping.seatmaps.post(body)
     
     # Hotel Search
     # Get list of Hotels by city code
@@ -316,11 +316,6 @@ List of supported endpoints
     amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-05-01', adults=1)
     # Flight Offers Search POST
     amadeus.shopping.flight_offers_search.post(body)
-
-    # SeatMap Display GET
-    amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})
-    # SeatMap Display POST
-    amadeus.shopping.seatmaps.post(body)
 
 Development & Contributing
 --------------------------

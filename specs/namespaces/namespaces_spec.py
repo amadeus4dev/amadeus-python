@@ -261,7 +261,7 @@ with description('Namespaces') as self:
             ))
 
         with it('.shopping.seatmaps.get'):
-            self.client.shopping.seatmaps.get(a='b')
+            self.client.shopping.seatmaps.get(**{'a': 'b'})
             expect(self.client.get).to(have_been_called_with(
                 '/v1/shopping/seatmaps', a='b'
             ))
@@ -354,10 +354,4 @@ with description('Namespaces') as self:
                           'guests': [{'foo': 'bar'}],
                           'payments': [{'bar': 'foo'}]
                           }}
-            ))
-
-        with it('.shopping.seatmaps.post'):
-            self.client.shopping.seatmaps.post({'foo': 'bar'})
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/shopping/seatmaps', {'foo': 'bar'}
             ))
