@@ -228,7 +228,12 @@ List of supported endpoints
     # The flight ID comes from the Flight Create Orders (in test environment it's temporary)
     flight_booking = amadeus.booking.flight_orders.post(body).data
     amadeus.booking.flight_order(flight_booking['id']).get()
-    
+
+    # Flight SeatMap Display GET
+    amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})
+    # Flight SeatMap Display POST
+    amadeus.shopping.seatmaps.post(body)
+
     # Flight Low-fare Search
     amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-06-01')
 
@@ -259,7 +264,7 @@ List of supported endpoints
 
     # Flight Busiest Travel Period
     amadeus.travel.analytics.air_traffic.busiest_period.get(cityCode='MAD', period='2017', direction='ARRIVING')
-
+    
     # Hotel Search
     # Get list of Hotels by city code
     amadeus.shopping.hotel_offers.get(cityCode = 'LON')
