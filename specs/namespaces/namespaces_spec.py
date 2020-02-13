@@ -46,6 +46,8 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_offers_search).not_to(be_none)
         expect(client.shopping.flight_offers.pricing).not_to(be_none)
 
+        expect(client.shopping.seatmaps).not_to(be_none)
+
         expect(client.shopping.hotel_offers).not_to(be_none)
         expect(client.shopping.hotel_offer).not_to(be_none)
         expect(client.shopping.hotel_offers_by_hotel).not_to(be_none)
@@ -101,6 +103,8 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_destinations.get).not_to(be_none)
         expect(client.shopping.flight_offers.get).not_to(be_none)
         expect(client.shopping.flight_offers_search.get).not_to(be_none)
+
+        expect(client.shopping.seatmaps.get).not_to(be_none)
 
         expect(client.shopping.hotel_offers.get).not_to(be_none)
         expect(client.shopping.hotel_offers_by_hotel.get).not_to(be_none)
@@ -256,6 +260,12 @@ with description('Namespaces') as self:
                 '/v2/shopping/hotel-offers/XXX', a='b'
             ))
 
+        with it('.shopping.seatmaps.get'):
+            self.client.shopping.seatmaps.get(**{'a': 'b'})
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/shopping/seatmaps', a='b'
+            ))
+
         with it('.e_reputation.hotel_sentiments.get'):
             self.client.e_reputation.hotel_sentiments.get(hotelIds='XKPARC12')
             expect(self.client.get).to(have_been_called_with(
@@ -302,6 +312,12 @@ with description('Namespaces') as self:
             self.client.shopping.flight_offers_search.post({'foo': 'bar'})
             expect(self.client.post).to(have_been_called_with(
                 '/v2/shopping/flight-offers', {'foo': 'bar'}
+            ))
+
+        with it('.shopping.seatmaps.post'):
+            self.client.shopping.seatmaps.post({'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/shopping/seatmaps', {'foo': 'bar'}
             ))
 
         with it('.shopping.flight_offers.pricing.post'):
