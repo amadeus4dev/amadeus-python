@@ -44,7 +44,7 @@ application.
     )
 
     try:
-        response = amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')
+        response = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1)
         print(response.data)
     except ResponseError as error:
         print(error)
@@ -233,9 +233,6 @@ List of supported endpoints
     amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})
     # Flight SeatMap Display POST
     amadeus.shopping.seatmaps.post(body)
-
-    # Flight Low-fare Search
-    amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-06-01')
 
     # Flight Choice Prediction
     body = amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-10-01').result
