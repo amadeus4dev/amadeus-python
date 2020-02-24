@@ -17,16 +17,12 @@ class FlightOffersPrice(Decorator, object):
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
-        url = '/v1/shopping/flight-offers/pricing'
+        url = '/v1/shopping/flight-offers/pricing?'
         flight_offers = []
-
-        if params is not None:
-            url = '/v1/shopping/flight-offers/pricing?'
         if type(body) is not list:
             flight_offers.append(body)
         else:
             flight_offers.extend(body)
-
         return self.client.post(url + urlencode(params),
                                 {'data':
                                 {'type': 'flight-offers-pricing',
