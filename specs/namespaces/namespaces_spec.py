@@ -284,6 +284,23 @@ with description('Namespaces') as self:
                 '/v2/travel/trip-parser-jobs', {'foo': 'bar'}
             ))
 
+        with it('.travel.trip_parser_jobs.post_from_base64'):
+            self.client.travel.trip_parser_jobs.post(
+                self.client.travel.from_base64('dGVzdA=='))
+            expect(self.client.post).to(have_been_called_with(
+                '/v2/travel/trip-parser-jobs',
+                {'data': {'type': 'trip-parser-job', 'content': 'dGVzdA=='}}
+            ))
+
+        with it('.travel.trip_parser_jobs.post_from_file'):
+            file = 'specs/namespaces/trip_parser_test.eml'
+            self.client.travel.trip_parser_jobs.post(
+                self.client.travel.from_file(file))
+            expect(self.client.post).to(have_been_called_with(
+                '/v2/travel/trip-parser-jobs',
+                {'data': {'type': 'trip-parser-job', 'content': 'Qm9va2luZwo='}}
+            ))
+
         with it('.shopping.flight_offers_search.post'):
             self.client.shopping.flight_offers_search.post({'foo': 'bar'})
             expect(self.client.post).to(have_been_called_with(
@@ -297,7 +314,16 @@ with description('Namespaces') as self:
             ))
 
         with it('.shopping.flight_offers.pricing.post'):
-            self.client.shopping.flight_offers.pricing.post({'foo': 'bar'})
+            self.client.shopping.flight_offers.pricing.post(
+                {'foo': 'bar'}, include='other-services')
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/shopping/flight-offers/pricing?'+'include=other-services',
+                {'data': {'type': 'flight-offers-pricing',
+                          'flightOffers': [{'foo': 'bar'}]}}
+            ))
+
+        with it('.shopping.flight_offers.pricing.post_list'):
+            self.client.shopping.flight_offers.pricing.post([{'foo': 'bar'}])
             expect(self.client.post).to(have_been_called_with(
                 '/v1/shopping/flight-offers/pricing?',
                 {'data': {'type': 'flight-offers-pricing',
@@ -306,6 +332,17 @@ with description('Namespaces') as self:
 
         with it('.shopping.booking.flight_orders.post'):
             self.client.booking.flight_orders.post({'foo': 'bar'}, {'bar': 'foo'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/booking/flight-orders',
+                {'data': {'type': 'flight-order',
+                          'flightOffers': [{'foo': 'bar'}],
+                          'travelers': [{'bar': 'foo'}]
+                          }}
+            ))
+
+        with it('.shopping.booking.flight_orders.post_list'):
+            self.client.booking.flight_orders.post(
+                [{'foo': 'bar'}], [{'bar': 'foo'}])
             expect(self.client.post).to(have_been_called_with(
                 '/v1/booking/flight-orders',
                 {'data': {'type': 'flight-order',
@@ -324,6 +361,17 @@ with description('Namespaces') as self:
             self.client.booking.hotel_bookings.post('123',
                                                     {'foo': 'bar'},
                                                     {'bar': 'foo'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/booking/hotel-bookings',
+                {'data': {'offerId': '123',
+                          'guests': [{'foo': 'bar'}],
+                          'payments': [{'bar': 'foo'}]
+                          }}
+            ))
+        with it('.shopping.booking.hotel_bookings.post_list'):
+            self.client.booking.hotel_bookings.post('123',
+                                                    [{'foo': 'bar'}],
+                                                    [{'bar': 'foo'}])
             expect(self.client.post).to(have_been_called_with(
                 '/v1/booking/hotel-bookings',
                 {'data': {'offerId': '123',
