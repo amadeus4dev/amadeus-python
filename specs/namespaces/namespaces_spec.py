@@ -285,16 +285,20 @@ with description('Namespaces') as self:
             ))
 
         with it('.travel.trip_parser_jobs.post_from_base64'):
-            self.client.travel.trip_parser_jobs.post(self.client.travel.from_base64('dGVzdA=='))
+            self.client.travel.trip_parser_jobs.post(
+                self.client.travel.from_base64('dGVzdA=='))
             expect(self.client.post).to(have_been_called_with(
-                '/v2/travel/trip-parser-jobs', {'data': {'type': 'trip-parser-job', 'content': 'dGVzdA=='}}
+                '/v2/travel/trip-parser-jobs',
+                {'data': {'type': 'trip-parser-job', 'content': 'dGVzdA=='}}
             ))
 
         with it('.travel.trip_parser_jobs.post_from_file'):
             file = 'specs/namespaces/trip_parser_test.eml'
-            self.client.travel.trip_parser_jobs.post(self.client.travel.from_file(file))
+            self.client.travel.trip_parser_jobs.post(
+                self.client.travel.from_file(file))
             expect(self.client.post).to(have_been_called_with(
-                '/v2/travel/trip-parser-jobs', {'data': {'type': 'trip-parser-job', 'content': 'Qm9va2luZwo='}}
+                '/v2/travel/trip-parser-jobs',
+                {'data': {'type': 'trip-parser-job', 'content': 'Qm9va2luZwo='}}
             ))
 
         with it('.shopping.flight_offers_search.post'):
