@@ -65,6 +65,29 @@ class HTTP(object):
         '''
         return self.request('POST', path, params)
 
+    def delete(self, path, **params):
+        '''
+        A helper function for making generic DELETE requests calls. It is used by
+        every namespaced API DELETE method.
+
+        It can be used to make any generic API call that is automatically
+        authenticated using your API credentials:
+
+        .. code-block:: python
+
+            amadeus.delete('/foo/bar', airline='1X')
+
+        :param path: path the full path for the API call
+        :paramtype path: str
+
+        :param params: (optional) params to pass to the API
+        :paramtype params: dict
+
+        :rtype: amadeus.Response
+        :raises amadeus.ResponseError: when the request fails
+        '''
+        return self.request('DELETE', path, params)
+
     def request(self, verb, path, params):
         '''
         A helper function for making generic POST requests calls. It is used by

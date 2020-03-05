@@ -230,8 +230,11 @@ List of supported endpoints
 
     # Flight Order Management
     # The flight ID comes from the Flight Create Orders (in test environment it's temporary)
+    # Retrieve the order based on it's ID
     flight_booking = amadeus.booking.flight_orders.post(body).data
     amadeus.booking.flight_order(flight_booking['id']).get()
+    # Delete the order based on it's ID
+    amadeus.booking.flight_order(flight_booking['id']).delete()
 
     # Flight SeatMap Display GET
     amadeus.shopping.seatmaps.get(**{"flight-orderId": "orderid"})

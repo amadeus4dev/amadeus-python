@@ -148,5 +148,8 @@ Booking
 .. autoclass:: amadeus.booking.FlightOrder
   :members: get
 
+.. autoclass:: amadeus.booking.FlightOrder
+  :members: delete
+
 .. autoclass:: amadeus.booking.HotelBookings
   :members: post
