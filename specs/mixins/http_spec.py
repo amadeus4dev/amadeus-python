@@ -29,6 +29,15 @@ with description('HTTP') as self:
                 have_been_called_with('GET', '/foo', {'foo': 'bar'})
             )
 
+    with context('Client.delete'):
+        with it('should pass all details to the request method'):
+            self.client.request = self.request_method
+            response = self.client.delete('/foo', foo='bar')
+            expect(response).to(equal(self.response))
+            expect(self.client.request).to(
+                have_been_called_with('DELETE', '/foo', {'foo': 'bar'})
+            )
+
     with context('Client.post'):
         with it('should pass all details to the request method'):
             self.client.request = self.request_method
