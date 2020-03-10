@@ -48,6 +48,7 @@ try:
     # Flight Order Management returns the last-updated version of the booking
     # print('Flight Order Management')
     updated_booking = amadeus.booking.flight_order(booked_flight['id']).get()
+    cancelled_booking = amadeus.booking.flight_order(booked_flight['id']).delete()
 except ResponseError as error:
     # print(error.response.body)
     pass

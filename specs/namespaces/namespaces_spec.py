@@ -111,6 +111,11 @@ with description('Namespaces') as self:
         expect(client.travel.trip_parser_jobs.result('123').get).not_to(be_none)
 
         expect(client.booking.flight_order('123').get).not_to(be_none)
+        expect(client.booking.flight_order('123').delete).not_to(be_none)
+
+    with it('should define all expected .delete methods'):
+        client = self.client
+        expect(client.booking.flight_order('123').delete).not_to(be_none)
 
     with it('should define all expected .post methods'):
         client = self.client
@@ -120,6 +125,7 @@ with description('Namespaces') as self:
         with before.each:
             self.client.get = method_returning(None)
             self.client.post = method_returning(None)
+            self.client.delete = method_returning(None)
 
         with it('.reference_data.urls.checkin_links.get'):
             self.client.reference_data.urls.checkin_links.get(a='b')
@@ -354,6 +360,12 @@ with description('Namespaces') as self:
         with it('.booking.flight_order().get'):
             self.client.booking.flight_order('123').get(a='b')
             expect(self.client.get).to(have_been_called_with(
+                '/v1/booking/flight-orders/123', a='b'
+            ))
+
+        with it('.booking.flight_order().delete'):
+            self.client.booking.flight_order('123').delete(a='b')
+            expect(self.client.delete).to(have_been_called_with(
                 '/v1/booking/flight-orders/123', a='b'
             ))
 
