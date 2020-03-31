@@ -21,3 +21,12 @@ try:
     # print(response.data)
 except ResponseError as error:
     raise error
+
+try:
+    '''
+    Give me information about a place based on it's ID
+    '''
+    response = amadeus.reference_data.locations.point_of_interest('9CB40CB5D0').get()
+    # print(response.data)
+except ResponseError as error:
+    raise error
