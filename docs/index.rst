@@ -44,9 +44,6 @@ Shopping/Flights
 .. autoclass:: amadeus.shopping.FlightDates
   :members: get
 
-.. autoclass:: amadeus.shopping.FlightOffers
-  :members: get
-
 .. autoclass:: amadeus.shopping.FlightOffersSearch
   :members: get
 

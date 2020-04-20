@@ -94,7 +94,6 @@ with description('Namespaces') as self:
 
         expect(client.shopping.flight_dates.get).not_to(be_none)
         expect(client.shopping.flight_destinations.get).not_to(be_none)
-        expect(client.shopping.flight_offers.get).not_to(be_none)
         expect(client.shopping.flight_offers_search.get).not_to(be_none)
 
         expect(client.shopping.seatmaps.get).not_to(be_none)
@@ -221,12 +220,6 @@ with description('Namespaces') as self:
                 '/v1/shopping/flight-destinations', a='b'
             ))
 
-        with it('.shopping.flight_offers.get'):
-            self.client.shopping.flight_offers.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/flight-offers', a='b'
-            ))
-
         with it('.shopping.flight_offers_search.get'):
             self.client.shopping.flight_offers_search.get(a='b')
             expect(self.client.get).to(have_been_called_with(
@@ -290,7 +283,7 @@ with description('Namespaces') as self:
         with it('.shopping.flight_offers.prediction.post'):
             self.client.shopping.flight_offers.prediction.post({'foo': 'bar'})
             expect(self.client.post).to(have_been_called_with(
-                '/v1/shopping/flight-offers/prediction', {'foo': 'bar'}
+                '/v2/shopping/flight-offers/prediction', {'foo': 'bar'}
             ))
 
         with it('.travel.trip_parser_jobs.post'):
