@@ -242,7 +242,11 @@ List of supported endpoints
     amadeus.shopping.seatmaps.post(body)
 
     # Flight Choice Prediction
-    body = amadeus.shopping.flight_offers.get(origin='MAD', destination='NYC', departureDate='2020-10-01').result
+    body = amadeus.shopping.flight_offers_search.get(
+            originLocationCode='MAD',
+            destinationLocationCode='NYC',
+            departureDate='2020-11-01',
+            adults=1).result
     amadeus.shopping.flight_offers.prediction.post(body)
 
     # Flight Checkin Links
