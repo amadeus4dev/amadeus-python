@@ -12,7 +12,7 @@ class FlightChoicePrediction(Decorator, object):
                 amadeus.shopping.flight_offers_search.get(
                 originLocationCode='SYD',
                 destinationLocationCode='BKK',
-                departureDate='2020-07-01',
+                departureDate='2020-11-01',
                 adults=1).result
         )
 
