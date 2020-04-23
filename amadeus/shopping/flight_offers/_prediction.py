@@ -9,13 +9,14 @@ class FlightChoicePrediction(Decorator, object):
         .. code-block:: python
 
             amadeus.shopping.flight_offers.prediction.post(
-                amadeus.shopping.flight_offers.get(origin='MAD',
-                destination='NYC',
-                departureDate='2020-08-01'
-            ).result
+                amadeus.shopping.flight_offers_search.get(
+                originLocationCode='SYD',
+                destinationLocationCode='BKK',
+                departureDate='2020-11-01',
+                adults=1).result
         )
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
-        return self.client.post('/v1/shopping/flight-offers/prediction', body)
+        return self.client.post('/v2/shopping/flight-offers/prediction', body)
