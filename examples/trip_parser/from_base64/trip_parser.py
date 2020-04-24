@@ -25,7 +25,7 @@ def get_status(id):
 
 # Retrieves the parsing result when the process is complete
 while get_status(id) != 'COMPLETED':
-    time.sleep(5)
+    time.sleep(10)
 try:
     result = amadeus.travel.trip_parser_jobs.result(id).get()
 except ResponseError as error:
