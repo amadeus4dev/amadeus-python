@@ -1,11 +1,27 @@
 Changelog
 =========
-3.4.0 - 2020-01-28
+4.0.0 - 2020-04-27
 --------------------
-Add support for the `SeatMap Display  <https://developers.amadeus.com/self-service/category/air/api-doc/seatmap-display>`_
+Add support for the `Flight Choice Prediction v2 <https://developers.amadeus.com/self-service/category/air/api-doc/flight-choice-prediction/api-reference>`_
+
+The input of Flight Choice Prediction v2 is the result of Flight Offers Search API - in v1 the input was the result of Flight Low-Fare Search
+
+Add support for the Retrieve (3rd) endpoint of `Points Of Interest API <https://developers.amadeus.com/self-service/category/destination-content/api-doc/points-of-interest/api-reference>`_
+
+Remove support for Flight Low-Fare Search: decommission on May 28, 2020 and mandatory migration to Flight Offers Search
+
+Remove support for Most Searched Destinations
+
+Add Trip Parser, Flight Create Orders and Flight Order Management executable examples
+
+3.5.0 - 2020-02-13
+--------------------
+Add support for the `SeatMap Display <https://developers.amadeus.com/self-service/category/air/api-doc/seatmap-display>`_
 
 SeatMap Display API allows you to get information to display airplane cabin plan from a Flight Offer in order for the traveler to be able to choose his seat during the flight booking flow thanks to POST method. In addition GET method allows you to display airplane cabin plan from an existing Flight Order.
 
+3.4.0 - 2020-01-28
+--------------------
 Add support for the `Hotel Booking <https://developers.amadeus.com/self-service/category/hotel/api-doc/hotel-booking>`_
 
 The Amadeus Hotel Booking API lets you complete bookings at over 150,000 hotels and accommodations around the world. To complete bookings, you must first use the Amadeus Hotel Search API to search for hotel deals, select the desired offer and confirm the final price and availability. You can then use the Hotel Booking API to complete the reservation by providing an offer id, guest information and payment information.
