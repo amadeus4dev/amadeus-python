@@ -8,6 +8,8 @@ The input of Flight Choice Prediction v2 is the result of Flight Offers Search A
 
 Add support for the Retrieve (3rd) endpoint of `Points Of Interest API <https://developers.amadeus.com/self-service/category/destination-content/api-doc/points-of-interest/api-reference>`_
 
+Remove support for Flight Choice Prediction v1
+
 Remove support for Flight Low-Fare Search: decommission on May 28, 2020 and mandatory migration to Flight Offers Search
 
 Remove support for Most Searched Destinations
