@@ -289,7 +289,7 @@ List of supported endpoints
     # What travelers think about this hotel?
     amadeus.e_reputation.hotel_sentiments.get(hotelIds = 'ADNYCCTB')
 
-    # Point of Interest
+    # Points of Interest
     # What are the popular places in Barcelona (based a geo location and a radius)
     amadeus.reference_data.locations.points_of_interest.get(latitude=41.397158, longitude=2.160873)
     # What are the popular places in Barcelona? (based on a square)
