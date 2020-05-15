@@ -4,14 +4,12 @@ Amadeus Python SDK
 |Module Version| |Build Status| |Maintainability| |Dependencies|
 |Contact Support|
 
-Amadeus provides a rich set of APIs for the travel industry. For more details, check out the `Amadeus for Developers Portal <https://developers.amadeus.com>`__ or the `SDK class reference <https://amadeus4dev.github.io/amadeus-python>`.
+Amadeus provides a rich set of APIs for the travel industry. For more details, check out the `Amadeus for Developers Portal <https://developers.amadeus.com>`__ or the `SDK class reference <https://amadeus4dev.github.io/amadeus-python>`__.
 
 Installation
 ------------
 
-This SDK requires Python 2.7+ or 3.4+. 
-
-You can install it directly with pip.
+This SDK requires Python 2.7+ or 3.4+. You can install it directly with pip:
 
 .. code:: sh
 
@@ -28,7 +26,7 @@ Getting Started
 ---------------
 
 To make your first API call, you will need to `register <https://developers.amadeus.com/register>`__ for an Amadeus Developer Account and `set up your first
-application <https://developers.amadeus.com/my-apps/>`.
+application <https://developers.amadeus.com/my-apps/>`__.
 
 .. code:: py
 
@@ -66,7 +64,7 @@ Alternatively, it can be initialized without any parameters if the environment v
 
     amadeus = Client()
 
-Your credentials can be found on the `Amadeus dashboard <https://developers.amadeus.com/my-apps/>`.
+Your credentials can be found on the `Amadeus dashboard <https://developers.amadeus.com/my-apps/>`__.
 
 By default, the SDK environment is set to ``test`` environment. To switch to a production (pay-as-you-go) environment, please switch the hostname as follows:
 
