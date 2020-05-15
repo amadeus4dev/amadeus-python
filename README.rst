@@ -312,7 +312,7 @@ This library is released under the `MIT License <LICENSE>`__.
 Help
 ----
 
-Our `developer support team <https://developers.amadeus.com/support>`__ is here to help you. You can also find us on `Stack Overflow <htps://stackoverflow.com/questions/tagged/amadeus>`__, or `email directly <mailto:developers@amadeus.com>`__.
+Our `developer support team <https://developers.amadeus.com/support>`__ is here to help you. You can also find us on `StackOverflow <htps://stackoverflow.com/questions/tagged/amadeus>`__, or `email directly <mailto:developers@amadeus.com>`__.
 
 .. |Module Version| image:: https://badge.fury.io/py/amadeus.svg
    :target: https://pypi.org/project/amadeus/
