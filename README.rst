@@ -4,23 +4,18 @@ Amadeus Python SDK
 |Module Version| |Build Status| |Maintainability| |Dependencies|
 |Contact Support|
 
-Amadeus provides a set of APIs for the travel industry. Flights, Hotels,
-Locations and more.
-
-For more details see the `Amadeus for Developers Portal
-<https://developers.amadeus.com>`__ and the `class reference
-<https://amadeus4dev.github.io/amadeus-python>`__ here on GitHub.
+Amadeus provides a rich set of APIs for the travel industry. For more details, check out the `Amadeus for Developers Portal <https://developers.amadeus.com>`__ or the `SDK class reference <https://amadeus4dev.github.io/amadeus-python>`__.
 
 Installation
 ------------
 
-This SDK requires Python 2.7+ or 3.4+. You can install it directly with pip.
+This SDK requires Python 2.7+ or 3.4+. You can install it directly with pip:
 
 .. code:: sh
 
     pip install amadeus
 
-You can also add it to your `requirements.txt` file and install using:
+OR, add it to your `requirements.txt` file and install using:
 
 .. code:: sh
 
@@ -30,9 +25,8 @@ You can also add it to your `requirements.txt` file and install using:
 Getting Started
 ---------------
 
-To make your first API call you will need to `register for an Amadeus Developer
-Account <https://developers.amadeus.com/create-account>`__ and set up your first
-application.
+To make your first API call, you will need to `register <https://developers.amadeus.com/register>`__ for an Amadeus Developer Account and `set up your first
+application <https://developers.amadeus.com/my-apps/>`__.
 
 .. code:: py
 
@@ -64,21 +58,15 @@ The client can be initialized directly.
     # Initialize using parameters
     amadeus = Client(client_id='REPLACE_BY_YOUR_API_KEY', client_secret='REPLACE_BY_YOUR_API_SECRET')
 
-Alternatively it can be initialized without any parameters if the
-environment variables ``AMADEUS_CLIENT_ID`` and
-``AMADEUS_CLIENT_SECRET`` are present.
+Alternatively, it can be initialized without any parameters if the environment variables ``AMADEUS_CLIENT_ID`` and ``AMADEUS_CLIENT_SECRET`` are present.
 
 .. code:: py
 
     amadeus = Client()
 
-Your credentials can be found on the `Amadeus dashboard
-<https://developers.amadeus.com/my-apps/>`__. `Sign
-up <https://developers.amadeus.com>`__ for an account today.
+Your credentials can be found on the `Amadeus dashboard <https://developers.amadeus.com/my-apps/>`__.
 
-By default the environment for the SDK is the ``test`` environment. To
-switch to a production (paid-for) environment please switch the hostname
-as follows:
+By default, the SDK environment is set to ``test`` environment. To switch to a production (pay-as-you-go) environment, please switch the hostname as follows:
 
 .. code:: py
 
@@ -87,15 +75,11 @@ as follows:
 Documentation
 -------------
 
-Amadeus has a large set of APIs, and our documentation is here to get you
-started today. Head over to our `Reference
-<https://amadeus4dev.github.io/amadeus-python/>`__
-documentation for in-depth information about every SDK method, its arguments
-and return types.
+Amadeus has a large set of APIs, and our documentation is here to get you started today. Head over to our `reference documentation <https://amadeus4dev.github.io/amadeus-python/>`__ for in-depth information about every SDK method, as well as its arguments and return types.
 
   -  `Initialize the SDK <https://amadeus4dev.github.io/amadeus-python/#/client>`__
-  -  `Find an Airport <https://amadeus4dev.github.io/amadeus-python/#referencedata-locations>`__
-  -  `Find a Flight <https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
+  -  `Find an Airport <https://amadeus4dev.github.io/amadeus-python/#amadeus.reference_data.locations.Airports>`__
+  -  `Find a Flight <https://amadeus4dev.github.io/amadeus-python/#amadeus.shopping.FlightOffersSearch>`__
   -  `Get Flight Inspiration <https://amadeus4dev.github.io/amadeus-python/#shopping-flights>`__
 
 Making API calls
@@ -103,30 +87,27 @@ Making API calls
 
 This library conveniently maps every API path to a similar path.
 
-For example, ``GET /v2/reference-data/urls/checkin-links?airlineCode=BA``
-would be:
+For example, ``GET /v2/reference-data/urls/checkin-links?airlineCode=BA`` would be:
 
 .. code:: py
 
     amadeus.reference_data.urls.checkin_links.get(airlineCode='BA')
 
-Similarly, to select a resource by ID, you can pass in the ID to the
-singular path.
+Similarly, to select a resource by ID, you can pass in the ID to the singular path.
 
 For example, ``GET /v2/shopping/hotel-offers/XZY`` would be:
 
 .. code:: py
 
-    amadeus.shopping.hotel_offer('4BA070CE929E135B3268A9F2D0C51E9D4A6CF318BA10485322FA2C7E78C7852E').get()
+    amadeus.shopping.hotel_offer('XYZ').get()
 
-You can make any arbitrary API call as well directly with the ``.get``
-method:
+You can make any arbitrary API call directly with the ``.get`` method as well:
 
 .. code:: py
 
     amadeus.get('/v2/reference-data/urls/checkin-links', airlineCode='BA')
 
-Or with ``POST`` using ``.client.post`` method:
+Or, with ``POST`` method:
 
 .. code:: py
 
@@ -135,11 +116,7 @@ Or with ``POST`` using ``.client.post`` method:
 Response
 --------
 
-Every API call returns a ``Response`` object. If the API call contained
-a JSON response it will parse the JSON into the ``.result`` attribute.
-If this data also contains a ``data`` key, it will make that available
-as the ``.data`` attribute. The raw body of the response is always
-available as the ``.body`` attribute.
+Every API call returns a ``Response`` object. If the API call contained a JSON response it will parse the JSON into the ``.result`` attribute. If this data also contains a ``data`` key, it will make that available as the ``.data`` attribute. The raw body of the response is always available as the ``.body`` attribute.
 
 .. code:: py
 
@@ -157,8 +134,7 @@ available as the ``.body`` attribute.
 Pagination
 ----------
 
-If an API endpoint supports pagination, the other pages are available
-under the ``.next``, ``.previous``, ``.last`` and ``.first`` methods.
+If an API endpoint supports pagination, the other pages are available under the ``.next``, ``.previous``, ``.last`` and ``.first`` methods.
 
 .. code:: py
 
@@ -191,10 +167,7 @@ The SDK makes it easy to add your own logger.
         logger=logger
     )
 
-Additionally, to enable more verbose logging, you can set the
-appropriate level on your own logger, though the easiest way would be to
-enable debugging via a parameter on initialization, or using the
-``AMADEUS_LOG_LEVEL`` environment variable.
+Additionally, to enable more verbose logging, you can set the appropriate level on your own logger. The easiest way would be to enable debugging via a parameter during initialization, or using the ``AMADEUS_LOG_LEVEL`` environment variable.
 
 .. code:: py
 
@@ -337,8 +310,7 @@ This library is released under the `MIT License <LICENSE>`__.
 Help
 ----
 
-Our `developer support team <https://developers.amadeus.com/support>`__ is here
-to help you. You can find us on `StackOverflow <htps://stackoverflow.com/questions/tagged/amadeus>`__, and `email <mailto:developers@amadeus.com>`__.
+Our `developer support team <https://developers.amadeus.com/support>`__ is here to help you. You can also find us on `StackOverflow <htps://stackoverflow.com/questions/tagged/amadeus>`__, or `email directly <mailto:developers@amadeus.com>`__.
 
 .. |Module Version| image:: https://badge.fury.io/py/amadeus.svg
    :target: https://pypi.org/project/amadeus/
