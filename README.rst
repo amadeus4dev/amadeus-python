@@ -325,4 +325,4 @@ Our `developer support team <https://developers.amadeus.com/support>`__ is here 
 .. |Contact Support| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/support.svg?sanitize=true
    :target: http://developers.amadeus.com/support
 .. |Discord| image:: https://img.shields.io/discord/696822960023011329?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2
-   :target: https://discord.gg/cVrFBq
+   :target: https://discord.gg/cVrFBqx
