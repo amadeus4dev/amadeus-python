@@ -3,6 +3,8 @@ Amadeus Python SDK
 
 |Module Version| |Build Status| |Maintainability| |Dependencies|
 |Contact Support|
+|Discord|
+
 
 Amadeus provides a rich set of APIs for the travel industry. For more details, check out the `Amadeus for Developers Portal <https://developers.amadeus.com>`__ or the `SDK class reference <https://amadeus4dev.github.io/amadeus-python>`__.
 
@@ -322,3 +324,5 @@ Our `developer support team <https://developers.amadeus.com/support>`__ is here 
    :target: https://badge.fury.io/py/amadeus
 .. |Contact Support| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/support.svg?sanitize=true
    :target: http://developers.amadeus.com/support
+.. |Discord| image:: https://img.shields.io/discord/696822960023011329?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2
+   :target: https://discord.gg/cVrFBq
