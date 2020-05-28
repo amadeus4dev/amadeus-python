@@ -297,7 +297,9 @@ List of supported endpoints
     # Get the result of the process by jobId
     amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
 
-You can also find all the endpoints in self-contained `examples <https://github.com/amadeus4dev/amadeus-code-examples>`_.
+Examples
+--------------------------
+You can find all the endpoints in self-contained `code examples <https://github.com/amadeus4dev/amadeus-code-examples>`_.
 
 Development & Contributing
 --------------------------
