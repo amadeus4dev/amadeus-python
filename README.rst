@@ -49,6 +49,9 @@ application <https://developers.amadeus.com/my-apps/>`__.
     except ResponseError as error:
         print(error)
 
+Examples
+--------------------------
+You can find all the endpoints in self-contained `code examples <https://github.com/amadeus4dev/amadeus-code-examples>`_.
 
 Initialization
 --------------
@@ -296,10 +299,6 @@ List of supported endpoints
     amadeus.travel.trip_parser_jobs.status(response.data['id']).get()
     # Get the result of the process by jobId
     amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
-
-Examples
---------------------------
-You can find all the endpoints in self-contained `code examples <https://github.com/amadeus4dev/amadeus-code-examples>`_.
 
 Development & Contributing
 --------------------------
