@@ -162,3 +162,15 @@ Booking
 
 .. autoclass:: amadeus.booking.HotelBookings
   :members: post
+
+Safety/SafetyRatedLocations
+=======================
+
+.. autoclass:: amadeus.safety.SafetyRatedLocations
+  :members: get
+
+.. autoclass:: amadeus.safety.safety_rated_locations.BySquare
+  :members: get
+
+.. autoclass:: amadeus.safety.safety_rated_locations.SafetyRatedLocation
+  :members: get

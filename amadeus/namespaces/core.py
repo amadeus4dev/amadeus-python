@@ -5,6 +5,7 @@ from amadeus.namespaces._e_reputation import EReputation
 from amadeus.namespaces._airport import Airport
 from amadeus.namespaces._media import Media
 from amadeus.namespaces._booking import Booking
+from amadeus.namespaces._safety import Safety
 
 
 class Core(object):
@@ -16,3 +17,4 @@ class Core(object):
         self.airport = Airport(self)
         self.media = Media(self)
         self.booking = Booking(self)
+        self.safety = Safety(self)
