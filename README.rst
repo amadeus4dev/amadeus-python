@@ -268,7 +268,8 @@ List of supported endpoints
     # What are the popular places in Barcelona (based a geo location and a radius)
     amadeus.reference_data.locations.points_of_interest.get(latitude=41.397158, longitude=2.160873)
     # What are the popular places in Barcelona? (based on a square)
-    amadeus.reference_data.locations.points_of_interest.by_square.get(north=41.397158, west=2.160873, south=41.394582, east=2.177181)
+    amadeus.reference_data.locations.points_of_interest.by_square.get(north=41.397158, west=2.160873,
+                                                                      south=41.394582, east=2.177181)
     # Returns a single Point of Interest from a given id
     amadeus.reference_data.locations.point_of_interest('9CB40CB5D0').get()
 
@@ -276,7 +277,8 @@ List of supported endpoints
     # How safe is Barcelona? (based a geo location and a radius)
     amadeus.safety.safety_rated_locations.get(latitude=41.397158, longitude=2.160873)
     # How safe is Barcelona? (based on a square)
-    amadeus.safety.safety_rated_locations.by_square.get(north=41.397158, west=2.160873, south=41.394582, east=2.177181)
+    amadeus.safety.safety_rated_locations.by_square.get(north=41.397158, west=2.160873,
+                                                        south=41.394582, east=2.177181)
     # What is the safety information of a location based on it's Id?
     amadeus.safety.safety_rated_location('Q930400801').get()
 
