@@ -118,6 +118,10 @@ with description('Namespaces') as self:
         expect(client.booking.flight_order('123').get).not_to(be_none)
         expect(client.booking.flight_order('123').delete).not_to(be_none)
 
+        expect(client.safety.safety_rated_locations.by_square.get).not_to(be_none)
+        expect(client.safety.safety_rated_location('Q930402719').get).not_to(
+            be_none)
+
     with it('should define all expected .delete methods'):
         client = self.client
         expect(client.booking.flight_order('123').delete).not_to(be_none)
