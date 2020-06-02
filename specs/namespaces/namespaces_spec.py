@@ -68,6 +68,10 @@ with description('Namespaces') as self:
         expect(client.booking.flight_orders).not_to(be_none)
         expect(client.booking.flight_order).not_to(be_none)
 
+        expect(client.safety.safety_rated_locations).not_to(be_none)
+        expect(client.safety.safety_rated_locations.by_square).not_to(be_none)
+        expect(client.safety.safety_rated_location).not_to(be_none)
+
     with it('should define all expected .get methods'):
         client = self.client
         expect(client.reference_data.urls.checkin_links.get).not_to(be_none)
@@ -113,6 +117,10 @@ with description('Namespaces') as self:
 
         expect(client.booking.flight_order('123').get).not_to(be_none)
         expect(client.booking.flight_order('123').delete).not_to(be_none)
+
+        expect(client.safety.safety_rated_locations.by_square.get).not_to(be_none)
+        expect(client.safety.safety_rated_location('Q930402719').get).not_to(
+            be_none)
 
     with it('should define all expected .delete methods'):
         client = self.client
@@ -392,4 +400,23 @@ with description('Namespaces') as self:
                           'guests': [{'foo': 'bar'}],
                           'payments': [{'bar': 'foo'}]
                           }}
+            ))
+
+        with it('.safety.safety_rated_locations.get'):
+            self.client.safety.safety_rated_locations.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/safety/safety-rated-locations', a='b'
+            ))
+
+        with it('.safety.safety_rated_locations.by_square.get'):
+            self.client.safety.safety_rated_locations.by_square.get(
+                a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/safety/safety-rated-locations/by-square', a='b'
+            ))
+
+        with it('.safety.safety_rated_location().get'):
+            self.client.safety.safety_rated_location('XXX').get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/safety/safety-rated-locations/XXX', a='b'
             ))
