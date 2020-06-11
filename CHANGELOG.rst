@@ -1,12 +1,16 @@
 Changelog
 =========
+4.1.0 - 2020-06-11
+--------------------
+Add support for the `Safe Place API <https://developers.amadeus.com/self-service/category/destination-content/api-doc/safe-place-api>`_
+
 4.0.0 - 2020-04-27
 --------------------
-Add support for the `Flight Choice Prediction v2 <https://developers.amadeus.com/self-service/category/air/api-doc/flight-choice-prediction/api-reference>`_
+Add support for the `Flight Choice Prediction v2 <https://developers.amadeus.com/self-service/category/air/api-doc/flight-choice-prediction>`_
 
 The input of Flight Choice Prediction v2 is the result of Flight Offers Search API - in v1 the input was the result of Flight Low-Fare Search
 
-Add support for the Retrieve (3rd) endpoint of `Points Of Interest API <https://developers.amadeus.com/self-service/category/destination-content/api-doc/points-of-interest/api-reference>`_
+Add support for the Retrieve (3rd) endpoint of `Points Of Interest API <https://developers.amadeus.com/self-service/category/destination-content/api-doc/points-of-interest>`_
 
 Remove support for Flight Choice Prediction v1
 
