@@ -15,7 +15,6 @@ before_install:
 script:
   - tox
   - pip install -e .
-  - if [[ $TRAVIS_PYTHON_VERSION == '3.6.3' ]]; then bash .travis_script.sh; fi
 
 before_deploy:
   - pip install -e .
