@@ -15,7 +15,6 @@ before_install:
 script:
   - tox
   - pip install -e .
-
 before_deploy:
   - pip install -e .
   - make docs
