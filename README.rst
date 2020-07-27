@@ -310,6 +310,9 @@ List of supported endpoints
     # Get the result of the process by jobId
     amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
 
+    # Travel Recommendations
+    amadeus.reference_data.recommended_locations.get(cityCodes='PAR', travelerCountryCode='FR')
+
 Development & Contributing
 --------------------------
 
