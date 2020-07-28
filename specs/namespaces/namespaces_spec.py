@@ -86,6 +86,7 @@ with description('Namespaces') as self:
             ).not_to(be_none)
         expect(client.reference_data.locations.point_of_interest(
             '9CB40CB5D0').get).not_to(be_none)
+        expect(client.reference_data.recommended_locations.get).not_to(be_none)
 
         expect(client.travel.analytics.air_traffic.traveled.get).not_to(be_none)
         expect(client.travel.analytics.air_traffic.booked.get).not_to(be_none)
@@ -184,6 +185,12 @@ with description('Namespaces') as self:
                 'XXX').get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/reference-data/locations/pois/XXX', a='b'
+            ))
+
+        with it('.reference_data.recommended_locations.get'):
+            self.client.reference_data.recommended_locations.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/reference-data/recommended-locations', a='b'
             ))
 
         with it('.travel.analytics.air_traffic.traveled.get'):
