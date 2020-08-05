@@ -131,6 +131,12 @@ ReferenceData/Urls
 .. autoclass:: amadeus.reference_data.urls.CheckinLinks
   :members: get
 
+ReferenceData/RecommendedLocations
+==================
+
+.. autoclass:: amadeus.reference_data.RecommendedLocations
+  :members: get
+
 Helper/Location
 ==================
 
