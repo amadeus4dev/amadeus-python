@@ -1,5 +1,11 @@
 Changelog
 =========
+4.2.0 - 2020-08-05
+--------------------
+Add support for the `Travel Recommendations API <https://developers.amadeus.com/self-service/category/trip/api-doc/travel-recommendations>`_
+
+Moved the code examples directory to a dedicated `code examples repository <https://github.com/amadeus4dev/amadeus-code-examples>`_
+
 4.1.0 - 2020-06-11
 --------------------
 Add support for the `Safe Place API <https://developers.amadeus.com/self-service/category/destination-content/api-doc/safe-place-api>`_
