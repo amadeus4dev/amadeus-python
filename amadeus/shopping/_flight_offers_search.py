@@ -9,17 +9,17 @@ class FlightOffersSearch(Decorator, object):
         .. code-block:: python
 
             amadeus.shopping.flight_offers_search.get(
-                origin='MAD',
-                destination='NYC',
-                departureDate='2019-08-01',
+                originLocationCode='MAD',
+                destinationLocationCode='BOS',
+                departureDate='2019-11-01',
                 adults='1'
             )
 
-        :param origin: the City/Airport IATA code from which the flight will
-            depart. ``"MAD"``, for example for Madrid.
+        :param originLocationCode: the City/Airport IATA code from which
+            the flight will depart. ``"MAD"``, for example for Madrid.
 
-        :param destination: the City/Airport IATA code to which the flight is
-            going. ``"BOS"``, for example for Boston.
+        :param destinationLocationCode: the City/Airport IATA code to
+            which the flight is going. ``"BOS"``, for example for Boston.
 
         :param departureDate: the date on which to fly out, in `YYYY-MM-DD`
             format
