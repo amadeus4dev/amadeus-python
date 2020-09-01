@@ -19,7 +19,7 @@ class Flights(Decorator, object):
         :param flightNumber: flight number as assigned by the carrier
 
         :param scheduledDepartureDate: scheduled departure date of the flight,
-            local to the departure airport,format YYYY-MM-DD
+            local to the departure airport, format YYYY-MM-DD
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
