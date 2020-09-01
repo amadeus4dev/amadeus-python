@@ -72,6 +72,9 @@ with description('Namespaces') as self:
         expect(client.safety.safety_rated_locations.by_square).not_to(be_none)
         expect(client.safety.safety_rated_location).not_to(be_none)
 
+        expect(client.schedule).not_to(be_none)
+        expect(client.schedule.flights).not_to(be_none)
+
     with it('should define all expected .get methods'):
         client = self.client
         expect(client.reference_data.urls.checkin_links.get).not_to(be_none)
@@ -122,6 +125,8 @@ with description('Namespaces') as self:
         expect(client.safety.safety_rated_locations.by_square.get).not_to(be_none)
         expect(client.safety.safety_rated_location('Q930402719').get).not_to(
             be_none)
+
+        expect(client.schedule.flights.get).not_to(be_none)
 
     with it('should define all expected .delete methods'):
         client = self.client
@@ -426,4 +431,10 @@ with description('Namespaces') as self:
             self.client.safety.safety_rated_location('XXX').get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/safety/safety-rated-locations/XXX', a='b'
+            ))
+
+        with it('.schedule.flights().get'):
+            self.client.schedule.flights.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v2/schedule/flights', a='b'
             ))
