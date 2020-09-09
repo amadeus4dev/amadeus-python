@@ -180,3 +180,9 @@ Safety/SafetyRatedLocations
 
 .. autoclass:: amadeus.safety.safety_rated_locations.SafetyRatedLocation
   :members: get
+
+Schedule/Flights
+================
+
+.. autoclass:: amadeus.schedule.flights
+  :members: get

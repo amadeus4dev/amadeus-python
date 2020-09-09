@@ -313,6 +313,9 @@ List of supported endpoints
     # Travel Recommendations
     amadeus.reference_data.recommended_locations.get(cityCodes='PAR', travelerCountryCode='FR')
 
+    # Retrieve status of a given flight
+    amadeus.schedule.flights.get(carrierCode='AZ', flightNumber='319', scheduledDepartureDate='2021-03-13')
+
 Development & Contributing
 --------------------------
 
