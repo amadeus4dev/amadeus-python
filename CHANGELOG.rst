@@ -1,5 +1,9 @@
 Changelog
 =========
+4.3.0 - 2020-09-10
+--------------------
+Add support for the `On-Demand Flight Status API <https://developers.amadeus.com/self-service/category/air/api-doc/on-demand-flight-status/api-reference>`_
+
 4.2.0 - 2020-08-05
 --------------------
 Add support for the `Travel Recommendations API <https://developers.amadeus.com/self-service/category/trip/api-doc/travel-recommendations>`_
