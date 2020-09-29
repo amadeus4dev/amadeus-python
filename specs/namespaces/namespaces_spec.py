@@ -48,6 +48,8 @@ with description('Namespaces') as self:
         expect(client.shopping.hotel_offer).not_to(be_none)
         expect(client.shopping.hotel_offers_by_hotel).not_to(be_none)
 
+        expect(client.shopping.activities).not_to(be_none)
+
         expect(client.e_reputation.hotel_sentiments).not_to(be_none)
 
         expect(client.airport).not_to(be_none)
@@ -437,4 +439,22 @@ with description('Namespaces') as self:
             self.client.schedule.flights.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v2/schedule/flights', a='b'
+            ))
+        with it('.shopping.activities.get'):
+            self.client.shopping.activities.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/shopping/activities', a='b'
+            ))
+
+        with it('.shopping.activities.by_square.get'):
+            self.client.shopping.activities.by_square.get(
+                a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/shopping/activities/by-square', a='b'
+            ))
+
+        with it('.shopping.activity().get'):
+            self.client.shopping.activity('XXX').get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/shopping/activities/XXX', a='b'
             ))

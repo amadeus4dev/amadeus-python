@@ -68,6 +68,18 @@ Shopping/FlightOffers
 .. autoclass:: amadeus.shopping.FlightOffersPrice
   :members: post
 
+Shopping/Activities
+===============
+
+.. autoclass:: amadeus.shopping.Activities
+  :members: get
+
+.. autoclass:: amadeus.shopping.activities.BySquare
+  :members: get
+
+.. autoclass:: amadeus.shopping.Activity
+  :members: get
+
 Travel/Analytics
 ================
 

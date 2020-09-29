@@ -316,6 +316,15 @@ List of supported endpoints
     # Retrieve status of a given flight
     amadeus.schedule.flights.get(carrierCode='AZ', flightNumber='319', scheduledDepartureDate='2021-03-13')
 
+    # Tours and Activities
+    # What are the popular activities in Madrid (based a geo location and a radius)
+    amadeus.shopping.activities.get(latitude=40.41436995, longitude=-3.69170868)
+    # What are the popular activities in Barcelona? (based on a square)
+    amadeus.shopping.activities.by_square.get(north=41.397158, west=2.160873,
+                                              south=41.394582, east=2.177181)
+    # Returns a single activity from a given id
+    amadeus.shopping.activity('4615').get()
+
 Development & Contributing
 --------------------------
 
