@@ -1,5 +1,9 @@
 Changelog
 =========
+4.4.0 - 2020-10-09
+--------------------
+Add support for the `Tours and Activities API <https://developers.amadeus.com/self-service/category/destination-content/api-doc/tours-and-activities/api-reference>`_
+
 4.3.0 - 2020-09-10
 --------------------
 Add support for the `On-Demand Flight Status API <https://developers.amadeus.com/self-service/category/air/api-doc/on-demand-flight-status/api-reference>`_
