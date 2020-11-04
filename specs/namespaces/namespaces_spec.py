@@ -77,6 +77,9 @@ with description('Namespaces') as self:
         expect(client.schedule).not_to(be_none)
         expect(client.schedule.flights).not_to(be_none)
 
+        expect(client.analytics).not_to(be_none)
+        expect(client.analytics.itinerary_price_metrics).not_to(be_none)
+
     with it('should define all expected .get methods'):
         client = self.client
         expect(client.reference_data.urls.checkin_links.get).not_to(be_none)
@@ -129,6 +132,8 @@ with description('Namespaces') as self:
             be_none)
 
         expect(client.schedule.flights.get).not_to(be_none)
+
+        expect(client.analytics.itinerary_price_metrics.get).not_to(be_none)
 
     with it('should define all expected .delete methods'):
         client = self.client
@@ -457,4 +462,10 @@ with description('Namespaces') as self:
             self.client.shopping.activity('XXX').get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/shopping/activities/XXX', a='b'
+            ))
+
+        with it('.analytics.itinerary_price_metrics().get'):
+            self.client.analytics.itinerary_price_metrics.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/analytics/itinerary-price-metrics', a='b'
             ))
