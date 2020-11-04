@@ -198,3 +198,9 @@ Schedule/Flights
 
 .. autoclass:: amadeus.schedule.flights
   :members: get
+
+Analytics/ItineraryPriceMetrics
+================
+
+.. autoclass:: amadeus.analytics.itinerary_price_metrics
+  :members: get

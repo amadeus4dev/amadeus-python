@@ -325,6 +325,10 @@ List of supported endpoints
     # Returns a single activity from a given id
     amadeus.shopping.activity('4615').get()
 
+    # Returns itinerary price metrics
+    amadeus.analytics.itinerary_price_metrics.get(originIataCode='MAD', destinationIataCode='CDG',
+                                                departureDate='2021-03-21')
+
 Development & Contributing
 --------------------------
 
