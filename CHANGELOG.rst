@@ -1,5 +1,9 @@
 Changelog
 =========
+4.5.0 - 2020-11-05
+--------------------
+Add support for the `Flight Price Analysis API <https://developers.amadeus.com/self-service/category/air/api-doc/flight-price-analysis/api-reference>`_
+
 4.4.0 - 2020-10-09
 --------------------
 Add support for the `Tours and Activities API <https://developers.amadeus.com/self-service/category/destination-content/api-doc/tours-and-activities/api-reference>`_
