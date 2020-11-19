@@ -43,7 +43,7 @@ application <https://developers.amadeus.com/my-apps/>`__.
         response = amadeus.shopping.flight_offers_search.get(
             originLocationCode='SYD', 
             destinationLocationCode='BKK', 
-            departureDate='2020-10-01', 
+            departureDate='2021-04-01',
             adults=1)
         print(response.data)
     except ResponseError as error:
@@ -194,12 +194,12 @@ List of supported endpoints
     amadeus.shopping.flight_dates.get(origin='MAD', destination='MUC')
 
     # Flight Offers Search GET
-    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1)
+    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2021-04-01', adults=1)
     # Flight Offers Search POST
     amadeus.shopping.flight_offers_search.post(body)
 
     # Flight Offers Price
-    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2020-07-01', adults=1).data
+    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2021-04-01', adults=1).data
     amadeus.shopping.flight_offers.pricing.post(flights[0])
     amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
 
@@ -223,7 +223,7 @@ List of supported endpoints
     body = amadeus.shopping.flight_offers_search.get(
             originLocationCode='MAD',
             destinationLocationCode='NYC',
-            departureDate='2020-11-01',
+            departureDate='2021-04-01',
             adults=1).result
     amadeus.shopping.flight_offers.prediction.post(body)
 
@@ -286,7 +286,7 @@ List of supported endpoints
     amadeus.safety.safety_rated_location('Q930400801').get()
 
     # Trip Purpose Prediction
-    amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2020-08-01', returnDate='2020-08-12', searchDate='2020-06-11')
+    amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2021-04-01', returnDate='2021-04-08')
 
     # Flight Delay Prediction
     amadeus.travel.predictions.flight_delay.get(originLocationCode='NCE', destinationLocationCode='IST', departureDate='2020-08-01', \
