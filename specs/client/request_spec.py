@@ -2,10 +2,7 @@ from mamba import description, context, it, before
 from expects import expect, equal, be_true, be_none, be_a
 from amadeus import Request
 
-try:
-    from urllib.request import Request as HTTPRequest
-except ImportError:  # pragma: no cover
-    from urllib2 import Request as HTTPRequest  # pragma: no cover
+from urllib.request import Request as HTTPRequest
 
 
 with description('Request') as self:

@@ -1,9 +1,6 @@
 from platform import python_version
 from pprint import pformat
-try:
-    from urllib.error import URLError
-except ImportError:  # pragma: no cover
-    from urllib2 import Request as URLError  # pragma: no cover
+from urllib.error import URLError
 
 from amadeus.version import version
 from amadeus.client.request import Request

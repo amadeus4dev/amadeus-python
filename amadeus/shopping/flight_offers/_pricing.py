@@ -1,8 +1,6 @@
 from amadeus.client.decorator import Decorator
-try:
-    from urllib.parse import urlencode
-except ImportError:     # pragma: no cover
-    from urllib import urlencode    # pragma: no cover
+
+from urllib.parse import urlencode
 
 
 class FlightOffersPrice(Decorator, object):

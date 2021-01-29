@@ -2,10 +2,7 @@ import os
 import sys
 import logging
 
-try:
-    from urllib.request import urlopen
-except ImportError:  # pragma: no cover
-    from urllib2 import urlopen  # pragma: no cover
+from urllib.request import urlopen
 
 
 # A set of helper methods to allow the validating of

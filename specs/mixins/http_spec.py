@@ -2,11 +2,7 @@ from mamba import description, context, it, before
 from doublex import Spy, Stub, method_returning, method_raising
 from doublex_expects import have_been_called_with, have_been_called
 from expects import expect, equal, raise_error
-
-try:
-    from urllib.error import URLError
-except ImportError:  # pragma: no cover
-    from urllib2 import Request as URLError  # pragma: no cover
+from urllib.error import URLError
 
 from amadeus import Client, Response, ResponseError
 
