@@ -1,14 +1,9 @@
-# Support Python 2 and 3 API calls without importing
-# a 3rd party library
+# Support Python API calls without importing 3rd party library
 
 import json
 
-try:
-    from urllib.request import Request as HTTPRequest
-    from urllib.parse import urlencode
-except ImportError:  # pragma: no cover
-    from urllib2 import Request as HTTPRequest  # pragma: no cover
-    from urllib import urlencode  # pragma: no cover
+from urllib.request import Request as HTTPRequest
+from urllib.parse import urlencode
 
 
 class Request(object):

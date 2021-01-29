@@ -11,7 +11,7 @@ Amadeus provides a rich set of APIs for the travel industry. For more details, c
 Installation
 ------------
 
-This SDK requires Python 2.7+ or 3.4+. You can install it directly with pip:
+This SDK requires Python 3.4+ (Python 2+ is no longer supported). You can install it directly with pip:
 
 .. code:: sh
 
