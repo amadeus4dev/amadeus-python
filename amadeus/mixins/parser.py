@@ -26,6 +26,8 @@ class Parser(object):
             return NotFoundError
         if status_code >= 400:
             return ClientError
+        if status_code == 204:
+            return None
         if not parsed:
             return ParserError
 
@@ -44,7 +46,14 @@ class Parser(object):
         self.result = None
         self.headers = {}
 
-        self.__parse_body_and_headers(self.http_response, client)
+        self.__parse_headers(self.http_response, client)
+
+        # Avoid parsing body in 204 responses
+        if self.status_code == 204:
+            return
+
+        self.__parse_body(self.http_response, client)
+
         self.result = self.__parse_json(client)
         if (self.result is not None):
             self.data = self.result.get('data', None)
@@ -57,12 +66,14 @@ class Parser(object):
         error._log(client)
         raise error
 
-    # Extract the body and headers
-    def __parse_body_and_headers(self, http_response, client):
+    def __parse_headers(self, http_response, client):
         if hasattr(http_response, 'getheaders'):
             self.headers = dict(http_response.getheaders()) or self.headers
         if hasattr(http_response, 'info'):
             self.headers = http_response.info() or self.headers
+
+    # Extract the body and headers
+    def __parse_body(self, http_response, client):
         if hasattr(http_response, 'read'):
             self.body = http_response.read()
         if hasattr(self.body, 'decode'):
