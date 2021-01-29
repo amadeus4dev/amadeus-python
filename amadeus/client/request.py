@@ -101,12 +101,11 @@ class Request(object):
         # Adds the authentication header since the bearer token has been set
         self.headers['Authorization'] = self.bearer_token
 
-        if (self.verb == 'GET' or self.verb == 'DELETE'):
-            return HTTPRequest(self.url, headers=self.headers)
+        if (self.verb == 'POST'):
+            return HTTPRequest(self.url, headers=self.headers, method='POST',
+                               data=json.dumps(self.params).encode())
         else:
-            return HTTPRequest(self.url,
-                               data=json.dumps(self.params).encode(),
-                               headers=self.headers)
+            return HTTPRequest(self.url, headers=self.headers, method=self.verb)
 
     # Encodes the params before sending them
     def _encoded_params(self):
