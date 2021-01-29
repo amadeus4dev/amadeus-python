@@ -40,6 +40,20 @@ with description('Mixins/Parser') as self:
                 response._parse(self.client)
                 expect(response.data).to(equal({'a': 1}))
 
+            with it('should not parse body if status code equal to 204'):
+                with Stub() as http_response:
+                    http_response.status_code = '204'
+                    http_response.getheaders().returns(
+                        [('Content-Type', 'application/vnd.amadeus+json')]
+                    )
+
+                response = Response(http_response, self.request)
+                response._parse(self.client)
+                expect(response.parsed).to(equal(False))
+                expect(response.body).to(equal(None))
+                expect(response.result).to(be(None))
+                expect(response.data).to(be(None))
+
             with it('should parse no body for other content types'):
                 with Stub() as http_response:
                     http_response.status_code = '200'
@@ -126,5 +140,12 @@ with description('Mixins/Parser') as self:
             self.response.status_code = 200
             self.response.parsed = False
             expect(lambda: self.response._detect_error(self.client)).to(
+                raise_error(ParserError)
+            )
+
+        with it('should not raise parse error for 204 responses'):
+            self.response.status_code = 204
+            self.response.parsed = False
+            expect(lambda: self.response._detect_error(self.client)).not_to(
                 raise_error(ParserError)
             )
