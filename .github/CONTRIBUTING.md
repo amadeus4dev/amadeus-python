@@ -16,13 +16,11 @@ eval "$(pyenv init -)"
 Second, ensure you have a version of every Python we support installed. Your versions may differ.
 
 ```sh
-pyenv install 2.7.14
-pyenv install 3.3.7
 pyenv install 3.4.9
 pyenv install 3.5.6
 pyenv install 3.6.3
 pyenv install 3.6.8
-pyenv global 3.6.8 3.6.3 3.5.6 3.4.9 3.3.7 2.7.14   
+pyenv global 3.6.8 3.6.3 3.5.6 3.4.9
 ```
 
 Next ensure you create a virtual environment.
@@ -45,7 +43,7 @@ Alternatively, to run tests just against a specific Python version, create cover
 
 ```sh
 brew install fswatch
-pyenv shell 2.7.14
+pyenv shell 3.6.8
 make watch
 ```
 
