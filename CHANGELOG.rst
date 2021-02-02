@@ -1,5 +1,11 @@
 Changelog
 =========
+5.0.0 - 2021-02-02
+--------------------
+Remove support for Python 2. The SDK requires Python 3.4+
+
+Fix unwanted exception on DELETE method of Flight Order Management API
+
 4.5.0 - 2020-11-05
 --------------------
 Add support for the `Flight Price Analysis API <https://developers.amadeus.com/self-service/category/air/api-doc/flight-price-analysis/api-reference>`_
