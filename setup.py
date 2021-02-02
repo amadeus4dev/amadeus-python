@@ -20,7 +20,7 @@ setup(
     long_description=long_description,
     author='Amadeus',
     author_email='developers@amadeus.com',
-    python_requires='>=2.7.0',
+    python_requires='>=3.4.8',
     url='https://github.com/amadeus4dev/amadeus-python',
     install_requires=[],
     packages=find_packages(),

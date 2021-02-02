@@ -22,5 +22,5 @@ What version of Python/Pip are you running? What Operating System are you on?
 
 Please make sure you checked the following:
 
-* Are you running Python 2.7 or 3.6?
+* Which version of Python are you using?
 * Did you download the latest version of this package?
