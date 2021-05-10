@@ -80,6 +80,12 @@ Shopping/Activities
 .. autoclass:: amadeus.shopping.Activity
   :members: get
 
+Shopping/Availability
+===============
+
+.. autoclass:: amadeus.shopping.availability.FlightAvailabilities
+  :members: post
+
 Travel/Analytics
 ================
 
