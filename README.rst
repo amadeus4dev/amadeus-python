@@ -220,7 +220,7 @@ List of supported endpoints
     amadeus.shopping.seatmaps.post(body)
 
     # Flight Availabilities POST
-    amadeus.shopping.availability​.flight_availabilities.post(body)
+    amadeus.shopping.availability.flight_availabilities.post(body)
 
     # Flight Choice Prediction
     body = amadeus.shopping.flight_offers_search.get(

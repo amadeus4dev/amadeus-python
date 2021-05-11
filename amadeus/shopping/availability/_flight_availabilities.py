@@ -8,7 +8,7 @@ class FlightAvailabilities(Decorator, object):
 
         .. code-block:: python
 
-            amadeus.shopping.availability​.flight_availabilities.post(body)
+            amadeus.shopping.availability.flight_availabilities.post(body)
 
         :param body: the parameters to send to the API
 
