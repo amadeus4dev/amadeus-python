@@ -41,6 +41,7 @@ with description('Namespaces') as self:
         expect(client.shopping.flight_offers).not_to(be_none)
         expect(client.shopping.flight_offers_search).not_to(be_none)
         expect(client.shopping.flight_offers.pricing).not_to(be_none)
+        expect(client.shopping.flight_offers.upselling).not_to(be_none)
 
         expect(client.shopping.seatmaps).not_to(be_none)
 
@@ -49,6 +50,9 @@ with description('Namespaces') as self:
         expect(client.shopping.hotel_offers_by_hotel).not_to(be_none)
 
         expect(client.shopping.activities).not_to(be_none)
+
+        expect(client.shopping.availability).not_to(be_none)
+        expect(client.shopping.availability.flight_availabilities).not_to(be_none)
 
         expect(client.e_reputation.hotel_sentiments).not_to(be_none)
 
@@ -384,6 +388,20 @@ with description('Namespaces') as self:
                           'flightOffers': [{'foo': 'bar'}],
                           'travelers': [{'bar': 'foo'}]
                           }}
+            ))
+
+        with it('.shopping.availability.flight_availabilities.post'):
+            self.client.shopping.availability.flight_availabilities.post(
+                {'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/shopping/availability/flight-availabilities', {'foo': 'bar'}
+            ))
+
+        with it('.shopping.flight_offers.upselling.post'):
+            self.client.shopping.flight_offers.upselling.post(
+                {'foo': 'bar'})
+            expect(self.client.post).to(have_been_called_with(
+                '/v1/shopping/flight-offers/upselling', {'foo': 'bar'}
             ))
 
         with it('.booking.flight_order().get'):
