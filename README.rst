@@ -222,6 +222,9 @@ List of supported endpoints
     # Flight Availabilities POST
     amadeus.shopping.availability.flight_availabilities.post(body)
 
+    # Branded Fares Upsell
+    amadeus.shopping.flight_offers.upselling.post(body)
+
     # Flight Choice Prediction
     body = amadeus.shopping.flight_offers_search.get(
             originLocationCode='MAD',

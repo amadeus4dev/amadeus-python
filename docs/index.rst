@@ -65,7 +65,13 @@ Shopping/Hotels
 Shopping/FlightOffers
 ===============
 
-.. autoclass:: amadeus.shopping.FlightOffersPrice
+.. autoclass:: amadeus.shopping.flight_offers.FlightChoicePrediction
+  :members: post
+
+.. autoclass:: amadeus.shopping.flight_offers.FlightChoicePrice
+  :members: post
+
+.. autoclass:: amadeus.shopping.flight_offers.Upselling
   :members: post
 
 Shopping/Activities
