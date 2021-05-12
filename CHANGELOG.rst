@@ -4,7 +4,7 @@ Changelog
 --------------------
 Add support for the `Flight Availabilities Search API <https://developers.amadeus.com/self-service/category/air/api-doc/flight-availabilities-search/api-reference>`_
 
-Add support for the `Branded Fares Upsell <https://developers.amadeus.com/self-service/category/air/api-doc/branded-fares-upsell/api-reference>`_
+Add support for the `Branded Fares Upsell API <https://developers.amadeus.com/self-service/category/air/api-doc/branded-fares-upsell/api-reference>`_
 
 
 5.0.0 - 2021-02-02
