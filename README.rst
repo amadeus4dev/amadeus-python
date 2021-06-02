@@ -282,6 +282,9 @@ List of supported endpoints
     # Returns a single Point of Interest from a given id
     amadeus.reference_data.locations.point_of_interest('9CB40CB5D0').get()
 
+    # Location Score
+    amadeus.location.analytics.category_rated_areas.get(latitude=41.397158, longitude=2.160873)
+
     # Safe Place
     # How safe is Barcelona? (based a geo location and a radius)
     amadeus.safety.safety_rated_locations.get(latitude=41.397158, longitude=2.160873)

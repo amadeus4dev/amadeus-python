@@ -208,11 +208,17 @@ Safety/SafetyRatedLocations
 Schedule/Flights
 ================
 
-.. autoclass:: amadeus.schedule.flights
+.. autoclass:: amadeus.schedule.Flights
   :members: get
 
 Analytics/ItineraryPriceMetrics
 ================
 
-.. autoclass:: amadeus.analytics.itinerary_price_metrics
+.. autoclass:: amadeus.analytics.ItineraryPriceMetrics
+  :members: get
+
+Location/Analytics
+================
+
+.. autoclass:: amadeus.location.analytics.CategoryRatedAreas
   :members: get
