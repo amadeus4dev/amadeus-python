@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>amadeus.client.response &mdash; Amadeus 5.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="Amadeus 5.1.0 documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> Amadeus
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Amadeus</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>amadeus.client.response</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/amadeus4dev/amadeus-python/blob/master/docs/_modules/amadeus/client/response" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for amadeus.client.response</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">amadeus.mixins.parser</span> <span class="kn">import</span> <span class="n">Parser</span>
+
+
+<div class="viewcode-block" id="Response"><a class="viewcode-back" href="../../../index.html#amadeus.Response">[docs]</a><span class="k">class</span> <span class="nc">Response</span><span class="p">(</span><span class="n">Parser</span><span class="p">,</span> <span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The response object returned for every API call.</span>
+
+<span class="sd">    :var http_response: the raw http response</span>
+
+<span class="sd">    :var request: the original Request object used to make this call</span>
+<span class="sd">    :vartype request: amadeus.Request</span>
+
+<span class="sd">    :var result: the parsed JSON received from the API, if the result was JSON</span>
+<span class="sd">    :vartype result: dict</span>
+
+<span class="sd">    :var data: the data extracted from the JSON data, if the body contained</span>
+<span class="sd">        JSON</span>
+<span class="sd">    :vartype data: dict</span>
+
+<span class="sd">    :var body: the raw body received from the API</span>
+<span class="sd">    :vartype body: str</span>
+
+<span class="sd">    :var parsed: wether the raw body has been parsed into JSON</span>
+<span class="sd">    :vartype parsed: bool</span>
+
+<span class="sd">    :var status_code: The HTTP status code for the response, if any</span>
+<span class="sd">    :vartype status_code: int</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+
+    <span class="c1"># Initialize the Response object with the</span>
+    <span class="c1"># HTTPResponse object to parse, the client that made the request</span>
+    <span class="c1"># and the original request made</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">http_response</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">http_response</span> <span class="o">=</span> <span class="n">http_response</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">request</span> <span class="o">=</span> <span class="n">request</span>
+
+    <span class="c1"># PROTECTED</span>
+
+    <span class="c1"># Parses the response, using the client to log any errors</span>
+    <span class="k">def</span> <span class="nf">_parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parse_status_code</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parse_data</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Amadeus4Dev.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'5.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
