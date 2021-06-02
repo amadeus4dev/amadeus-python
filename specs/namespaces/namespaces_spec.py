@@ -84,6 +84,9 @@ with description('Namespaces') as self:
         expect(client.analytics).not_to(be_none)
         expect(client.analytics.itinerary_price_metrics).not_to(be_none)
 
+        expect(client.location).not_to(be_none)
+        expect(client.location.analytics.category_rated_areas).not_to(be_none)
+
     with it('should define all expected .get methods'):
         client = self.client
         expect(client.reference_data.urls.checkin_links.get).not_to(be_none)
@@ -138,6 +141,8 @@ with description('Namespaces') as self:
         expect(client.schedule.flights.get).not_to(be_none)
 
         expect(client.analytics.itinerary_price_metrics.get).not_to(be_none)
+
+        expect(client.location.analytics.category_rated_areas.get).not_to(be_none)
 
     with it('should define all expected .delete methods'):
         client = self.client
@@ -201,6 +206,12 @@ with description('Namespaces') as self:
                 'XXX').get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/reference-data/locations/pois/XXX', a='b'
+            ))
+
+        with it('.location.analytics.category_rated_areas.get'):
+            self.client.location.analytics.category_rated_areas.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/location/analytics/category-rated-areas', a='b'
             ))
 
         with it('.reference_data.recommended_locations.get'):

@@ -8,6 +8,7 @@ from amadeus.namespaces._booking import Booking
 from amadeus.namespaces._safety import Safety
 from amadeus.namespaces._schedule import Schedule
 from amadeus.namespaces._analytics import Analytics
+from amadeus.namespaces._location import Location
 
 
 class Core(object):
@@ -22,3 +23,4 @@ class Core(object):
         self.safety = Safety(self)
         self.schedule = Schedule(self)
         self.analytics = Analytics(self)
+        self.location = Location(self)
