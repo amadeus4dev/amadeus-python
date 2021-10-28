@@ -194,12 +194,12 @@ List of supported endpoints
     amadeus.shopping.flight_dates.get(origin='MAD', destination='MUC')
 
     # Flight Offers Search GET
-    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2021-04-01', adults=1)
+    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2022-06-01', adults=1)
     # Flight Offers Search POST
     amadeus.shopping.flight_offers_search.post(body)
 
     # Flight Offers Price
-    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2021-04-01', adults=1).data
+    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2022-06-01', adults=1).data
     amadeus.shopping.flight_offers.pricing.post(flights[0])
     amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
 
