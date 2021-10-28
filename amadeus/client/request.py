@@ -97,8 +97,12 @@ class Request(object):
         self.headers['Authorization'] = self.bearer_token
 
         if (self.verb == 'POST'):
-            return HTTPRequest(self.url, headers=self.headers, method='POST',
-                               data=json.dumps(self.params).encode())
+            if type(self.params) is dict:
+                return HTTPRequest(self.url, headers=self.headers, method='POST',
+                                    data=json.dumps(self.params).encode())
+            else:
+                return HTTPRequest(self.url, headers=self.headers, method='POST',
+                                    data=self.params.encode())
         else:
             return HTTPRequest(self.url, headers=self.headers, method=self.verb)
 
