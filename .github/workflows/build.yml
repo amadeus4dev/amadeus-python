@@ -1,0 +1,26 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.4, 3.5, 3.6.3]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install dependencies
+        run: |
+          pip install virtualenv==20.0.1
+          pip install tox
+      - name: Test with tox
+        run: |
+          tox
+          pip install -e .
+      - name: Before deploy 
+        run: |
+          pip install -e .
+          make docs
