@@ -23,10 +23,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
+          pip install virtualenv==20.0.1
           pip install tox tox-gh-actions 
       - name: Test with tox
         run: |
           tox
+          pip install -e .
       - name: Before deploy 
         run: |
+          pip install -e .
           make docs 
