@@ -32,4 +32,5 @@ jobs:
       - name: Before deploy 
         run: |
           pip install -e .
+          pip install --upgrade setuptools
           make docs 
