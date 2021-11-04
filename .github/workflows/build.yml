@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install virtualenv==20.0.1
-          pip install tox
+          pip install tox tox-gh-actions 
       - name: Test with tox
         run: |
           tox
