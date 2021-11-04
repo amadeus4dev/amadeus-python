@@ -23,6 +23,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
+          pip install -r requirements.txt
           pip install virtualenv==20.0.1
           pip install tox tox-gh-actions 
       - name: Test with tox
