@@ -138,5 +138,6 @@ class Request(object):
             if type(d[k]) is dict:
                 self._flatten_keys(d[k], str(key) + str(keystr), out)
             else:
-                out['{}{}'.format(key, keystr)] = d[k]
+                out[
+                    '{}{}'.format(key, keystr)] = d[k1]
         return out
