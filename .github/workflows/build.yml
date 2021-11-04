@@ -28,8 +28,6 @@ jobs:
       - name: Test with tox
         run: |
           tox
-          pip install -e .
       - name: Before deploy 
         run: |
-          pip install -e .
           make docs 
