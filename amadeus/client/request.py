@@ -96,13 +96,13 @@ class Request(object):
         # Adds the authentication header since the bearer token has been set
         self.headers['Authorization'] = self.bearer_token
 
-        if self.verb == 'POST':
+        if (self.verb == 'POST'):
             if type(self.params) is dict:
                 return HTTPRequest(self.url, headers=self.headers, method='POST',
-                                   data=json.dumps(self.params).encode())
+                                    data=json.dumps(self.params).encode())
             else:
                 return HTTPRequest(self.url, headers=self.headers, method='POST',
-                                   data=self.params.encode())
+                                    data=self.params.encode())
         else:
             return HTTPRequest(self.url, headers=self.headers, method=self.verb)
 
@@ -138,6 +138,5 @@ class Request(object):
             if type(d[k]) is dict:
                 self._flatten_keys(d[k], str(key) + str(keystr), out)
             else:
-                out[
-                    '{}{}'.format(key, keystr)] = d[k1]
+                out['{}{}'.format(key, keystr)] = d[k]
         return out
