@@ -43,7 +43,7 @@ application <https://developers.amadeus.com/my-apps/>`__.
         response = amadeus.shopping.flight_offers_search.get(
             originLocationCode='MAD', 
             destinationLocationCode='ATH', 
-            departureDate='2022-16-01',
+            departureDate='2022-06-01',
             adults=1)
         print(response.data)
     except ResponseError as error:
