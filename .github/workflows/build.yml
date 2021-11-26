@@ -15,7 +15,7 @@ jobs:
         python-version: [3.4, 3.5, 3.6.8]
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -24,14 +24,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install sphinx
-          pip install tox-travis
+          pip install tox
           pip install sphinx_rtd_theme
           pip install virtualenv==20.0.1
       - name: Test with tox
-        if: ${{ matrix.python-version }} != 3.4
         run: |
-          tox
-          pip install -e .
+          tox -e py
       - name: Before deploy 
         run: |
           pip install -e .
