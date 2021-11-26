@@ -26,10 +26,10 @@ jobs:
           python -m pip install sphinx
           pip install virtualenv==20.0.1
       - name: Install tox
-        if: python-version != 3.4 
+        if: ${{ matrix.python-version }} != 3.4 
         run: pip install tox tox-gh-actions
       - name: Test with tox
-        if: python-version != 3.4
+        if: ${{ matrix.python-version }} != 3.4
         run: |
           tox
           pip install -e .
