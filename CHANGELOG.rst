@@ -1,11 +1,14 @@
 Changelog
 =========
+5.1.1 - 2021-05-12
+--------------------
+Remove travis ci release support and creating github action
+
 5.1.0 - 2021-05-12
 --------------------
 Add support for the `Flight Availabilities Search API <https://developers.amadeus.com/self-service/category/air/api-doc/flight-availabilities-search/api-reference>`_
 
 Add support for the `Branded Fares Upsell API <https://developers.amadeus.com/self-service/category/air/api-doc/branded-fares-upsell/api-reference>`_
-
 
 5.0.0 - 2021-02-02
 --------------------
