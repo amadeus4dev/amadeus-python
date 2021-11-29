@@ -36,8 +36,10 @@ jobs:
           pip install --upgrade setuptools
           make docs
       - name: Build binary wheel and a source tarball
+        if: ${{ matrix.python-version == '3.6.8' }}
         run: python setup.py sdist
       - name: Publish a Python distribution to PyPI
+        if: ${{ matrix.python-version == '3.6.8' }}
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
