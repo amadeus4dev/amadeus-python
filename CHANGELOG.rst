@@ -2,7 +2,7 @@ Changelog
 =========
 5.2.0 - 2021-05-12
 --------------------
-Remove travis ci release support and creating github action
+Remove Travis CI build/release support and move to GitHub actions
 
 5.1.0 - 2021-05-12
 --------------------
