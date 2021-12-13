@@ -1,4 +1,4 @@
-name: Build
+name: Build and Deploy
 on:
   push:
     # Sequence of patterns matched against refs/tags
