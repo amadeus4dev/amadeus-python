@@ -357,8 +357,8 @@ Our `developer support team <https://developers.amadeus.com/support>`__ is here 
 
 .. |Module Version| image:: https://badge.fury.io/py/amadeus.svg
    :target: https://pypi.org/project/amadeus/
-.. |Build Status| image:: http://img.shields.io/travis/amadeus4dev/amadeus-python.svg
-   :target: http://travis-ci.org/amadeus4dev/amadeus-python
+.. |Build Status| image:: https://github.com/amadeus4dev/amadeus-python/actions/workflows/build.yml/badge.svg
+   :target: https://github.com/amadeus4dev/amadeus-python/actions/workflows/build.yml
 .. |Maintainability| image:: https://api.codeclimate.com/v1/badges/c2e19cf9628d6f4aece2/maintainability
    :target: https://codeclimate.com/github/amadeus4dev/amadeus-python/maintainability
 .. |Dependencies| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/dependencies.svg?sanitize=true
