@@ -229,7 +229,7 @@ List of supported endpoints
     body = amadeus.shopping.flight_offers_search.get(
             originLocationCode='MAD',
             destinationLocationCode='NYC',
-            departureDate='2021-04-01',
+            departureDate='2022-04-01',
             adults=1).result
     amadeus.shopping.flight_offers.prediction.post(body)
 
