@@ -26,6 +26,7 @@ jobs:
           pip install sphinx_rtd_theme
           pip install virtualenv==20.0.1
       - name: Test with tox
+        if: ${{ matrix.python-version != '3.5' }}
         run: |
           tox -e py
       - name: Before deploy 
