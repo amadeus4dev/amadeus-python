@@ -1,0 +1,42 @@
+name: build
+on:
+  push:
+    # Sequence of patterns matched against refs/tags
+    tags:
+      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+jobs:
+  build:
+    runs-on: Ubuntu-18.04
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: [3.6.8]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install sphinx
+          pip install tox
+          pip install sphinx_rtd_theme
+          pip install virtualenv==20.0.1
+      - name: Test with tox
+        run: |
+          tox -e py
+      - name: Before deploy 
+        run: |
+          pip install -e .
+          pip install --upgrade setuptools
+          make docs
+      - name: Build binary wheel and a source tarball
+        run: python setup.py sdist
+      - name: Publish a Python distribution to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
