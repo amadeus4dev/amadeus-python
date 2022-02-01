@@ -1,9 +1,7 @@
 Amadeus Python SDK
 ==================
 
-|Module Version| |Build Status| |Maintainability| |Dependencies|
-|Contact Support|
-|Discord|
+|Module Version| |Build Status| |Maintainability| |Dependencies| |Discord|
 
 
 Amadeus provides a rich set of APIs for the travel industry. For more details, check out the `Amadeus for Developers Portal <https://developers.amadeus.com>`__ or the `SDK class reference <https://amadeus4dev.github.io/amadeus-python>`__.
@@ -353,7 +351,7 @@ This library is released under the `MIT License <LICENSE>`__.
 Help
 ----
 
-Our `developer support team <https://developers.amadeus.com/support>`__ is here to help you. You can also find us on `StackOverflow <htps://stackoverflow.com/questions/tagged/amadeus>`__, or `email directly <mailto:developers@amadeus.com>`__.
+You can find us on `StackOverflow <https://stackoverflow.com/questions/tagged/amadeus>`__ or join our developer community on `Discord <https://discord.gg/cVrFBqx>`__.
 
 .. |Module Version| image:: https://badge.fury.io/py/amadeus.svg
    :target: https://pypi.org/project/amadeus/
@@ -363,7 +361,5 @@ Our `developer support team <https://developers.amadeus.com/support>`__ is here 
    :target: https://codeclimate.com/github/amadeus4dev/amadeus-python/maintainability
 .. |Dependencies| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/dependencies.svg?sanitize=true
    :target: https://badge.fury.io/py/amadeus
-.. |Contact Support| image:: https://raw.githubusercontent.com/amadeus4dev/amadeus-python/master/.github/images/support.svg?sanitize=true
-   :target: http://developers.amadeus.com/support
 .. |Discord| image:: https://img.shields.io/discord/696822960023011329?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2
    :target: https://discord.gg/cVrFBqx
