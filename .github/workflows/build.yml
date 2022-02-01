@@ -23,7 +23,7 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install sphinx
           pip install tox
-          pip install sphinx_rtd_theme
+          python -m pip install sphinx_rtd_theme
           pip install virtualenv==20.0.1
       - name: Test with tox
         if: ${{ matrix.python-version != '3.5' }}
