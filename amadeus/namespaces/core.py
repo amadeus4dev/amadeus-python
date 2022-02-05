@@ -9,6 +9,7 @@ from amadeus.namespaces._safety import Safety
 from amadeus.namespaces._schedule import Schedule
 from amadeus.namespaces._analytics import Analytics
 from amadeus.namespaces._location import Location
+from amadeus.namespaces._travel_restrictions import TravelRestrictions
 
 
 class Core(object):
@@ -24,3 +25,4 @@ class Core(object):
         self.schedule = Schedule(self)
         self.analytics = Analytics(self)
         self.location = Location(self)
+        self.travel_restrictions = TravelRestrictions(self)

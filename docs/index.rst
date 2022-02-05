@@ -222,3 +222,9 @@ Location/Analytics
 
 .. autoclass:: amadeus.location.analytics.CategoryRatedAreas
   :members: get
+
+TravelRestrictions/Covid19AreaReport
+================
+
+.. autoclass:: amadeus.travel_restrictions.Covid19AreaReport
+  :members: get
