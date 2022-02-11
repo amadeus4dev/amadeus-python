@@ -223,8 +223,8 @@ Location/Analytics
 .. autoclass:: amadeus.location.analytics.CategoryRatedAreas
   :members: get
 
-TravelRestrictions/Covid19AreaReport
+DutyOfCare/Diseases
 ================
 
-.. autoclass:: amadeus.travel_restrictions.Covid19AreaReport
+.. autoclass:: amadeus.duty_of_care.diseases.Covid19AreaReport
   :members: get
