@@ -87,6 +87,9 @@ with description('Namespaces') as self:
         expect(client.location).not_to(be_none)
         expect(client.location.analytics.category_rated_areas).not_to(be_none)
 
+        expect(client.duty_of_care).not_to(be_none)
+        expect(client.duty_of_care.diseases.covid19_area_report).not_to(be_none)
+
     with it('should define all expected .get methods'):
         client = self.client
         expect(client.reference_data.urls.checkin_links.get).not_to(be_none)
@@ -143,6 +146,9 @@ with description('Namespaces') as self:
         expect(client.analytics.itinerary_price_metrics.get).not_to(be_none)
 
         expect(client.location.analytics.category_rated_areas.get).not_to(be_none)
+
+        expect(client.duty_of_care.diseases.covid19_area_report.get).not_to(
+            be_none)
 
     with it('should define all expected .delete methods'):
         client = self.client
@@ -497,4 +503,10 @@ with description('Namespaces') as self:
             self.client.analytics.itinerary_price_metrics.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/analytics/itinerary-price-metrics', a='b'
+            ))
+
+        with it('.duty_of_care.diseases.covid19_area_report.get'):
+            self.client.duty_of_care.diseases.covid19_area_report.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/duty-of-care/diseases/covid19-area-report', a='b'
             ))
