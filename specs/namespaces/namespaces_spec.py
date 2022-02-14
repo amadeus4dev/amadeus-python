@@ -59,6 +59,7 @@ with description('Namespaces') as self:
         expect(client.airport).not_to(be_none)
         expect(client.airport.predictions).not_to(be_none)
         expect(client.airport.predictions.on_time).not_to(be_none)
+        expect(client.airport.direct_destinations).not_to(be_none)
 
         expect(client.media).not_to(be_none)
         expect(client.media.files).not_to(be_none)
@@ -128,6 +129,7 @@ with description('Namespaces') as self:
         expect(client.e_reputation.hotel_sentiments.get).not_to(be_none)
 
         expect(client.airport.predictions.on_time.get).not_to(be_none)
+        expect(client.airport.direct_destinations.get).not_to(be_none)
 
         expect(client.media.files.generated_photos.get).not_to(be_none)
 
@@ -308,6 +310,12 @@ with description('Namespaces') as self:
             self.client.airport.predictions.on_time.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/airport/predictions/on-time', a='b'
+            ))
+
+        with it('.airport.direct_destinations.get'):
+            self.client.airport.direct_destinations.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/airport/direct-destinations', a='b'
             ))
 
         with it('.media.files.generated_photos.get'):

@@ -172,6 +172,12 @@ Airport/Predictions
 .. autoclass:: amadeus.airport.predictions.AirportOnTime
   :members: get
 
+Airport/DirectDestinations
+================
+
+.. autoclass:: amadeus.airport.DirectDestinations
+  :members: get
+
 Media/Files
 ================
 
