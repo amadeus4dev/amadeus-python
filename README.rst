@@ -302,6 +302,9 @@ List of supported endpoints
     # Airport On-Time Performance
     amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-09-01')
 
+    # Airport Routes
+    amadeus.airport.direct_destinations.get(departureAirportCode='BLR')
+
     # AI Generated Photos
     amadeus.media.files.generated_photos.get(category='MOUNTAIN')
 
