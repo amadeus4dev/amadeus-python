@@ -279,19 +279,19 @@ with description('Namespaces') as self:
         with it('.shopping.hotel_offers.get'):
             self.client.shopping.hotel_offers.get(cityCode='MAD')
             expect(self.client.get).to(have_been_called_with(
-                '/v2/shopping/hotel-offers', cityCode='MAD'
+                '/v3/shopping/hotel-offers', cityCode='MAD'
             ))
 
         with it('.shopping.hotel_offers_by_hotel.get'):
             self.client.shopping.hotel_offers_by_hotel.get(hotelId='XKPARC12')
             expect(self.client.get).to(have_been_called_with(
-                '/v2/shopping/hotel-offers/by-hotel', hotelId='XKPARC12'
+                '/v3/shopping/hotel-offers/by-hotel', hotelId='XKPARC12'
             ))
 
         with it('.shopping.hotel_offer().get'):
             self.client.shopping.hotel_offer('XXX').get(a='b')
             expect(self.client.get).to(have_been_called_with(
-                '/v2/shopping/hotel-offers/XXX', a='b'
+                '/v3/shopping/hotel-offers/XXX', a='b'
             ))
 
         with it('.shopping.seatmaps.get'):

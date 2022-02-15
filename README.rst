@@ -98,7 +98,7 @@ For example, ``GET /v2/reference-data/urls/checkin-links?airlineCode=BA`` would 
 
 Similarly, to select a resource by ID, you can pass in the ID to the singular path.
 
-For example, ``GET /v2/shopping/hotel-offers/XZY`` would be:
+For example, ``GET /v3/shopping/hotel-offers/XZY`` would be:
 
 .. code:: py
 

@@ -17,5 +17,5 @@ class HotelOffer(Decorator, object):
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
-        return self.client.get('/v2/shopping/hotel-offers/{0}'
+        return self.client.get('/v3/shopping/hotel-offers/{0}'
                                .format(self.offer_id), **params)
