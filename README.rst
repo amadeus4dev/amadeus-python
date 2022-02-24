@@ -300,7 +300,7 @@ List of supported endpoints
     departureTime='18:20:00', arrivalDate='2022-08-01', arrivalTime='22:15:00', aircraftCode='321', carrierCode='TK', flightNumber='1816', duration='PT31H10M')
 
     # Airport On-Time Performance
-    amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-09-01')
+    amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2022-11-01')
 
     # Airport Routes
     amadeus.airport.direct_destinations.get(departureAirportCode='BLR')
