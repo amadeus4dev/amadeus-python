@@ -41,7 +41,7 @@ application <https://developers.amadeus.com/my-apps/>`__.
         response = amadeus.shopping.flight_offers_search.get(
             originLocationCode='MAD', 
             destinationLocationCode='ATH', 
-            departureDate='2022-06-01',
+            departureDate='2022-11-01',
             adults=1)
         print(response.data)
     except ResponseError as error:
@@ -192,12 +192,12 @@ List of supported endpoints
     amadeus.shopping.flight_dates.get(origin='MAD', destination='MUC')
 
     # Flight Offers Search GET
-    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2022-06-01', adults=1)
+    amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2022-11-01', adults=1)
     # Flight Offers Search POST
     amadeus.shopping.flight_offers_search.post(body)
 
     # Flight Offers Price
-    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2022-06-01', adults=1).data
+    flights = amadeus.shopping.flight_offers_search.get(originLocationCode='SYD', destinationLocationCode='BKK', departureDate='2022-11-01', adults=1).data
     amadeus.shopping.flight_offers.pricing.post(flights[0])
     amadeus.shopping.flight_offers.pricing.post(flights[0:2], include='credit-card-fees,other-services')
 
@@ -227,7 +227,7 @@ List of supported endpoints
     body = amadeus.shopping.flight_offers_search.get(
             originLocationCode='MAD',
             destinationLocationCode='NYC',
-            departureDate='2022-04-01',
+            departureDate='2022-11-01',
             adults=1).result
     amadeus.shopping.flight_offers.prediction.post(body)
 
@@ -293,14 +293,14 @@ List of supported endpoints
     amadeus.safety.safety_rated_location('Q930400801').get()
 
     # Trip Purpose Prediction
-    amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2021-04-01', returnDate='2021-04-08')
+    amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2022-11-01', returnDate='2022-11-08')
 
     # Flight Delay Prediction
-    amadeus.travel.predictions.flight_delay.get(originLocationCode='NCE', destinationLocationCode='IST', departureDate='2020-08-01', \
-    departureTime='18:20:00', arrivalDate='2020-08-01', arrivalTime='22:15:00', aircraftCode='321', carrierCode='TK', flightNumber='1816', duration='PT31H10M')
+    amadeus.travel.predictions.flight_delay.get(originLocationCode='NCE', destinationLocationCode='IST', departureDate='2022-08-01', \
+    departureTime='18:20:00', arrivalDate='2022-08-01', arrivalTime='22:15:00', aircraftCode='321', carrierCode='TK', flightNumber='1816', duration='PT31H10M')
 
     # Airport On-Time Performance
-    amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2020-09-01')
+    amadeus.airport.predictions.on_time.get(airportCode='JFK', date='2022-11-01')
 
     # Airport Routes
     amadeus.airport.direct_destinations.get(departureAirportCode='BLR')
@@ -324,7 +324,7 @@ List of supported endpoints
     amadeus.reference_data.recommended_locations.get(cityCodes='PAR', travelerCountryCode='FR')
 
     # Retrieve status of a given flight
-    amadeus.schedule.flights.get(carrierCode='AZ', flightNumber='319', scheduledDepartureDate='2021-03-13')
+    amadeus.schedule.flights.get(carrierCode='AZ', flightNumber='319', scheduledDepartureDate='2022-09-13')
 
     # Tours and Activities
     # What are the popular activities in Madrid (based a geo location and a radius)
