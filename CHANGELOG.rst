@@ -1,8 +1,13 @@
 Changelog
 =========
-5.2.0 - 2021-05-12
+5.3.0 - 2022-02-24
 --------------------
-Remove Travis CI build/release support and move to GitHub actions
+Add support for `Travel Restrictions API <https://developers.amadeus.com/self-service/category/covid-19-and-travel-safety/api-doc/travel-restrictions/api-reference>`_
+Add support for `Airport Routes API <https://developers.amadeus.com/self-service/category/air/api-doc/airport-routes/api-reference>`_
+
+5.2.0 - 2021-11-29
+--------------------
+Migrate CI/CD to GitHub Actions
 
 5.1.0 - 2021-05-12
 --------------------
