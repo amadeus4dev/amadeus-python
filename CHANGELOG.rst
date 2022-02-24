@@ -1,5 +1,9 @@
 Changelog
 =========
+5.3.1 - 2022-02-24
+--------------------
+Update release workflow
+
 5.3.0 - 2022-02-24
 --------------------
 Add support for `Travel Restrictions API <https://developers.amadeus.com/self-service/category/covid-19-and-travel-safety/api-doc/travel-restrictions/api-reference>`_
