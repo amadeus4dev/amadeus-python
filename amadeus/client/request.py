@@ -96,11 +96,11 @@ class Request(object):
         self.headers['Authorization'] = self.bearer_token
 
         list_httpoverride = ['/v2/shopping/flight-offers',
-            '/v1/shopping/seatmaps',
-            '/v1/shopping/availability/flight-availabilities',
-            '/v2/shopping/flight-offers/prediction',
-            '/v1/shopping/flight-offers/pricing',
-            '/v1/shopping/flight-offers/upselling']
+                            '/v1/shopping/seatmaps',
+                            '/v1/shopping/availability/flight-availabilities',
+                            '/v2/shopping/flight-offers/prediction',
+                            '/v1/shopping/flight-offers/pricing',
+                            '/v1/shopping/flight-offers/upselling']
 
         if self.verb == 'POST':
             if self.path in list_httpoverride:
