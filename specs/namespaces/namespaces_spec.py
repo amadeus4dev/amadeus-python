@@ -63,7 +63,6 @@ with description('Namespaces') as self:
 
         expect(client.media).not_to(be_none)
         expect(client.media.files).not_to(be_none)
-        expect(client.media.files.generated_photos).not_to(be_none)
 
         expect(client.travel.trip_parser_jobs).not_to(be_none)
         expect(client.travel.trip_parser_jobs.status).not_to(be_none)
@@ -130,8 +129,6 @@ with description('Namespaces') as self:
 
         expect(client.airport.predictions.on_time.get).not_to(be_none)
         expect(client.airport.direct_destinations.get).not_to(be_none)
-
-        expect(client.media.files.generated_photos.get).not_to(be_none)
 
         expect(client.travel.trip_parser_jobs.status('123').get).not_to(be_none)
         expect(client.travel.trip_parser_jobs.result('123').get).not_to(be_none)
@@ -316,12 +313,6 @@ with description('Namespaces') as self:
             self.client.airport.direct_destinations.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/airport/direct-destinations', a='b'
-            ))
-
-        with it('.media.files.generated_photos.get'):
-            self.client.media.files.generated_photos.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/media/files/generated-photos', a='b'
             ))
 
         with it('.travel.trip_parser_jobs.status().get'):
