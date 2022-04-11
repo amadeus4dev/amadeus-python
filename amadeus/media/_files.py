@@ -1,5 +1,4 @@
 from amadeus.client.decorator import Decorator
-from .files import GeneratedPhotos
 
 
 class Files(Decorator, object):
