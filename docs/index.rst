@@ -181,8 +181,6 @@ Airport/DirectDestinations
 Media/Files
 ================
 
-.. autoclass:: amadeus.media.files.GeneratedPhotos
-  :members: get
 
 Booking
 ================

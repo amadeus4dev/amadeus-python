@@ -305,9 +305,6 @@ List of supported endpoints
     # Airport Routes
     amadeus.airport.direct_destinations.get(departureAirportCode='BLR')
 
-    # AI Generated Photos
-    amadeus.media.files.generated_photos.get(category='MOUNTAIN')
-
     # Trip Parser
     # Encode to Base64 your booking confirmation file (.html, .eml, .pdf supported)
     response = amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_file(path_to_file))
