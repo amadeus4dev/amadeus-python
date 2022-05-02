@@ -84,7 +84,7 @@ class Request(object):
             user_agent += ' {0}/{1}'.format(self.app_id, self.app_version)
         return user_agent
 
-     # The list of paths that require HTTP override in header
+    # The list of paths that require HTTP override in header
     list_httpoverride = [
                         '/v2/shopping/flight-offers',
                         '/v1/shopping/seatmaps',
