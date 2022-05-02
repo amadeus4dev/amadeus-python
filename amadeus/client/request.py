@@ -84,6 +84,16 @@ class Request(object):
             user_agent += ' {0}/{1}'.format(self.app_id, self.app_version)
         return user_agent
 
+     # The list of paths that require HTTP override in header
+    list_httpoverride = [
+                        '/v2/shopping/flight-offers',
+                        '/v1/shopping/seatmaps',
+                        '/v1/shopping/availability/flight-availabilities',
+                        '/v2/shopping/flight-offers/prediction',
+                        '/v1/shopping/flight-offers/pricing?',
+                        '/v1/shopping/flight-offers/upselling'
+                        ]
+
     # Builds a HTTP Request object based on the path, params, and verb
     def __build_http_request(self):
         # Requests token in case has not been set
@@ -95,18 +105,9 @@ class Request(object):
         # Adds the authentication header since the bearer token has been set
         self.headers['Authorization'] = self.bearer_token
 
-        # List of paths that require HTTP override in header
-        list_httpoverride = [
-                            '/v2/shopping/flight-offers',
-                            '/v1/shopping/seatmaps',
-                            '/v1/shopping/availability/flight-availabilities',
-                            '/v2/shopping/flight-offers/prediction',
-                            '/v1/shopping/flight-offers/pricing?',
-                            '/v1/shopping/flight-offers/upselling'
-                            ]
-
         if self.verb == 'POST':
-            if self.path in list_httpoverride:
+            #Adds HTTP override in Header for the list of paths required
+            if self.path in Request.list_httpoverride:
                 self.headers['X-HTTP-Method-Override'] = 'GET'
             if type(self.params) is dict:
                 return HTTPRequest(self.url, headers=self.headers, method='POST',
