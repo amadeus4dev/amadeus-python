@@ -86,6 +86,26 @@ with description('Request') as self:
             expect(self.request.http_request.data).to(
                 equal(b'{\"foo\": \"bar\"}'))
 
+        with it('should return X-HTTP-Method-Override as GET in HTTP header for some endpoints'):
+            self.request = Request({
+                'host': self.host,
+                'verb': 'POST',
+                'path': self.path,
+                'params': self.params,
+                'bearer_token': self.bearer_token,
+                'client_version': self.client_version,
+                'language_version': self.lang_version,
+                'app_id': self.app_id,
+                'app_version': self.app_version,
+                'port': self.port,
+                'ssl': self.ssl
+            })
+            
+            expect(self.request.http_request).to(be_a(HTTPRequest))
+            expect(self.request.http_request.get_header('X-HTTP-Method-Override')).to(
+                equal('GET')
+            )
+
         with it('should handle a custom scheme and port'):
             self.request = Request({
                 'host': self.host,
