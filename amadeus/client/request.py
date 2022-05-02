@@ -106,7 +106,7 @@ class Request(object):
         self.headers['Authorization'] = self.bearer_token
 
         if self.verb == 'POST':
-            #Adds HTTP override in Header for the list of paths required
+            # Adds HTTP override in Header for the list of paths required
             if self.path in Request.list_httpoverride:
                 self.headers['X-HTTP-Method-Override'] = 'GET'
             if type(self.params) is dict:

@@ -86,8 +86,9 @@ with description('Request') as self:
             expect(self.request.http_request.data).to(
                 equal(b'{\"foo\": \"bar\"}'))
 
-        with it('should return X-HTTP-Method-Override in header for some POST requests'):
-            for path in Request.list_httpoverride:              
+        with it('should return X-HTTP-Method-Override in header'
+                'for the listed POST requests'):
+            for path in Request.list_httpoverride:
                 self.request = Request({
                     'host': self.host,
                     'verb': 'POST',
@@ -103,8 +104,8 @@ with description('Request') as self:
                 })
 
                 expect(self.request.http_request).to(be_a(HTTPRequest))
-                expect(self.request.headers['X-HTTP-Method-Override']
-                        ).to(equal('GET')
+                expect(self.request.headers['X-HTTP-Method-Override']).to(
+                    equal('GET')
                 )
 
         with it('should handle a custom scheme and port'):
