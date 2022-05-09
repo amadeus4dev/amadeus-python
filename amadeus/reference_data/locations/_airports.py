@@ -9,7 +9,7 @@ class Airports(Decorator, object):
         .. code-block:: python
 
 
-            client.reference_data.locations.airports.get(
+            amadeus.reference_data.locations.airports.get(
                 longitude=49.0000,
                 latitude=2.55
             )
