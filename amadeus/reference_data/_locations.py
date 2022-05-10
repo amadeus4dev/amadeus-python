@@ -22,7 +22,7 @@ class Locations(Decorator, object):
 
             from amadeus import Location
 
-            client.reference_data.locations.get(
+            amadeus.reference_data.locations.get(
                 keyword='lon',
                 subType=Location.ANY
             )
