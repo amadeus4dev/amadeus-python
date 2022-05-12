@@ -263,6 +263,14 @@ List of supported endpoints
     # Confirm the availability of a specific offer
     offerId = amadeus.shopping.hotel_offer('8123DD9DE5102DADF5DA3B55C8C575F54114336EE718578753888747FE0652FC').get()
 
+    # Hotel List
+    # Get list of hotels by hotel id
+    amadeus.reference_data.locations.hotels.by_hotels.get(hotelIds='ADPAR001')
+    # Get list of hotels by city code
+    amadeus.reference_data.locations.hotels.by_city.get(cityCode='PAR')
+    # Get list of hotels by a geocode
+    amadeus.reference_data.locations.hotels.by_geocode.get(longitude=2.160873,latitude=41.397158)
+
     # Hotel Booking
     # The offerId comes from the hotel_offer above
     amadeus.booking.hotel_bookings.post(offerId, guests, payments)

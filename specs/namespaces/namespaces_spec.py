@@ -24,7 +24,10 @@ with description('Namespaces') as self:
         expect(
             client.reference_data.locations.points_of_interest.by_square).not_to(
             be_none)
-        expect(client.reference_data.locations.point_of_interest).not_to(be_none)
+        expect(client.reference_data.locations.hotels).not_to(be_none)
+        expect(client.reference_data.locations.hotels.by_hotels).not_to(be_none)
+        expect(client.reference_data.locations.hotels.by_city).not_to(be_none)
+        expect(client.reference_data.locations.hotels.by_geocode).not_to(be_none)
         expect(client.travel).not_to(be_none)
         expect(client.travel.analytics).not_to(be_none)
         expect(client.travel.analytics.air_traffic.traveled).not_to(be_none)
@@ -105,7 +108,12 @@ with description('Namespaces') as self:
         expect(client.reference_data.locations.point_of_interest(
             '9CB40CB5D0').get).not_to(be_none)
         expect(client.reference_data.recommended_locations.get).not_to(be_none)
-
+        expect(
+            client.reference_data.locations.hotels.by_city.get).not_to(be_none)
+        expect(
+            client.reference_data.locations.hotels.by_hotels.get).not_to(be_none)
+        expect(
+            client.reference_data.locations.hotels.by_geocode.get).not_to(be_none)
         expect(client.travel.analytics.air_traffic.traveled.get).not_to(be_none)
         expect(client.travel.analytics.air_traffic.booked.get).not_to(be_none)
         expect(
@@ -508,4 +516,25 @@ with description('Namespaces') as self:
             self.client.duty_of_care.diseases.covid19_area_report.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/duty-of-care/diseases/covid19-area-report', a='b'
+            ))
+
+        with it('.reference_data.locations.hotels.by_hotels.get'):
+            self.client.reference_data.locations.hotels.by_hotels.get(
+                a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/reference-data/locations/hotels/by-hotels', a='b'
+            ))
+
+        with it('.reference_data.locations.hotels.by_city.get'):
+            self.client.reference_data.locations.hotels.by_city.get(
+                a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/reference-data/locations/hotels/by-city', a='b'
+            ))
+
+        with it('.reference_data.locations.hotels.by_geocode.get'):
+            self.client.reference_data.locations.hotels.by_geocode.get(
+                a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/reference-data/locations/hotels/by-geocode', a='b'
             ))
