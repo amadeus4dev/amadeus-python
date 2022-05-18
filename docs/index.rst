@@ -161,6 +161,18 @@ ReferenceData/RecommendedLocations
 .. autoclass:: amadeus.reference_data.RecommendedLocations
   :members: get
 
+ReferenceData/Locations/Hotels
+=======================
+
+.. autoclass:: amadeus.reference_data.hotels.ByHotels
+  :members: get
+
+.. autoclass:: amadeus.reference_data.hotels.ByCity
+  :members: get
+
+.. autoclass:: amadeus.reference_data.hotels.ByGeocode
+  :members: get
+
 Helper/Location
 ==================
 
