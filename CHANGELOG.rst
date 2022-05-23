@@ -3,8 +3,11 @@ Changelog
 6.0.0 - 2022-05-23
 --------------------
 Add support for `Hotel List API <https://developers.amadeus.com/self-service/category/hotel/api-doc/hotel-list/api-reference>`_
+
 Add support for `Hotel Search v3 <https://developers.amadeus.com/self-service/category/hotel/api-doc/hotel-search/api-reference>`_
+
 Add support for the X-HTTP-Method-Override header
+
 Remove the AI-Generated Photos API
 
 5.3.1 - 2022-02-24
