@@ -1,5 +1,9 @@
 Changelog
 =========
+6.0.1 - 2022-05-23
+--------------------
+Removing all references to the unused media namespace
+
 6.0.0 - 2022-05-23
 --------------------
 Add support for `Hotel List API <https://developers.amadeus.com/self-service/category/hotel/api-doc/hotel-list/api-reference>`_
