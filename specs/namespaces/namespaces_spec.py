@@ -52,6 +52,9 @@ with description('Namespaces') as self:
         expect(client.shopping.hotel_offer).not_to(be_none)
         expect(client.shopping.hotel_offers_by_hotel).not_to(be_none)
 
+        expect(client.shopping.hotel_offers_search).not_to(be_none)
+        expect(client.shopping.hotel_offer_search).not_to(be_none)
+
         expect(client.shopping.activities).not_to(be_none)
 
         expect(client.shopping.availability).not_to(be_none)
@@ -132,6 +135,9 @@ with description('Namespaces') as self:
         expect(client.shopping.hotel_offers.get).not_to(be_none)
         expect(client.shopping.hotel_offers_by_hotel.get).not_to(be_none)
         expect(client.shopping.hotel_offer('123').get).not_to(be_none)
+
+        expect(client.shopping.hotel_offers_search.get).not_to(be_none)
+        expect(client.shopping.hotel_offer_search('123').get).not_to(be_none)
 
         expect(client.e_reputation.hotel_sentiments.get).not_to(be_none)
 
@@ -297,6 +303,20 @@ with description('Namespaces') as self:
             self.client.shopping.hotel_offer('XXX').get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v2/shopping/hotel-offers/XXX', a='b'
+            ))
+
+        with it('.shopping.hotel_offers_search.get'):
+            self.client.shopping.hotel_offers_search.get(
+                hotelIds='RTPAR001', adults=2)
+            expect(self.client.get).to(have_been_called_with(
+                '/v3/shopping/hotel-offers', hotelIds='RTPAR001',
+                adults=2
+            ))
+
+        with it('.shopping.hotel_offer_search().get'):
+            self.client.shopping.hotel_offer_search('XXX').get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v3/shopping/hotel-offers/XXX', a='b'
             ))
 
         with it('.shopping.seatmaps.get'):
