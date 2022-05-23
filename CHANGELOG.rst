@@ -1,5 +1,15 @@
 Changelog
 =========
+6.0.0 - 2022-05-23
+--------------------
+Add support for `Hotel List API <https://developers.amadeus.com/self-service/category/hotel/api-doc/hotel-list/api-reference>`_
+
+Add support for `Hotel Search v3 <https://developers.amadeus.com/self-service/category/hotel/api-doc/hotel-search/api-reference>`_
+
+Add support for the X-HTTP-Method-Override header
+
+Remove the AI-Generated Photos API
+
 5.3.1 - 2022-02-24
 --------------------
 Update release workflow
@@ -99,7 +109,7 @@ Add self-containing executable examples for the existing supported endpoints.
 
 3.3.0 - 2019-12-04
 --------------------
-Add support for the `AI-Generated Photos <https://developers.amadeus.com/self-service/category/trip/api-doc/ai-generated-photos>`_
+Add support for the `AI-Generated Photos`
 
 The AI-Generated Photos API returns a link to download a rendered image of a landscape. The image size is 512x512 pixels and the currently available image categories are BEACH and MOUNTAIN. The link to download the AI-generated picture is valid for 24 hours. This API is an experimental project created by the Amadeus AI Lab using the Nvidia StyleGAN framework. This API is free to use and we welcome any feedback you may have about improvements.
 
