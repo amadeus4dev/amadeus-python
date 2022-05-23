@@ -67,9 +67,6 @@ with description('Namespaces') as self:
         expect(client.airport.predictions.on_time).not_to(be_none)
         expect(client.airport.direct_destinations).not_to(be_none)
 
-        expect(client.media).not_to(be_none)
-        expect(client.media.files).not_to(be_none)
-
         expect(client.travel.trip_parser_jobs).not_to(be_none)
         expect(client.travel.trip_parser_jobs.status).not_to(be_none)
         expect(client.travel.trip_parser_jobs.result).not_to(be_none)
