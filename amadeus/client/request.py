@@ -138,7 +138,7 @@ class Request(object):
 
     # Helper method to prepare the parameter encoding
     def _urlencode(self, d):
-        return urlencode(self._flatten_keys(d, '', {}))
+        return urlencode(self._flatten_keys(d, '', {}), doseq=True)
 
     # Flattens the hash keys, so page: { offset: 1 } becomes page[offet] = 1
     def _flatten_keys(self, d, key, out):
