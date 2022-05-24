@@ -277,6 +277,9 @@ List of supported endpoints
     # Get list of hotels by a geocode
     amadeus.reference_data.locations.hotels.by_geocode.get(longitude=2.160873,latitude=41.397158)
 
+    # Hotel Name Autocomplete
+    amadeus.reference_data.locations.hotel.get(keyword='PARI', subType=[Hotel.HOTEL_GDS, Hotel.HOTEL_LEISURE])
+
     # Hotel Booking
     # The offerId comes from the hotel_offer above
     amadeus.booking.hotel_bookings.post(offerId, guests, payments)
