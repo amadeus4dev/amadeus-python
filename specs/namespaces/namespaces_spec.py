@@ -29,6 +29,7 @@ with description('Namespaces') as self:
         expect(client.reference_data.locations.hotels.by_city).not_to(be_none)
         expect(client.reference_data.locations.hotels.by_geocode).not_to(be_none)
         expect(client.reference_data.locations.hotel).not_to(be_none)
+        expect(client.reference_data.locations.cities).not_to(be_none)
         expect(client.travel).not_to(be_none)
         expect(client.travel.analytics).not_to(be_none)
         expect(client.travel.analytics.air_traffic.traveled).not_to(be_none)
@@ -562,4 +563,10 @@ with description('Namespaces') as self:
             self.client.reference_data.locations.hotel.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/reference-data/locations/hotel', a='b'
+            ))
+
+        with it('.reference_data.locations.cities.get'):
+            self.client.reference_data.locations.cities.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v1/reference-data/locations/cities', a='b'
             ))

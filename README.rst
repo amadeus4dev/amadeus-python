@@ -243,6 +243,9 @@ List of supported endpoints
     # Get a specific city or airport based on its id
     amadeus.reference_data.location('ALHR').get()
 
+    # City Search
+    amadeus.reference_data.locations.cities.get(keyword='PAR')
+
     # Airport Nearest Relevant Airport (for London)
     amadeus.reference_data.locations.airports.get(longitude=0.1278, latitude=51.5074)
 

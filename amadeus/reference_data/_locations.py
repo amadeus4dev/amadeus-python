@@ -4,6 +4,7 @@ from amadeus.reference_data.locations._points_of_interest import PointsOfInteres
 from amadeus.reference_data.locations._point_of_interest import PointOfInterest
 from amadeus.reference_data.locations._hotels import Hotels
 from amadeus.reference_data.locations._hotel import Hotel
+from amadeus.reference_data.locations._cities import Cities
 
 
 class Locations(Decorator, object):
@@ -13,6 +14,7 @@ class Locations(Decorator, object):
         self.points_of_interest = PointsOfInterest(client)
         self.hotels = Hotels(client)
         self.hotel = Hotel(client)
+        self.cities = Cities(client)
 
     def point_of_interest(self, poi_id):
         return PointOfInterest(self.client, poi_id)
