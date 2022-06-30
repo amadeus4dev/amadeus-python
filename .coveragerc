@@ -1,3 +1,6 @@
 [run]
 source = ./amadeus
 branch = True
+
+[report]
+fail_under = 95
