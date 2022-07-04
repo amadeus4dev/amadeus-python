@@ -359,6 +359,9 @@ List of supported endpoints
     # Covid-19 Area Report
     amadeus.duty_of_care.diseases.covid19_area_report.get(countryCode="US")
 
+    # Airline Routes
+    amadeus.airline.destinations.get(airlineCode='BA')
+
 Development & Contributing
 --------------------------
 
