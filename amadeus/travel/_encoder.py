@@ -15,8 +15,5 @@ def from_base64(base64):
 # Takes a Base64 and returns a dict
 def __build_trip_parser_body(base64):
     return {
-        'data': {
-            'type': 'trip-parser-job',
-            'content': base64,
-        },
+            'payload': base64,
     }

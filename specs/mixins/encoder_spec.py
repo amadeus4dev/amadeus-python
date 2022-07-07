@@ -17,10 +17,7 @@ with description('Travel/From File'):
                + '/encoder_specs_file.eml'
         base64 = 'Ym9va2luZw=='
         body = {
-            'data': {
-                'type': 'trip-parser-job',
-                'content': base64,
-            },
+            'payload': base64,
         }
         expect(from_file(file)).to(equal(body))
 
@@ -28,9 +25,6 @@ with description('Travel/From Base64'):
     with it('should generate the defined POST body from base64'):
         base64 = 'Ym9va2luZw=='
         body = {
-            'data': {
-                'type': 'trip-parser-job',
-                'content': base64,
-            },
+            'payload': base64,
         }
         expect(from_base64(base64)).to(equal(body))

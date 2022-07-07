@@ -69,9 +69,7 @@ with description('Namespaces') as self:
         expect(client.airport.predictions.on_time).not_to(be_none)
         expect(client.airport.direct_destinations).not_to(be_none)
 
-        expect(client.travel.trip_parser_jobs).not_to(be_none)
-        expect(client.travel.trip_parser_jobs.status).not_to(be_none)
-        expect(client.travel.trip_parser_jobs.result).not_to(be_none)
+        expect(client.travel.trip_parser).not_to(be_none)
 
         expect(client.travel.from_file).not_to(be_none)
         expect(client.travel.from_base64).not_to(be_none)
@@ -146,9 +144,6 @@ with description('Namespaces') as self:
         expect(client.airport.predictions.on_time.get).not_to(be_none)
         expect(client.airport.direct_destinations.get).not_to(be_none)
 
-        expect(client.travel.trip_parser_jobs.status('123').get).not_to(be_none)
-        expect(client.travel.trip_parser_jobs.result('123').get).not_to(be_none)
-
         expect(client.booking.flight_order('123').get).not_to(be_none)
         expect(client.booking.flight_order('123').delete).not_to(be_none)
 
@@ -173,7 +168,7 @@ with description('Namespaces') as self:
 
     with it('should define all expected .post methods'):
         client = self.client
-        expect(client.travel.trip_parser_jobs.post).not_to(be_none)
+        expect(client.travel.trip_parser.post).not_to(be_none)
 
     with context('testing all calls to the client'):
         with before.each:
@@ -347,45 +342,33 @@ with description('Namespaces') as self:
                 '/v1/airport/direct-destinations', a='b'
             ))
 
-        with it('.travel.trip_parser_jobs.status().get'):
-            self.client.travel.trip_parser_jobs.status('XXX').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/travel/trip-parser-jobs/XXX', a='b'
-            ))
-
-        with it('.travel.trip_parser_jobs.result().get'):
-            self.client.travel.trip_parser_jobs.result('XXX').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/travel/trip-parser-jobs/XXX/result', a='b'
-            ))
-
         with it('.shopping.flight_offers.prediction.post'):
             self.client.shopping.flight_offers.prediction.post({'foo': 'bar'})
             expect(self.client.post).to(have_been_called_with(
                 '/v2/shopping/flight-offers/prediction', {'foo': 'bar'}
             ))
 
-        with it('.travel.trip_parser_jobs.post'):
-            self.client.travel.trip_parser_jobs.post({'foo': 'bar'})
+        with it('.travel.trip_parser.post'):
+            self.client.travel.trip_parser.post({'foo': 'bar'})
             expect(self.client.post).to(have_been_called_with(
-                '/v2/travel/trip-parser-jobs', {'foo': 'bar'}
+                '/v3/travel/trip-parser', {'foo': 'bar'}
             ))
 
-        with it('.travel.trip_parser_jobs.post_from_base64'):
-            self.client.travel.trip_parser_jobs.post(
-                self.client.travel.from_base64('dGVzdA=='))
+        with it('.travel.trip_parser.post_from_base64'):
+            self.client.travel.trip_parser.post(
+                self.client.travel.from_base64('Qm9va2luZwo='))
             expect(self.client.post).to(have_been_called_with(
-                '/v2/travel/trip-parser-jobs',
-                {'data': {'type': 'trip-parser-job', 'content': 'dGVzdA=='}}
+                '/v3/travel/trip-parser',
+                {'payload': 'Qm9va2luZwo='}
             ))
 
-        with it('.travel.trip_parser_jobs.post_from_file'):
+        with it('.travel.trip_parser.post_from_file'):
             file = 'specs/namespaces/trip_parser_test.eml'
-            self.client.travel.trip_parser_jobs.post(
+            self.client.travel.trip_parser.post(
                 self.client.travel.from_file(file))
             expect(self.client.post).to(have_been_called_with(
-                '/v2/travel/trip-parser-jobs',
-                {'data': {'type': 'trip-parser-job', 'content': 'Qm9va2luZwo='}}
+                '/v3/travel/trip-parser',
+                {'payload': 'Qm9va2luZwo='}
             ))
 
         with it('.shopping.flight_offers_search.post'):
