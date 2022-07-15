@@ -327,15 +327,11 @@ List of supported endpoints
 
     # Trip Parser
     # Encode to Base64 your booking confirmation file (.html, .eml, .pdf supported)
-    response = amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_file(path_to_file))
+    response = amadeus.travel.trip_parser.post(amadeus.travel.from_file(path_to_file))
     # Alternatively you can use a Base64 encoded content directly
-    response = amadeus.travel.trip_parser_jobs.post(amadeus.travel.from_base64(base64))
+    response = amadeus.travel.trip_parser.post(amadeus.travel.from_base64(base64))
     # Or you can call the API with the JSON directly
-    response = amadeus.travel.trip_parser_jobs.post(body)
-    # Get the parsing status of the process by jobId
-    amadeus.travel.trip_parser_jobs.status(response.data['id']).get()
-    # Get the result of the process by jobId
-    amadeus.travel.trip_parser_jobs.result(response.data['id']).get()
+    response = amadeus.travel.trip_parser.post(body)
 
     # Travel Recommendations
     amadeus.reference_data.recommended_locations.get(cityCodes='PAR', travelerCountryCode='FR')
