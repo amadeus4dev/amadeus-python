@@ -1,5 +1,15 @@
 Changelog
 =========
+7.0.0 - 2022-07-20
+--------------------
+Add support for `Trip Parser v3 API <https://developers.amadeus.com/self-service/category/trip/api-doc/trip-parser/api-reference>`_ and remove Trip Parser v2
+
+Add support for `City Search API <https://developers.amadeus.com/self-service/category/trip/api-doc/city-search/api-reference>`_
+
+Add support for `Airline Routes API <https://developers.amadeus.com/self-service/category/air/api-doc/airline-routes/api-reference>`_ and `Hotel Name Autocomplete API <https://developers.amadeus.com/self-service/category/hotel/api-doc/hotel-name-autocomplete/api-reference>`_. Big thanks to `Siddhartha Dutta <https://github.com/siddydutta>`_ for his contribution! 
+
+Implement the coverage report generation at CI time
+
 6.0.1 - 2022-05-23
 --------------------
 Removing all references to the unused media namespace
