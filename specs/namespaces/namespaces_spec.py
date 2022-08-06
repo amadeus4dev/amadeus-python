@@ -92,6 +92,7 @@ with description('Namespaces') as self:
 
         expect(client.duty_of_care).not_to(be_none)
         expect(client.duty_of_care.diseases.covid19_area_report).not_to(be_none)
+        expect(client.duty_of_care.diseases.covid19_report).not_to(be_none)
 
         expect(client.airline.destinations).not_to(be_none)
 
@@ -159,6 +160,7 @@ with description('Namespaces') as self:
 
         expect(client.duty_of_care.diseases.covid19_area_report.get).not_to(
             be_none)
+        expect(client.duty_of_care.diseases.covid19_report.get).not_to(be_none)
 
         expect(client.airline.destinations.get).not_to(be_none)
 
@@ -523,6 +525,12 @@ with description('Namespaces') as self:
             self.client.duty_of_care.diseases.covid19_area_report.get(a='b')
             expect(self.client.get).to(have_been_called_with(
                 '/v1/duty-of-care/diseases/covid19-area-report', a='b'
+            ))
+
+        with it('.duty_of_care.diseases.covid19_report.get'):
+            self.client.duty_of_care.diseases.covid19_report.get(a='b')
+            expect(self.client.get).to(have_been_called_with(
+                '/v2/duty-of-care/diseases/covid19-area-report', a='b'
             ))
 
         with it('.reference_data.locations.hotels.by_hotels.get'):
