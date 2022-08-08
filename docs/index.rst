@@ -257,6 +257,9 @@ DutyOfCare/Diseases
 .. autoclass:: amadeus.duty_of_care.diseases.Covid19AreaReport
   :members: get
 
+.. autoclass:: amadeus.duty_of_care.diseases.Covid19Report
+  :members: get
+
 Airline/Destinations
 ================
 
