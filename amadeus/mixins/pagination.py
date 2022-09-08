@@ -35,6 +35,7 @@ class Pagination(object):
 
     def __page_number_for(self, name, response):
         try:
-            return return response.result['meta']['links'][name].split('page%5Boffset%5D=')[1].split('&')[0]
+            url = response.result['meta']['links'][name]
+            return url.split('page%5Boffset%5D=')[1].split('&')[0]
         except Exception:
             return None
