@@ -26,7 +26,7 @@ with description('Pagination') as self:
     with context('Client.previous'):
         with it('should create a new request with the page and call it'):
             self.response.result = {
-                'meta': {'links': {'previous': 'http://f.co?page=1'}}
+                'meta': {'links': {'previous': 'http://f.co?page%5Boffset%5D=1'}}
             }
 
             next_response = self.pagination.previous(self.response)
@@ -44,7 +44,7 @@ with description('Pagination') as self:
     with context('Client.next'):
         with it('should create a new request with the page and call it'):
             self.response.result = {
-                'meta': {'links': {'next': 'http://f.co?page=1'}}
+                'meta': {'links': {'next': 'http://f.co?page%5Boffset%5D=1'}}
             }
 
             next_response = self.pagination.next(self.response)
@@ -62,7 +62,7 @@ with description('Pagination') as self:
     with context('Client.first'):
         with it('should create a new request with the page and call it'):
             self.response.result = {
-                'meta': {'links': {'first': 'http://f.co?page=1'}}
+                'meta': {'links': {'first': 'http://f.co?page%5Boffset%5D=1'}}
             }
 
             next_response = self.pagination.first(self.response)
@@ -81,7 +81,7 @@ with description('Pagination') as self:
         with it('should create a new request with the page and call it'):
             self.response.request.params = {'page': {'offset': '0'}}
             self.response.result = {
-                'meta': {'links': {'last': 'http://f.co?page=1'}}
+                'meta': {'links': {'last': 'http://f.co?page%5Boffset%5D=1'}}
             }
 
             next_response = self.pagination.last(self.response)
