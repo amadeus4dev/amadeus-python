@@ -4,7 +4,6 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-    types: [opened, synchronize, reopened]
 jobs:
   build:
     runs-on: Ubuntu-18.04
@@ -37,16 +36,3 @@ jobs:
       - name: Build binary wheel and a source tarball
         if: ${{ matrix.python-version == '3.6.8' }}
         run: python setup.py sdist
-
-  sonarcloud:
-    name: SonarCloud
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
