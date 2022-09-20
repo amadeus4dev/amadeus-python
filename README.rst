@@ -4,7 +4,7 @@ Amadeus Python SDK
 |Module Version| |Build Status| |Maintainability| |Dependencies| |Discord|
 
 
-Amadeus provides a rich set of APIs for the travel industry. For more details, check out the `Amadeus for Developers Portal <https://developers.amadeus.com>`__ or the `SDK class reference <https://amadeus4dev.github.io/amadeus-python>`__.
+Amadeus provides a rich set of APIs for the travel industry. For more details, check out the `Amadeus for Developers Portal <https://developers.amadeus.com>`__ or the `SDK class reference <https://amadeus4dev.github.io/amadeus-python>`__
 
 Installation
 ------------
