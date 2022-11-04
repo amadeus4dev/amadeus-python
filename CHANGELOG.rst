@@ -1,5 +1,13 @@
 Changelog
 =========
+7.1.0 - 2022-11-04
+--------------------
+Add support for `Travel Restrictions v2 API <https://developers.amadeus.com/self-service/category/covid-19-and-travel-safety/api-doc/travel-restrictions/api-reference>`_
+
+Bug fix in pagination
+
+Add SonarCloud support
+
 7.0.0 - 2022-07-20
 --------------------
 Add support for `Trip Parser v3 API <https://developers.amadeus.com/self-service/category/trip/api-doc/trip-parser/api-reference>`_ and remove Trip Parser v2
