@@ -33,7 +33,8 @@ class Pagination(object):
             params
         )
 
-    def __page_number_for(self, name, response):
+    @staticmethod
+    def __page_number_for(name, response):
         try:
             url = response.result['meta']['links'][name]
             return url.split('page%5Boffset%5D=')[1].split('&')[0]

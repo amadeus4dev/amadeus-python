@@ -38,7 +38,8 @@ class ResponseError(RuntimeError):
 
     # Determines the short description, printed after on the same line as the
     # error class name
-    def short_description(self, response):
+    @staticmethod
+    def short_description(response):
         if hasattr(response, 'status_code') and response.status_code:
             return '[{0}]'.format(response.status_code)
         else:
@@ -56,7 +57,8 @@ class ResponseError(RuntimeError):
         return message
 
     # Returns the description of a single error
-    def error_description(self, response):
+    @staticmethod
+    def error_description(response):
         message = ''
         if 'error' in response.result:
             message += '\n{0}'.format(response.result['error'])
@@ -69,7 +71,8 @@ class ResponseError(RuntimeError):
         return ''.join(messages)
 
     # Returns the description of a single error in a multi error response
-    def errors_description(self, error):
+    @staticmethod
+    def errors_description(error):
         message = '\n'
         if ('source' in error) and ('parameter' in error['source']):
             message += '[{0}] '.format(error['source']['parameter'])
