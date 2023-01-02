@@ -14,12 +14,12 @@ class FlightOrders(Decorator, object):
         :raises amadeus.ResponseError: if the request could not be completed
         '''
         flight_offers = []
-        if type(flight) is not list:
+        if not isinstance(flight, list):
             flight_offers.append(flight)
         else:
             flight_offers.extend(flight)
         travelers_info = []
-        if type(travelers) is not list:
+        if not isinstance(travelers, list):
             travelers_info.append(travelers)
         else:
             travelers_info.extend(travelers)
