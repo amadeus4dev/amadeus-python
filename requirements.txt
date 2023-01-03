@@ -2,8 +2,8 @@ mamba==0.11.2
 expects==0.9.0
 doublex==1.9.3
 doublex-expects==0.7.1
-flake8==3.5.0
-flake8-quotes==0.14.0
+flake8==3.8.0
+flake8-quotes==2.1.1
 tox==3.20.0
 sphinx==3.4.1
 sphinx-rtd-theme==0.5.2
