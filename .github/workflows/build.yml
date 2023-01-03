@@ -23,7 +23,7 @@ jobs:
           python -m pip install sphinx==3.4.1
           pip install tox
           python -m pip install sphinx_rtd_theme==0.5.2
-          pip install virtualenv==20.0.1
+          pip install virtualenv
       - name: Test with tox
         run: |
           tox
