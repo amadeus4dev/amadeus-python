@@ -31,7 +31,3 @@ jobs:
         run: |
           pip install -e .
           pip install --upgrade setuptools
-          make docs
-      - name: Build binary wheel and a source tarball
-        if: ${{ matrix.python-version == '3.8' }}
-        run: python setup.py sdist
