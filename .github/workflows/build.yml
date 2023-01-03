@@ -26,8 +26,8 @@ jobs:
           pip install virtualenv==20.0.1
       - name: Test with tox
         run: |
-          tox -e py
-      - name: Before deploy 
+          tox
+      - name: Build documentation
         run: |
           pip install -e .
           pip install --upgrade setuptools
