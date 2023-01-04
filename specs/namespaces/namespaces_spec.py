@@ -1,573 +1,581 @@
-from mamba import description, it, before, context
-from expects import expect, be_none
-from doublex import method_returning
-from doublex_expects import have_been_called_with
-
+import pytest
+from mock import MagicMock
 from amadeus import Client
 
-with description('Namespaces') as self:
-    with before.all:
-        self.client = Client(
-            client_id='123',
-            client_secret='234'
-        )
-
-    with it('should define all expected paths'):
-        client = self.client
-        expect(client.reference_data).not_to(be_none)
-        expect(client.reference_data.urls).not_to(be_none)
-        expect(client.reference_data.urls.checkin_links).not_to(be_none)
-        expect(client.reference_data.location).not_to(be_none)
-        expect(client.reference_data.locations).not_to(be_none)
-        expect(client.reference_data.locations.airports).not_to(be_none)
-        expect(client.reference_data.locations.points_of_interest).not_to(be_none)
-        expect(
-            client.reference_data.locations.points_of_interest.by_square).not_to(
-            be_none)
-        expect(client.reference_data.locations.hotels).not_to(be_none)
-        expect(client.reference_data.locations.hotels.by_hotels).not_to(be_none)
-        expect(client.reference_data.locations.hotels.by_city).not_to(be_none)
-        expect(client.reference_data.locations.hotels.by_geocode).not_to(be_none)
-        expect(client.reference_data.locations.hotel).not_to(be_none)
-        expect(client.reference_data.locations.cities).not_to(be_none)
-        expect(client.travel).not_to(be_none)
-        expect(client.travel.analytics).not_to(be_none)
-        expect(client.travel.analytics.air_traffic.traveled).not_to(be_none)
-        expect(client.travel.analytics.air_traffic.booked).not_to(be_none)
-        expect(client.travel.analytics.air_traffic.busiest_period).not_to(be_none)
-
-        expect(client.travel.predictions).not_to(be_none)
-        expect(client.travel.predictions.trip_purpose).not_to(be_none)
-        expect(client.travel.predictions.flight_delay).not_to(be_none)
-
-        expect(client.shopping).not_to(be_none)
-        expect(client.shopping.flight_dates).not_to(be_none)
-        expect(client.shopping.flight_destinations).not_to(be_none)
-        expect(client.shopping.flight_offers).not_to(be_none)
-        expect(client.shopping.flight_offers_search).not_to(be_none)
-        expect(client.shopping.flight_offers.pricing).not_to(be_none)
-        expect(client.shopping.flight_offers.upselling).not_to(be_none)
-
-        expect(client.shopping.seatmaps).not_to(be_none)
-
-        expect(client.shopping.hotel_offers).not_to(be_none)
-        expect(client.shopping.hotel_offer).not_to(be_none)
-        expect(client.shopping.hotel_offers_by_hotel).not_to(be_none)
-
-        expect(client.shopping.hotel_offers_search).not_to(be_none)
-        expect(client.shopping.hotel_offer_search).not_to(be_none)
-
-        expect(client.shopping.activities).not_to(be_none)
-
-        expect(client.shopping.availability).not_to(be_none)
-        expect(client.shopping.availability.flight_availabilities).not_to(be_none)
-
-        expect(client.e_reputation.hotel_sentiments).not_to(be_none)
-
-        expect(client.airport).not_to(be_none)
-        expect(client.airport.predictions).not_to(be_none)
-        expect(client.airport.predictions.on_time).not_to(be_none)
-        expect(client.airport.direct_destinations).not_to(be_none)
-
-        expect(client.travel.trip_parser).not_to(be_none)
-
-        expect(client.travel.from_file).not_to(be_none)
-        expect(client.travel.from_base64).not_to(be_none)
-
-        expect(client.booking.flight_orders).not_to(be_none)
-        expect(client.booking.flight_order).not_to(be_none)
-
-        expect(client.safety.safety_rated_locations).not_to(be_none)
-        expect(client.safety.safety_rated_locations.by_square).not_to(be_none)
-        expect(client.safety.safety_rated_location).not_to(be_none)
-
-        expect(client.schedule).not_to(be_none)
-        expect(client.schedule.flights).not_to(be_none)
-
-        expect(client.analytics).not_to(be_none)
-        expect(client.analytics.itinerary_price_metrics).not_to(be_none)
-
-        expect(client.location).not_to(be_none)
-        expect(client.location.analytics.category_rated_areas).not_to(be_none)
-
-        expect(client.duty_of_care).not_to(be_none)
-        expect(client.duty_of_care.diseases.covid19_area_report).not_to(be_none)
-        expect(client.duty_of_care.diseases.covid19_report).not_to(be_none)
-
-        expect(client.airline.destinations).not_to(be_none)
-
-    with it('should define all expected .get methods'):
-        client = self.client
-        expect(client.reference_data.urls.checkin_links.get).not_to(be_none)
-        expect(client.reference_data.location('ALHR').get).not_to(be_none)
-        expect(client.reference_data.locations.get).not_to(be_none)
-        expect(client.reference_data.locations.airports.get).not_to(be_none)
-        expect(
-            client.reference_data.locations.points_of_interest.get).not_to(
-            be_none)
-        expect(
-            client.reference_data.locations.points_of_interest.by_square.get
-            ).not_to(be_none)
-        expect(client.reference_data.locations.point_of_interest(
-            '9CB40CB5D0').get).not_to(be_none)
-        expect(client.reference_data.recommended_locations.get).not_to(be_none)
-        expect(
-            client.reference_data.locations.hotels.by_city.get).not_to(be_none)
-        expect(
-            client.reference_data.locations.hotels.by_hotels.get).not_to(be_none)
-        expect(
-            client.reference_data.locations.hotels.by_geocode.get).not_to(be_none)
-        expect(client.reference_data.locations.hotel.get).not_to(be_none)
-        expect(client.travel.analytics.air_traffic.traveled.get).not_to(be_none)
-        expect(client.travel.analytics.air_traffic.booked.get).not_to(be_none)
-        expect(
-            client.travel.analytics.air_traffic.busiest_period.get).not_to(
-            be_none)
-
-        expect(client.travel.predictions.trip_purpose.get).not_to(be_none)
-        expect(client.travel.predictions.flight_delay.get).not_to(be_none)
-
-        expect(client.shopping.flight_dates.get).not_to(be_none)
-        expect(client.shopping.flight_destinations.get).not_to(be_none)
-        expect(client.shopping.flight_offers_search.get).not_to(be_none)
-
-        expect(client.shopping.seatmaps.get).not_to(be_none)
-
-        expect(client.shopping.hotel_offers.get).not_to(be_none)
-        expect(client.shopping.hotel_offers_by_hotel.get).not_to(be_none)
-        expect(client.shopping.hotel_offer('123').get).not_to(be_none)
-
-        expect(client.shopping.hotel_offers_search.get).not_to(be_none)
-        expect(client.shopping.hotel_offer_search('123').get).not_to(be_none)
-
-        expect(client.e_reputation.hotel_sentiments.get).not_to(be_none)
-
-        expect(client.airport.predictions.on_time.get).not_to(be_none)
-        expect(client.airport.direct_destinations.get).not_to(be_none)
-
-        expect(client.booking.flight_order('123').get).not_to(be_none)
-        expect(client.booking.flight_order('123').delete).not_to(be_none)
-
-        expect(client.safety.safety_rated_locations.by_square.get).not_to(be_none)
-        expect(client.safety.safety_rated_location('Q930402719').get).not_to(
-            be_none)
-
-        expect(client.schedule.flights.get).not_to(be_none)
-
-        expect(client.analytics.itinerary_price_metrics.get).not_to(be_none)
-
-        expect(client.location.analytics.category_rated_areas.get).not_to(be_none)
-
-        expect(client.duty_of_care.diseases.covid19_area_report.get).not_to(
-            be_none)
-        expect(client.duty_of_care.diseases.covid19_report.get).not_to(be_none)
-
-        expect(client.airline.destinations.get).not_to(be_none)
-
-    with it('should define all expected .delete methods'):
-        client = self.client
-        expect(client.booking.flight_order('123').delete).not_to(be_none)
-
-    with it('should define all expected .post methods'):
-        client = self.client
-        expect(client.travel.trip_parser.post).not_to(be_none)
-
-    with context('testing all calls to the client'):
-        with before.each:
-            self.client.get = method_returning(None)
-            self.client.post = method_returning(None)
-            self.client.delete = method_returning(None)
-
-        with it('.reference_data.urls.checkin_links.get'):
-            self.client.reference_data.urls.checkin_links.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/reference-data/urls/checkin-links', a='b'
-            ))
-
-        with it('.reference_data.airlines.get'):
-            self.client.reference_data.airlines.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/airlines', a='b'
-            ))
-
-        with it('.reference_data.location().get'):
-            self.client.reference_data.location('ALHR').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/ALHR', a='b'
-            ))
-
-        with it('.reference_data.locations.get'):
-            self.client.reference_data.locations.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations', a='b'
-            ))
-
-        with it('.reference_data.locations.airports.get'):
-            self.client.reference_data.locations.airports.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/airports', a='b'
-            ))
-
-        with it('.reference_data.locations.points_of_interest.get'):
-            self.client.reference_data.locations.points_of_interest.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/pois', a='b'
-            ))
-
-        with it('.reference_data.locations.points_of_interest.by_square.get'):
-            self.client.reference_data.locations.points_of_interest.by_square.get(
-                a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/pois/by-square', a='b'
-            ))
-
-        with it('.reference_data.locations.point_of_interest().get'):
-            self.client.reference_data.locations.point_of_interest(
-                'XXX').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/pois/XXX', a='b'
-            ))
-
-        with it('.location.analytics.category_rated_areas.get'):
-            self.client.location.analytics.category_rated_areas.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/location/analytics/category-rated-areas', a='b'
-            ))
-
-        with it('.reference_data.recommended_locations.get'):
-            self.client.reference_data.recommended_locations.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/recommended-locations', a='b'
-            ))
-
-        with it('.travel.analytics.air_traffic.traveled.get'):
-            self.client.travel.analytics.air_traffic.traveled.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/travel/analytics/air-traffic/traveled', a='b'
-            ))
-
-        with it('.travel.analytics.air_traffic.booked.get'):
-            self.client.travel.analytics.air_traffic.booked.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/travel/analytics/air-traffic/booked', a='b'
-            ))
-
-        with it('.travel.analytics.air_traffic.busiest_period.get'):
-            self.client.travel.analytics.air_traffic.busiest_period.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/travel/analytics/air-traffic/busiest-period', a='b'
-            ))
-
-        with it('.travel.predictions.trip_purpose.get'):
-            self.client.travel.predictions.trip_purpose.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/travel/predictions/trip-purpose', a='b'
-            ))
-
-        with it('.travel.predictions.flight_delay.get'):
-            self.client.travel.predictions.flight_delay.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/travel/predictions/flight-delay', a='b'
-            ))
-
-        with it('.shopping.flight_dates.get'):
-            self.client.shopping.flight_dates.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/flight-dates', a='b'
-            ))
-
-        with it('.shopping.flight_destinations.get'):
-            self.client.shopping.flight_destinations.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/flight-destinations', a='b'
-            ))
-
-        with it('.shopping.flight_offers_search.get'):
-            self.client.shopping.flight_offers_search.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/shopping/flight-offers', a='b'
-            ))
-
-        with it('.shopping.hotel_offers.get'):
-            self.client.shopping.hotel_offers.get(cityCode='MAD')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/shopping/hotel-offers', cityCode='MAD'
-            ))
-
-        with it('.shopping.hotel_offers_by_hotel.get'):
-            self.client.shopping.hotel_offers_by_hotel.get(hotelId='XKPARC12')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/shopping/hotel-offers/by-hotel', hotelId='XKPARC12'
-            ))
-
-        with it('.shopping.hotel_offer().get'):
-            self.client.shopping.hotel_offer('XXX').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/shopping/hotel-offers/XXX', a='b'
-            ))
-
-        with it('.shopping.hotel_offers_search.get'):
-            self.client.shopping.hotel_offers_search.get(
-                hotelIds='RTPAR001', adults=2)
-            expect(self.client.get).to(have_been_called_with(
-                '/v3/shopping/hotel-offers', hotelIds='RTPAR001',
-                adults=2
-            ))
-
-        with it('.shopping.hotel_offer_search().get'):
-            self.client.shopping.hotel_offer_search('XXX').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v3/shopping/hotel-offers/XXX', a='b'
-            ))
-
-        with it('.shopping.seatmaps.get'):
-            self.client.shopping.seatmaps.get(**{'a': 'b'})
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/seatmaps', a='b'
-            ))
-
-        with it('.e_reputation.hotel_sentiments.get'):
-            self.client.e_reputation.hotel_sentiments.get(hotelIds='XKPARC12')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/e-reputation/hotel-sentiments', hotelIds='XKPARC12'
-            ))
-
-        with it('.airport.predictions.on_time.get'):
-            self.client.airport.predictions.on_time.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/airport/predictions/on-time', a='b'
-            ))
-
-        with it('.airport.direct_destinations.get'):
-            self.client.airport.direct_destinations.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/airport/direct-destinations', a='b'
-            ))
-
-        with it('.shopping.flight_offers.prediction.post'):
-            self.client.shopping.flight_offers.prediction.post({'foo': 'bar'})
-            expect(self.client.post).to(have_been_called_with(
-                '/v2/shopping/flight-offers/prediction', {'foo': 'bar'}
-            ))
-
-        with it('.travel.trip_parser.post'):
-            self.client.travel.trip_parser.post({'foo': 'bar'})
-            expect(self.client.post).to(have_been_called_with(
-                '/v3/travel/trip-parser', {'foo': 'bar'}
-            ))
-
-        with it('.travel.trip_parser.post_from_base64'):
-            self.client.travel.trip_parser.post(
-                self.client.travel.from_base64('Qm9va2luZwo='))
-            expect(self.client.post).to(have_been_called_with(
-                '/v3/travel/trip-parser',
-                {'payload': 'Qm9va2luZwo='}
-            ))
-
-        with it('.travel.trip_parser.post_from_file'):
-            file = 'specs/namespaces/trip_parser_test.eml'
-            self.client.travel.trip_parser.post(
-                self.client.travel.from_file(file))
-            expect(self.client.post).to(have_been_called_with(
-                '/v3/travel/trip-parser',
-                {'payload': 'Qm9va2luZwo='}
-            ))
-
-        with it('.shopping.flight_offers_search.post'):
-            self.client.shopping.flight_offers_search.post({'foo': 'bar'})
-            expect(self.client.post).to(have_been_called_with(
-                '/v2/shopping/flight-offers', {'foo': 'bar'}
-            ))
-
-        with it('.shopping.seatmaps.post'):
-            self.client.shopping.seatmaps.post({'foo': 'bar'})
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/shopping/seatmaps', {'foo': 'bar'}
-            ))
-
-        with it('.shopping.flight_offers.pricing.post'):
-            self.client.shopping.flight_offers.pricing.post(
-                {'foo': 'bar'}, include='other-services')
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/shopping/flight-offers/pricing?'+'include=other-services',
-                {'data': {'type': 'flight-offers-pricing',
-                          'flightOffers': [{'foo': 'bar'}]}}
-            ))
-
-        with it('.shopping.flight_offers.pricing.post_list'):
-            self.client.shopping.flight_offers.pricing.post([{'foo': 'bar'}])
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/shopping/flight-offers/pricing?',
-                {'data': {'type': 'flight-offers-pricing',
-                          'flightOffers': [{'foo': 'bar'}]}}
-            ))
-
-        with it('.shopping.booking.flight_orders.post'):
-            self.client.booking.flight_orders.post({'foo': 'bar'}, {'bar': 'foo'})
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/booking/flight-orders',
-                {'data': {'type': 'flight-order',
-                          'flightOffers': [{'foo': 'bar'}],
-                          'travelers': [{'bar': 'foo'}]
-                          }}
-            ))
-
-        with it('.shopping.booking.flight_orders.post_list'):
-            self.client.booking.flight_orders.post(
-                [{'foo': 'bar'}], [{'bar': 'foo'}])
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/booking/flight-orders',
-                {'data': {'type': 'flight-order',
-                          'flightOffers': [{'foo': 'bar'}],
-                          'travelers': [{'bar': 'foo'}]
-                          }}
-            ))
-
-        with it('.shopping.availability.flight_availabilities.post'):
-            self.client.shopping.availability.flight_availabilities.post(
-                {'foo': 'bar'})
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/shopping/availability/flight-availabilities', {'foo': 'bar'}
-            ))
-
-        with it('.shopping.flight_offers.upselling.post'):
-            self.client.shopping.flight_offers.upselling.post(
-                {'foo': 'bar'})
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/shopping/flight-offers/upselling', {'foo': 'bar'}
-            ))
-
-        with it('.booking.flight_order().get'):
-            self.client.booking.flight_order('123').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/booking/flight-orders/123', a='b'
-            ))
-
-        with it('.booking.flight_order().delete'):
-            self.client.booking.flight_order('123').delete(a='b')
-            expect(self.client.delete).to(have_been_called_with(
-                '/v1/booking/flight-orders/123', a='b'
-            ))
-
-        with it('.shopping.booking.hotel_bookings.post'):
-            self.client.booking.hotel_bookings.post('123',
-                                                    {'foo': 'bar'},
-                                                    {'bar': 'foo'})
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/booking/hotel-bookings',
-                {'data': {'offerId': '123',
-                          'guests': [{'foo': 'bar'}],
-                          'payments': [{'bar': 'foo'}]
-                          }}
-            ))
-        with it('.shopping.booking.hotel_bookings.post_list'):
-            self.client.booking.hotel_bookings.post('123',
-                                                    [{'foo': 'bar'}],
-                                                    [{'bar': 'foo'}])
-            expect(self.client.post).to(have_been_called_with(
-                '/v1/booking/hotel-bookings',
-                {'data': {'offerId': '123',
-                          'guests': [{'foo': 'bar'}],
-                          'payments': [{'bar': 'foo'}]
-                          }}
-            ))
-
-        with it('.safety.safety_rated_locations.get'):
-            self.client.safety.safety_rated_locations.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/safety/safety-rated-locations', a='b'
-            ))
-
-        with it('.safety.safety_rated_locations.by_square.get'):
-            self.client.safety.safety_rated_locations.by_square.get(
-                a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/safety/safety-rated-locations/by-square', a='b'
-            ))
-
-        with it('.safety.safety_rated_location().get'):
-            self.client.safety.safety_rated_location('XXX').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/safety/safety-rated-locations/XXX', a='b'
-            ))
-
-        with it('.schedule.flights().get'):
-            self.client.schedule.flights.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/schedule/flights', a='b'
-            ))
-        with it('.shopping.activities.get'):
-            self.client.shopping.activities.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/activities', a='b'
-            ))
-
-        with it('.shopping.activities.by_square.get'):
-            self.client.shopping.activities.by_square.get(
-                a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/activities/by-square', a='b'
-            ))
-
-        with it('.shopping.activity().get'):
-            self.client.shopping.activity('XXX').get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/shopping/activities/XXX', a='b'
-            ))
-
-        with it('.analytics.itinerary_price_metrics().get'):
-            self.client.analytics.itinerary_price_metrics.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/analytics/itinerary-price-metrics', a='b'
-            ))
-
-        with it('.duty_of_care.diseases.covid19_area_report.get'):
-            self.client.duty_of_care.diseases.covid19_area_report.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/duty-of-care/diseases/covid19-area-report', a='b'
-            ))
-
-        with it('.duty_of_care.diseases.covid19_report.get'):
-            self.client.duty_of_care.diseases.covid19_report.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v2/duty-of-care/diseases/covid19-area-report', a='b'
-            ))
-
-        with it('.reference_data.locations.hotels.by_hotels.get'):
-            self.client.reference_data.locations.hotels.by_hotels.get(
-                a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/hotels/by-hotels', a='b'
-            ))
-
-        with it('.reference_data.locations.hotels.by_city.get'):
-            self.client.reference_data.locations.hotels.by_city.get(
-                a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/hotels/by-city', a='b'
-            ))
-
-        with it('.reference_data.locations.hotels.by_geocode.get'):
-            self.client.reference_data.locations.hotels.by_geocode.get(
-                a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/hotels/by-geocode', a='b'
-            ))
-
-        with it('.reference_data.locations.hotel.get'):
-            self.client.reference_data.locations.hotel.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/hotel', a='b'
-            ))
-
-        with it('.reference_data.locations.cities.get'):
-            self.client.reference_data.locations.cities.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/reference-data/locations/cities', a='b'
-            ))
-
-        with it('.airline.destinations.get'):
-            self.client.airline.destinations.get(a='b')
-            expect(self.client.get).to(have_been_called_with(
-                '/v1/airline/destinations', a='b'
-            ))
+
+@pytest.fixture
+def client():
+    return Client(client_id='123', client_secret='234')
+
+
+def test_expected_paths(client):
+    assert client.reference_data is not None
+    assert client.reference_data.urls is not None
+    assert client.reference_data.urls.checkin_links is not None
+    assert client.reference_data.location is not None
+    assert client.reference_data.locations is not None
+    assert client.reference_data.locations.airports is not None
+    assert client.reference_data.locations.points_of_interest is not None
+    assert client.reference_data.locations.points_of_interest.by_square \
+        is not None
+    assert client.reference_data.locations.hotels is not None
+    assert client.reference_data.locations.hotels.by_hotels is not None
+    assert client.reference_data.locations.hotels.by_city is not None
+    assert client.reference_data.locations.hotels.by_geocode is not None
+    assert client.reference_data.locations.hotel is not None
+    assert client.reference_data.locations.cities is not None
+    assert client.travel is not None
+    assert client.travel.analytics is not None
+    assert client.travel.analytics.air_traffic.traveled is not None
+    assert client.travel.analytics.air_traffic.booked is not None
+    assert client.travel.analytics.air_traffic.busiest_period is not None
+    assert client.travel.predictions is not None
+    assert client.travel.predictions.trip_purpose is not None
+    assert client.travel.predictions.flight_delay is not None
+    assert client.shopping is not None
+    assert client.shopping.flight_dates is not None
+    assert client.shopping.flight_destinations is not None
+    assert client.shopping.flight_offers is not None
+    assert client.shopping.flight_offers_search is not None
+    assert client.shopping.flight_offers.pricing is not None
+    assert client.shopping.flight_offers.upselling is not None
+    assert client.shopping.seatmaps is not None
+    assert client.shopping.hotel_offers is not None
+    assert client.shopping.hotel_offer is not None
+    assert client.shopping.hotel_offers_by_hotel is not None
+    assert client.shopping.hotel_offers_search is not None
+    assert client.shopping.hotel_offer_search is not None
+    assert client.shopping.activities is not None
+    assert client.shopping.availability is not None
+    assert client.shopping.availability.flight_availabilities is not None
+    assert client.e_reputation.hotel_sentiments is not None
+    assert client.airport is not None
+    assert client.airport.predictions is not None
+    assert client.airport.predictions.on_time is not None
+    assert client.airport.direct_destinations is not None
+    assert client.travel.trip_parser is not None
+    assert client.travel.from_file is not None
+    assert client.travel.from_base64 is not None
+    assert client.booking.flight_orders is not None
+    assert client.booking.flight_order is not None
+    assert client.safety.safety_rated_locations is not None
+    assert client.safety.safety_rated_locations.by_square is not None
+    assert client.safety.safety_rated_location is not None
+    assert client.schedule is not None
+    assert client.schedule.flights is not None
+    assert client.analytics is not None
+    assert client.analytics.itinerary_price_metrics is not None
+    assert client.location is not None
+    assert client.location.analytics.category_rated_areas is not None
+    assert client.duty_of_care is not None
+    assert client.duty_of_care.diseases.covid19_area_report is not None
+    assert client.duty_of_care.diseases.covid19_report is not None
+    assert client.airline.destinations is not None
+
+
+def test_expected_get_methods(client):
+    assert client.reference_data.urls.checkin_links.get is not None
+    assert client.reference_data.location('ALHR').get is not None
+    assert client.reference_data.locations.get is not None
+    assert client.reference_data.locations.airports.get is not None
+    assert client.reference_data.locations.points_of_interest.get is not None
+    assert client.reference_data.locations.points_of_interest.by_square.get \
+        is not None
+    assert client.reference_data.locations.point_of_interest('9CB40CB5D0').get \
+        is not None
+    assert client.reference_data.recommended_locations.get is not None
+    assert client.reference_data.locations.hotels.by_city.get is not None
+    assert client.reference_data.locations.hotels.by_hotels.get is not None
+    assert client.reference_data.locations.hotels.by_geocode.get is not None
+    assert client.reference_data.locations.hotel.get is not None
+    assert client.travel.analytics.air_traffic.traveled.get is not None
+    assert client.travel.analytics.air_traffic.booked.get is not None
+    assert client.travel.analytics.air_traffic.busiest_period.get is not None
+    assert client.travel.predictions.trip_purpose.get is not None
+    assert client.travel.predictions.flight_delay.get is not None
+    assert client.shopping.flight_dates.get is not None
+    assert client.shopping.flight_destinations.get is not None
+    assert client.shopping.flight_offers_search.get is not None
+    assert client.shopping.seatmaps.get is not None
+    assert client.shopping.hotel_offers.get is not None
+    assert client.shopping.hotel_offers_by_hotel.get is not None
+    assert client.shopping.hotel_offer('123').get is not None
+    assert client.shopping.hotel_offers_search.get is not None
+    assert client.shopping.hotel_offer_search('123').get is not None
+    assert client.e_reputation.hotel_sentiments.get is not None
+    assert client.airport.predictions.on_time.get is not None
+    assert client.airport.direct_destinations.get is not None
+    assert client.booking.flight_order('123').get is not None
+    assert client.booking.flight_order('123').delete is not None
+    assert client.safety.safety_rated_locations.by_square.get is not None
+    assert client.safety.safety_rated_location('Q930402719').get is not None
+    assert client.schedule.flights.get is not None
+    assert client.analytics.itinerary_price_metrics.get is not None
+    assert client.location.analytics.category_rated_areas.get is not None
+    assert client.duty_of_care.diseases.covid19_area_report.get is not None
+    assert client.duty_of_care.diseases.covid19_report.get is not None
+    assert client.airline.destinations.get is not None
+
+
+def test_expected_delete_methods(client):
+    assert client.booking.flight_order('123').delete is not None
+    assert client.reference_data.location('ALHR').get is not None
+    assert client.reference_data.locations.get is not None
+
+
+@pytest.fixture
+def client_setup():
+    client = Client(client_id='123', client_secret='234')
+    client.get = MagicMock(return_value=None)
+    client.post = MagicMock(return_value=None)
+    client.delete = MagicMock(return_value=None)
+    yield client
+
+
+def test_reference_data_urls_checkin_links_get(client_setup):
+    client_setup.reference_data.urls.checkin_links.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v2/reference-data/urls/checkin-links',
+        a='b'
+    )
+
+
+def test_reference_data_airlines_get(client_setup):
+    client_setup.reference_data.airlines.get(a='b')
+    client_setup.get.assert_called_with('/v1/reference-data/airlines', a='b')
+
+
+def test_reference_data_location_get(client_setup):
+    client_setup.reference_data.location('ALHR').get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/ALHR', a='b'
+    )
+
+
+def test_reference_data_locations_get(client_setup):
+    client_setup.reference_data.locations.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations', a='b'
+    )
+
+
+def test_reference_data_locations_airports_get(client_setup):
+    client_setup.reference_data.locations.airports.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/airports', a='b'
+    )
+
+
+def test_reference_data_locations_points_of_interest_get(client_setup):
+    client_setup.reference_data.locations.points_of_interest.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/pois', a='b'
+    )
+
+
+def test_reference_data_locations_points_of_interest_by_square_get(client_setup):
+    client_setup.reference_data.locations.points_of_interest.by_square.get(
+        a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/pois/by-square', a='b'
+    )
+
+
+def test_reference_data_locations_point_of_interest_get(client_setup):
+    client_setup.reference_data.locations.point_of_interest(
+        'XXX').get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/pois/XXX', a='b'
+    )
+
+
+def test_location_analytics_category_rated_areas_get(client_setup):
+    client_setup.location.analytics.category_rated_areas.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/location/analytics/category-rated-areas', a='b'
+    )
+
+
+def test_reference_data_recommended_locations_get(client_setup):
+    client_setup.reference_data.recommended_locations.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/recommended-locations', a='b'
+    )
+
+
+def test_travel_analytics_air_traffic_traveled_get(client_setup):
+    client_setup.travel.analytics.air_traffic.traveled.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/travel/analytics/air-traffic/traveled', a='b'
+    )
+
+
+def test_travel_analytics_air_traffic_booked_get(client_setup):
+    client_setup.travel.analytics.air_traffic.booked.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/travel/analytics/air-traffic/booked', a='b'
+    )
+
+
+def test_travel_analytics_air_traffic_busiest_period_get(client_setup):
+    client_setup.travel.analytics.air_traffic.busiest_period.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/travel/analytics/air-traffic/busiest-period', a='b'
+    )
+
+
+def test_travel_predictions_trip_purpose_get(client_setup):
+    client_setup.travel.predictions.trip_purpose.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/travel/predictions/trip-purpose', a='b'
+    )
+
+
+def test_travel_predictions_flight_delay_get(client_setup):
+    client_setup.travel.predictions.flight_delay.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/travel/predictions/flight-delay', a='b'
+    )
+
+
+def test_shopping_flight_dates_get(client_setup):
+    client_setup.shopping.flight_dates.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/shopping/flight-dates', a='b'
+    )
+
+
+def test_shopping_flight_destinations_get(client_setup):
+    client_setup.shopping.flight_destinations.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/shopping/flight-destinations', a='b'
+    )
+
+
+def test_shopping_flight_offers_search_get(client_setup):
+    client_setup.shopping.flight_offers_search.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v2/shopping/flight-offers', a='b'
+    )
+
+
+def test_shopping_hotel_offers_get(client_setup):
+    client_setup.shopping.hotel_offers.get(cityCode='MAD')
+    client_setup.get.assert_called_with(
+        '/v2/shopping/hotel-offers', cityCode='MAD'
+    )
+
+
+def test_shopping_hotel_offers_by_hotel_get(client_setup):
+    client_setup.shopping.hotel_offers_by_hotel.get(hotelId='XKPARC12')
+    client_setup.get.assert_called_with(
+        '/v2/shopping/hotel-offers/by-hotel', hotelId='XKPARC12'
+    )
+
+
+def test_shopping_hotel_offer_get(client_setup):
+    client_setup.shopping.hotel_offer('XXX').get(a='b')
+    client_setup.get.assert_called_with(
+        '/v2/shopping/hotel-offers/XXX', a='b'
+    )
+
+
+def test_shopping_hotel_offers_search_get(client_setup):
+    client_setup.shopping.hotel_offers_search.get(
+        hotelIds='RTPAR001', adults=2)
+    client_setup.get.assert_called_with(
+        '/v3/shopping/hotel-offers', hotelIds='RTPAR001',
+        adults=2
+    )
+
+
+def test_shopping_hotel_offer_search_get(client_setup):
+    client_setup.shopping.hotel_offer_search('XXX').get(a='b')
+    client_setup.get.assert_called_with(
+        '/v3/shopping/hotel-offers/XXX', a='b'
+    )
+
+
+def test_shopping_seatmaps_get(client_setup):
+    client_setup.shopping.seatmaps.get(**{'a': 'b'})
+    client_setup.get.assert_called_with(
+        '/v1/shopping/seatmaps', a='b'
+    )
+
+
+def test_e_reputation_hotel_sentiments_get(client_setup):
+    client_setup.e_reputation.hotel_sentiments.get(hotelIds='XKPARC12')
+    client_setup.get.assert_called_with(
+        '/v2/e-reputation/hotel-sentiments', hotelIds='XKPARC12'
+    )
+
+
+def test_airport_predictions_on_time_get(client_setup):
+    client_setup.airport.predictions.on_time.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/airport/predictions/on-time', a='b'
+    )
+
+
+def test_airport_direct_destinations_get(client_setup):
+    client_setup.airport.direct_destinations.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/airport/direct-destinations', a='b'
+    )
+
+
+def test_shopping_flight_offers_prediction_post(client_setup):
+    client_setup.shopping.flight_offers.prediction.post({'foo': 'bar'})
+    client_setup.post.assert_called_with(
+        '/v2/shopping/flight-offers/prediction', {'foo': 'bar'}
+    )
+
+
+def test_travel_trip_parser_post(client_setup):
+    client_setup.travel.trip_parser.post({'foo': 'bar'})
+    client_setup.post.assert_called_with(
+        '/v3/travel/trip-parser', {'foo': 'bar'}
+    )
+
+
+def test_travel_trip_parser_post_from_base64(client_setup):
+    client_setup.travel.trip_parser.post(
+        client_setup.travel.from_base64('Qm9va2luZwo='))
+    client_setup.post.assert_called_with(
+        '/v3/travel/trip-parser',
+        {'payload': 'Qm9va2luZwo='}
+    )
+
+
+def test_travel_trip_parser_post_from_file(client_setup):
+    file = 'specs/namespaces/trip_parser_test.eml'
+    client_setup.travel.trip_parser.post(
+        client_setup.travel.from_file(file))
+    client_setup.post.assert_called_with(
+        '/v3/travel/trip-parser',
+        {'payload': 'Qm9va2luZwo='}
+    )
+
+
+def test_shopping_flight_offers_search_post(client_setup):
+    client_setup.shopping.flight_offers_search.post({'foo': 'bar'})
+    client_setup.post.assert_called_with(
+        '/v2/shopping/flight-offers', {'foo': 'bar'}
+    )
+
+
+def test_shopping_seatmaps_post(client_setup):
+    client_setup.shopping.seatmaps.post({'foo': 'bar'})
+    client_setup.post.assert_called_with(
+        '/v1/shopping/seatmaps', {'foo': 'bar'}
+    )
+
+
+def test_shopping_flight_offers_pricing_post(client_setup):
+    client_setup.shopping.flight_offers.pricing.post(
+        {'foo': 'bar'}, include='other-services')
+    client_setup.post.assert_called_with(
+        '/v1/shopping/flight-offers/pricing?'+'include=other-services',
+        {'data': {'type': 'flight-offers-pricing',
+                  'flightOffers': [{'foo': 'bar'}]}}
+    )
+
+
+def test_shopping_flight_offers_pricing_post_list(client_setup):
+    client_setup.shopping.flight_offers.pricing.post([{'foo': 'bar'}])
+    client_setup.post.assert_called_with(
+        '/v1/shopping/flight-offers/pricing?',
+        {'data': {'type': 'flight-offers-pricing',
+                  'flightOffers': [{'foo': 'bar'}]}}
+    )
+
+
+def test_shopping_booking_flight_orders_post(client_setup):
+    client_setup.booking.flight_orders.post({'foo': 'bar'}, {'bar': 'foo'})
+    client_setup.post.assert_called_with(
+        '/v1/booking/flight-orders',
+        {'data': {'type': 'flight-order',
+                  'flightOffers': [{'foo': 'bar'}],
+                  'travelers': [{'bar': 'foo'}]
+                  }}
+    )
+
+
+def test_shopping_booking_flight_orders_post_list(client_setup):
+    client_setup.booking.flight_orders.post(
+        [{'foo': 'bar'}], [{'bar': 'foo'}])
+    client_setup.post.assert_called_with(
+        '/v1/booking/flight-orders',
+        {'data': {'type': 'flight-order',
+                  'flightOffers': [{'foo': 'bar'}],
+                  'travelers': [{'bar': 'foo'}]
+                  }}
+    )
+
+
+def test_shopping_availability_flight_availabilities_post(client_setup):
+    client_setup.shopping.availability.flight_availabilities.post(
+        {'foo': 'bar'})
+    client_setup.post.assert_called_with(
+        '/v1/shopping/availability/flight-availabilities', {'foo': 'bar'}
+    )
+
+
+def test_shopping_flight_offers_upselling_post(client_setup):
+    client_setup.shopping.flight_offers.upselling.post(
+        {'foo': 'bar'})
+    client_setup.post.assert_called_with(
+        '/v1/shopping/flight-offers/upselling', {'foo': 'bar'}
+    )
+
+
+def test_booking_flight_order_get(client_setup):
+    client_setup.booking.flight_order('123').get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/booking/flight-orders/123', a='b'
+    )
+
+
+def test_booking_flight_order_delete(client_setup):
+    client_setup.booking.flight_order('123').delete(a='b')
+    client_setup.delete.assert_called_with(
+        '/v1/booking/flight-orders/123', a='b'
+    )
+
+
+def test_shopping_booking_hotel_bookings_post(client_setup):
+    client_setup.booking.hotel_bookings.post('123',
+                                             {'foo': 'bar'},
+                                             {'bar': 'foo'})
+    client_setup.post.assert_called_with(
+        '/v1/booking/hotel-bookings',
+        {'data': {'offerId': '123',
+                  'guests': [{'foo': 'bar'}],
+                  'payments': [{'bar': 'foo'}]
+                  }}
+    )
+
+
+def test_shopping_booking_hotel_bookings_post_list(client_setup):
+    client_setup.booking.hotel_bookings.post('123',
+                                             [{'foo': 'bar'}],
+                                             [{'bar': 'foo'}])
+    client_setup.post.assert_called_with(
+        '/v1/booking/hotel-bookings',
+        {'data': {'offerId': '123',
+                  'guests': [{'foo': 'bar'}],
+                  'payments': [{'bar': 'foo'}]
+                  }}
+    )
+
+
+def test_safety_safety_rated_locations_get(client_setup):
+    client_setup.safety.safety_rated_locations.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/safety/safety-rated-locations', a='b'
+    )
+
+
+def test_safety_safety_rated_locations_by_square_get(client_setup):
+    client_setup.safety.safety_rated_locations.by_square.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/safety/safety-rated-locations/by-square', a='b'
+    )
+
+
+def test_safety_safety_rated_location_get(client_setup):
+    client_setup.safety.safety_rated_location('XXX').get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/safety/safety-rated-locations/XXX', a='b'
+    )
+
+
+def test_schedule_flights_get(client_setup):
+    client_setup.schedule.flights.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v2/schedule/flights', a='b'
+    )
+
+
+def test_shopping_activities_get(client_setup):
+    client_setup.shopping.activities.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/shopping/activities', a='b'
+    )
+
+
+def test_shopping_activities_by_square_get(client_setup):
+    client_setup.shopping.activities.by_square.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/shopping/activities/by-square', a='b'
+    )
+
+
+def test_shopping_activity_get(client_setup):
+    client_setup.shopping.activity('XXX').get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/shopping/activities/XXX', a='b'
+    )
+
+
+def test_analytics_itinerary_price_metrics_get(client_setup):
+    client_setup.analytics.itinerary_price_metrics.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/analytics/itinerary-price-metrics', a='b'
+    )
+
+
+def test_duty_of_care_diseases_covid19_area_report_get(client_setup):
+    client_setup.duty_of_care.diseases.covid19_area_report.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/duty-of-care/diseases/covid19-area-report', a='b'
+    )
+
+
+def test_duty_of_care_diseases_covid19_report_get(client_setup):
+    client_setup.duty_of_care.diseases.covid19_report.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v2/duty-of-care/diseases/covid19-area-report', a='b'
+    )
+
+
+def test_reference_data_locations_hotels_by_hotels_get(client_setup):
+    client_setup.reference_data.locations.hotels.by_hotels.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/hotels/by-hotels', a='b'
+    )
+
+
+def test_reference_data_locations_hotels_by_city_get(client_setup):
+    client_setup.reference_data.locations.hotels.by_city.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/hotels/by-city', a='b'
+    )
+
+
+def test_reference_data_locations_hotels_by_geocode_get(client_setup):
+    client_setup.reference_data.locations.hotels.by_geocode.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/hotels/by-geocode', a='b'
+    )
+
+
+def test_reference_data_locations_hotel_get(client_setup):
+    client_setup.reference_data.locations.hotel.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/hotel', a='b'
+    )
+
+
+def test_reference_data_locations_cities_get(client_setup):
+    client_setup.reference_data.locations.cities.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/reference-data/locations/cities', a='b'
+    )
+
+
+def test_airline_destinations_get(client_setup):
+    client_setup.airline.destinations.get(a='b')
+    client_setup.get.assert_called_with(
+        '/v1/airline/destinations', a='b'
+    )
