@@ -1,85 +1,88 @@
-from mamba import description, context, it, before
-from expects import expect, equal
-from doublex import Stub, Spy
-from doublex_expects import have_been_called_with, have_been_called
+from mock import MagicMock
+from unittest.mock import Mock
 
 from amadeus import NetworkError, Response, Client
 
-with description('ResponseError') as self:
-    with context('str(error)'):
-        with it('should be undefine if no response is present'):
-            error = NetworkError(None)
-            expect(str(error)).to(equal('[---]'))
 
-        with it('should just return the code if no data is present'):
-            response = Stub(Response)
-            response.parsed = True
-            response.result = {}
-            response.status_code = 400
+def test_ResponseError_str_representation():
+    # Test str(error) with no response present
+    error = NetworkError(None)
+    assert str(error) == '[---]'
 
-            error = NetworkError(response)
-            expect(str(error)).to(equal('[400]'))
+    # Test str(error) with no data present
+    response = Mock(Response)
+    response.parsed = True
+    response.result = {}
+    response.status_code = 400
 
-        with it('should be rich if errors are present'):
-            response = Stub(Response)
-            response.parsed = True
-            response.result = {
-                'errors': [
-                    {
-                        'detail': 'This field must be filled.',
-                        'source': {'parameter': 'departureDate'}
-                    },
-                    {
-                         'detail': 'This field must be filled.',
-                         'source': {'parameter': 'origin'}
-                    },
-                    {
-                         'detail': 'This field must be filled.',
-                         'source': {'parameter': 'destination'}
-                    }
-                ]
-            }
-            response.status_code = 401
+    error = NetworkError(response)
+    assert str(error) == '[400]'
 
-            error = NetworkError(response)
-            expect(str(error)).to(equal(
-                ('''[401]
+    # Test str(error) with errors present
+    response = Mock(Response)
+    response.parsed = True
+    response.result = {
+        'errors': [
+            {
+                'detail': 'This field must be filled.',
+                'source': {'parameter': 'departureDate'},
+            },
+            {
+                'detail': 'This field must be filled.',
+                'source': {'parameter': 'origin'},
+            },
+            {
+                'detail': 'This field must be filled.',
+                'source': {'parameter': 'destination'},
+            },
+        ]
+    }
+    response.status_code = 401
+
+    error = NetworkError(response)
+    error = NetworkError(response)
+    assert (
+        ('''[401]
 [departureDate] This field must be filled.
 [origin] This field must be filled.
 [destination] This field must be filled.''')
-            ))
+    )
 
-        with it('should be rich if an error_description is present'):
-            response = Stub(Response)
-            response.parsed = True
-            response.result = {'error_description': 'error'}
-            response.status_code = 401
+    # Test str(error) with error_description present
+    response = Mock(Response)
+    response.parsed = True
+    response.result = {'error_description': 'error'}
+    response.status_code = 401
 
-            error = NetworkError(response)
-            expect(str(error)).to(equal('[401]\nerror'))
+    error = NetworkError(response)
+    assert str(error) == '[401]\nerror'
 
-    with context('.code'):
-        with it('should determine the code off the class name'):
-            error = NetworkError(None)
-            expect(error.code).to(equal('NetworkError'))
 
-    with context('.log'):
-        with before.all:
-            self.client = Stub(Client)
-            self.error = NetworkError(None)
-            self.error.code = 'Foo'
-            self.error.description = 'Bar'
+def test_ResponseError_code():
+    # Test .code with no response present
+    error = NetworkError(None)
+    assert error.code == 'NetworkError'
 
-        with it('should log if the log level allows it'):
-            self.client.logger = Spy()
-            self.client.log_level = 'warn'
-            self.error._log(self.client)
-            expect(self.client.logger.warning).to(
-                have_been_called_with('Amadeus %s: %s', 'Foo', "'Bar'")
-            )
 
-        with it('should not log if the log level does not allow it'):
-            self.client.logger = Spy()
-            self.client.log_level = 'silent'
-            self.error._log(self.client)
-            expect(self.client.logger.warning).not_to(have_been_called)
+def test_ResponseError_log():
+    # Test .log with log level set to 'warn'
+    client = Mock(Client)
+    client.logger = MagicMock()
+    client.log_level = 'warn'
+
+    error = NetworkError(None)
+    error.code = 'Foo'
+    error.description = 'Bar'
+    error._log(client)
+
+    assert client.logger.warning.called_with('Amadeus %s: %s', 'Foo', 'Bar')
+
+    # Test .log with log level set to 'silent'
+    client = Mock(Client)
+    client.logger = MagicMock()
+    client.log_level = 'silent'
+
+    error = NetworkError(None)
+    error._log(client)
+
+    assert not client.logger.warning.called
