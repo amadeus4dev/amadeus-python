@@ -83,7 +83,7 @@ def test_client_options(valid_params):
     assert amadeus.host == Client.HOSTS['production']
 
     # Test custom host
-    host = 'http://foo.bar.com/'
+    host = 'https://foo.bar.com/'
     valid_params['host'] = host
     amadeus = Client(**valid_params)
     assert amadeus.host == host
