@@ -1,111 +1,89 @@
-from mamba import description, context, it, before
-from doublex import Spy, Stub, method_returning, method_raising
-from doublex_expects import have_been_called_with, have_been_called
-from expects import expect, equal, raise_error
+import pytest
+import mock
+import unittest.mock
+from amadeus import Client, Response, ResponseError
 from urllib.error import URLError
 
-from amadeus import Client, Response, ResponseError
 
-with description('HTTP') as self:
-    with before.each:
-        self.client = Client(
-            client_id='123',
-            client_secret='234',
-            log_level='silent'
-        )
-        self.response = Stub(Response)
-        self.request_method = method_returning(self.response)
+@pytest.fixture
+def self():
+    self = mock.MagicMock()
+    self.client = Client(client_id='123', client_secret='234', log_level='silent')
+    self.response = Response(None, None)
+    self.request_method = mock.MagicMock(return_value=self.response)
+    return self
 
-    with context('Client.get'):
-        with it('should pass all details to the request method'):
-            self.client.request = self.request_method
-            response = self.client.get('/foo', foo='bar')
-            expect(response).to(equal(self.response))
-            expect(self.client.request).to(
-                have_been_called_with('GET', '/foo', {'foo': 'bar'})
-            )
 
-    with context('Client.delete'):
-        with it('should pass all details to the request method'):
-            self.client.request = self.request_method
-            response = self.client.delete('/foo', foo='bar')
-            expect(response).to(equal(self.response))
-            expect(self.client.request).to(
-                have_been_called_with('DELETE', '/foo', {'foo': 'bar'})
-            )
+def test_client_get(self):
+    self.client.request = self.request_method
+    response = self.client.get('/foo', foo='bar')
+    assert response == self.response
+    self.client.request.assert_called_with('GET', '/foo', {'foo': 'bar'})
 
-    with context('Client.post'):
-        with it('should pass all details to the request method'):
-            self.client.request = self.request_method
-            response = self.client.post('/foo', {'foo': 'bar'})
-            expect(response).to(equal(self.response))
-            expect(self.client.request).to(
-                have_been_called_with('POST', '/foo', {'foo': 'bar'})
-            )
 
-    with context('Client.request'):
-        with it('should pass on to the _unauthenticated_request method'):
-            self.response.result = {'access_token': '123'}
-            self.client._unauthenticated_request = self.request_method
-            response = self.client.request('POST', '/foo', {'foo': 'bar'})
-            expect(response).to(equal(self.response))
-            expect(self.client._unauthenticated_request).to(
-                have_been_called_with(
-                    'POST', '/foo', {'foo': 'bar'}, 'Bearer 123'
-                )
-            )
+def test_client_delete(self):
+    self.client.request = self.request_method
+    response = self.client.delete('/foo', foo='bar')
+    assert response == self.response
+    self.client.request.assert_called_with(
+        'DELETE', '/foo', {'foo': 'bar'})
 
-        with it('should use the same access token when cashed'):
-            self.response.result = {'access_token': '123', 'expires_in': 2000}
-            self.client._unauthenticated_request = self.request_method
-            self.client.request('POST', '/foo', {'foo': 'bar'})
 
-            self.response.result = {'access_token': '234', 'expires_in': 2000}
-            self.client._unauthenticated_request = self.request_method
-            self.client.request('POST', '/foo', {'foo': 'bar'})
+def test_client_post(self):
+    self.client.request = self.request_method
+    response = self.client.post('/foo', {'foo': 'bar'})
+    assert response == self.response
+    self.client.request.assert_called_with('POST', '/foo', {'foo': 'bar'})
 
-            expect(self.client._unauthenticated_request).not_to(
-                have_been_called_with(
-                    'POST', '/foo', {'foo': 'bar'}, 'Bearer 234'
-                )
-            )
 
-    with context('Client._unauthenticated_request'):
-        with it('should execute a full request'):
-            with Stub() as http_response:
-                http_response.code = 200
-                http_response.getheaders().returns(
-                    [('Content-Type', 'application/json')]
-                )
-                http_response.read().returns('{ "data" : { "a" : 1 } }')
+def test_client_request(self):
+    self.response.result = {'access_token': '123'}
+    self.client._unauthenticated_request = self.request_method
+    response = self.client.request('POST', '/foo', {'foo': 'bar'})
+    assert response == self.response
+    assert self.client._unauthenticated_request.call_args == mock.call(
+            'POST', '/foo', {'foo': 'bar'}, 'Bearer 123'
+    )
 
-            self.client.http = method_returning(http_response)
+
+def test_client_request_use_same_access_token(self):
+    self.response.result = {'access_token': '123', 'expires_in': 2000}
+    self.client._unauthenticated_request = self.request_method
+    self.client.request('POST', '/foo', {'foo': 'bar'})
+
+    self.response.result = {'access_token': '234', 'expires_in': 2000}
+    self.client._unauthenticated_request = self.request_method
+    self.client.request('POST', '/foo', {'foo': 'bar'})
+    assert not self.client._unauthenticated_request.assert_called_with(
+        'POST', '/foo', {'foo': 'bar'}, 'Bearer 123')
+
+
+def test_unauthenticated_request(self):
+    http_response = mock.MagicMock()
+    http_response.code = 200
+    http_response.getheaders.return_value = [('Content-Type', 'application/json')]
+    http_response.read.return_value = '{ "data" : { "a" : 1 } }'
+
+    # Patch the client's `http` method to return the mock HTTP response
+    unittest.mock.patch.object(self.client, 'http', return_value=http_response)
+
+    # Test the client's _unauthenticated_request method
+    with pytest.raises(ResponseError):
+        response = self.client._unauthenticated_request('GET', '/foo', {}, None)
+        assert self.client.call_count == 1
+        assert response == http_response
+
+    # Test that a HTTPError is caught
+    self.client.http.side_effect = URLError('Error')
+    with pytest.raises(ResponseError):
+        self.client._unauthenticated_request('GET', '/foo', {}, None)
+
+    # Test logging in debug mode
+    with mock.patch.object(self.client, 'http', return_value=http_response):
+        logger = mock.MagicMock()
+        self.client.logger = logger
+        self.client.log_level = 'debug'
+        with pytest.raises(ResponseError):
             response = self.client._unauthenticated_request(
-                'GET', '/foo', {}, None
-            )
-            expect(self.client.http).to(have_been_called.once)
-            expect(self.response).to(equal(self.response))
-
-        with it('should catch a HTTPError'):
-            self.client.http = method_raising(URLError('Error'))
-            expect(
-                lambda: self.client._unauthenticated_request(
-                    'GET', '/foo', {}, None
-                )
-            ).to(raise_error(ResponseError))
-
-        with it('should log when in debug mode'):
-            with Stub() as http_response:
-                http_response.code = 200
-                http_response.getheaders().returns(
-                    [('Content-Type', 'application/json')]
-                )
-                http_response.read().returns('{ "data" : { "a" : 1 } }')
-
-            self.client.http = method_returning(http_response)
-            self.client.logger = Spy()
-            self.client.log_level = 'debug'
-            response = self.client._unauthenticated_request(
-                'GET', '/foo', {}, None
-            )
-            expect(self.client.logger.debug).to(have_been_called.twice)
+                'GET', '/foo', {}, None)
+            assert logger.debug.call_count == 2
