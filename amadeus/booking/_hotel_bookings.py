@@ -19,11 +19,11 @@ class HotelBookings(Decorator, object):
         '''
         guests_info = []
         payment_info = []
-        if type(guests) is not list:
+        if not isinstance(guests, list):
             guests_info.append(guests)
         else:
             guests_info.extend(guests)
-        if type(payments) is not list:
+        if not isinstance(payments, list):
             payment_info.append(payments)
         else:
             payment_info.extend(payments)

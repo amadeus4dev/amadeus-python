@@ -17,7 +17,7 @@ class FlightOffersPrice(Decorator, object):
         '''
         url = '/v1/shopping/flight-offers/pricing?'
         flight_offers = []
-        if type(body) is not list:
+        if not isinstance(body, list):
             flight_offers.append(body)
         else:
             flight_offers.extend(body)
