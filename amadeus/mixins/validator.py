@@ -14,7 +14,8 @@ class Validator(object):
     # Checks a list of options for unrecognized keys and warns the user.
     # This is mainly used to provide a nice experience when users make a typo
     # in their arguments.
-    def _warn_on_unrecognized_options(self, options, logger, valid_options):
+    @staticmethod
+    def _warn_on_unrecognized_options(options, logger, valid_options):
         for key in options:
             if (key in valid_options):
                 continue
@@ -68,7 +69,8 @@ class Validator(object):
     # Tries to find an option by string or symbol in the options hash and
     # in the environment variables.When it can not find it anywhere it
     # defaults to the provided default option.
-    def __init_optional(self, key, options, defa_ult=None):
+    @staticmethod
+    def __init_optional(key, options, defa_ult=None):
         value = options.get(key, None)
         if (value is None):
             env_key = 'AMADEUS_{0}'.format(key.upper())

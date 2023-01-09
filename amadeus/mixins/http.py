@@ -39,7 +39,7 @@ class HTTP(object):
         '''
         return self.request('GET', path, params)
 
-    def post(self, path, params={}):
+    def post(self, path, params=None):
         '''
         A helper function for making generic POST requests calls. It is used by
         every namespaced API POST method.

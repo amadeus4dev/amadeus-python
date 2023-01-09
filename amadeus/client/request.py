@@ -109,7 +109,7 @@ class Request(object):
             # Adds HTTP override in Header for the list of paths required
             if self.path in Request.list_httpoverride:
                 self.headers['X-HTTP-Method-Override'] = 'GET'
-            if type(self.params) is dict:
+            if isinstance(self.params, dict):
                 return HTTPRequest(self.url, headers=self.headers, method='POST',
                                    data=json.dumps(self.params).encode())
             else:
@@ -142,12 +142,12 @@ class Request(object):
 
     # Flattens the hash keys, so page: { offset: 1 } becomes page[offet] = 1
     def _flatten_keys(self, d, key, out):
-        if type(d) is not dict:
+        if not isinstance(d, dict):
             raise TypeError('Only dicts can be encoded')
 
         for k in d:
             keystr = k if not key else '[{}]'.format(k)
-            if type(d[k]) is dict:
+            if isinstance(d[k], dict):
                 self._flatten_keys(d[k], str(key) + str(keystr), out)
             else:
                 out['{}{}'.format(key, keystr)] = d[k]

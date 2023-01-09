@@ -12,8 +12,10 @@ class Travel(Decorator, object):
         self.predictions = Predictions(client)
         self.trip_parser = TripParser(client)
 
-    def from_file(self, file):
+    @staticmethod
+    def from_file(file):
         return from_file(file)
 
-    def from_base64(self, base64):
+    @staticmethod
+    def from_base64(base64):
         return from_base64(base64)
