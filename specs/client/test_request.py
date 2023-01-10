@@ -111,4 +111,4 @@ def test_custom_scheme_and_port(self):
                 'ssl': False
             })
     url = self.request.http_request.get_full_url()
-    assert url == 'https://example.com:8080/foo/bar'
+    assert url == 'http://example.com:8080/foo/bar'
