@@ -50,4 +50,4 @@ def test_cached_token_expired(self):
     access_token.expires_at = 0
     token2 = access_token._bearer_token()
     assert token2 == 'Bearer abc'
-    self.client._unauthenticated_request.call_count == 2
+    assert self.client._unauthenticated_request.call_count == 2
