@@ -55,35 +55,10 @@ from amadeus import Client
 
 ### Releasing
 
-On your local repository, create a release branch:
-
-```sh
-$ git checkout -b release-x.y.z
-```
-
-Make necessary modifications:
-
-- Update version on `amadeus/version.py`
-- Update version and write changes on `CHANGELOG.rst`
-
-Then commit the changes:
-
-```sh
-$ git commit -am "Release version x.y.z"
-$ git push origin release-x.y.z
-```
-
-Create a new Pull Request and merge.
-
-On GitHub: create a new release:
-
-- Go to [Releases](https://github.com/amadeus4dev/amadeus-python/releases)
-- Draft a new release
-- Tag version: vX.Y.Z
-
-The new package should be automatically [deployed](https://pypi.org/project/amadeus/).
-
-Generate the module version: go on https://badge.fury.io/py/amadeus.svg.
+- [ ] Update the version in `amadeus/version.py` using semver rules
+- [ ] Update the `CHANGELOG.rst` with the new version
+- [ ] Push all changes and ensure all tests pass on GitHub Actions
+- [ ] Draft a new [release](https://github.com/amadeus4dev/amadeus-java/releases/new) by creating a tag and copying the description from the `CHANGELOG.rst`
 
 ## How to contribute to the Amadeus Python SDK
 
