@@ -13,15 +13,7 @@ If you want to have it loaded automatically, add the following to ~/.zshrc:
 eval "$(pyenv init -)"
 ```
 
-Second, ensure you have a version of every Python we support installed. Your versions may differ.
-
-```sh
-pyenv install 3.4.9
-pyenv install 3.5.6
-pyenv install 3.6.3
-pyenv install 3.6.8
-pyenv global 3.6.8 3.6.3 3.5.6 3.4.9
-```
+Second, ensure you have a version of every Python we support installed.
 
 Next ensure you create a virtual environment.
 
@@ -39,13 +31,13 @@ To run the tests against every supported Python version, use `tox`.
 tox
 ```
 
-Alternatively, to run tests just against a specific Python version, create coverage files, and watch for changes:
+Alternatively, to run tests just against a specific Python environment run:
 
 ```sh
-brew install fswatch
-pyenv shell 3.6.8
-make watch
+tox -e py
 ```
+
+In order to see the code coverage results, open the `index.html` file in the `htmlcov` folder.
 
 ### Using a library locally
 
@@ -63,7 +55,35 @@ from amadeus import Client
 
 ### Releasing
 
-[TBD]
+On your local repository, create a release branch:
+
+```sh
+$ git checkout -b release-x.y.z
+```
+
+Make necessary modifications:
+
+- Update version on `amadeus/version.py`
+- Update version on `CHANGELOG.rst`
+
+Then commit the changes:
+
+```sh
+$ git commit -am "Release version x.y.z"
+$ git push origin release-x.y.z
+```
+
+Create a new Pull Request and merge.
+
+On GitHub: create a new release:
+
+- Go to [Releases](https://github.com/amadeus4dev/amadeus-python/releases)
+- Draft a new release
+- Tag version: vX.Y.Z
+
+The new package should be automatically [deployed](https://pypi.org/project/amadeus/).
+
+Generate the module version: go on https://badge.fury.io/py/amadeus.svg.
 
 ## How to contribute to the Amadeus Python SDK
 
