@@ -2,6 +2,7 @@ from .amadeus import Client
 from .version import version
 
 from .client.location import Location
+from .client.hotel import Hotel
 from .client.direction import Direction
 from .client.request import Request
 from .client.response import Response
@@ -13,5 +14,5 @@ __all__ = [
     'Client', 'Location', 'Direction', 'version', 'ResponseError',
     'ParserError', 'ServerError', 'AuthenticationError',
     'NotFoundError', 'ClientError', 'Request', 'Response',
-    'NetworkError'
+    'NetworkError', 'Hotel'
 ]

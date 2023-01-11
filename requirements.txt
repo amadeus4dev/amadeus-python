@@ -1,9 +1,7 @@
-mamba==0.9.3
-expects==0.8.0
-doublex==1.8.4
-doublex-expects==0.7.0rc2
-flake8==3.5.0
-flake8-quotes==0.14.0
-tox==2.9.1
-sphinx==1.7.2
-sphinx-rtd-theme==0.2.4
+flake8==3.8.0
+flake8-quotes==2.1.1
+tox==3.20.0
+sphinx==3.4.1
+sphinx-rtd-theme==0.5.2
+pytest==7.2.0
+pytest-cov==4.0.0
