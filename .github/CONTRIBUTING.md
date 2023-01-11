@@ -13,7 +13,14 @@ If you want to have it loaded automatically, add the following to ~/.zshrc:
 eval "$(pyenv init -)"
 ```
 
-Second, ensure you have a version of every Python we support installed.
+Second, ensure you have a version of every Python we support installed. Your versions may differ.
+
+```sh
+pyenv install 3.8.0
+pyenv install 3.9.4
+pyenv install 3.10.3
+pyenv global 3.8.0 3.9.4 3.10.3
+```
 
 Next ensure you create a virtual environment.
 
