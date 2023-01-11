@@ -1,5 +1,3 @@
-
-
 from amadeus import Client
 from os import environ
 from logging import Logger, getLogger
