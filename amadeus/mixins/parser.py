@@ -15,8 +15,8 @@ class Parser(object):
         if error is not None:
             self.__raise_error(error, client)
 
-    @staticmethod  # noqa: C901
-    def error_for(status_code, parsed):
+    @staticmethod
+    def error_for(status_code, parsed):  # noqa: C901
         if status_code is None:
             return NetworkError
         if status_code >= 500:
