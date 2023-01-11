@@ -64,7 +64,7 @@ $ git checkout -b release-x.y.z
 Make necessary modifications:
 
 - Update version on `amadeus/version.py`
-- Update version on `CHANGELOG.rst`
+- Update version and write changes on `CHANGELOG.rst`
 
 Then commit the changes:
 
