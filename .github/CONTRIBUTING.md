@@ -16,11 +16,10 @@ eval "$(pyenv init -)"
 Second, ensure you have a version of every Python we support installed. Your versions may differ.
 
 ```sh
-pyenv install 3.4.9
-pyenv install 3.5.6
-pyenv install 3.6.3
-pyenv install 3.6.8
-pyenv global 3.6.8 3.6.3 3.5.6 3.4.9
+pyenv install 3.8.0
+pyenv install 3.9.4
+pyenv install 3.10.3
+pyenv global 3.8.0 3.9.4 3.10.3
 ```
 
 Next ensure you create a virtual environment.
@@ -39,13 +38,13 @@ To run the tests against every supported Python version, use `tox`.
 tox
 ```
 
-Alternatively, to run tests just against a specific Python version, create coverage files, and watch for changes:
+Alternatively, to run tests just against a specific Python environment run:
 
 ```sh
-brew install fswatch
-pyenv shell 3.6.8
-make watch
+tox -e py
 ```
+
+In order to see the code coverage results, open the `index.html` file in the `htmlcov` folder.
 
 ### Using a library locally
 
@@ -63,7 +62,10 @@ from amadeus import Client
 
 ### Releasing
 
-[TBD]
+- [ ] Update the version in `amadeus/version.py` using semver rules
+- [ ] Update the `CHANGELOG.rst` with the new version
+- [ ] Push all changes and ensure all tests pass on GitHub Actions
+- [ ] Draft a new [release](https://github.com/amadeus4dev/amadeus-java/releases/new) by creating a tag and copying the description from the `CHANGELOG.rst`
 
 ## How to contribute to the Amadeus Python SDK
 
