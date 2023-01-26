@@ -3,9 +3,6 @@ from amadeus.shopping._flight_dates import FlightDates
 from amadeus.shopping._flight_destinations import FlightDestinations
 from amadeus.shopping._flight_offers import FlightOffers
 from amadeus.shopping._flight_offers_search import FlightOffersSearch
-from amadeus.shopping._hotel_offers import HotelOffers
-from amadeus.shopping._hotel_offers_by_hotel import HotelOffersByHotel
-from amadeus.shopping._hotel_offer import HotelOffer
 from amadeus.shopping._seatmaps import Seatmaps
 from amadeus.shopping._activities import Activities
 from amadeus.shopping._activity import Activity
@@ -20,16 +17,11 @@ class Shopping(Decorator, object):
         self.flight_dates = FlightDates(client)
         self.flight_destinations = FlightDestinations(client)
         self.flight_offers = FlightOffers(client)
-        self.hotel_offers = HotelOffers(client)
-        self.hotel_offers_by_hotel = HotelOffersByHotel(client)
         self.flight_offers_search = FlightOffersSearch(client)
         self.seatmaps = Seatmaps(client)
         self.activities = Activities(client)
         self.availability = Availability(client)
         self.hotel_offers_search = HotelOffersSearch(client)
-
-    def hotel_offer(self, offer_id):
-        return HotelOffer(self.client, offer_id)
 
     def hotel_offer_search(self, offer_id):
         return HotelOfferSearch(self.client, offer_id)
