@@ -257,14 +257,6 @@ List of supported endpoints
 
     # Flight Busiest Travel Period
     amadeus.travel.analytics.air_traffic.busiest_period.get(cityCode='MAD', period='2017', direction='ARRIVING')
-    
-    # Hotel Search
-    # Get list of Hotels by city code
-    amadeus.shopping.hotel_offers.get(cityCode='LON')
-    # Get list of offers for a specific hotel
-    amadeus.shopping.hotel_offers_by_hotel.get(hotelId='BGLONBGB')
-    # Confirm the availability of a specific offer
-    offerId = amadeus.shopping.hotel_offer('8123DD9DE5102DADF5DA3B55C8C575F54114336EE718578753888747FE0652FC').get()
 
     # Hotel Search v3
     # Get list of available offers by hotel ids

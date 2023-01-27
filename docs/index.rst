@@ -53,15 +53,6 @@ Shopping/Flights
 Shopping/Hotels
 ===============
 
-.. autoclass:: amadeus.shopping.HotelOffers
-  :members: get
-
-.. autoclass:: amadeus.shopping.hotel.HotelOffers
-  :members: get
-
-.. autoclass:: amadeus.shopping.hotel.Offer
-  :members: get
-
 .. autoclass:: amadeus.shopping.hotel.HotelOffersSearch
   :members: get
 

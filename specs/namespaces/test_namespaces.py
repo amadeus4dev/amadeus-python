@@ -40,9 +40,6 @@ def test_expected_paths(client):
     assert client.shopping.flight_offers.pricing is not None
     assert client.shopping.flight_offers.upselling is not None
     assert client.shopping.seatmaps is not None
-    assert client.shopping.hotel_offers is not None
-    assert client.shopping.hotel_offer is not None
-    assert client.shopping.hotel_offers_by_hotel is not None
     assert client.shopping.hotel_offers_search is not None
     assert client.shopping.hotel_offer_search is not None
     assert client.shopping.activities is not None
@@ -97,9 +94,6 @@ def test_expected_get_methods(client):
     assert client.shopping.flight_destinations.get is not None
     assert client.shopping.flight_offers_search.get is not None
     assert client.shopping.seatmaps.get is not None
-    assert client.shopping.hotel_offers.get is not None
-    assert client.shopping.hotel_offers_by_hotel.get is not None
-    assert client.shopping.hotel_offer('123').get is not None
     assert client.shopping.hotel_offers_search.get is not None
     assert client.shopping.hotel_offer_search('123').get is not None
     assert client.e_reputation.hotel_sentiments.get is not None
@@ -256,27 +250,6 @@ def test_shopping_flight_offers_search_get(client_setup):
     client_setup.shopping.flight_offers_search.get(a='b')
     client_setup.get.assert_called_with(
         '/v2/shopping/flight-offers', a='b'
-    )
-
-
-def test_shopping_hotel_offers_get(client_setup):
-    client_setup.shopping.hotel_offers.get(cityCode='MAD')
-    client_setup.get.assert_called_with(
-        '/v2/shopping/hotel-offers', cityCode='MAD'
-    )
-
-
-def test_shopping_hotel_offers_by_hotel_get(client_setup):
-    client_setup.shopping.hotel_offers_by_hotel.get(hotelId='XKPARC12')
-    client_setup.get.assert_called_with(
-        '/v2/shopping/hotel-offers/by-hotel', hotelId='XKPARC12'
-    )
-
-
-def test_shopping_hotel_offer_get(client_setup):
-    client_setup.shopping.hotel_offer('XXX').get(a='b')
-    client_setup.get.assert_called_with(
-        '/v2/shopping/hotel-offers/XXX', a='b'
     )
 
 
