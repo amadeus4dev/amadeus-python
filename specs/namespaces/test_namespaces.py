@@ -522,6 +522,7 @@ def test_analytics_itinerary_price_metrics_get(client_setup):
         '/v1/analytics/itinerary-price-metrics', a='b'
     )
 
+
 def test_duty_of_care_diseases_covid19_report_get(client_setup):
     client_setup.duty_of_care.diseases.covid19_report.get(a='b')
     client_setup.get.assert_called_with(
