@@ -8,7 +8,7 @@ Decommissioned Hotel Search API v2
 
 Upgraded Python v3.8+ support and old dependencies
 
-Upgraded testing by using `pytest`` and `mock`
+Upgraded testing by using `pytest` and `mock`
 
 Fixed #175 Replace type() with instance()
 
