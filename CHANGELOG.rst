@@ -1,5 +1,21 @@
 Changelog
 =========
+8.0.0 - 2023-01-30
+--------------------
+Decommissioned Travel Restrictions API v1
+
+Decommissioned Hotel Search API v2
+
+Upgraded Python v3.8+ support and old dependencies
+
+Upgraded testing by using `pytest`` and `mock`
+
+Fixed #175 Replace type() with instance()
+
+Fixed #177  Update the default value {} as an argument
+
+Minor updates in How to Release and running test in contribution guide
+
 7.1.0 - 2022-11-04
 --------------------
 Add support for `Travel Restrictions v2 API <https://developers.amadeus.com/self-service/category/covid-19-and-travel-safety/api-doc/travel-restrictions/api-reference>`_
