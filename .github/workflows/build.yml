@@ -32,7 +32,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ env.GITHUB_TOKEN }}
           publish_dir: _docs
       - name: Build binary wheel and a source tarball
         if: ${{ matrix.python-version == '3.10' }}
