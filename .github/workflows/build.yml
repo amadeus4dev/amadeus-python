@@ -32,7 +32,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FOLDER: docs
       - name: Build binary wheel and a source tarball
         if: ${{ matrix.python-version == '3.10' }}
