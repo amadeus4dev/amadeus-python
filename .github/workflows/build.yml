@@ -33,7 +33,7 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+          publish_dir: docs
       - name: Build binary wheel and a source tarball
         if: ${{ matrix.python-version == '3.10' }}
         run: python setup.py sdist
