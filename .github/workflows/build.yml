@@ -29,11 +29,12 @@ jobs:
           pip install -e .
           pip install --upgrade setuptools
           make docs
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        local_dir: _docs
+        branch: gh-pages
       - name: Build binary wheel and a source tarball
         if: ${{ matrix.python-version == '3.10' }}
         run: python setup.py sdist
