@@ -33,7 +33,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          local_dir: _docs
+          folder: _docs
           branch: gh-pages
       - name: Build binary wheel and a source tarball
         if: ${{ matrix.python-version == '3.10' }}
