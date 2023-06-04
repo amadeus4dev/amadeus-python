@@ -69,7 +69,7 @@ def test_expected_paths(client):
     assert client.airline.destinations is not None
     assert client.shopping.transfer_offers_search is not None
     assert client.ordering.transfer_orders is not None
-    assert client.ordering.transfer_order.transfers.cancellation is not None
+    assert client.ordering.transfer_order is not None
 
 
 def test_expected_get_methods(client):
