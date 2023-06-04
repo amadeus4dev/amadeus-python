@@ -353,6 +353,9 @@ List of supported endpoints
     # Transfer Offers Search
     amadeus.shopping.transfer_offers_search.post(body)
 
+    # Transfer Create Order
+    amadeus.ordering.transfer_orders.post(body, offerId='1000000000')
+
 Development & Contributing
 --------------------------
 

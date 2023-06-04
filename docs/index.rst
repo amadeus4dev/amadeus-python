@@ -259,3 +259,9 @@ Airline/Destinations
 
 .. autoclass:: amadeus.airline.Destinations
   :members: get
+
+Ordering/Transfers
+================
+
+.. autoclass:: amadeus.Ordering.TransferOrders
+  :members: post

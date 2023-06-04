@@ -10,6 +10,7 @@ from amadeus.namespaces._analytics import Analytics
 from amadeus.namespaces._location import Location
 from amadeus.namespaces._duty_of_care import DutyOfCare
 from amadeus.namespaces._airline import Airline
+from amadeus.namespaces._ordering import Ordering
 
 
 class Core(object):
@@ -26,3 +27,4 @@ class Core(object):
         self.location = Location(self)
         self.duty_of_care = DutyOfCare(self)
         self.airline = Airline(self)
+        self.ordering = Ordering(self)
