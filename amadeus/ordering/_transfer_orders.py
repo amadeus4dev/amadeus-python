@@ -10,7 +10,7 @@ class TransferOrders(Decorator, object):
 
         .. code-block:: python
 
-            amadeus.ordering.transfer_orders.post(body, offerId='1000000000')
+            amadeus.ordering.transfer_orders.post(body, offerId=offer_id)
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed

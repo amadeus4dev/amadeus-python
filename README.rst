@@ -356,6 +356,9 @@ List of supported endpoints
     # Transfer Create Order
     amadeus.ordering.transfer_orders.post(body, offerId='1000000000')
 
+    # Transfer Order Management
+    amadeus.ordering.transfer_order('ABC').transfers.cancellation.post(body, confirmNbr=123)
+
 Development & Contributing
 --------------------------
 

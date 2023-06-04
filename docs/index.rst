@@ -263,5 +263,8 @@ Airline/Destinations
 Ordering/Transfers
 ================
 
-.. autoclass:: amadeus.Ordering.TransferOrders
+.. autoclass:: amadeus.ordering.TransferOrders
+  :members: post
+
+.. autoclass:: amadeus.ordering.transfer_orders.transfers.Cancellation
   :members: post
