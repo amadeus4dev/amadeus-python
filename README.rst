@@ -350,6 +350,9 @@ List of supported endpoints
     # Airline Routes
     amadeus.airline.destinations.get(airlineCode='BA')
 
+    # Transfer Offers Search
+    amadeus.shopping.transfer_offers_search.post(body)
+
 Development & Contributing
 --------------------------
 

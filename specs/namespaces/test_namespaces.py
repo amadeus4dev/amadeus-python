@@ -67,6 +67,7 @@ def test_expected_paths(client):
     assert client.duty_of_care is not None
     assert client.duty_of_care.diseases.covid19_report is not None
     assert client.airline.destinations is not None
+    assert client.shopping.transfer_offers_search is not None
 
 
 def test_expected_get_methods(client):
@@ -542,4 +543,11 @@ def test_airline_destinations_get(client_setup):
     client_setup.airline.destinations.get(a='b')
     client_setup.get.assert_called_with(
         '/v1/airline/destinations', a='b'
+    )
+
+
+def test_shopping_transfer_offers_search_post(client_setup):
+    client_setup.shopping.transfer_offers_search.post({'foo': 'bar'})
+    client_setup.post.assert_called_with(
+        '/v1/shopping/transfer-offers', {'foo': 'bar'}
     )
