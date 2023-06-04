@@ -567,6 +567,6 @@ def test_ordering_transfer_order_transfers_cancellation_post(client_setup):
     client_setup.ordering.transfer_order('XXX').transfers.cancellation.post(
         {'foo': 'bar'}, confirmNbr=123)
     client_setup.post.assert_called_with(
-        '/v1/ordering/transfer-orders/XXX/transfers/cancellation?'+'confirmNbr=123',
+        '/v1/ordering/transfer-orders/XXX/transfers/cancellation?confirmNbr=123',
         {'foo': 'bar'}
     )

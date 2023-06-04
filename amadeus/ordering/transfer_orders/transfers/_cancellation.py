@@ -14,10 +14,13 @@ class Cancellation(Decorator, object):
 
         .. code-block:: python
 
-            amadeus.ordering.transfer_order(order_id).transfers.cancellation.post(body, confirmNbr=confirm_nbr)
+            amadeus.ordering.transfer_order(order_id).transfers.cancellation.post(body,
+            confirmNbr=confirm_nbr)
 
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
-        url = '/v1/ordering/transfer-orders/{0}/transfers/cancellation?'.format(self.order_id)
+        url = '/v1/ordering/transfer-orders/{0}/transfers/cancellation?'.format(
+            self.order_id
+        )
         return self.client.post(url + urlencode(params), body)
