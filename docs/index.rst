@@ -89,6 +89,12 @@ Shopping/Availability
 .. autoclass:: amadeus.shopping.availability.FlightAvailabilities
   :members: post
 
+Shopping/Transfers
+================
+
+.. autoclass:: amadeus.shopping.TransferOffersSearch
+  :members: post
+
 Travel/Analytics
 ================
 
@@ -253,3 +259,12 @@ Airline/Destinations
 
 .. autoclass:: amadeus.airline.Destinations
   :members: get
+
+Ordering/Transfers
+================
+
+.. autoclass:: amadeus.ordering.TransferOrders
+  :members: post
+
+.. autoclass:: amadeus.ordering.transfer_orders.transfers.Cancellation
+  :members: post
