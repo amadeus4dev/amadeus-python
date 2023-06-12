@@ -92,7 +92,7 @@ Shopping/Availability
 Shopping/Transfers
 ================
 
-.. autoclass:: amadeus.shopping.TransferOffersSearch
+.. autoclass:: amadeus.shopping.TransferOffers
   :members: post
 
 Travel/Analytics
