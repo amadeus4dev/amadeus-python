@@ -9,7 +9,7 @@ from amadeus.shopping._activity import Activity
 from amadeus.shopping._availability import Availability
 from amadeus.shopping._hotel_offer_search import HotelOfferSearch
 from amadeus.shopping._hotel_offers_search import HotelOffersSearch
-from amadeus.shopping._transfer_offers_search import TransferOffersSearch
+from amadeus.shopping._transfer_offers import TransferOffersSearch
 
 
 class Shopping(Decorator, object):

@@ -1,14 +1,14 @@
 from amadeus.client.decorator import Decorator
 
 
-class TransferOffersSearch(Decorator, object):
+class TransferOffers(Decorator, object):
     def post(self, body):
         '''
         Get transfer offers
 
         .. code-block:: python
 
-            amadeus.shopping.transfer_offers_search.post(body)
+            amadeus.shopping.transfer_offers.post(body)
 
         :param body: the parameters to send to the API
 
