@@ -9,7 +9,7 @@ from amadeus.shopping._activity import Activity
 from amadeus.shopping._availability import Availability
 from amadeus.shopping._hotel_offer_search import HotelOfferSearch
 from amadeus.shopping._hotel_offers_search import HotelOffersSearch
-from amadeus.shopping._transfer_offers_search import TransferOffersSearch
+from amadeus.shopping._transfer_offers import TransferOffers
 
 
 class Shopping(Decorator, object):
@@ -23,7 +23,7 @@ class Shopping(Decorator, object):
         self.activities = Activities(client)
         self.availability = Availability(client)
         self.hotel_offers_search = HotelOffersSearch(client)
-        self.transfer_offers_search = TransferOffersSearch(client)
+        self.transfer_offers = TransferOffers(client)
 
     def hotel_offer_search(self, offer_id):
         return HotelOfferSearch(self.client, offer_id)

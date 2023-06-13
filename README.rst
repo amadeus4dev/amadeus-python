@@ -350,14 +350,14 @@ List of supported endpoints
     # Airline Routes
     amadeus.airline.destinations.get(airlineCode='BA')
 
-    # Transfer Offers Search
-    amadeus.shopping.transfer_offers_search.post(body)
+    # Transfer Search
+    amadeus.shopping.transfer_offers.post(body)
 
-    # Transfer Create Order
+    # Transfer Booking
     amadeus.ordering.transfer_orders.post(body, offerId='1000000000')
 
-    # Transfer Order Management
-    amadeus.ordering.transfer_order('ABC').transfers.cancellation.post(body, confirmNbr=123)
+    # Transfer Management
+    amadeus.ordering.transfer_orders('ABC').transfers.cancellation.post(body, confirmNbr=123)
 
 Development & Contributing
 --------------------------
