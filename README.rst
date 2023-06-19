@@ -357,7 +357,7 @@ List of supported endpoints
     amadeus.ordering.transfer_orders.post(body, offerId='1000000000')
 
     # Transfer Management
-    amadeus.ordering.transfer_orders('ABC').transfers.cancellation.post(body, confirmNbr=123)
+    amadeus.ordering.transfer_order('ABC').transfers.cancellation.post(body, confirmNbr=123)
 
 Development & Contributing
 --------------------------
