@@ -64,8 +64,6 @@ def test_expected_paths(client):
     assert client.analytics.itinerary_price_metrics is not None
     assert client.location is not None
     assert client.location.analytics.category_rated_areas is not None
-    assert client.duty_of_care is not None
-    assert client.duty_of_care.diseases.covid19_report is not None
     assert client.airline.destinations is not None
     assert client.shopping.transfer_offers is not None
     assert client.ordering.transfer_orders is not None
@@ -108,7 +106,6 @@ def test_expected_get_methods(client):
     assert client.schedule.flights.get is not None
     assert client.analytics.itinerary_price_metrics.get is not None
     assert client.location.analytics.category_rated_areas.get is not None
-    assert client.duty_of_care.diseases.covid19_report.get is not None
     assert client.airline.destinations.get is not None
 
 
@@ -496,13 +493,6 @@ def test_analytics_itinerary_price_metrics_get(client_setup):
     client_setup.analytics.itinerary_price_metrics.get(a='b')
     client_setup.get.assert_called_with(
         '/v1/analytics/itinerary-price-metrics', a='b'
-    )
-
-
-def test_duty_of_care_diseases_covid19_report_get(client_setup):
-    client_setup.duty_of_care.diseases.covid19_report.get(a='b')
-    client_setup.get.assert_called_with(
-        '/v2/duty-of-care/diseases/covid19-area-report', a='b'
     )
 
 
