@@ -32,13 +32,13 @@ application <https://developers.amadeus.com/my-apps/>`__.
 
     from amadeus import Client, ResponseError
 
-    amadeus = Client(
+    client = Client(
         client_id='REPLACE_BY_YOUR_API_KEY',
         client_secret='REPLACE_BY_YOUR_API_SECRET'
     )
 
     try:
-        response = amadeus.shopping.flight_offers_search.get(
+        response = client.shopping.flight_offers_search.get(
             originLocationCode='MAD', 
             destinationLocationCode='ATH', 
             departureDate='2022-11-01',
