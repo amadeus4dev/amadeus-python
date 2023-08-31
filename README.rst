@@ -344,9 +344,6 @@ List of supported endpoints
     amadeus.analytics.itinerary_price_metrics.get(originIataCode='MAD', destinationIataCode='CDG',
                                                 departureDate='2021-03-21')
 
-    # Travel Restrictions v2
-    amadeus.duty_of_care.diseases.covid19_report.get(countryCode='US')
-
     # Airline Routes
     amadeus.airline.destinations.get(airlineCode='BA')
 

@@ -248,12 +248,6 @@ Location/Analytics
 .. autoclass:: amadeus.location.analytics.CategoryRatedAreas
   :members: get
 
-DutyOfCare/Diseases
-================
-
-.. autoclass:: amadeus.duty_of_care.diseases.Covid19Report
-  :members: get
-
 Airline/Destinations
 ================
 
