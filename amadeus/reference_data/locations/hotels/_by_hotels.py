@@ -18,5 +18,8 @@ class ByHotels(Decorator, object):
         :rtype: amadeus.Response
         :raises amadeus.ResponseError: if the request could not be completed
         '''
+        for key, value in params.items():
+            if isinstance(value, list):
+                params[key] = ','.join(value)
         return self.client.get(
             '/v1/reference-data/locations/hotels/by-hotels', **params)

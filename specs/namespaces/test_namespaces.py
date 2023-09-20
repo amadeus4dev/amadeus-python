@@ -497,9 +497,10 @@ def test_analytics_itinerary_price_metrics_get(client_setup):
 
 
 def test_reference_data_locations_hotels_by_hotels_get(client_setup):
-    client_setup.reference_data.locations.hotels.by_hotels.get(a='b')
+    client_setup.reference_data.locations.hotels.by_hotels.get(a='b',
+                                                               c=['d', 'e'])
     client_setup.get.assert_called_with(
-        '/v1/reference-data/locations/hotels/by-hotels', a='b'
+        '/v1/reference-data/locations/hotels/by-hotels', a='b', c='d,e'
     )
 
 
