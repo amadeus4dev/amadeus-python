@@ -434,6 +434,7 @@ def test_shopping_booking_hotel_bookings_post_list(client_setup):
                   }}
     )
 
+
 def test_schedule_flights_get(client_setup):
     client_setup.schedule.flights.get(a='b')
     client_setup.get.assert_called_with(
