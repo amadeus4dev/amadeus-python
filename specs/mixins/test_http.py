@@ -1,4 +1,5 @@
 import pytest
+import mock
 import unittest.mock
 from amadeus import Client, Response, ResponseError
 from urllib.error import URLError
