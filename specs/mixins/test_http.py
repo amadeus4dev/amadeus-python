@@ -1,5 +1,4 @@
 import pytest
-import mock
 import unittest.mock
 from amadeus import Client, Response, ResponseError
 from urllib.error import URLError
@@ -69,7 +68,7 @@ def test_unauthenticated_request(self):
 
     # Test the client's _unauthenticated_request method
     with pytest.raises(ResponseError):
-        response = self.client._unauthenticated_request('GET', '/foo', {}, None)
+        self.client._unauthenticated_request('GET', '/foo', {}, None)
 
     # Test that a HTTPError is caught
     self.client.http.side_effect = URLError('Error')
@@ -82,5 +81,5 @@ def test_unauthenticated_request(self):
         self.client.logger = logger
         self.client.log_level = 'debug'
         with pytest.raises(ResponseError):
-            response = self.client._unauthenticated_request(
+            self.client._unauthenticated_request(
                 'GET', '/foo', {}, None)
