@@ -1,7 +1,7 @@
 flake8==3.8.0
 flake8-quotes==2.1.1
 tox==3.20.0
-sphinx==3.4.1
-sphinx-rtd-theme==0.5.2
+sphinx==7.2.6
+sphinx-rtd-theme==2.0.0
 pytest==7.2.0
 pytest-cov==4.0.0
