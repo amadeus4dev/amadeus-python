@@ -69,9 +69,7 @@ def test_unauthenticated_request(self):
 
     # Test the client's _unauthenticated_request method
     with pytest.raises(ResponseError):
-        response = self.client._unauthenticated_request('GET', '/foo', {}, None)
-        assert self.client.call_count == 1
-        assert response == http_response
+        self.client._unauthenticated_request('GET', '/foo', {}, None)
 
     # Test that a HTTPError is caught
     self.client.http.side_effect = URLError('Error')
@@ -84,6 +82,5 @@ def test_unauthenticated_request(self):
         self.client.logger = logger
         self.client.log_level = 'debug'
         with pytest.raises(ResponseError):
-            response = self.client._unauthenticated_request(
+            self.client._unauthenticated_request(
                 'GET', '/foo', {}, None)
-            assert logger.debug.call_count == 2
