@@ -55,9 +55,6 @@ def test_expected_paths(client):
     assert client.travel.from_base64 is not None
     assert client.booking.flight_orders is not None
     assert client.booking.flight_order is not None
-    assert client.safety.safety_rated_locations is not None
-    assert client.safety.safety_rated_locations.by_square is not None
-    assert client.safety.safety_rated_location is not None
     assert client.schedule is not None
     assert client.schedule.flights is not None
     assert client.analytics is not None
@@ -101,8 +98,6 @@ def test_expected_get_methods(client):
     assert client.airport.direct_destinations.get is not None
     assert client.booking.flight_order('123').get is not None
     assert client.booking.flight_order('123').delete is not None
-    assert client.safety.safety_rated_locations.by_square.get is not None
-    assert client.safety.safety_rated_location('Q930402719').get is not None
     assert client.schedule.flights.get is not None
     assert client.analytics.itinerary_price_metrics.get is not None
     assert client.location.analytics.category_rated_areas.get is not None
@@ -437,27 +432,6 @@ def test_shopping_booking_hotel_bookings_post_list(client_setup):
                   'guests': [{'foo': 'bar'}],
                   'payments': [{'bar': 'foo'}]
                   }}
-    )
-
-
-def test_safety_safety_rated_locations_get(client_setup):
-    client_setup.safety.safety_rated_locations.get(a='b')
-    client_setup.get.assert_called_with(
-        '/v1/safety/safety-rated-locations', a='b'
-    )
-
-
-def test_safety_safety_rated_locations_by_square_get(client_setup):
-    client_setup.safety.safety_rated_locations.by_square.get(a='b')
-    client_setup.get.assert_called_with(
-        '/v1/safety/safety-rated-locations/by-square', a='b'
-    )
-
-
-def test_safety_safety_rated_location_get(client_setup):
-    client_setup.safety.safety_rated_location('XXX').get(a='b')
-    client_setup.get.assert_called_with(
-        '/v1/safety/safety-rated-locations/XXX', a='b'
     )
 
 

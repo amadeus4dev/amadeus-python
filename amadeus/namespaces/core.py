@@ -4,7 +4,6 @@ from amadeus.namespaces._shopping import Shopping
 from amadeus.namespaces._e_reputation import EReputation
 from amadeus.namespaces._airport import Airport
 from amadeus.namespaces._booking import Booking
-from amadeus.namespaces._safety import Safety
 from amadeus.namespaces._schedule import Schedule
 from amadeus.namespaces._analytics import Analytics
 from amadeus.namespaces._location import Location
@@ -20,7 +19,6 @@ class Core(object):
         self.e_reputation = EReputation(self)
         self.airport = Airport(self)
         self.booking = Booking(self)
-        self.safety = Safety(self)
         self.schedule = Schedule(self)
         self.analytics = Analytics(self)
         self.location = Location(self)
