@@ -1,5 +1,13 @@
 Changelog
 =========
+10.0.0 - 2024-04-17
+--------------------
+Decommissioned the Safe Place API
+
+Fixed the List Type Query Parameter for Hotel List API, Big thanks to `Siddhartha Dutta <https://github.com/siddydutta>`_ for his contribution!
+
+Updated sphinx version from 3.4.1 to 5.0.0
+
 9.0.0 - 2023-09-04
 --------------------
 Decommissioned the Travel Restrictions API v2
