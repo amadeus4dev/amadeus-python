@@ -55,6 +55,7 @@ def test_expected_paths(client):
     assert client.travel.from_base64 is not None
     assert client.booking.flight_orders is not None
     assert client.booking.flight_order is not None
+    assert client.booking.hotel_orders is not None
     assert client.schedule is not None
     assert client.schedule.flights is not None
     assert client.analytics is not None
@@ -432,6 +433,35 @@ def test_shopping_booking_hotel_bookings_post_list(client_setup):
                   'guests': [{'foo': 'bar'}],
                   'payments': [{'bar': 'foo'}]
                   }}
+    )
+
+
+def test_booking_hotel_orders_post(client_setup):
+    client_setup.booking.hotel_orders.post({'foo': 'bar'},
+                                           {'bar': 'foo'})
+    client_setup.post.assert_called_with(
+        '/v2/booking/hotel-orders',
+        {'data': {'type': 'hotel-order',
+                  'guests': [{'foo': 'bar'}],
+                  'travelAgent': {'bar': 'foo'},
+                  'roomAssociations': [],
+                  'payment': {},
+                  'arrivalInformation': {}}}
+    )
+
+
+def test_booking_hotel_orders_post_list(client_setup):
+    client_setup.booking.hotel_orders.post([{'foo': 'bar'}],
+                                           {'bar': 'foo'},
+                                           [{'a': 'b'}],)
+    client_setup.post.assert_called_with(
+        '/v2/booking/hotel-orders',
+        {'data': {'type': 'hotel-order',
+                  'guests': [{'foo': 'bar'}],
+                  'travelAgent': {'bar': 'foo'},
+                  'roomAssociations': [{'a': 'b'}],
+                  'payment': {},
+                  'arrivalInformation': {}}}
     )
 
 

@@ -279,6 +279,9 @@ List of supported endpoints
     # The offerId comes from the hotel_offer above
     amadeus.booking.hotel_bookings.post(offerId, guests, payments)
 
+    # Hotel Orders
+    amadeus.booking.hotel_orders.post(guests=guests, travel_agent=travel_agent)
+
     # Hotel Ratings
     # What travelers think about this hotel?
     amadeus.e_reputation.hotel_sentiments.get(hotelIds = 'ADNYCCTB')
