@@ -9,7 +9,7 @@ class HotelOrders(Decorator, object):
              payment={},
              arrival_information={}):
         '''
-        Create Hotel Order
+        Book hotel(s) via Hotel Booking API V2
 
         .. code-block:: python
 
