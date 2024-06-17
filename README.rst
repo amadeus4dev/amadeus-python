@@ -277,7 +277,7 @@ List of supported endpoints
 
     # Hotel Booking V2
     # The offerId comes from the hotel_offer above
-    response = amadeus.booking.hotel_orders.post(
+    amadeus.booking.hotel_orders.post(
         guests=guests, 
         travel_agent=travel_agent,
         room_associations=room_associations,
