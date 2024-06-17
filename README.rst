@@ -275,7 +275,7 @@ List of supported endpoints
     # Hotel Name Autocomplete
     amadeus.reference_data.locations.hotel.get(keyword='PARI', subType=[Hotel.HOTEL_GDS, Hotel.HOTEL_LEISURE])
 
-    # Hotel Booking V2
+    # Hotel Booking v2
     # The offerId comes from the hotel_offer above
     amadeus.booking.hotel_orders.post(
         guests=guests, 
@@ -283,7 +283,7 @@ List of supported endpoints
         room_associations=room_associations,
         payment=payment)
 
-    # Hotel Booking V1
+    # Hotel Booking v1
     # The offerId comes from the hotel_offer above
     amadeus.booking.hotel_bookings.post(offerId, guests, payments)
 
