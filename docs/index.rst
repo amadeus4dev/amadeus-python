@@ -218,6 +218,10 @@ Booking
 .. autoclass:: amadeus.booking.HotelBookings
   :members: post
 
+.. autoclass:: amadeus.booking.HotelOrders
+  :members: post
+
+
 Schedule/Flights
 ================
 
