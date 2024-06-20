@@ -1,5 +1,9 @@
 Changelog
 =========
+10.1.0 - 2024-06-20
+--------------------
+Add support for the `Hotel Booking v2 API <https://developers.amadeus.com/self-service/category/hotels/api-doc/hotel-booking>`_. Big thanks to `Siddhartha Dutta <https://github.com/siddydutta>`_ for his contribution
+
 10.0.0 - 2024-04-17
 --------------------
 Decommissioned the Safe Place API
