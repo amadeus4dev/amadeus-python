@@ -316,14 +316,6 @@ List of supported endpoints
     # Airport Routes
     amadeus.airport.direct_destinations.get(departureAirportCode='BLR')
 
-    # Trip Parser
-    # Encode to Base64 your booking confirmation file (.html, .eml, .pdf supported)
-    response = amadeus.travel.trip_parser.post(amadeus.travel.from_file(path_to_file))
-    # Alternatively you can use a Base64 encoded content directly
-    response = amadeus.travel.trip_parser.post(amadeus.travel.from_base64(base64))
-    # Or you can call the API with the JSON directly
-    response = amadeus.travel.trip_parser.post(body)
-
     # Travel Recommendations
     amadeus.reference_data.recommended_locations.get(cityCodes='PAR', travelerCountryCode='FR')
 
