@@ -113,12 +113,6 @@ Travel/Predictions
 .. autoclass:: amadeus.travel.predictions.FlightDelay
   :members: get
 
-Travel/TripParser
-================
-
-.. autoclass:: amadeus.travel.TripParser
-  :members: post
-
 ReferenceData/Locations
 =======================
 

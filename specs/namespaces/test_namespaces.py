@@ -50,9 +50,6 @@ def test_expected_paths(client):
     assert client.airport.predictions is not None
     assert client.airport.predictions.on_time is not None
     assert client.airport.direct_destinations is not None
-    assert client.travel.trip_parser is not None
-    assert client.travel.from_file is not None
-    assert client.travel.from_base64 is not None
     assert client.booking.flight_orders is not None
     assert client.booking.flight_order is not None
     assert client.booking.hotel_orders is not None
@@ -295,32 +292,6 @@ def test_shopping_flight_offers_prediction_post(client_setup):
     client_setup.shopping.flight_offers.prediction.post({'foo': 'bar'})
     client_setup.post.assert_called_with(
         '/v2/shopping/flight-offers/prediction', {'foo': 'bar'}
-    )
-
-
-def test_travel_trip_parser_post(client_setup):
-    client_setup.travel.trip_parser.post({'foo': 'bar'})
-    client_setup.post.assert_called_with(
-        '/v3/travel/trip-parser', {'foo': 'bar'}
-    )
-
-
-def test_travel_trip_parser_post_from_base64(client_setup):
-    client_setup.travel.trip_parser.post(
-        client_setup.travel.from_base64('Qm9va2luZwo='))
-    client_setup.post.assert_called_with(
-        '/v3/travel/trip-parser',
-        {'payload': 'Qm9va2luZwo='}
-    )
-
-
-def test_travel_trip_parser_post_from_file(client_setup):
-    file = 'specs/namespaces/trip_parser_test.eml'
-    client_setup.travel.trip_parser.post(
-        client_setup.travel.from_file(file))
-    client_setup.post.assert_called_with(
-        '/v3/travel/trip-parser',
-        {'payload': 'Qm9va2luZwo='}
     )
 
 
