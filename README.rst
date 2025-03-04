@@ -300,9 +300,6 @@ List of supported endpoints
     # Returns a single Point of Interest from a given id
     amadeus.reference_data.locations.point_of_interest('9CB40CB5D0').get()
 
-    # Location Score
-    amadeus.location.analytics.category_rated_areas.get(latitude=41.397158, longitude=2.160873)
-
     # Trip Purpose Prediction
     amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2022-11-01', returnDate='2022-11-08')
 

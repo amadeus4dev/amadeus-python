@@ -6,7 +6,6 @@ from amadeus.namespaces._airport import Airport
 from amadeus.namespaces._booking import Booking
 from amadeus.namespaces._schedule import Schedule
 from amadeus.namespaces._analytics import Analytics
-from amadeus.namespaces._location import Location
 from amadeus.namespaces._airline import Airline
 from amadeus.namespaces._ordering import Ordering
 
@@ -21,6 +20,5 @@ class Core(object):
         self.booking = Booking(self)
         self.schedule = Schedule(self)
         self.analytics = Analytics(self)
-        self.location = Location(self)
         self.airline = Airline(self)
         self.ordering = Ordering(self)
