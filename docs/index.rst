@@ -128,18 +128,6 @@ ReferenceData/Locations
 .. autoclass:: amadeus.reference_data.Airlines
   :members: get
 
-ReferenceData/Locations/PointsOfInterest
-=======================
-
-.. autoclass:: amadeus.reference_data.locations.PointsOfInterest
-  :members: get
-
-.. autoclass:: amadeus.reference_data.locations.points_of_interest.BySquare
-  :members: get
-
-.. autoclass:: amadeus.reference_data.locations.PointOfInterest
-  :members: get
-
 ReferenceData/Urls
 ==================
 
