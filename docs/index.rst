@@ -216,12 +216,6 @@ Analytics/ItineraryPriceMetrics
 .. autoclass:: amadeus.analytics.ItineraryPriceMetrics
   :members: get
 
-Location/Analytics
-================
-
-.. autoclass:: amadeus.location.analytics.CategoryRatedAreas
-  :members: get
-
 Airline/Destinations
 ================
 

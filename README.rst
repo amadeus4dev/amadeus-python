@@ -291,9 +291,6 @@ List of supported endpoints
     # What travelers think about this hotel?
     amadeus.e_reputation.hotel_sentiments.get(hotelIds = 'ADNYCCTB')
 
-    # Location Score
-    amadeus.location.analytics.category_rated_areas.get(latitude=41.397158, longitude=2.160873)
-
     # Trip Purpose Prediction
     amadeus.travel.predictions.trip_purpose.get(originLocationCode='ATH', destinationLocationCode='MAD', departureDate='2022-11-01', returnDate='2022-11-08')
 

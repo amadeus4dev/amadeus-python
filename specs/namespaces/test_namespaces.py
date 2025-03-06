@@ -54,8 +54,6 @@ def test_expected_paths(client):
     assert client.schedule.flights is not None
     assert client.analytics is not None
     assert client.analytics.itinerary_price_metrics is not None
-    assert client.location is not None
-    assert client.location.analytics.category_rated_areas is not None
     assert client.airline.destinations is not None
     assert client.shopping.transfer_offers is not None
     assert client.ordering.transfer_orders is not None
@@ -90,7 +88,6 @@ def test_expected_get_methods(client):
     assert client.booking.flight_order('123').delete is not None
     assert client.schedule.flights.get is not None
     assert client.analytics.itinerary_price_metrics.get is not None
-    assert client.location.analytics.category_rated_areas.get is not None
     assert client.airline.destinations.get is not None
 
 
@@ -140,13 +137,6 @@ def test_reference_data_locations_airports_get(client_setup):
     client_setup.reference_data.locations.airports.get(a='b')
     client_setup.get.assert_called_with(
         '/v1/reference-data/locations/airports', a='b'
-    )
-
-
-def test_location_analytics_category_rated_areas_get(client_setup):
-    client_setup.location.analytics.category_rated_areas.get(a='b')
-    client_setup.get.assert_called_with(
-        '/v1/location/analytics/category-rated-areas', a='b'
     )
 
 
