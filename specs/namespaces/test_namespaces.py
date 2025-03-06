@@ -15,9 +15,6 @@ def test_expected_paths(client):
     assert client.reference_data.location is not None
     assert client.reference_data.locations is not None
     assert client.reference_data.locations.airports is not None
-    assert client.reference_data.locations.points_of_interest is not None
-    assert client.reference_data.locations.points_of_interest.by_square \
-        is not None
     assert client.reference_data.locations.hotels is not None
     assert client.reference_data.locations.hotels.by_hotels is not None
     assert client.reference_data.locations.hotels.by_city is not None
@@ -70,11 +67,6 @@ def test_expected_get_methods(client):
     assert client.reference_data.location('ALHR').get is not None
     assert client.reference_data.locations.get is not None
     assert client.reference_data.locations.airports.get is not None
-    assert client.reference_data.locations.points_of_interest.get is not None
-    assert client.reference_data.locations.points_of_interest.by_square.get \
-        is not None
-    assert client.reference_data.locations.point_of_interest('9CB40CB5D0').get \
-        is not None
     assert client.reference_data.recommended_locations.get is not None
     assert client.reference_data.locations.hotels.by_city.get is not None
     assert client.reference_data.locations.hotels.by_hotels.get is not None
@@ -148,29 +140,6 @@ def test_reference_data_locations_airports_get(client_setup):
     client_setup.reference_data.locations.airports.get(a='b')
     client_setup.get.assert_called_with(
         '/v1/reference-data/locations/airports', a='b'
-    )
-
-
-def test_reference_data_locations_points_of_interest_get(client_setup):
-    client_setup.reference_data.locations.points_of_interest.get(a='b')
-    client_setup.get.assert_called_with(
-        '/v1/reference-data/locations/pois', a='b'
-    )
-
-
-def test_reference_data_locations_points_of_interest_by_square_get(client_setup):
-    client_setup.reference_data.locations.points_of_interest.by_square.get(
-        a='b')
-    client_setup.get.assert_called_with(
-        '/v1/reference-data/locations/pois/by-square', a='b'
-    )
-
-
-def test_reference_data_locations_point_of_interest_get(client_setup):
-    client_setup.reference_data.locations.point_of_interest(
-        'XXX').get(a='b')
-    client_setup.get.assert_called_with(
-        '/v1/reference-data/locations/pois/XXX', a='b'
     )
 
 
