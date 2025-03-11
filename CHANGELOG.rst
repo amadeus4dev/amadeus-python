@@ -1,5 +1,13 @@
 Changelog
 =========
+12.0.0 - 2025-04-11
+--------------------
+Decommissioned the Points of Interest and Location Score APIs
+
+Updated the Ubuntu 24.04 for GitHub Actions
+
+Big thanks to `Siddhartha Dutta <https://github.com/siddydutta>`_ for his contribution to the above implementations!
+
 11.0.0 - 2024-10-02
 --------------------
 Decommissioned the Trip Parser API
